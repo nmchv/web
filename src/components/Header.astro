@@ -1,0 +1,22 @@
+---
+import { content } from '../data';
+const { ui, profile, contacts } = content;
+const items = [
+  { id: 'projects', label: ui.nav.projects },
+  { id: 'about', label: ui.nav.about },
+  ...(contacts.length ? [{ id: 'contacts', label: ui.nav.contacts }] : []),
+];
+---
+<header class="site-header" id="site-header">
+  <div class="container">
+    <a class="brand" href="#top" aria-label={`${profile.shortName}, в начало страницы`}>
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 20 L12 3 L20 20 M7.2 14.5 H16.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
+      </svg>
+      <span class="brand-name">{profile.shortName}</span>
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      {items.map((i) => <a href={`#${i.id}`} data-nav={i.id}>{i.label}</a>)}
+    </nav>
+  </div>
+</header>

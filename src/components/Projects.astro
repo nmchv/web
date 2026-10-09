@@ -1,0 +1,41 @@
+---
+import { content } from '../data';
+import ProjectArt from './ProjectArt.astro';
+const { ui, projects } = content;
+---
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="section-index">01</span>
+      <h2 id="projects-title">{ui.projects.title}</h2>
+      <p>{ui.projects.lead}</p>
+    </div>
+    <ul class="projects-grid">
+      {projects.map((p, i) => (
+        <li class:list={['card', { 'is-link': !!p.url }]} data-reveal style={`--d:${i * 90}ms`}>
+          <div class="card-art">
+            {p.image
+              ? <img src={p.image} alt="" loading="lazy" width="480" height="220" />
+              : <ProjectArt kind={p.art} />}
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span>{p.category}</span>
+              <span class="status" data-status={p.status}>{ui.status[p.status]}</span>
+            </div>
+            <h3>
+              {p.url
+                ? <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}<span class="visually-hidden"> {ui.projects.newTab}</span></a>
+                : p.title}
+            </h3>
+            <p>{p.description}</p>
+            {p.url
+              ? <span class="go" aria-hidden="true">{ui.projects.open}
+                  <svg viewBox="0 0 16 16"><path d="M3 13L13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.75" /></svg></span>
+              : <span class="soon">{ui.projects.soon}</span>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

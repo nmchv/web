@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import { content } from '../data';
+const { ui } = content;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+<!doctype html>
+<html lang={ui.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{ui.siteTitle}</title>
+    <meta name="description" content={ui.siteDescription} />
+    <meta name="theme-color" content="#08090B" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={ui.siteTitle} />
+    <meta property="og:description" content={ui.siteDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">{ui.skipToContent}</a>
+    <slot />
+    <script>
+      // появление блоков при прокрутке
+      const reveal = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+          }
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        reveal.forEach((el) => io.observe(el));
+      } else {
+        reveal.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // тонкая граница у шапки после прокрутки
+      const header = document.getElementById('site-header');
+      const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // подсветка активного пункта меню
+      const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-nav]'));
+      const map = new Map<string, HTMLAnchorElement>(links.map((a) => [a.dataset.nav as string, a]));
+      const secs = ['projects', 'about', 'directions', 'contacts']
+        .map((id) => document.getElementById(id)).filter((s): s is HTMLElement => !!s);
+      if ('IntersectionObserver' in window) {
+        const spy = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const key = e.target.id === 'directions' ? 'about' : e.target.id;
+            links.forEach((a) => a.removeAttribute('aria-current'));
+            map.get(key)?.setAttribute('aria-current', 'true');
+          }
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        secs.forEach((s) => spy.observe(s));
+      }
+    </script>
+  </body>
+</html>

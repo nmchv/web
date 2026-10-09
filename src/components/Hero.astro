@@ -1,0 +1,31 @@
+---
+import { content } from '../data';
+import HeroArt from './HeroArt.astro';
+const { ui, profile } = content;
+const parts = profile.name.split(' ');
+const first = parts.slice(0, 2).join(' ');
+const last = parts.slice(2).join(' ');
+---
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow" data-reveal>{ui.heroEyebrow}</p>
+      <h1 id="hero-title" data-reveal style="--d:80ms">
+        {first}
+        {last && <span class="surname">{last}</span>}
+      </h1>
+      <ul class="signature" data-reveal style="--d:160ms" aria-label="Профессиональное представление">
+        {profile.signature.map((s) => <li>{s}</li>)}
+      </ul>
+      <p class="lead" data-reveal style="--d:240ms">{profile.lead}</p>
+      <a class="btn" href="#projects" data-reveal style="--d:320ms">
+        {ui.heroCta}
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" /></svg>
+      </a>
+    </div>
+    <div data-reveal style="--d:200ms">
+      <HeroArt />
+      <p class="coords" aria-hidden="true">N 00°00′ · E 00°00′</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import { content } from '../data';
+const { ui, contacts } = content;
+---
+{contacts.length > 0 && (
+  <section class="section" id="contacts" aria-labelledby="contacts-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="section-index">04</span>
+        <h2 id="contacts-title">{ui.contacts.title}</h2>
+        <p>{ui.contacts.lead}</p>
+      </div>
+      <ul class="contact-list" data-reveal>
+        {contacts.map((c) => (
+          <li>
+            <a href={c.href} {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+              <span class="label">{c.label}</span>
+              <span>{c.value}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
