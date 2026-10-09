@@ -44,7 +44,7 @@ export const content: SiteContent = {
     aliasLabel: 'Seudónimo ·',
     schoolLabel: 'Escuela n.º 116',
     schoolCaption: 'un espacio de soluciones',
-    language: { label: 'Elegir idioma', russian: 'Ruso', english: 'Inglés', french: 'Francés', spanish: 'Español', korean: 'Coreano', chinese: 'Chino', japanese: 'Japonés', german: 'Alemán', swedish: 'Sueco' },
+    language: { label: 'Elegir idioma', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { projects: 'Proyectos', about: 'Sobre mí', contacts: 'Contacto' },
     heroEyebrow: 'Sitio personal',
     heroCta: 'Descubre mis proyectos',

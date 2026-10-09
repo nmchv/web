@@ -41,7 +41,7 @@ export const content: SiteContent = {
     aliasLabel: '别名 ·',
     schoolLabel: '第116学校',
     schoolCaption: '创意与解决方案的空间',
-    language: { label: '选择语言', russian: '俄语', english: '英语', french: '法语', spanish: '西班牙语', korean: '韩语', chinese: '中文', japanese: '日语', german: '德语', swedish: '瑞典语' },
+    language: { label: '选择语言', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { projects: '项目', about: '关于我', contacts: '联系方式' },
     heroEyebrow: '个人网站',
     heroCta: '查看我的项目',

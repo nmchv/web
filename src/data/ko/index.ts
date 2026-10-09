@@ -41,7 +41,7 @@ export const content: SiteContent = {
     aliasLabel: '별칭 ·',
     schoolLabel: '제116학교',
     schoolCaption: '아이디어를 실현하는 공간',
-    language: { label: '언어 선택', russian: '러시아어', english: '영어', french: '프랑스어', spanish: '스페인어', korean: '한국어', chinese: '중국어', japanese: '일본어', german: '독일어', swedish: '스웨덴어' },
+    language: { label: '언어 선택', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { projects: '프로젝트', about: '소개', contacts: '연락처' },
     heroEyebrow: '개인 웹사이트',
     heroCta: '프로젝트 살펴보기',

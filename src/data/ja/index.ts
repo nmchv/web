@@ -41,7 +41,7 @@ export const content: SiteContent = {
     aliasLabel: '通称 ·',
     schoolLabel: '第116学校',
     schoolCaption: 'アイデアを形にする場所',
-    language: { label: '言語を選択', russian: 'ロシア語', english: '英語', french: 'フランス語', spanish: 'スペイン語', korean: '韓国語', chinese: '中国語', japanese: '日本語', german: 'ドイツ語', swedish: 'スウェーデン語' },
+    language: { label: '言語を選択', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { projects: 'プロジェクト', about: 'プロフィール', contacts: 'お問い合わせ' },
     heroEyebrow: '個人サイト',
     heroCta: 'プロジェクトを見る',

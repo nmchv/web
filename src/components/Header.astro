@@ -15,16 +15,17 @@ const items = [
   }] : []),
 ];
 const languages = [
-  { code: 'ru', label: ui.language.russian, prefix: '' },
-  { code: 'en', label: ui.language.english, prefix: '/en' },
-  { code: 'fr', label: ui.language.french, prefix: '/fr' },
-  { code: 'es', label: ui.language.spanish, prefix: '/es' },
-  { code: 'ko', label: ui.language.korean, prefix: '/ko' },
-  { code: 'zh', label: ui.language.chinese, prefix: '/zh' },
-  { code: 'ja', label: ui.language.japanese, prefix: '/ja' },
-  { code: 'de', label: ui.language.german, prefix: '/de' },
-  { code: 'sv', label: ui.language.swedish, prefix: '/sv' },
+  { code: 'ru', flag: '🇷🇺', label: ui.language.russian, prefix: '' },
+  { code: 'en', flag: '🇺🇸', label: ui.language.english, prefix: '/en' },
+  { code: 'fr', flag: '🇫🇷', label: ui.language.french, prefix: '/fr' },
+  { code: 'es', flag: '🇪🇸', label: ui.language.spanish, prefix: '/es' },
+  { code: 'ko', flag: '🇰🇷', label: ui.language.korean, prefix: '/ko' },
+  { code: 'zh', flag: '🇨🇳', label: ui.language.chinese, prefix: '/zh' },
+  { code: 'ja', flag: '🇯🇵', label: ui.language.japanese, prefix: '/ja' },
+  { code: 'de', flag: '🇩🇪', label: ui.language.german, prefix: '/de' },
+  { code: 'sv', flag: '🇸🇪', label: ui.language.swedish, prefix: '/sv' },
 ];
+const currentLanguage = languages.find((language) => language.code === ui.lang);
 ---
 <header class="site-header" id="site-header">
   <div class="container">
@@ -40,6 +41,7 @@ const languages = [
       </nav>
       <details class="language-switcher">
         <summary aria-label={ui.language.label}>
+          {currentLanguage && <span aria-hidden="true">{currentLanguage.flag}</span>}
           {ui.lang.toUpperCase()}
           <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
         </summary>
@@ -50,7 +52,8 @@ const languages = [
               hreflang={language.code}
               aria-current={language.code === ui.lang ? 'page' : undefined}
             >
-              {language.label}
+              <span class="language-flag" aria-hidden="true">{language.flag}</span>
+              <span>{language.label}</span>
             </a>
           ))}
         </div>
