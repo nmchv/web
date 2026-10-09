@@ -1,6 +1,7 @@
 ---
-import { content } from '../data';
-const { ui, contacts } = content;
+import type { SiteContent } from '../data';
+interface Props { content: SiteContent }
+const { ui, contacts } = Astro.props.content;
 ---
 {contacts.length > 0 && (
   <section class="section" id="contacts" aria-labelledby="contacts-title">
@@ -11,8 +12,8 @@ const { ui, contacts } = content;
         <p>{ui.contacts.lead}</p>
       </div>
       <ul class="contact-list" data-reveal>
-        {contacts.map((c) => (
-          <li>
+        {contacts.map((c, i) => (
+          <li data-reveal style={`--d:${i * 70}ms`}>
             <a href={c.href} {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
               <span class="label">{c.label}</span>
               <span>{c.value}</span>

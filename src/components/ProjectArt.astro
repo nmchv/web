@@ -15,10 +15,10 @@ const cols = [140, 220, 300, 380];
       <line x1="40" y1="44" x2="440" y2="44" stroke="var(--color-text-secondary)" stroke-opacity=".5" />
       {rows.slice(1).map((y) => <line x1="40" y1={y} x2="440" y2={y} />)}
       {cols.map((x) => <line x1={x} y1="20" x2={x} y2="200" />)}
-      <rect x="148" y="88" width="64" height="20" fill={accent} fill-opacity=".85" stroke="none" />
-      <rect x="228" y="124" width="64" height="20" fill={accent} fill-opacity=".45" stroke="none" />
-      <rect x="308" y="52" width="64" height="20" fill={accent} fill-opacity=".25" stroke="none" />
-      <rect x="388" y="160" width="44" height="20" fill={accent} fill-opacity=".6" stroke="none" />
+      <rect class="schedule-event" style="--i:0" x="148" y="88" width="64" height="20" fill={accent} fill-opacity=".85" stroke="none" />
+      <rect class="schedule-event" style="--i:1" x="228" y="124" width="64" height="20" fill={accent} fill-opacity=".45" stroke="none" />
+      <rect class="schedule-event" style="--i:2" x="308" y="52" width="64" height="20" fill={accent} fill-opacity=".25" stroke="none" />
+      <rect class="schedule-event" style="--i:3" x="388" y="160" width="44" height="20" fill={accent} fill-opacity=".6" stroke="none" />
       {[0, 1, 2, 3, 4].map((i) => (
         <line x1="52" y1={32 + i * 36 + (i ? 12 : 0)} x2={86 + (i % 3) * 14} y2={32 + i * 36 + (i ? 12 : 0)} stroke="var(--color-text-secondary)" stroke-opacity=".7" stroke-width="2" />
       ))}
@@ -31,11 +31,11 @@ const cols = [140, 220, 300, 380];
       {[0, 1, 2, 3, 4].map((i) => <line x1="0" y1={i * 55} x2="480" y2={i * 55} />)}
       <path d="M40 150 C 90 90, 130 120, 180 80 S 270 40, 310 90 S 390 150, 450 110" stroke="var(--color-text-secondary)" stroke-opacity=".6" />
       <path d="M60 190 C 120 150, 170 175, 230 150 S 330 170, 420 150" stroke="var(--color-text-secondary)" stroke-opacity=".3" />
-      <polyline points="120,112 215,70 305,95 372,128" stroke={accent} stroke-width="1.25" stroke-dasharray="4 5" />
+      <polyline class="geo-route" pathLength="1" points="120,112 215,70 305,95 372,128" stroke={accent} stroke-width="1.25" stroke-dasharray="4 5" />
       {[[120,112],[215,70],[305,95],[372,128]].map(([x,y], i) => (
         <g>
           <circle cx={x} cy={y} r="4" fill={accent} stroke="none" />
-          {i === 1 && <circle cx={x} cy={y} r="11" stroke="var(--color-accent-hover)" />}
+          {i === 1 && <circle class="geo-marker" cx={x} cy={y} r="11" stroke="var(--color-accent-hover)" />}
         </g>
       ))}
       <path d="M215 52 V 88 M197 70 H 233" stroke="var(--color-accent-hover)" stroke-opacity=".6" />
@@ -46,7 +46,7 @@ const cols = [140, 220, 300, 380];
     <g class="art" fill="none" stroke={border} stroke-width="1">
       <rect x="150" y="34" width="210" height="160" fill="var(--color-surface)" transform="rotate(-6 255 114)" />
       <rect x="130" y="26" width="210" height="160" fill="var(--color-surface-elevated)" transform="rotate(-2 235 106)" />
-      <g stroke="none">
+      <g class="notes-ink" stroke="none">
         <rect x="150" y="46" width="90" height="10" fill={accent} />
         <rect x="150" y="68" width="160" height="3" fill="var(--color-text-secondary)" fill-opacity=".6" />
         <rect x="150" y="80" width="140" height="3" fill="var(--color-text-secondary)" fill-opacity=".6" />
@@ -57,6 +57,26 @@ const cols = [140, 220, 300, 380];
         <rect x="150" y="152" width="140" height="3" fill="var(--color-text-secondary)" fill-opacity=".35" />
       </g>
       <rect x="130" y="26" width="210" height="160" stroke="var(--color-text-secondary)" stroke-opacity=".5" transform="rotate(-2 235 106)" />
+    </g>
+  )}
+
+  {kind === 'test' && (
+    <g class="art" fill="none" stroke={border} stroke-width="1">
+      <rect x="150" y="22" width="180" height="176" rx="8" fill="var(--color-surface-elevated)" />
+      <path d="M205 22v-5a8 8 0 0 1 8-8h54a8 8 0 0 1 8 8v5" stroke="var(--color-text-secondary)" />
+      <rect x="174" y="47" width="72" height="7" rx="3.5" fill={accent} stroke="none" />
+      <rect x="174" y="62" width="122" height="3" rx="1.5" fill="var(--color-text-secondary)" stroke="none" opacity=".55" />
+      <rect x="174" y="82" width="58" height="5" rx="2.5" fill="var(--color-text-secondary)" stroke="none" opacity=".8" />
+      <rect x="174" y="94" width="116" height="3" rx="1.5" fill="var(--color-text-secondary)" stroke="none" opacity=".35" />
+      <circle cx="183" cy="117" r="6" />
+      <circle cx="183" cy="117" r="3" fill={accent} stroke="none" />
+      <rect x="198" y="115" width="82" height="3" rx="1.5" fill="var(--color-text-secondary)" stroke="none" opacity=".55" />
+      <circle cx="183" cy="139" r="6" />
+      <rect x="198" y="137" width="68" height="3" rx="1.5" fill="var(--color-text-secondary)" stroke="none" opacity=".55" />
+      <circle cx="183" cy="161" r="6" />
+      <rect x="198" y="159" width="92" height="3" rx="1.5" fill="var(--color-text-secondary)" stroke="none" opacity=".55" />
+      <circle cx="322" cy="148" r="28" fill="var(--color-surface)" stroke={accent} stroke-width="2" />
+      <path class="test-check" pathLength="1" d="m309 148 12 12 23-27" stroke={accent} stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
     </g>
   )}
 </svg>

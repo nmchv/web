@@ -1,22 +1,60 @@
 ---
-import { content } from '../data';
+import type { SiteContent } from '../data';
+interface Props { content: SiteContent; isAboutPage?: boolean }
+const { content, isAboutPage = false } = Astro.props;
 const { ui, profile, contacts } = content;
+const localePath = ui.lang === 'ru' ? '' : `/${ui.lang}`;
+const homePath = `${localePath}/`;
 const items = [
-  { id: 'projects', label: ui.nav.projects },
-  { id: 'about', label: ui.nav.about },
-  ...(contacts.length ? [{ id: 'contacts', label: ui.nav.contacts }] : []),
+  { id: 'projects', label: ui.nav.projects, href: isAboutPage ? `${homePath}#projects` : '#projects' },
+  { id: 'about', label: ui.nav.about, href: `${localePath}/about` },
+  ...(contacts.length ? [{
+    id: 'contacts',
+    label: ui.nav.contacts,
+    href: isAboutPage ? `${homePath}#contacts` : '#contacts',
+  }] : []),
+];
+const languages = [
+  { code: 'ru', label: ui.language.russian, prefix: '' },
+  { code: 'en', label: ui.language.english, prefix: '/en' },
+  { code: 'fr', label: ui.language.french, prefix: '/fr' },
+  { code: 'es', label: ui.language.spanish, prefix: '/es' },
+  { code: 'ko', label: ui.language.korean, prefix: '/ko' },
+  { code: 'zh', label: ui.language.chinese, prefix: '/zh' },
+  { code: 'ja', label: ui.language.japanese, prefix: '/ja' },
+  { code: 'de', label: ui.language.german, prefix: '/de' },
+  { code: 'sv', label: ui.language.swedish, prefix: '/sv' },
 ];
 ---
 <header class="site-header" id="site-header">
   <div class="container">
-    <a class="brand" href="#top" aria-label={`${profile.shortName}, в начало страницы`}>
+    <a class="brand" href={isAboutPage ? homePath : '#top'} aria-label={ui.homeLabel}>
       <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M4 20 L12 3 L20 20 M7.2 14.5 H16.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
       </svg>
       <span class="brand-name">{profile.shortName}</span>
     </a>
-    <nav class="nav" aria-label="Основная навигация">
-      {items.map((i) => <a href={`#${i.id}`} data-nav={i.id}>{i.label}</a>)}
-    </nav>
+    <div class="header-actions">
+      <nav class="nav" aria-label={ui.navLabel}>
+        {items.map((i) => <a href={i.href} data-nav={i.id}>{i.label}</a>)}
+      </nav>
+      <details class="language-switcher">
+        <summary aria-label={ui.language.label}>
+          {ui.lang.toUpperCase()}
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="m2 4 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+        </summary>
+        <div class="language-menu" role="group" aria-label={ui.language.label}>
+          {languages.map((language) => (
+            <a
+              href={`${language.prefix}${isAboutPage ? '/about' : '/'}`}
+              hreflang={language.code}
+              aria-current={language.code === ui.lang ? 'page' : undefined}
+            >
+              {language.label}
+            </a>
+          ))}
+        </div>
+      </details>
+    </div>
   </div>
 </header>

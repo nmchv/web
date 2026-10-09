@@ -1,26 +1,39 @@
 ---
 // Декоративная координатная сетка. Географическая точность не заявляется.
+interface Props { schoolLabel: string; schoolCaption: string }
+const { schoolLabel, schoolCaption } = Astro.props;
 ---
 <div class="hero-art" aria-hidden="true">
   <svg viewBox="0 0 400 400" focusable="false">
     <circle class="g-line draw" pathLength="1" cx="200" cy="200" r="180" />
-    <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="135" ry="180" />
+    <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="150" ry="180" />
+    <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="120" ry="180" />
     <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="90" ry="180" />
-    <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="45" ry="180" />
+    <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="60" ry="180" />
+    <ellipse class="g-line draw" pathLength="1" cx="200" cy="200" rx="30" ry="180" />
     <line class="g-line draw" pathLength="1" x1="200" y1="20" x2="200" y2="380" />
     <line class="g-line draw" pathLength="1" x1="20" y1="200" x2="380" y2="200" />
+    <line class="g-line draw" pathLength="1" x1="100.5" y1="50" x2="299.5" y2="50" />
     <line class="g-line draw" pathLength="1" x1="65.8" y1="80" x2="334.2" y2="80" />
-    <line class="g-line draw" pathLength="1" x1="65.8" y1="320" x2="334.2" y2="320" />
+    <line class="g-line draw" pathLength="1" x1="44.1" y1="110" x2="355.9" y2="110" />
     <line class="g-line draw" pathLength="1" x1="30.3" y1="140" x2="369.7" y2="140" />
+    <line class="g-line draw" pathLength="1" x1="22.5" y1="170" x2="377.5" y2="170" />
+    <line class="g-line draw" pathLength="1" x1="22.5" y1="230" x2="377.5" y2="230" />
     <line class="g-line draw" pathLength="1" x1="30.3" y1="260" x2="369.7" y2="260" />
-    <polyline class="g-accent draw" pathLength="1" points="130,150 215,120 265,215 190,270" stroke-dasharray="1" />
+    <line class="g-line draw" pathLength="1" x1="44.1" y1="290" x2="355.9" y2="290" />
+    <line class="g-line draw" pathLength="1" x1="65.8" y1="320" x2="334.2" y2="320" />
+    <line class="g-line draw" pathLength="1" x1="100.5" y1="350" x2="299.5" y2="350" />
+    <path class="g-accent draw" pathLength="1" d="M 49 280 C 82 245, 100 260, 127 230 S 169 201, 198 204" />
+    <rect class="g-label-backdrop" x="224" y="160" width="150" height="62" rx="4" />
     <g class="pop" style="--d:1.4s">
-      <circle class="g-dot" cx="130" cy="150" r="3.5" />
-      <circle class="g-dot" cx="215" cy="120" r="3.5" />
-      <circle class="g-dot" cx="190" cy="270" r="3.5" />
-      <circle class="g-dot" cx="265" cy="215" r="3.5" />
-      <circle class="g-dot-ring" cx="265" cy="215" r="11" />
-      <text x="281" y="209">A</text>
+      <circle class="g-dot" cx="49" cy="280" r="3.5" />
+      <circle class="g-dot" cx="96" cy="250" r="3.5" />
+      <circle class="g-dot" cx="127" cy="230" r="3.5" />
+      <circle class="g-dot" cx="165" cy="205" r="3.5" />
+      <circle class="g-dot-ring" cx="198" cy="204" r="11" />
+      <circle class="g-dot" cx="198" cy="204" r="3.5" />
+      <text class="g-label-title" x="238" y="187">{schoolLabel}</text>
+      <text class="g-label-subtitle" x="238" y="207">{schoolCaption}</text>
     </g>
   </svg>
 </div>

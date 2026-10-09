@@ -1,0 +1,30 @@
+---
+import type { SiteContent } from '../../data';
+import { content as englishContent } from '../../data/en';
+import { content as frenchContent } from '../../data/fr';
+import { content as spanishContent } from '../../data/es';
+import { content as koreanContent } from '../../data/ko';
+import { content as chineseContent } from '../../data/zh';
+import { content as japaneseContent } from '../../data/ja';
+import { content as germanContent } from '../../data/de';
+import { content as swedishContent } from '../../data/sv';
+import SitePage from '../../components/SitePage.astro';
+
+interface Props { content: SiteContent }
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' }, props: { content: englishContent } },
+    { params: { lang: 'fr' }, props: { content: frenchContent } },
+    { params: { lang: 'es' }, props: { content: spanishContent } },
+    { params: { lang: 'ko' }, props: { content: koreanContent } },
+    { params: { lang: 'zh' }, props: { content: chineseContent } },
+    { params: { lang: 'ja' }, props: { content: japaneseContent } },
+    { params: { lang: 'de' }, props: { content: germanContent } },
+    { params: { lang: 'sv' }, props: { content: swedishContent } },
+  ];
+}
+
+const { content } = Astro.props;
+---
+<SitePage content={content} />

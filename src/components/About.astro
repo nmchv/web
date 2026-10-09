@@ -1,6 +1,7 @@
 ---
-import { content } from '../data';
-const { ui, profile, education, directions } = content;
+import type { SiteContent } from '../data';
+interface Props { content: SiteContent }
+const { ui, profile, education, directions } = Astro.props.content;
 const photo = profile.photo;
 ---
 <section class="section" id="about" aria-labelledby="about-title">
@@ -9,7 +10,7 @@ const photo = profile.photo;
       <div data-reveal>
         <span class="section-index">02</span>
         <h2 id="about-title" style="font-size:var(--fs-h2);font-weight:600;line-height:1.1;letter-spacing:-0.025em">{ui.about.title}</h2>
-        <p class="alias">Псевдоним · <b>{profile.alias}</b></p>
+        <p class="alias">{ui.aliasLabel} <b>{profile.alias}</b></p>
       </div>
       {photo && (
         <img class="about-photo" src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" data-reveal />
@@ -23,8 +24,8 @@ const photo = profile.photo;
       <div data-reveal>
         <h3 class="visually-hidden">{ui.education.title}</h3>
         <ol class="timeline">
-          {education.map((e) => (
-            <li>
+          {education.map((e, i) => (
+            <li data-reveal style={`--d:${i * 70}ms`}>
               <span class="period">{e.period}</span>
               <div>
                 <p class="t">{e.title}</p>
@@ -47,7 +48,7 @@ const photo = profile.photo;
       <p>{ui.directions.lead}</p>
     </div>
     <ul class="directions" data-reveal>
-      {directions.map((d) => <li>{d.title}</li>)}
+      {directions.map((d, i) => <li data-reveal style={`--d:${i * 70}ms`}>{d.title}</li>)}
     </ul>
   </div>
 </section>

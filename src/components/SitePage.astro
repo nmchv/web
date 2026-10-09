@@ -1,0 +1,23 @@
+---
+import type { SiteContent } from '../data';
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Projects from './Projects.astro';
+import About from './About.astro';
+import Contacts from './Contacts.astro';
+import Footer from './Footer.astro';
+
+interface Props { content: SiteContent }
+const { content } = Astro.props;
+---
+<Base content={content}>
+  <Header content={content} />
+  <main>
+    <Hero content={content} />
+    <Projects content={content} />
+    <About content={content} />
+    <Contacts content={content} />
+  </main>
+  <Footer content={content} />
+</Base>

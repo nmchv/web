@@ -1,0 +1,18 @@
+---
+import type { SiteContent } from '../data';
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props { content: SiteContent }
+const { content } = Astro.props;
+---
+<Base content={content} skipTarget="about" pageTitle={`${content.ui.about.title} — ${content.profile.name}`}>
+  <Header content={content} isAboutPage />
+  <main id="about" class="about-page">
+    <article class="container about-document">
+      <slot />
+    </article>
+  </main>
+  <Footer content={content} isAboutPage />
+</Base>

@@ -1,7 +1,8 @@
 ---
-import { content } from '../data';
 import ProjectArt from './ProjectArt.astro';
-const { ui, projects } = content;
+import type { SiteContent } from '../data';
+interface Props { content: SiteContent }
+const { ui, projects } = Astro.props.content;
 ---
 <section class="section" id="projects" aria-labelledby="projects-title">
   <div class="container">

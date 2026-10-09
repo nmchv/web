@@ -1,0 +1,43 @@
+---
+import type { SiteContent } from '../../data';
+import { content as englishContent } from '../../data/en';
+import { content as frenchContent } from '../../data/fr';
+import { content as spanishContent } from '../../data/es';
+import { content as koreanContent } from '../../data/ko';
+import { content as chineseContent } from '../../data/zh';
+import { content as japaneseContent } from '../../data/ja';
+import { content as germanContent } from '../../data/de';
+import { content as swedishContent } from '../../data/sv';
+import { Content as EnglishAbout } from '../../data/about/en.md';
+import { Content as FrenchAbout } from '../../data/about/fr.md';
+import { Content as SpanishAbout } from '../../data/about/es.md';
+import { Content as KoreanAbout } from '../../data/about/ko.md';
+import { Content as ChineseAbout } from '../../data/about/zh.md';
+import { Content as JapaneseAbout } from '../../data/about/ja.md';
+import { Content as GermanAbout } from '../../data/about/de.md';
+import { Content as SwedishAbout } from '../../data/about/sv.md';
+import AboutPage from '../../components/AboutPage.astro';
+
+interface Props {
+  content: SiteContent;
+  document: typeof EnglishAbout;
+}
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' }, props: { content: englishContent, document: EnglishAbout } },
+    { params: { lang: 'fr' }, props: { content: frenchContent, document: FrenchAbout } },
+    { params: { lang: 'es' }, props: { content: spanishContent, document: SpanishAbout } },
+    { params: { lang: 'ko' }, props: { content: koreanContent, document: KoreanAbout } },
+    { params: { lang: 'zh' }, props: { content: chineseContent, document: ChineseAbout } },
+    { params: { lang: 'ja' }, props: { content: japaneseContent, document: JapaneseAbout } },
+    { params: { lang: 'de' }, props: { content: germanContent, document: GermanAbout } },
+    { params: { lang: 'sv' }, props: { content: swedishContent, document: SwedishAbout } },
+  ];
+}
+
+const { content, document: AboutDocument } = Astro.props;
+---
+<AboutPage content={content}>
+  <AboutDocument />
+</AboutPage>

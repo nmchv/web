@@ -15,3 +15,5 @@ export const content = {
   contacts,
   directions,
 };
+
+export type SiteContent = typeof content;

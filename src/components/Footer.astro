@@ -1,6 +1,10 @@
 ---
-import { content } from '../data';
-const { ui, profile, contacts } = content;
+import type { SiteContent } from '../data';
+interface Props { content: SiteContent; isAboutPage?: boolean }
+const { content, isAboutPage = false } = Astro.props;
+const { ui, contacts } = content;
+const localePath = ui.lang === 'ru' ? '' : `/${ui.lang}`;
+const homePath = `${localePath}/`;
 const START = 2026;
 const y = new Date().getFullYear();
 const years = y > START ? `${START}–${y}` : `${START}`;
@@ -9,11 +13,11 @@ const github = contacts.find((c) => c.id === 'github');
 <footer class="site-footer">
   <div class="container">
     <p>© {years} {ui.footer.rights}</p>
-    <nav class="footer-nav" aria-label="Навигация в подвале">
-      <a href="#top">{ui.footer.toTop}</a>
-      <a href="#projects">{ui.nav.projects}</a>
-      <a href="#about">{ui.nav.about}</a>
-      {contacts.length > 0 && <a href="#contacts">{ui.nav.contacts}</a>}
+    <nav class="footer-nav" aria-label={ui.footerNavLabel}>
+      <a href={isAboutPage ? homePath : '#top'}>{ui.footer.toTop}</a>
+      <a href={isAboutPage ? `${homePath}#projects` : '#projects'}>{ui.nav.projects}</a>
+      <a href={`${localePath}/about`}>{ui.nav.about}</a>
+      {contacts.length > 0 && <a href={isAboutPage ? `${homePath}#contacts` : '#contacts'}>{ui.nav.contacts}</a>}
       {github && <a href={github.href} target="_blank" rel="noopener noreferrer">GitHub</a>}
     </nav>
   </div>

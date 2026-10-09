@@ -35,6 +35,17 @@ export const projects: Project[] = [
     status: 'live',
     art: 'notes',
     featured: true,
+    order: 4,
+  },
+  {
+    id: 'student-tests',
+    title: 'Тесты для учеников',
+    description: 'Онлайн-тесты для проверки знаний учеников.',
+    category: 'Education / Tests',
+    url: 'https://test.nmchv.ru',
+    status: 'live',
+    art: 'test',
+    featured: true,
     order: 3,
   },
 ];
