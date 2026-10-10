@@ -5,23 +5,43 @@ import type { Project } from '../../i18n/types';
 const projectTranslations: Record<string, Pick<Project, 'title' | 'description' | 'category'>> = {
   'teacher-diary': {
     title: '教师工作手册',
-    description: '用于管理教学流程的数字工具：成绩、出勤、课程计划、作业和统计数据。',
-    category: '教育 / 教育科技',
+    description: '正在开发中的教师数字工作空间，可用于整理成绩、出勤、课程计划、作业和班级统计。',
+    category: '教育 / Education',
   },
   geotrainer: {
     title: '地理训练工具',
-    description: '用于练习地理名称和位置的在线工具。',
-    category: '地理 / 教育',
+    description: '通过互动练习熟悉地理名称，并在地图上查找地理对象。',
+    category: '地理 / Geography',
   },
   'geography-notes': {
     title: '地理学习笔记',
-    description: '系统整理中学地理主题，帮助梳理和复习所学内容。',
-    category: '地理 / 学习资源',
+    description: '系统整理的中学地理资料，帮助理解主题、梳理重点并复习所学内容。',
+    category: '地理 / Geography',
   },
   'student-tests': {
     title: '学生测验',
-    description: '用于检查学生知识掌握情况的在线测验。',
-    category: '教育 / 测验',
+    description: '用于检查学生知识并巩固课堂内容的在线测验服务。',
+    category: '教育 / Education',
+  },
+  'knowledge-graph': {
+    title: '知识图谱',
+    description: '以互动图谱呈现概念与知识领域之间的联系，帮助探索不同想法如何相互关联。',
+    category: '知识 / Knowledge',
+  },
+  'world-map': {
+    title: '互动世界地图',
+    description: '用于探索世界和查看地理对象的互动地图，目前正在开发中。',
+    category: '地理 / Geography',
+  },
+  'online-forms': {
+    title: '在线表单',
+    description: '用于创建在线表单并收集回复的服务，用途类似 Google Forms，目前正在开发中。',
+    category: '效率 / Productivity',
+  },
+  'exam-trainer': {
+    title: '考试备考训练工具',
+    description: '通过练习题和主题复习来准备考试的在线工具，目前正在开发中。',
+    category: '教育 / Education',
   },
 };
 
@@ -42,7 +62,7 @@ export const content: SiteContent = {
     schoolLabel: '第116学校',
     schoolCaption: '创意与解决方案的空间',
     language: { label: '选择语言', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
-    nav: { projects: '项目', about: '关于我', contacts: '联系方式' },
+    nav: { home: '首页', projects: '项目', about: '关于我', contacts: '联系方式' },
     heroEyebrow: '个人网站',
     heroCta: '查看我的项目',
     projects: {
@@ -51,6 +71,20 @@ export const content: SiteContent = {
       open: '打开',
       newTab: '（将在新标签页中打开）',
       soon: '即将推出',
+      allLink: '全部项目',
+    },
+    projectsPage: {
+      title: '项目',
+      lead: '介绍教育服务与数字工具，包括已上线的项目和仍在开发中的项目。',
+      back: '返回首页',
+      visit: '访问服务',
+      newTab: '（将在新标签页中打开）',
+      mapLabel: '项目地图：选择一个节点跳转到对应项目',
+      filterLabel: '筛选项目',
+      filterAll: '全部',
+      filterLive: '已上线',
+      filterDevelopment: '开发中',
+      filterResults: '显示的项目数',
     },
     status: { live: '可用', 'in-progress': '开发中' },
     about: { title: '关于我', photoAlt: 'Aleksei Nemichev（阿列克谢伊·涅米切夫）的肖像' },

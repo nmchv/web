@@ -1,12 +1,13 @@
 ---
 import type { SiteContent } from '../data';
-interface Props { content: SiteContent; isAboutPage?: boolean }
-const { content, isAboutPage = false } = Astro.props;
+interface Props { content: SiteContent; isAboutPage?: boolean; isProjectsPage?: boolean }
+const { content, isAboutPage = false, isProjectsPage = false } = Astro.props;
 const { ui, profile, contacts } = content;
 const localePath = ui.lang === 'ru' ? '' : `/${ui.lang}`;
 const homePath = `${localePath}/`;
 const items = [
-  { id: 'projects', label: ui.nav.projects, href: isAboutPage ? `${homePath}#projects` : '#projects' },
+  ...(isAboutPage || isProjectsPage ? [{ id: 'home', label: ui.nav.home, href: homePath }] : []),
+  { id: 'projects', label: ui.nav.projects, href: isAboutPage ? `${homePath}#projects` : isProjectsPage ? '#project-list' : `${localePath}/projects` },
   { id: 'about', label: ui.nav.about, href: `${localePath}/about` },
   ...(contacts.length ? [{
     id: 'contacts',
@@ -29,7 +30,7 @@ const currentLanguage = languages.find((language) => language.code === ui.lang);
 ---
 <header class="site-header" id="site-header">
   <div class="container">
-    <a class="brand" href={isAboutPage ? homePath : '#top'} aria-label={ui.homeLabel}>
+    <a class="brand" href={isAboutPage || isProjectsPage ? homePath : '#top'} aria-label={ui.homeLabel}>
       <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path d="M4 20 L12 3 L20 20 M7.2 14.5 H16.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
       </svg>
@@ -48,7 +49,7 @@ const currentLanguage = languages.find((language) => language.code === ui.lang);
         <div class="language-menu" role="group" aria-label={ui.language.label}>
           {languages.map((language) => (
             <a
-              href={`${language.prefix}${isAboutPage ? '/about' : '/'}`}
+              href={`${language.prefix}${isAboutPage ? '/about' : isProjectsPage ? '/projects' : '/'}`}
               hreflang={language.code}
               aria-current={language.code === ui.lang ? 'page' : undefined}
             >

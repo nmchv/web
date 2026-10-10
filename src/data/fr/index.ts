@@ -6,24 +6,49 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'teacher-diary': {
     title: 'Carnet de l’enseignant',
     description:
-      'Un outil numérique pour organiser l’apprentissage : notes, présence, plans de cours, devoirs et statistiques.',
-    category: 'Éducation / EdTech',
+      'Un espace numérique en cours de développement pour organiser les notes, les présences, les cours, les devoirs et les statistiques de classe.',
+    category: 'Éducation / Education',
   },
   geotrainer: {
     title: 'Entraîneur de géographie',
-    description: 'Un outil en ligne pour s’exercer à situer les lieux géographiques.',
-    category: 'Géographie / Éducation',
+    description:
+      'Un outil interactif pour s’entraîner à reconnaître les noms géographiques et à localiser des lieux sur une carte.',
+    category: 'Géographie / Geography',
   },
   'geography-notes': {
     title: 'Notes de géographie',
     description:
-      'Des notes structurées sur les thèmes de géographie scolaire pour organiser et réviser les notions étudiées.',
-    category: 'Géographie / Ressources pédagogiques',
+      'Une collection structurée de cours de géographie scolaire pour comprendre les thèmes, organiser les notions clés et réviser.',
+    category: 'Géographie / Geography',
   },
   'student-tests': {
     title: 'Quiz pour les élèves',
-    description: 'Des quiz en ligne pour évaluer les connaissances des élèves.',
-    category: 'Éducation / Quiz',
+    description: 'Un service de quiz en ligne pour évaluer les connaissances des élèves et consolider les notions étudiées.',
+    category: 'Éducation / Education',
+  },
+  'knowledge-graph': {
+    title: 'Graphe des connaissances',
+    description:
+      'Une carte interactive des liens entre les concepts et les domaines du savoir, conçue pour explorer les relations entre les idées.',
+    category: 'Savoir / Knowledge',
+  },
+  'world-map': {
+    title: 'Carte interactive du monde',
+    description:
+      'Une carte interactive pour explorer le monde et travailler avec des objets géographiques. Le projet est en développement.',
+    category: 'Géographie / Geography',
+  },
+  'online-forms': {
+    title: 'Formulaires en ligne',
+    description:
+      'Un service de création de formulaires en ligne et de collecte de réponses, comparable à Google Forms. Le projet est en développement.',
+    category: 'Productivité / Productivity',
+  },
+  'exam-trainer': {
+    title: 'Entraîneur de préparation aux examens',
+    description:
+      'Un outil en ligne pour préparer les examens avec des exercices et des révisions thématiques. Le projet est en développement.',
+    category: 'Éducation / Education',
   },
 };
 
@@ -56,7 +81,7 @@ export const content: SiteContent = {
       german: 'Deutsch',
       swedish: 'Svenska',
     },
-    nav: { projects: 'Projets', about: 'À propos', contacts: 'Contact' },
+    nav: { home: 'Accueil', projects: 'Projets', about: 'À propos', contacts: 'Contact' },
     heroEyebrow: 'Site personnel',
     heroCta: 'Découvrir mes projets',
     projects: {
@@ -65,6 +90,20 @@ export const content: SiteContent = {
       open: 'Ouvrir',
       newTab: '(s’ouvre dans un nouvel onglet)',
       soon: 'Bientôt disponible',
+      allLink: 'Tous les projets',
+    },
+    projectsPage: {
+      title: 'Projets',
+      lead: 'Des services éducatifs et des outils numériques, déjà disponibles ou encore en développement.',
+      back: 'Retour à l’accueil',
+      visit: 'Accéder au service',
+      newTab: '(s’ouvre dans un nouvel onglet)',
+      mapLabel: 'Carte des projets : sélectionnez un point pour accéder au projet',
+      filterLabel: 'Filtrer les projets',
+      filterAll: 'Tous',
+      filterLive: 'Disponibles',
+      filterDevelopment: 'En développement',
+      filterResults: 'Projets affichés',
     },
     status: { live: 'Disponible', 'in-progress': 'En cours de développement' },
     about: { title: 'À propos de moi', photoAlt: 'Portrait d’Alexei Nemichev' },

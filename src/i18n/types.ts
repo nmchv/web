@@ -1,6 +1,6 @@
 // Типы контента. Все тексты лежат в src/data/<язык>/, компоненты их только выводят.
 export type ProjectStatus = 'live' | 'in-progress';
-export type ProjectArt = 'diary' | 'geo' | 'notes' | 'test';
+export type ProjectArt = 'diary' | 'geo' | 'notes' | 'test' | 'graph' | 'world-map' | 'forms' | 'exam';
 
 export interface Project {
   id: string;
@@ -73,10 +73,23 @@ export interface Ui {
     german: string;
     swedish: string;
   };
-  nav: { projects: string; about: string; contacts: string };
+  nav: { home: string; projects: string; about: string; contacts: string };
   heroCta: string;
   heroEyebrow: string;
-  projects: { title: string; lead: string; open: string; newTab: string; soon: string };
+  projects: { title: string; lead: string; open: string; newTab: string; soon: string; allLink: string };
+  projectsPage: {
+    title: string;
+    lead: string;
+    back: string;
+    visit: string;
+    newTab: string;
+    mapLabel: string;
+    filterLabel: string;
+    filterAll: string;
+    filterLive: string;
+    filterDevelopment: string;
+    filterResults: string;
+  };
   status: Record<ProjectStatus, string>;
   about: { title: string; photoAlt: string };
   education: { title: string };

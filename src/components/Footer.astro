@@ -1,7 +1,7 @@
 ---
 import type { SiteContent } from '../data';
-interface Props { content: SiteContent; isAboutPage?: boolean }
-const { content, isAboutPage = false } = Astro.props;
+interface Props { content: SiteContent; isAboutPage?: boolean; isProjectsPage?: boolean }
+const { content, isAboutPage = false, isProjectsPage = false } = Astro.props;
 const { ui, contacts } = content;
 const localePath = ui.lang === 'ru' ? '' : `/${ui.lang}`;
 const homePath = `${localePath}/`;
@@ -14,10 +14,10 @@ const github = contacts.find((c) => c.id === 'github');
   <div class="container">
     <p>© {years} {ui.footer.rights}</p>
     <nav class="footer-nav" aria-label={ui.footerNavLabel}>
-      <a href={isAboutPage ? homePath : '#top'}>{ui.footer.toTop}</a>
-      <a href={isAboutPage ? `${homePath}#projects` : '#projects'}>{ui.nav.projects}</a>
+      <a href={isAboutPage || isProjectsPage ? homePath : '#top'}>{isAboutPage || isProjectsPage ? ui.nav.home : ui.footer.toTop}</a>
+      <a href={isAboutPage || isProjectsPage ? `${homePath}#projects` : '#projects'}>{ui.nav.projects}</a>
       <a href={`${localePath}/about`}>{ui.nav.about}</a>
-      {contacts.length > 0 && <a href={isAboutPage ? `${homePath}#contacts` : '#contacts'}>{ui.nav.contacts}</a>}
+      {contacts.length > 0 && <a href={isAboutPage || isProjectsPage ? `${homePath}#contacts` : '#contacts'}>{ui.nav.contacts}</a>}
       {github && <a href={github.href} target="_blank" rel="noopener noreferrer">GitHub</a>}
     </nav>
   </div>

@@ -10,7 +10,7 @@ import { directions } from './ru/directions';
 export const content = {
   ui,
   profile,
-  projects: [...projects].filter((p) => p.featured).sort((a, b) => a.order - b.order),
+  projects: [...projects].sort((a, b) => a.order - b.order),
   education,
   contacts,
   directions,

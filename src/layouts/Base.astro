@@ -10,7 +10,9 @@ const { content } = Astro.props;
 const { ui } = content;
 const { skipTarget = 'projects', pageTitle = ui.siteTitle } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const aboutPath = Astro.url.pathname.replace(/\/+$/, '').endsWith('/about') ? '/about' : '';
+const pagePath = Astro.url.pathname
+  .replace(/^\/(en|fr|es|ko|zh|ja|de|sv)(?=\/)/, '')
+  .replace(/\/+$/, '');
 ---
 <!doctype html>
 <html lang={ui.lang}>
@@ -21,16 +23,16 @@ const aboutPath = Astro.url.pathname.replace(/\/+$/, '').endsWith('/about') ? '/
     <meta name="description" content={ui.siteDescription} />
     <meta name="theme-color" content="#08090B" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="ru" href={new URL(aboutPath || '/', Astro.site)} />
-    <link rel="alternate" hreflang="en" href={new URL(`/en${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="fr" href={new URL(`/fr${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="es" href={new URL(`/es${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="ko" href={new URL(`/ko${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="zh" href={new URL(`/zh${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="ja" href={new URL(`/ja${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="de" href={new URL(`/de${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="sv" href={new URL(`/sv${aboutPath || '/'}`, Astro.site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL(aboutPath || '/', Astro.site)} />
+    <link rel="alternate" hreflang="ru" href={new URL(pagePath || '/', Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(`/en${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="fr" href={new URL(`/fr${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL(`/es${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="ko" href={new URL(`/ko${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="zh" href={new URL(`/zh${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="ja" href={new URL(`/ja${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="de" href={new URL(`/de${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="sv" href={new URL(`/sv${pagePath || '/'}`, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(pagePath || '/', Astro.site)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={ui.ogLocale} />

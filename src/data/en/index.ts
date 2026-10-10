@@ -6,24 +6,49 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'teacher-diary': {
     title: "Teacher's planner",
     description:
-      'A digital tool for organizing the learning process: grades, attendance, lesson plans, homework, and statistics.',
-    category: 'Education / EdTech',
+      'A work-in-progress digital workspace for teachers to organize grades, attendance, lesson plans, homework, and class statistics.',
+    category: 'Education',
   },
   geotrainer: {
     title: 'Geography trainer',
-    description: 'An online tool for practising geographical names and locations.',
-    category: 'Geography / Education',
+    description:
+      'An interactive geography practice tool for learning place names and locating geographic features on a map.',
+    category: 'Geography',
   },
   'geography-notes': {
     title: 'Geography notes',
     description:
-      'Structured notes on school geography topics to help organize and review what you have learned.',
-    category: 'Geography / Learning resources',
+      'A structured collection of school geography notes that helps learners understand topics, organize key ideas, and review material.',
+    category: 'Geography',
   },
   'student-tests': {
     title: 'Student quizzes',
-    description: 'Online quizzes to check students’ knowledge.',
-    category: 'Education / Quizzes',
+    description: 'An online quiz service for checking students’ knowledge and reinforcing material covered in class.',
+    category: 'Education',
+  },
+  'knowledge-graph': {
+    title: 'Knowledge graph',
+    description:
+      'An interactive map of connections between concepts and fields of knowledge, designed to make relationships between ideas easier to explore.',
+    category: 'Knowledge',
+  },
+  'world-map': {
+    title: 'Interactive world map',
+    description:
+      'An interactive map for exploring the world and working with geographic features. The project is in development.',
+    category: 'Geography',
+  },
+  'online-forms': {
+    title: 'Online forms',
+    description:
+      'A service for creating online forms and collecting responses, similar in purpose to Google Forms. The project is in development.',
+    category: 'Productivity',
+  },
+  'exam-trainer': {
+    title: 'Exam preparation trainer',
+    description:
+      'An online tool for exam preparation through practice questions and topic review. The project is in development.',
+    category: 'Education',
   },
 };
 
@@ -56,7 +81,7 @@ export const content: SiteContent = {
       german: 'Deutsch',
       swedish: 'Svenska',
     },
-    nav: { projects: 'Projects', about: 'About', contacts: 'Contact' },
+    nav: { home: 'Home', projects: 'Projects', about: 'About', contacts: 'Contact' },
     heroEyebrow: 'Personal website',
     heroCta: 'Explore my projects',
     projects: {
@@ -65,6 +90,20 @@ export const content: SiteContent = {
       open: 'Open',
       newTab: '(opens in a new tab)',
       soon: 'Coming soon',
+      allLink: 'All projects',
+    },
+    projectsPage: {
+      title: 'Projects',
+      lead: 'Educational services and digital tools — from projects already available to those still in development.',
+      back: 'Back to home',
+      visit: 'Visit service',
+      newTab: '(opens in a new tab)',
+      mapLabel: 'Project map: select a point to jump to a project',
+      filterLabel: 'Filter projects',
+      filterAll: 'All',
+      filterLive: 'Available',
+      filterDevelopment: 'In development',
+      filterResults: 'Projects shown',
     },
     status: { live: 'Available', 'in-progress': 'In progress' },
     about: { title: 'About me', photoAlt: 'Portrait of Aleksei Nemichev' },

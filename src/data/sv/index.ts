@@ -6,24 +6,49 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'teacher-diary': {
     title: 'Lärarplanerare',
     description:
-      'Ett digitalt verktyg för att organisera undervisningen: betyg, närvaro, lektionsplanering, läxor och statistik.',
-    category: 'Utbildning / EdTech',
+      'En digital arbetsyta under utveckling för att organisera betyg, närvaro, lektionsplanering, läxor och klassstatistik.',
+    category: 'Utbildning / Education',
   },
   geotrainer: {
     title: 'Geografitränare',
-    description: 'Ett onlineverktyg för att öva på geografiska namn och platser.',
-    category: 'Geografi / Utbildning',
+    description:
+      'Ett interaktivt geografiverktyg för att öva på geografiska namn och hitta platser och objekt på kartan.',
+    category: 'Geografi / Geography',
   },
   'geography-notes': {
     title: 'Geografianteckningar',
     description:
-      'Strukturerade anteckningar om skolans geografiämnen som hjälper till att organisera och repetera det du har lärt dig.',
-    category: 'Geografi / Läromedel',
+      'En samling strukturerade anteckningar i skolgeografi som hjälper elever att förstå ämnen, organisera innehållet och repetera.',
+    category: 'Geografi / Geography',
   },
   'student-tests': {
     title: 'Kunskapstest för elever',
-    description: 'Onlineprov för att kontrollera elevernas kunskaper.',
-    category: 'Utbildning / Test',
+    description: 'En onlinetjänst med test för att kontrollera elevernas kunskaper och befästa det som gåtts igenom.',
+    category: 'Utbildning / Education',
+  },
+  'knowledge-graph': {
+    title: 'Kunskapsgraf',
+    description:
+      'En interaktiv karta över kopplingar mellan begrepp och kunskapsområden som gör det lättare att utforska hur idéer hänger ihop.',
+    category: 'Kunskap / Knowledge',
+  },
+  'world-map': {
+    title: 'Interaktiv världskarta',
+    description:
+      'En interaktiv karta för att utforska världen och geografiska objekt. Projektet är under utveckling.',
+    category: 'Geografi / Geography',
+  },
+  'online-forms': {
+    title: 'Onlineformulär',
+    description:
+      'En tjänst för att skapa onlineformulär och samla in svar, med liknande användningsområde som Google Forms. Under utveckling.',
+    category: 'Produktivitet / Productivity',
+  },
+  'exam-trainer': {
+    title: 'Träningsverktyg för examensförberedelser',
+    description:
+      'Ett onlineverktyg för att förbereda sig inför prov genom övningsuppgifter och repetition av ämnen. Under utveckling.',
+    category: 'Utbildning / Education',
   },
 };
 
@@ -56,7 +81,7 @@ export const content: SiteContent = {
       german: 'Deutsch',
       swedish: 'Svenska',
     },
-    nav: { projects: 'Projekt', about: 'Om mig', contacts: 'Kontakt' },
+    nav: { home: 'Hem', projects: 'Projekt', about: 'Om mig', contacts: 'Kontakt' },
     heroEyebrow: 'Personlig webbplats',
     heroCta: 'Se mina projekt',
     projects: {
@@ -65,6 +90,20 @@ export const content: SiteContent = {
       open: 'Öppna',
       newTab: '(öppnas i en ny flik)',
       soon: 'Kommer snart',
+      allLink: 'Alla projekt',
+    },
+    projectsPage: {
+      title: 'Projekt',
+      lead: 'Utbildningstjänster och digitala verktyg — från projekt som redan är tillgängliga till sådana som fortfarande utvecklas.',
+      back: 'Till startsidan',
+      visit: 'Besök tjänsten',
+      newTab: '(öppnas i en ny flik)',
+      mapLabel: 'Projektkarta: välj en punkt för att gå till projektet',
+      filterLabel: 'Filtrera projekt',
+      filterAll: 'Alla',
+      filterLive: 'Tillgängliga',
+      filterDevelopment: 'Under utveckling',
+      filterResults: 'Projekt visas',
     },
     status: { live: 'Tillgänglig', 'in-progress': 'Under utveckling' },
     about: { title: 'Om mig', photoAlt: 'Porträtt av Aleksei Nemichev' },

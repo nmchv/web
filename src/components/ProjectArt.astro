@@ -79,4 +79,65 @@ const cols = [140, 220, 300, 380];
       <path class="test-check" pathLength="1" d="m309 148 12 12 23-27" stroke={accent} stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
     </g>
   )}
+
+  {kind === 'graph' && (
+    <g class="art project-art-graph" fill="none" stroke={border} stroke-width="1.5">
+      <path d="M118 110 212 54l104 42 70-26M118 110l47 70 151-84 39 77M212 54l13 126M316 96l31-76M165 180l-63 17" stroke="var(--color-text-secondary)" stroke-opacity=".48" />
+      <path class="graph-link" pathLength="1" d="m118 110 94-56 104 42-151 84z" stroke={accent} stroke-opacity=".65" />
+      {[[118,110,10],[212,54,13],[316,96,16],[165,180,9],[347,20,8],[386,170,10],[102,197,7],[225,180,8]].map(([x,y,r], i) => (
+        <g class="graph-node" style={`--i:${i}`}>
+          <circle cx={x} cy={y} r={r} fill="var(--color-surface)" stroke={i < 4 ? accent : border} />
+          {i === 2 && <circle cx={x} cy={y} r="4" fill={accent} stroke="none" />}
+        </g>
+      ))}
+    </g>
+  )}
+
+  {kind === 'world-map' && (
+    <g class="art project-art-world" fill="none" stroke={border} stroke-width="1">
+      <path d="M58 77 86 54l29 5 16-13 20 8 9 20-13 13 7 15-20 15-7 26-22 5-8-24-18-7-14-18zM188 71l21-19 27 4 18 15 25 2 9 19-13 15-20-4-12 18-21-6-17 14-13-16-19-5 4-19-13-7zM262 132l24-13 32 6 13 19-10 26-22 18-19-9-8-24-17-9zM354 73l20-8 18 11-8 17-22 1-13-10z" fill="var(--color-surface-elevated)" stroke-opacity=".85" />
+      <path class="world-route" pathLength="1" d="M102 81 Q191 18 287 94T372 83" stroke={accent} stroke-dasharray="5 6" />
+      {[[102,81],[203,57],[287,94],[372,83],[300,153]].map(([x,y], i) => (
+        <g class="world-pin" style={`--i:${i}`}>
+          <circle cx={x} cy={y} r="8" fill={accent} fill-opacity=".12" stroke={accent} />
+          <circle cx={x} cy={y} r="2.5" fill={accent} stroke="none" />
+        </g>
+      ))}
+    </g>
+  )}
+
+  {kind === 'forms' && (
+    <g class="art project-art-forms" fill="none" stroke={border} stroke-width="1">
+      <rect x="126" y="22" width="228" height="176" rx="8" fill="var(--color-surface-elevated)" />
+      <path d="M126 48h228" stroke="var(--color-text-secondary)" stroke-opacity=".4" />
+      <circle cx="143" cy="35" r="3" fill={accent} stroke="none" />
+      <rect x="151" y="63" width="122" height="8" rx="4" fill={accent} fill-opacity=".8" stroke="none" />
+      <rect x="151" y="81" width="165" height="4" rx="2" fill="var(--color-text-secondary)" fill-opacity=".55" stroke="none" />
+      <rect x="151" y="97" width="174" height="28" rx="4" fill="var(--color-background)" />
+      <rect class="form-check" x="151" y="137" width="12" height="12" rx="3" stroke={accent} />
+      <path class="form-tick" d="m154 143 3 3 6-7" stroke={accent} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <rect x="172" y="141" width="92" height="4" rx="2" fill="var(--color-text-secondary)" fill-opacity=".6" stroke="none" />
+      <rect x="151" y="162" width="73" height="20" rx="4" fill={accent} fill-opacity=".78" stroke="none" />
+      <path d="M170 170h35" stroke="var(--color-background)" stroke-opacity=".8" />
+      <circle class="form-cursor" cx="318" cy="132" r="11" fill={accent} fill-opacity=".18" stroke={accent} />
+    </g>
+  )}
+
+  {kind === 'exam' && (
+    <g class="art project-art-exam" fill="none" stroke={border} stroke-width="1">
+      <rect x="132" y="24" width="218" height="172" rx="8" fill="var(--color-surface-elevated)" />
+      <rect x="156" y="45" width="88" height="7" rx="3.5" fill={accent} stroke="none" />
+      <rect x="156" y="60" width="144" height="4" rx="2" fill="var(--color-text-secondary)" fill-opacity=".45" stroke="none" />
+      {[0,1,2].map((i) => (
+        <g class="exam-answer" style={`--i:${i}`}>
+          <rect x="156" y={82 + i * 25} width="166" height="18" rx="4" fill="var(--color-background)" />
+          <circle cx="171" cy={91 + i * 25} r="4.5" stroke={i === 1 ? accent : 'var(--color-text-secondary)'} />
+          {i === 1 && <circle cx="171" cy={91 + i * 25} r="2.5" fill={accent} stroke="none" />}
+          <rect x="185" y={89 + i * 25} width={76 + i * 13} height="4" rx="2" fill="var(--color-text-secondary)" fill-opacity=".6" stroke="none" />
+        </g>
+      ))}
+      <circle class="exam-progress" cx="323" cy="168" r="16" stroke={accent} stroke-width="3" stroke-dasharray="76 24" transform="rotate(-90 323 168)" />
+      <path d="m317 168 4 4 8-9" stroke={accent} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  )}
 </svg>
