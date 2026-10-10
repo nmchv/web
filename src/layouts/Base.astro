@@ -45,7 +45,9 @@ const aboutPath = Astro.url.pathname.replace(/\/+$/, '').endsWith('/about') ? '/
     <slot />
     <script>
       // появление блоков при прокрутке
-      const reveal = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal], .about-document h2'));
+      const reveal = Array.from(document.querySelectorAll<HTMLElement>(
+        '[data-reveal], .about-document h2, .about-document > p:not(.about-tagline)',
+      ));
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
           for (const e of entries) {
