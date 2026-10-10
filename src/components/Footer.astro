@@ -5,6 +5,7 @@ const { content, isAboutPage = false, isProjectsPage = false } = Astro.props;
 const { ui, contacts } = content;
 const localePath = ui.lang === 'ru' ? '' : `/${ui.lang}`;
 const homePath = `${localePath}/`;
+const projectsPath = isProjectsPage ? '#project-list' : `${localePath}/projects`;
 const START = 2026;
 const y = new Date().getFullYear();
 const years = y > START ? `${START}–${y}` : `${START}`;
@@ -15,7 +16,7 @@ const github = contacts.find((c) => c.id === 'github');
     <p>© {years} {ui.footer.rights}</p>
     <nav class="footer-nav" aria-label={ui.footerNavLabel}>
       <a href={isAboutPage || isProjectsPage ? homePath : '#top'}>{isAboutPage || isProjectsPage ? ui.nav.home : ui.footer.toTop}</a>
-      <a href={isAboutPage || isProjectsPage ? `${homePath}#projects` : '#projects'}>{ui.nav.projects}</a>
+      <a href={projectsPath}>{ui.nav.projects}</a>
       <a href={`${localePath}/about`}>{ui.nav.about}</a>
       {contacts.length > 0 && <a href={isAboutPage || isProjectsPage ? `${homePath}#contacts` : '#contacts'}>{ui.nav.contacts}</a>}
       {github && <a href={github.href} target="_blank" rel="noopener noreferrer">GitHub</a>}

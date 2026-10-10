@@ -64,7 +64,6 @@ export const content: SiteContent = {
     language: { label: '言語を選択', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: 'ホーム', projects: 'プロジェクト', about: 'プロフィール', contacts: 'お問い合わせ' },
     heroEyebrow: '個人サイト',
-    heroCta: 'プロジェクトを見る',
     projects: {
       title: 'プロジェクト',
       lead: '私が制作している教育ツールとデジタルソリューションです。',
@@ -90,7 +89,11 @@ export const content: SiteContent = {
     about: { title: 'プロフィール', photoAlt: 'Aleksei Nemichevのポートレート' },
     education: { title: '学歴・経験' },
     directions: { title: '活動分野', lead: '複数の分野が交わる領域で活動しています。' },
-    contacts: { title: 'お問い合わせ', lead: 'ご協業やご意見をお待ちしています。' },
+    contacts: {
+      title: 'お問い合わせ',
+      lead: '予約サイトでレッスン時間を選択するか、専用フォームから質問を送ることができます。',
+      bookingCta: 'レッスン予約・質問する',
+    },
     footer: { toTop: 'ページの先頭へ', rights: 'Aleksei Nemichev' },
   },
   profile: {
@@ -109,9 +112,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: '地理・研究' },
-    { id: 'edu', title: '教育' },
-    { id: 'dev', title: 'デジタルツール開発' },
-    { id: 'ai', title: 'テクノロジー・人工知能' },
+    { id: 'geo', title: '地理・研究', description: '場所や地図を探究し、地理から世界を理解します。' },
+    { id: 'edu', title: '教育', description: '教えることを通じて、学びをわかりやすく魅力的にします。' },
+    { id: 'dev', title: 'デジタルツール', description: '教師と生徒のためのサービスや教材を制作します。' },
+    { id: 'ai', title: 'テクノロジー・人工知能', description: '教育の課題解決に新しい技術を活用します。' },
   ],
 };

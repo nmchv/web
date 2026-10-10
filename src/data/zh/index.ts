@@ -64,7 +64,6 @@ export const content: SiteContent = {
     language: { label: '选择语言', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: '首页', projects: '项目', about: '关于我', contacts: '联系方式' },
     heroEyebrow: '个人网站',
-    heroCta: '查看我的项目',
     projects: {
       title: '我的项目',
       lead: '我开发的教育工具和数字解决方案。',
@@ -90,7 +89,11 @@ export const content: SiteContent = {
     about: { title: '关于我', photoAlt: 'Aleksei Nemichev（阿列克谢伊·涅米切夫）的肖像' },
     education: { title: '教育与经历' },
     directions: { title: '工作领域', lead: '我在这些领域的交汇处开展工作。' },
-    contacts: { title: '联系方式', lead: '欢迎联系合作或反馈。' },
+    contacts: {
+      title: '联系方式',
+      lead: '您可以在预约网站选择课程时间，也可以通过专门的表单向我提问。',
+      bookingCta: '预约课程或提出问题',
+    },
     footer: { toTop: '返回顶部', rights: 'Aleksei Nemichev' },
   },
   profile: {
@@ -110,9 +113,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: '地理与研究' },
-    { id: 'edu', title: '教育' },
-    { id: 'dev', title: '数字工具开发' },
-    { id: 'ai', title: '技术与人工智能' },
+    { id: 'geo', title: '地理与研究', description: '探索地点、地图，以及地理如何帮助我们理解世界。' },
+    { id: 'edu', title: '教育', description: '教学并让学习更清晰、有趣且易于参与。' },
+    { id: 'dev', title: '数字工具', description: '为教师和学生开发服务与学习材料。' },
+    { id: 'ai', title: '技术与人工智能', description: '将新技术用于解决教育中的实际问题。' },
   ],
 };

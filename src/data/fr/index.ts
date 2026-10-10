@@ -83,7 +83,6 @@ export const content: SiteContent = {
     },
     nav: { home: 'Accueil', projects: 'Projets', about: 'À propos', contacts: 'Contact' },
     heroEyebrow: 'Site personnel',
-    heroCta: 'Découvrir mes projets',
     projects: {
       title: 'Mes projets',
       lead: 'Des outils pédagogiques et des solutions numériques que je crée.',
@@ -112,7 +111,11 @@ export const content: SiteContent = {
       title: 'Domaines d’activité',
       lead: 'Les domaines à la croisée desquels je travaille.',
     },
-    contacts: { title: 'Contact', lead: 'Pour toute collaboration ou prise de contact.' },
+    contacts: {
+      title: 'Contact',
+      lead: 'Sur le site de réservation, vous pouvez choisir un créneau de cours ou m’écrire une question via le formulaire.',
+      bookingCta: 'Réserver un cours ou poser une question',
+    },
     footer: { toTop: 'Retour en haut', rights: 'Alexei Nemichev' },
   },
   profile: {
@@ -131,9 +134,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: 'Géographie et recherche' },
-    { id: 'edu', title: 'Éducation' },
-    { id: 'dev', title: 'Développement d’outils numériques' },
-    { id: 'ai', title: 'Technologies et intelligence artificielle' },
+    { id: 'geo', title: 'Géographie et recherche', description: 'Explorer les lieux, les cartes et ce que la géographie révèle du monde.' },
+    { id: 'edu', title: 'Éducation', description: 'Enseigner et rendre l’apprentissage plus clair, stimulant et accessible.' },
+    { id: 'dev', title: 'Outils numériques', description: 'Créer des services et des ressources pour les enseignants et les élèves.' },
+    { id: 'ai', title: 'Technologies et intelligence artificielle', description: 'Mettre les nouvelles technologies au service de l’éducation.' },
   ],
 };

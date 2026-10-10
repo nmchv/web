@@ -7,12 +7,12 @@ const localePath = ui.lang === 'ru' ? '' : `/${ui.lang}`;
 const homePath = `${localePath}/`;
 const items = [
   ...(isAboutPage || isProjectsPage ? [{ id: 'home', label: ui.nav.home, href: homePath }] : []),
-  { id: 'projects', label: ui.nav.projects, href: isAboutPage ? `${homePath}#projects` : isProjectsPage ? '#project-list' : `${localePath}/projects` },
-  { id: 'about', label: ui.nav.about, href: `${localePath}/about` },
+  { id: 'projects', label: ui.nav.projects, href: isProjectsPage ? '#project-list' : `${localePath}/projects` },
+  { id: 'about', label: ui.nav.about, href: isAboutPage || isProjectsPage ? `${homePath}#about` : '#about' },
   ...(contacts.length ? [{
     id: 'contacts',
     label: ui.nav.contacts,
-    href: isAboutPage ? `${homePath}#contacts` : '#contacts',
+    href: isAboutPage || isProjectsPage ? `${homePath}#contacts` : '#contacts',
   }] : []),
 ];
 const languages = [

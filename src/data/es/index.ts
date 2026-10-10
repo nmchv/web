@@ -72,7 +72,6 @@ export const content: SiteContent = {
     language: { label: 'Elegir idioma', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: 'Inicio', projects: 'Proyectos', about: 'Sobre mí', contacts: 'Contacto' },
     heroEyebrow: 'Sitio personal',
-    heroCta: 'Descubre mis proyectos',
     projects: {
       title: 'Mis proyectos',
       lead: 'Herramientas educativas y soluciones digitales que desarrollo.',
@@ -101,7 +100,11 @@ export const content: SiteContent = {
       title: 'Áreas de trabajo',
       lead: 'Los campos en cuya intersección trabajo.',
     },
-    contacts: { title: 'Contacto', lead: 'Para colaboraciones y comentarios.' },
+    contacts: {
+      title: 'Contacto',
+      lead: 'En el sitio de reservas puedes elegir una hora para una clase o enviarme una pregunta mediante el formulario.',
+      bookingCta: 'Reservar una clase o hacer una pregunta',
+    },
     footer: { toTop: 'Volver arriba', rights: 'Alexey Nemichev' },
   },
   profile: {
@@ -120,9 +123,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: 'Geografía e investigación' },
-    { id: 'edu', title: 'Educación' },
-    { id: 'dev', title: 'Desarrollo de herramientas digitales' },
-    { id: 'ai', title: 'Tecnología e inteligencia artificial' },
+    { id: 'geo', title: 'Geografía e investigación', description: 'Exploro lugares, mapas y cómo la geografía ayuda a comprender el mundo.' },
+    { id: 'edu', title: 'Educación', description: 'Enseño y busco que aprender sea más claro, interesante y accesible.' },
+    { id: 'dev', title: 'Herramientas digitales', description: 'Creo servicios y materiales para docentes y estudiantes.' },
+    { id: 'ai', title: 'Tecnología e inteligencia artificial', description: 'Aplico nuevas tecnologías a retos prácticos de la educación.' },
   ],
 };

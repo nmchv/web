@@ -64,7 +64,6 @@ export const content: SiteContent = {
     language: { label: '언어 선택', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: '홈', projects: '프로젝트', about: '소개', contacts: '연락처' },
     heroEyebrow: '개인 웹사이트',
-    heroCta: '프로젝트 살펴보기',
     projects: {
       title: '프로젝트',
       lead: '제가 만들고 있는 교육 도구와 디지털 솔루션입니다.',
@@ -90,7 +89,11 @@ export const content: SiteContent = {
     about: { title: '소개', photoAlt: '네미체프 알렉스의 초상화' },
     education: { title: '학력 및 경력' },
     directions: { title: '활동 분야', lead: '제가 여러 분야의 접점에서 활동하는 영역입니다.' },
-    contacts: { title: '연락처', lead: '협업 및 의견을 보내실 수 있습니다.' },
+    contacts: {
+      title: '연락처',
+      lead: '예약 사이트에서 수업 시간을 선택하거나 문의 양식으로 질문을 보낼 수 있습니다.',
+      bookingCta: '수업 예약 또는 질문하기',
+    },
     footer: { toTop: '맨 위로', rights: '네미체프 알렉스' },
   },
   profile: {
@@ -110,9 +113,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: '지리 및 연구' },
-    { id: 'edu', title: '교육' },
-    { id: 'dev', title: '디지털 도구 개발' },
-    { id: 'ai', title: '기술 및 인공지능' },
+    { id: 'geo', title: '지리 및 연구', description: '장소와 지도를 탐구하고 지리로 세상을 이해합니다.' },
+    { id: 'edu', title: '교육', description: '가르치고 학습을 더 쉽고 흥미롭고 접근하기 좋게 만듭니다.' },
+    { id: 'dev', title: '디지털 도구', description: '교사와 학생을 위한 서비스와 학습 자료를 만듭니다.' },
+    { id: 'ai', title: '기술 및 인공지능', description: '교육의 실제 문제를 해결하는 데 새로운 기술을 활용합니다.' },
   ],
 };

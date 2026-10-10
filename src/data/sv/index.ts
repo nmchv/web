@@ -83,7 +83,6 @@ export const content: SiteContent = {
     },
     nav: { home: 'Hem', projects: 'Projekt', about: 'Om mig', contacts: 'Kontakt' },
     heroEyebrow: 'Personlig webbplats',
-    heroCta: 'Se mina projekt',
     projects: {
       title: 'Mina projekt',
       lead: 'Utbildningsverktyg och digitala lösningar som jag skapar.',
@@ -112,7 +111,11 @@ export const content: SiteContent = {
       title: 'Arbetsområden',
       lead: 'Områdena där jag arbetar i mötet mellan olika ämnen.',
     },
-    contacts: { title: 'Kontakt', lead: 'För samarbeten och återkoppling.' },
+    contacts: {
+      title: 'Kontakt',
+      lead: 'På bokningssidan kan du välja en lektionstid eller skicka en fråga via formuläret.',
+      bookingCta: 'Boka en lektion eller ställ en fråga',
+    },
     footer: { toTop: 'Till toppen', rights: 'Aleksei Nemichev' },
   },
   profile: {
@@ -131,9 +134,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: 'Geografi och forskning' },
-    { id: 'edu', title: 'Utbildning' },
-    { id: 'dev', title: 'Utveckling av digitala verktyg' },
-    { id: 'ai', title: 'Teknik och artificiell intelligens' },
+    { id: 'geo', title: 'Geografi och forskning', description: 'Jag utforskar platser, kartor och hur geografi hjälper oss att förstå världen.' },
+    { id: 'edu', title: 'Utbildning', description: 'Jag undervisar och gör lärandet tydligare, mer engagerande och tillgängligt.' },
+    { id: 'dev', title: 'Digitala verktyg', description: 'Jag skapar tjänster och läromaterial för lärare och elever.' },
+    { id: 'ai', title: 'Teknik och artificiell intelligens', description: 'Jag använder ny teknik för att lösa praktiska utmaningar inom utbildning.' },
   ],
 };

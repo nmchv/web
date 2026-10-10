@@ -20,10 +20,6 @@ const last = parts.slice(2).join(' ');
         {profile.signature.map((s) => <li>{s}</li>)}
       </ul>
       <p class="lead" data-reveal style="--d:240ms">{profile.lead}</p>
-      <a class="btn" href="#projects" data-reveal style="--d:320ms">
-        {ui.heroCta}
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2v11M3 8.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.75" /></svg>
-      </a>
     </div>
     <div data-reveal style="--d:200ms">
       <HeroArt schoolLabel={ui.schoolLabel} schoolCaption={ui.schoolCaption} />

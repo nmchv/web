@@ -11,6 +11,10 @@ const { ui, contacts } = Astro.props.content;
         <h2 id="contacts-title">{ui.contacts.title}</h2>
         <p>{ui.contacts.lead}</p>
       </div>
+      <a class="btn contact-booking" href="https://appointment.nmchv.ru" target="_blank" rel="noopener noreferrer" data-reveal>
+        {ui.contacts.bookingCta}
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 13L13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.75" /></svg>
+      </a>
       <ul class="contact-list" data-reveal>
         {contacts.map((c, i) => (
           <li data-reveal style={`--d:${i * 70}ms`}>

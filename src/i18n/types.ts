@@ -46,6 +46,7 @@ export interface Contact {
 export interface Direction {
   id: string;
   title: string;
+  description?: string;
 }
 
 export interface Ui {
@@ -74,7 +75,6 @@ export interface Ui {
     swedish: string;
   };
   nav: { home: string; projects: string; about: string; contacts: string };
-  heroCta: string;
   heroEyebrow: string;
   projects: { title: string; lead: string; open: string; newTab: string; soon: string; allLink: string };
   projectsPage: {
@@ -94,6 +94,6 @@ export interface Ui {
   about: { title: string; photoAlt: string };
   education: { title: string };
   directions: { title: string; lead: string };
-  contacts: { title: string; lead: string };
+  contacts: { title: string; lead: string; bookingCta: string };
   footer: { toTop: string; rights: string };
 }

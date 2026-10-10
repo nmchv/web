@@ -83,7 +83,6 @@ export const content: SiteContent = {
     },
     nav: { home: 'Startseite', projects: 'Projekte', about: 'Über mich', contacts: 'Kontakt' },
     heroEyebrow: 'Persönliche Website',
-    heroCta: 'Meine Projekte ansehen',
     projects: {
       title: 'Meine Projekte',
       lead: 'Bildungswerkzeuge und digitale Lösungen, die ich entwickle.',
@@ -112,7 +111,11 @@ export const content: SiteContent = {
       title: 'Arbeitsbereiche',
       lead: 'Die Bereiche, an deren Schnittstellen ich arbeite.',
     },
-    contacts: { title: 'Kontakt', lead: 'Für Zusammenarbeit und Feedback.' },
+    contacts: {
+      title: 'Kontakt',
+      lead: 'Auf der Buchungsseite können Sie einen Unterrichtstermin wählen oder mir über das Formular eine Frage senden.',
+      bookingCta: 'Unterricht buchen oder Frage stellen',
+    },
     footer: { toTop: 'Nach oben', rights: 'Aleksei Nemichev' },
   },
   profile: {
@@ -131,9 +134,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: 'Geografie und Forschung' },
-    { id: 'edu', title: 'Bildung' },
-    { id: 'dev', title: 'Entwicklung digitaler Werkzeuge' },
-    { id: 'ai', title: 'Technologie und künstliche Intelligenz' },
+    { id: 'geo', title: 'Geografie und Forschung', description: 'Ich erkunde Orte, Karten und wie Geografie unsere Welt erklärt.' },
+    { id: 'edu', title: 'Bildung', description: 'Ich unterrichte und gestalte Lernen verständlicher, spannender und zugänglicher.' },
+    { id: 'dev', title: 'Digitale Werkzeuge', description: 'Ich entwickle Dienste und Lernmaterialien für Lehrkräfte und Lernende.' },
+    { id: 'ai', title: 'Technologie und künstliche Intelligenz', description: 'Ich setze neue Technologien praktisch für die Bildung ein.' },
   ],
 };

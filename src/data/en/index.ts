@@ -83,7 +83,6 @@ export const content: SiteContent = {
     },
     nav: { home: 'Home', projects: 'Projects', about: 'About', contacts: 'Contact' },
     heroEyebrow: 'Personal website',
-    heroCta: 'Explore my projects',
     projects: {
       title: 'My projects',
       lead: 'Educational tools and digital solutions I create.',
@@ -112,7 +111,11 @@ export const content: SiteContent = {
       title: 'Areas of work',
       lead: 'Fields I work in at their intersections.',
     },
-    contacts: { title: 'Contact', lead: 'For collaboration and feedback.' },
+    contacts: {
+      title: 'Contact',
+      lead: 'Use the booking website to choose a lesson time or send me a question through its contact form.',
+      bookingCta: 'Book a lesson or ask a question',
+    },
     footer: { toTop: 'Back to top', rights: 'Aleksei Nemichev' },
   },
   profile: {
@@ -131,9 +134,9 @@ export const content: SiteContent = {
     ...projectTranslations[project.id],
   })),
   directions: [
-    { id: 'geo', title: 'Geography and research' },
-    { id: 'edu', title: 'Education' },
-    { id: 'dev', title: 'Digital tool development' },
-    { id: 'ai', title: 'Technology and artificial intelligence' },
+    { id: 'geo', title: 'Geography and research', description: 'Exploring places, maps, and the ways geography helps explain the world.' },
+    { id: 'edu', title: 'Education', description: 'Teaching and making learning clearer, more engaging, and accessible.' },
+    { id: 'dev', title: 'Digital tools', description: 'Building services and learning materials for teachers and students.' },
+    { id: 'ai', title: 'Technology and artificial intelligence', description: 'Putting emerging technologies to practical use in education.' },
   ],
 };
