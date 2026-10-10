@@ -35,19 +35,19 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'world-map': {
     title: 'Carte interactive du monde',
     description:
-      'Une carte interactive pour explorer le monde et travailler avec des objets géographiques. Le projet est en développement.',
+      'Une carte interactive pour explorer le monde et travailler avec des objets géographiques.',
     category: 'Géographie / Geography',
   },
   'online-forms': {
     title: 'Formulaires en ligne',
     description:
-      'Un service de création de formulaires en ligne et de collecte de réponses, comparable à Google Forms. Le projet est en développement.',
+      'Un service de création de formulaires en ligne et de collecte de réponses, comparable à Google Forms.',
     category: 'Productivité / Productivity',
   },
   'exam-trainer': {
     title: 'Entraîneur de préparation aux examens',
     description:
-      'Un outil en ligne pour préparer les examens avec des exercices et des révisions thématiques. Le projet est en développement.',
+      'Un outil en ligne pour préparer les examens avec des exercices et des révisions thématiques.',
     category: 'Éducation / Education',
   },
 };

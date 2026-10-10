@@ -35,19 +35,19 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'world-map': {
     title: 'Interactive world map',
     description:
-      'An interactive map for exploring the world and working with geographic features. The project is in development.',
+      'An interactive map for exploring the world and working with geographic features.',
     category: 'Geography',
   },
   'online-forms': {
     title: 'Online forms',
     description:
-      'A service for creating online forms and collecting responses, similar in purpose to Google Forms. The project is in development.',
+      'A service for creating online forms and collecting responses, similar in purpose to Google Forms.',
     category: 'Productivity',
   },
   'exam-trainer': {
     title: 'Exam preparation trainer',
     description:
-      'An online tool for exam preparation through practice questions and topic review. The project is in development.',
+      'An online tool for exam preparation through practice questions and topic review.',
     category: 'Education',
   },
 };

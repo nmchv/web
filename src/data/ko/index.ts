@@ -5,7 +5,7 @@ import type { Project } from '../../i18n/types';
 const projectTranslations: Record<string, Pick<Project, 'title' | 'description' | 'category'>> = {
   'teacher-diary': {
     title: '교사용 플래너',
-    description: '성적, 출결, 수업 계획, 과제 및 학급 통계를 정리하는 교사용 디지털 업무 공간으로, 현재 개발 중입니다.',
+    description: '성적, 출결, 수업 계획, 과제 및 학급 통계를 정리하는 교사용 디지털 업무 공간입니다.',
     category: '교육 / Education',
   },
   geotrainer: {
@@ -30,17 +30,17 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   },
   'world-map': {
     title: '인터랙티브 세계 지도',
-    description: '세계를 탐색하고 지리적 대상을 다루기 위한 인터랙티브 지도입니다. 현재 개발 중입니다.',
+    description: '세계를 탐색하고 지리적 대상을 다루기 위한 인터랙티브 지도입니다.',
     category: '지리 / Geography',
   },
   'online-forms': {
     title: '온라인 양식',
-    description: 'Google Forms와 비슷한 용도로 온라인 양식을 만들고 응답을 수집하는 서비스입니다. 현재 개발 중입니다.',
+    description: 'Google Forms와 비슷한 용도로 온라인 양식을 만들고 응답을 수집하는 서비스입니다.',
     category: '생산성 / Productivity',
   },
   'exam-trainer': {
     title: '시험 준비 트레이너',
-    description: '연습 문제를 풀고 주제를 복습하며 시험을 준비할 수 있는 온라인 도구입니다. 현재 개발 중입니다.',
+    description: '연습 문제를 풀고 주제를 복습하며 시험을 준비할 수 있는 온라인 도구입니다.',
     category: '교육 / Education',
   },
 };

@@ -6,7 +6,7 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'teacher-diary': {
     title: 'Lärarplanerare',
     description:
-      'En digital arbetsyta under utveckling för att organisera betyg, närvaro, lektionsplanering, läxor och klassstatistik.',
+      'En digital arbetsyta för att organisera betyg, närvaro, lektionsplanering, läxor och klassstatistik.',
     category: 'Utbildning / Education',
   },
   geotrainer: {
@@ -35,7 +35,7 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'world-map': {
     title: 'Interaktiv världskarta',
     description:
-      'En interaktiv karta för att utforska världen och geografiska objekt. Projektet är under utveckling.',
+      'En interaktiv karta för att utforska världen och geografiska objekt.',
     category: 'Geografi / Geography',
   },
   'online-forms': {

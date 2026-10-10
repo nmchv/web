@@ -15,7 +15,6 @@ const { ui, projects } = content;
     <div class="container">
       <div class="projects-intro" data-reveal>
         <div class="projects-intro-copy">
-          <a class="projects-back" href={`${ui.lang === 'ru' ? '' : `/${ui.lang}`}/`}>{ui.projectsPage.back}</a>
           <span class="section-index">01 — {String(projects.length).padStart(2, '0')}</span>
           <h1>{ui.projectsPage.title}</h1>
           <p>{ui.projectsPage.lead}</p>

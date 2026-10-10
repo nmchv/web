@@ -6,7 +6,7 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'teacher-diary': {
     title: 'Lehrerkalender',
     description:
-      'Ein digitaler Arbeitsbereich in Entwicklung zur Organisation von Noten, Anwesenheit, Unterrichtsplänen, Hausaufgaben und Klassenstatistiken.',
+      'Ein digitaler Arbeitsbereich zur Organisation von Noten, Anwesenheit, Unterrichtsplänen, Hausaufgaben und Klassenstatistiken.',
     category: 'Bildung / Education',
   },
   geotrainer: {
@@ -35,19 +35,19 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'world-map': {
     title: 'Interaktive Weltkarte',
     description:
-      'Eine interaktive Karte zur Erkundung der Welt und geografischer Objekte. Das Projekt befindet sich in Entwicklung.',
+      'Eine interaktive Karte zur Erkundung der Welt und geografischer Objekte.',
     category: 'Geografie / Geography',
   },
   'online-forms': {
     title: 'Online-Formulare',
     description:
-      'Ein Dienst zum Erstellen von Online-Formularen und Sammeln von Antworten, ähnlich wie Google Forms. Das Projekt ist in Entwicklung.',
+      'Ein Dienst zum Erstellen von Online-Formularen und Sammeln von Antworten, ähnlich wie Google Forms.',
     category: 'Produktivität / Productivity',
   },
   'exam-trainer': {
     title: 'Prüfungsvorbereitung',
     description:
-      'Ein Online-Werkzeug zur Prüfungsvorbereitung mit Übungsaufgaben und Themenwiederholung. Das Projekt ist in Entwicklung.',
+      'Ein Online-Werkzeug zur Prüfungsvorbereitung mit Übungsaufgaben und Themenwiederholung.',
     category: 'Bildung / Education',
   },
 };

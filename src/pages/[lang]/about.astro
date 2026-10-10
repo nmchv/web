@@ -17,6 +17,7 @@ import { Content as JapaneseAbout } from '../../data/about/ja.md';
 import { Content as GermanAbout } from '../../data/about/de.md';
 import { Content as SwedishAbout } from '../../data/about/sv.md';
 import AboutPage from '../../components/AboutPage.astro';
+import PersonalDetails from '../../components/PersonalDetails.astro';
 
 interface Props {
   content: SiteContent;
@@ -40,4 +41,5 @@ const { content, document: AboutDocument } = Astro.props;
 ---
 <AboutPage content={content}>
   <AboutDocument />
+  <PersonalDetails lang={content.ui.lang} />
 </AboutPage>

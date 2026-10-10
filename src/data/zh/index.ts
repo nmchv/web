@@ -5,7 +5,7 @@ import type { Project } from '../../i18n/types';
 const projectTranslations: Record<string, Pick<Project, 'title' | 'description' | 'category'>> = {
   'teacher-diary': {
     title: '教师工作手册',
-    description: '正在开发中的教师数字工作空间，可用于整理成绩、出勤、课程计划、作业和班级统计。',
+    description: '用于整理成绩、出勤、课程计划、作业和班级统计的教师数字工作空间。',
     category: '教育 / Education',
   },
   geotrainer: {
@@ -30,17 +30,17 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   },
   'world-map': {
     title: '互动世界地图',
-    description: '用于探索世界和查看地理对象的互动地图，目前正在开发中。',
+    description: '用于探索世界和查看地理对象的互动地图。',
     category: '地理 / Geography',
   },
   'online-forms': {
     title: '在线表单',
-    description: '用于创建在线表单并收集回复的服务，用途类似 Google Forms，目前正在开发中。',
+    description: '用于创建在线表单并收集回复的服务，用途类似 Google Forms。',
     category: '效率 / Productivity',
   },
   'exam-trainer': {
     title: '考试备考训练工具',
-    description: '通过练习题和主题复习来准备考试的在线工具，目前正在开发中。',
+    description: '通过练习题和主题复习来准备考试的在线工具。',
     category: '教育 / Education',
   },
 };

@@ -1,0 +1,653 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const eastAsianLocales = ['ja', 'ko', 'zh'];
+const bloodFirst = eastAsianLocales.includes(lang);
+
+const copy = {
+  ru: {
+    heading: 'Личные данные и интересные факты',
+    intro: 'Короткие факты обо мне и интерактивные схемы для любопытства и саморефлексии.',
+    birthday: 'Дата рождения',
+    blood: 'Группа крови',
+    bloodType: 'A (II) · Rh+',
+    bloodDetail: 'Обозначение A (II) Rh+ объединяет буквенную систему ABO и привычную в России нумерацию групп.',
+    type: 'Тип личности',
+    strategist: 'Стратег',
+    typeDetail: 'В типологии 16Personalities INTJ связывают с независимостью, системным мышлением и долгосрочным планированием. Это ориентир для размышления, а не психологический диагноз.',
+    matrix: 'Матрица судьбы',
+    matrixKicker: '22 АРКАНА · РАСЧЁТ ПО ДАТЕ РОЖДЕНИЯ',
+    matrixHint: 'Наведите или выберите точку: размер и цвет показывают её роль в матрице.',
+    natal: 'Натальная карта',
+    astrology: 'Астрология',
+    inProgress: 'В разработке',
+    natalDetail: 'Здесь появится интерактивная карта с пояснениями. Для её построения понадобятся точное время и место рождения.',
+    open: 'Подробнее',
+    selected: 'ВЫБРАННАЯ ТОЧКА',
+    center: 'Центр матрицы',
+    centerNote: 'Сводное значение четырёх основных энергий — 11. В этой символической системе это Сила: устойчивость и управление энергией.',
+    formula: 'Расчёт этой версии: день 28 → 10, месяц 3, сумма цифр года 2004 → 6; нижняя точка 10 + 3 + 6 → 19. Значения выше 22 сводятся суммой цифр; центр — сумма четырёх основных точек → 11. Размеры и цвета обозначают основные, производные и дополнительные точки. Символическая система, не научная диагностика.',
+    primary: 'Основная точка',
+    derived: 'Производная точка',
+    supporting: 'Дополнительная точка',
+    disclaimer: 'Матрица судьбы, астрология и типологии личности здесь представлены как культурные и развлекательные инструменты, а не как научные заключения.',
+  },
+  en: {
+    heading: 'Personal facts and curiosities',
+    intro: 'A few facts about me, alongside interactive diagrams for curiosity and reflection.',
+    birthday: 'Date of birth',
+    blood: 'Blood type',
+    bloodType: 'A (II) · Rh positive',
+    bloodDetail: 'A (II) Rh positive combines the ABO letter system with the group numbering used in some countries.',
+    type: 'Personality type',
+    strategist: 'The Architect',
+    typeDetail: 'In the 16Personalities model, INTJ is associated with independence, systems thinking, and long-range planning. It is a reflection prompt, not a psychological diagnosis.',
+    matrix: 'Matrix of Destiny',
+    matrixKicker: '22 ARCANA · BIRTH-DATE CALCULATION',
+    matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
+    natal: 'Natal chart',
+    astrology: 'Astrology',
+    inProgress: 'In progress',
+    natalDetail: 'An interactive chart and guide will go here. An exact birth time and place are needed to create it.',
+    open: 'Learn more',
+    selected: 'SELECTED POINT',
+    center: 'Matrix center',
+    centerNote: 'The combined value of the four main energies is 11. In this symbolic system it is Strength: steadiness and self-command.',
+    formula: 'Calculation used here: day 28 → 10, month 3, digit sum of year 2004 → 6; bottom point 10 + 3 + 6 → 19. Values above 22 are reduced by adding their digits; the center is the sum of the four main points → 11. Size and color distinguish primary, derived, and supporting points. This is symbolic, not a scientific assessment.',
+    primary: 'Primary point',
+    derived: 'Derived point',
+    supporting: 'Supporting point',
+    disclaimer: 'The Matrix of Destiny, astrology, and personality types are presented as cultural and entertainment frameworks, not scientific conclusions.',
+  },
+  fr: {
+    heading: 'Quelques faits personnels',
+    intro: 'Quelques faits à mon sujet et des schémas interactifs pour la curiosité et la réflexion.',
+    birthday: 'Date de naissance',
+    blood: 'Groupe sanguin',
+    bloodType: 'A (II) · Rh positif',
+    bloodDetail: 'A (II) Rh positif associe la notation ABO par lettres et la numérotation utilisée dans certains pays.',
+    type: 'Type de personnalité',
+    strategist: 'Architecte',
+    typeDetail: 'Dans le modèle 16Personalities, INTJ est associé à l’indépendance, à la pensée systémique et à la planification à long terme. C’est une piste de réflexion, pas un diagnostic psychologique.',
+    matrix: 'Matrice du destin',
+    matrixKicker: '22 ARCANES · CALCUL À PARTIR DE LA DATE DE NAISSANCE',
+    matrixHint: 'Survolez ou sélectionnez un point. Sa taille et sa couleur indiquent son rôle.',
+    natal: 'Thème natal',
+    astrology: 'Astrologie',
+    inProgress: 'En préparation',
+    natalDetail: 'Un thème interactif et ses explications seront ajoutés ici. L’heure et le lieu exacts de naissance sont nécessaires.',
+    open: 'En savoir plus',
+    selected: 'POINT SÉLECTIONNÉ',
+    center: 'Centre de la matrice',
+    centerNote: 'La valeur combinée des quatre énergies principales est 11. Dans ce système symbolique, c’est la Force : stabilité et maîtrise de soi.',
+    formula: 'Calcul utilisé ici : jour 28 → 10, mois 3, somme des chiffres de 2004 → 6 ; point inférieur 10 + 3 + 6 → 19. Les valeurs supérieures à 22 sont réduites par addition des chiffres ; le centre est la somme des quatre points principaux → 11. Taille et couleur distinguent les points principaux, dérivés et complémentaires. Système symbolique, non scientifique.',
+    primary: 'Point principal',
+    derived: 'Point dérivé',
+    supporting: 'Point complémentaire',
+    disclaimer: 'La Matrice du destin, l’astrologie et les types de personnalité sont présentés comme des outils culturels et ludiques, et non comme des conclusions scientifiques.',
+  },
+  es: {
+    heading: 'Datos personales y curiosidades',
+    intro: 'Algunos datos sobre mí y esquemas interactivos para explorar por curiosidad y reflexión.',
+    birthday: 'Fecha de nacimiento',
+    blood: 'Grupo sanguíneo',
+    bloodType: 'A (II) · Rh positivo',
+    bloodDetail: 'A (II) Rh positivo combina la notación ABO por letras con la numeración usada en algunos países.',
+    type: 'Tipo de personalidad',
+    strategist: 'Arquitecto',
+    typeDetail: 'En el modelo 16Personalities, INTJ se asocia con la independencia, el pensamiento sistémico y la planificación a largo plazo. Es una invitación a reflexionar, no un diagnóstico psicológico.',
+    matrix: 'Matriz del destino',
+    matrixKicker: '22 ARCANOS · CÁLCULO SEGÚN LA FECHA DE NACIMIENTO',
+    matrixHint: 'Pasa el cursor o selecciona un punto. Su tamaño y color indican su función.',
+    natal: 'Carta natal',
+    astrology: 'Astrología',
+    inProgress: 'En desarrollo',
+    natalDetail: 'Aquí se añadirá una carta interactiva con explicaciones. Se necesitan la hora y el lugar exactos de nacimiento.',
+    open: 'Más información',
+    selected: 'PUNTO SELECCIONADO',
+    center: 'Centro de la matriz',
+    centerNote: 'El valor combinado de las cuatro energías principales es 11. En este sistema simbólico representa la Fuerza: constancia y autocontrol.',
+    formula: 'Cálculo usado aquí: día 28 → 10, mes 3, suma de los dígitos de 2004 → 6; punto inferior 10 + 3 + 6 → 19. Los valores superiores a 22 se reducen sumando sus dígitos; el centro es la suma de los cuatro puntos principales → 11. El tamaño y el color distinguen puntos principales, derivados y complementarios. Es un sistema simbólico, no científico.',
+    primary: 'Punto principal',
+    derived: 'Punto derivado',
+    supporting: 'Punto complementario',
+    disclaimer: 'La Matriz del destino, la astrología y los tipos de personalidad se presentan como recursos culturales y recreativos, no como conclusiones científicas.',
+  },
+  ko: {
+    heading: '개인 정보와 흥미로운 사실',
+    intro: '나에 관한 간단한 정보와 호기심 및 자기 성찰을 위한 인터랙티브 도표입니다.',
+    birthday: '생년월일',
+    blood: '혈액형',
+    bloodType: 'A형 · Rh+',
+    bloodDetail: '국가별 표기 관습에 맞춰 ABO 문자 표기로 나타냈습니다.',
+    type: '성격 유형',
+    strategist: '전략가',
+    typeDetail: '16Personalities에서 INTJ는 독립성, 체계적 사고, 장기 계획과 연관됩니다. 성찰을 위한 참고 자료이며 심리 진단은 아닙니다.',
+    matrix: '운명의 매트릭스',
+    matrixKicker: '22 아르카나 · 생년월일 계산',
+    matrixHint: '점을 가리키거나 선택하세요. 크기와 색상으로 매트릭스에서의 역할을 표시합니다.',
+    natal: '출생 차트',
+    astrology: '점성술',
+    inProgress: '준비 중',
+    natalDetail: '이곳에 설명이 포함된 인터랙티브 차트를 추가할 예정입니다. 정확한 출생 시간과 장소가 필요합니다.',
+    open: '자세히 보기',
+    selected: '선택한 지점',
+    center: '매트릭스 중심',
+    centerNote: '네 가지 주요 에너지의 합은 11입니다. 이 상징 체계에서 힘은 안정감과 자기 조절을 뜻합니다.',
+    formula: '계산 방식: 일 28 → 10, 월 3, 2004년 숫자의 합 → 6, 아래 지점 10 + 3 + 6 → 19. 22를 넘는 값은 각 자릿수를 더해 줄이며, 중심은 네 주요 지점의 합 → 11입니다. 크기와 색상으로 주요·파생·보조 지점을 구분합니다. 과학적 진단이 아닌 상징 체계입니다.',
+    primary: '주요 지점',
+    derived: '파생 지점',
+    supporting: '보조 지점',
+    disclaimer: '운명의 매트릭스, 점성술, 성격 유형은 문화적·오락적 도구로 소개하며 과학적 결론을 뜻하지 않습니다.',
+  },
+  zh: {
+    heading: '个人资料与趣味信息',
+    intro: '一些个人信息，以及用于探索和自我反思的互动图示。',
+    birthday: '出生日期',
+    blood: '血型',
+    bloodType: 'A型 · Rh阳性',
+    bloodDetail: '按照当地常用习惯使用 ABO 字母血型标记。',
+    type: '人格类型',
+    strategist: '建筑师',
+    typeDetail: '在 16Personalities 模型中，INTJ 通常与独立性、系统思维和长期规划相关。这是自我反思的参考，不是心理诊断。',
+    matrix: '命运矩阵',
+    matrixKicker: '22 张大阿尔卡那 · 按出生日期计算',
+    matrixHint: '悬停或选择一个节点。大小和颜色表示它在矩阵中的作用。',
+    natal: '本命星盘',
+    astrology: '占星学',
+    inProgress: '开发中',
+    natalDetail: '这里将添加带说明的互动星盘。绘制准确星盘需要出生时间和地点。',
+    open: '了解更多',
+    selected: '当前节点',
+    center: '矩阵中心',
+    centerNote: '四个主要能量的合计值为 11。在这一象征体系中代表力量：稳定与自我掌控。',
+    formula: '计算方式：日 28 → 10，月 3，2004 年各位数字之和 → 6；底部节点 10 + 3 + 6 → 19。大于 22 的数值通过各位数字相加归约；中心为四个主要节点之和 → 11。大小和颜色区分主要、派生和辅助节点。这是象征体系，并非科学评估。',
+    primary: '主要节点',
+    derived: '派生节点',
+    supporting: '辅助节点',
+    disclaimer: '命运矩阵、占星学和人格类型在此作为文化与娱乐工具介绍，并非科学结论。',
+  },
+  ja: {
+    heading: 'プロフィールとちょっとした情報',
+    intro: '自分についての簡単な情報と、好奇心や自己理解のためのインタラクティブな図です。',
+    birthday: '生年月日',
+    blood: '血液型',
+    bloodType: 'A型 · Rh+',
+    bloodDetail: '地域で一般的な ABO の文字表記を使用しています。',
+    type: '性格タイプ',
+    strategist: '建築家',
+    typeDetail: '16Personalities では、INTJ は自立性、体系的な思考、長期的な計画と関連づけられます。自己理解の参考であり、心理診断ではありません。',
+    matrix: '運命のマトリックス',
+    matrixKicker: '22アルカナ · 生年月日から算出',
+    matrixHint: 'ポイントにカーソルを合わせるか選択してください。大きさと色で役割を示します。',
+    natal: '出生図',
+    astrology: '占星術',
+    inProgress: '準備中',
+    natalDetail: '説明付きのインタラクティブなチャートをここに追加予定です。正確な出生時刻と場所が必要です。',
+    open: '詳しく見る',
+    selected: '選択したポイント',
+    center: 'マトリックスの中心',
+    centerNote: '4つの主要エネルギーの合計は11です。この象徴体系では「力」を表し、安定と自己制御を意味します。',
+    formula: '計算方法：日 28 → 10、月 3、2004年の各桁の合計 → 6、下部 10 + 3 + 6 → 19。22を超える値は各桁を足して還元し、中心は4つの主要点の合計 → 11です。大きさと色で主要・派生・補助ポイントを区別します。科学的診断ではなく象徴体系です。',
+    primary: '主要ポイント',
+    derived: '派生ポイント',
+    supporting: '補助ポイント',
+    disclaimer: '運命のマトリックス、占星術、性格タイプは文化・娯楽的なツールとして紹介しており、科学的な結論ではありません。',
+  },
+  de: {
+    heading: 'Persönliche Daten und kleine Einblicke',
+    intro: 'Ein paar Fakten über mich und interaktive Schaubilder zum Entdecken und Nachdenken.',
+    birthday: 'Geburtsdatum',
+    blood: 'Blutgruppe',
+    bloodType: 'A (II) · Rh-positiv',
+    bloodDetail: 'A (II) Rh-positiv verbindet die ABO-Buchstabennotation mit der in manchen Ländern verwendeten Nummerierung.',
+    type: 'Persönlichkeitstyp',
+    strategist: 'Architekt',
+    typeDetail: 'Im 16Personalities-Modell wird INTJ oft mit Unabhängigkeit, systemischem Denken und langfristiger Planung verbunden. Das ist ein Denkanstoß, keine psychologische Diagnose.',
+    matrix: 'Schicksalsmatrix',
+    matrixKicker: '22 ARKANA · BERECHNUNG AUS DEM GEBURTSDATUM',
+    matrixHint: 'Bewege den Mauszeiger über einen Punkt oder wähle ihn aus. Größe und Farbe zeigen seine Rolle.',
+    natal: 'Geburtshoroskop',
+    astrology: 'Astrologie',
+    inProgress: 'In Arbeit',
+    natalDetail: 'Hier wird ein interaktives Horoskop mit Erläuterungen ergänzt. Dafür werden die genaue Geburtszeit und der Geburtsort benötigt.',
+    open: 'Mehr erfahren',
+    selected: 'AUSGEWÄHLTER PUNKT',
+    center: 'Zentrum der Matrix',
+    centerNote: 'Der gemeinsame Wert der vier Haupenergien ist 11. In diesem symbolischen System steht er für Stärke, Beständigkeit und Selbstführung.',
+    formula: 'Verwendete Berechnung: Tag 28 → 10, Monat 3, Quersumme des Jahres 2004 → 6; unterer Punkt 10 + 3 + 6 → 19. Werte über 22 werden durch Quersummen reduziert; das Zentrum ist die Summe der vier Hauptpunkte → 11. Größe und Farbe unterscheiden Haupt-, abgeleitete und ergänzende Punkte. Symbolisches System, keine wissenschaftliche Diagnose.',
+    primary: 'Hauptpunkt',
+    derived: 'Abgeleiteter Punkt',
+    supporting: 'Ergänzender Punkt',
+    disclaimer: 'Schicksalsmatrix, Astrologie und Persönlichkeitstypen werden hier als kulturelle und unterhaltsame Ansätze, nicht als wissenschaftliche Aussagen dargestellt.',
+  },
+  sv: {
+    heading: 'Personliga fakta och små upptäckter',
+    intro: 'Några fakta om mig och interaktiva diagram för nyfikenhet och reflektion.',
+    birthday: 'Födelsedatum',
+    blood: 'Blodgrupp',
+    bloodType: 'A (II) · Rh-positiv',
+    bloodDetail: 'A (II) Rh-positiv kombinerar ABO-systemets bokstavsbeteckning med numreringen som används i vissa länder.',
+    type: 'Personlighetstyp',
+    strategist: 'Arkitekten',
+    typeDetail: 'I 16Personalities-modellen förknippas INTJ med självständighet, systemtänkande och långsiktig planering. Det är ett underlag för reflektion, inte en psykologisk diagnos.',
+    matrix: 'Ödesmatris',
+    matrixKicker: '22 ARKANER · BERÄKNING UTIFRÅN FÖDELSEDATUM',
+    matrixHint: 'Hovra över eller välj en punkt. Storlek och färg visar dess roll i matrisen.',
+    natal: 'Födelsehoroskop',
+    astrology: 'Astrologi',
+    inProgress: 'Under utveckling',
+    natalDetail: 'Ett interaktivt horoskop med förklaringar läggs till här. Exakt födelsetid och födelseort behövs.',
+    open: 'Läs mer',
+    selected: 'VALD PUNKT',
+    center: 'Matrisens centrum',
+    centerNote: 'Det sammanlagda värdet för de fyra huvudenergierna är 11. I detta symboliska system står det för styrka, stabilitet och självbehärskning.',
+    formula: 'Beräkning här: dag 28 → 10, månad 3, siffersumman av år 2004 → 6; nedre punkt 10 + 3 + 6 → 19. Värden över 22 reduceras genom att siffrorna adderas; centrum är summan av de fyra huvudpunkterna → 11. Storlek och färg skiljer huvud-, härledda och stödjande punkter åt. Symboliskt system, ingen vetenskaplig bedömning.',
+    primary: 'Huvudpunkt',
+    derived: 'Härledd punkt',
+    supporting: 'Stödjande punkt',
+    disclaimer: 'Ödesmatrisen, astrologi och personlighetstyper presenteras som kulturella och underhållande verktyg, inte som vetenskapliga slutsatser.',
+  },
+}[lang as 'ru' | 'en' | 'fr' | 'es' | 'ko' | 'zh' | 'ja' | 'de' | 'sv'] ?? {
+  heading: 'Personal facts and curiosities',
+  intro: 'A few facts about me, alongside interactive diagrams for curiosity and reflection.',
+  birthday: 'Date of birth',
+  blood: 'Blood type',
+  bloodType: 'A (II) · Rh positive',
+  bloodDetail: 'A (II) Rh positive combines the ABO letter system with the group numbering used in some countries.',
+  type: 'Personality type',
+  strategist: 'The Architect',
+  typeDetail: 'In the 16Personalities model, INTJ is associated with independence, systems thinking, and long-range planning. It is a reflection prompt, not a psychological diagnosis.',
+  matrix: 'Matrix of Destiny',
+  matrixKicker: '22 ARCANA · BIRTH-DATE CALCULATION',
+  matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
+  natal: 'Natal chart',
+  astrology: 'Astrology',
+  inProgress: 'In progress',
+  natalDetail: 'An interactive chart and guide will go here. An exact birth time and place are needed to create it.',
+  open: 'Learn more',
+  selected: 'SELECTED POINT',
+  center: 'Matrix center',
+  centerNote: 'The combined value of the four main energies is 11. In this symbolic system it is Strength: steadiness and self-command.',
+  formula: 'Calculation used here: day 28 → 10, month 3, digit sum of year 2004 → 6; bottom point 10 + 3 + 6 → 19. Values above 22 are reduced by adding their digits; the center is the sum of the four main points → 11. Size and color distinguish primary, derived, and supporting points. This is symbolic, not a scientific assessment.',
+  primary: 'Primary point',
+  derived: 'Derived point',
+  supporting: 'Supporting point',
+  disclaimer: 'The Matrix of Destiny, astrology, and personality types are presented as cultural and entertainment frameworks, not scientific conclusions.',
+};
+
+const birthDate = new Date(Date.UTC(2004, 2, 28));
+const formattedBirthday = new Intl.DateTimeFormat(lang, {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(birthDate);
+
+const reduceArcana = (value: number): number => {
+  let reduced = value;
+  while (reduced > 22) {
+    reduced = String(reduced).split('').reduce((sum, digit) => sum + Number(digit), 0);
+  }
+  return reduced;
+};
+
+const day = reduceArcana(28);
+const month = 3;
+const year = reduceArcana(2 + 0 + 0 + 4);
+const base = reduceArcana(day + month + year);
+const center = reduceArcana(day + month + year + base);
+const arcanaNames: Record<string, Record<number, string>> = {
+  ru: { 1: 'Маг', 3: 'Императрица', 5: 'Иерофант', 6: 'Влюблённые', 7: 'Колесница', 8: 'Справедливость', 9: 'Отшельник', 10: 'Колесо Фортуны', 11: 'Сила', 12: 'Повешенный', 13: 'Трансформация', 15: 'Дьявол', 16: 'Башня', 19: 'Солнце', 21: 'Мир', 22: 'Шут' },
+  en: { 1: 'The Magician', 3: 'The Empress', 5: 'The Hierophant', 6: 'The Lovers', 7: 'The Chariot', 8: 'Justice', 9: 'The Hermit', 10: 'Wheel of Fortune', 11: 'Strength', 12: 'The Hanged One', 13: 'Transformation', 15: 'The Devil', 16: 'The Tower', 19: 'The Sun', 21: 'The World', 22: 'The Fool' },
+  fr: { 1: 'Le Magicien', 3: 'L’Impératrice', 5: 'Le Pape', 6: 'Les Amoureux', 7: 'Le Chariot', 8: 'La Justice', 9: 'L’Ermite', 10: 'La Roue de Fortune', 11: 'La Force', 12: 'Le Pendu', 13: 'Transformation', 15: 'Le Diable', 16: 'La Maison Dieu', 19: 'Le Soleil', 21: 'Le Monde', 22: 'Le Mat' },
+  es: { 1: 'El Mago', 3: 'La Emperatriz', 5: 'El Hierofante', 6: 'Los Enamorados', 7: 'El Carro', 8: 'La Justicia', 9: 'El Ermitaño', 10: 'La Rueda de la Fortuna', 11: 'La Fuerza', 12: 'El Colgado', 13: 'Transformación', 15: 'El Diablo', 16: 'La Torre', 19: 'El Sol', 21: 'El Mundo', 22: 'El Loco' },
+  ko: { 1: '마법사', 3: '여황제', 5: '교황', 6: '연인', 7: '전차', 8: '정의', 9: '은둔자', 10: '운명의 수레바퀴', 11: '힘', 12: '매달린 사람', 13: '변화', 15: '악마', 16: '탑', 19: '태양', 21: '세계', 22: '광대' },
+  zh: { 1: '魔术师', 3: '皇后', 5: '教皇', 6: '恋人', 7: '战车', 8: '正义', 9: '隐者', 10: '命运之轮', 11: '力量', 12: '倒吊人', 13: '转变', 15: '恶魔', 16: '高塔', 19: '太阳', 21: '世界', 22: '愚者' },
+  ja: { 1: '魔術師', 3: '女帝', 5: '教皇', 6: '恋人', 7: '戦車', 8: '正義', 9: '隠者', 10: '運命の輪', 11: '力', 12: '吊るされた男', 13: '変容', 15: '悪魔', 16: '塔', 19: '太陽', 21: '世界', 22: '愚者' },
+  de: { 1: 'Der Magier', 3: 'Die Herrscherin', 5: 'Der Hierophant', 6: 'Die Liebenden', 7: 'Der Wagen', 8: 'Die Gerechtigkeit', 9: 'Der Eremit', 10: 'Das Rad des Schicksals', 11: 'Die Kraft', 12: 'Der Gehängte', 13: 'Wandlung', 15: 'Der Teufel', 16: 'Der Turm', 19: 'Die Sonne', 21: 'Die Welt', 22: 'Der Narr' },
+  sv: { 1: 'Magikern', 3: 'Kejsarinnan', 5: 'Hierofanten', 6: 'De älskande', 7: 'Vagnen', 8: 'Rättvisan', 9: 'Eremiten', 10: 'Lyckohjulet', 11: 'Styrkan', 12: 'Den hängde', 13: 'Förvandling', 15: 'Djävulen', 16: 'Tornet', 19: 'Solen', 21: 'Världen', 22: 'Narren' },
+};
+const names = arcanaNames[lang] ?? arcanaNames.en;
+const arcanaTitle = (value: number) => names[value] ?? `${value} · ${lang === 'ru' ? 'аркан' : 'Arcana'}`;
+type PointRole = 'primary' | 'derived' | 'supporting' | 'center';
+const points: Array<{ id: string; value: number; title: string; role: PointRole; x: number; y: number; detail: string }> = [
+  { id: 'day', value: day, title: arcanaTitle(day), role: 'primary', x: 15, y: 50, detail: `${copy.birthday}: ${formattedBirthday}.` },
+  { id: 'month', value: month, title: arcanaTitle(month), role: 'primary', x: 50, y: 9, detail: `${copy.birthday}: ${formattedBirthday}.` },
+  { id: 'year', value: year, title: arcanaTitle(year), role: 'primary', x: 85, y: 50, detail: `${copy.birthday}: ${formattedBirthday}.` },
+  { id: 'base', value: base, title: arcanaTitle(base), role: 'primary', x: 50, y: 91, detail: `10 + 3 + 6 → ${base}.` },
+  { id: 'day-month', value: reduceArcana(day + month), title: arcanaTitle(reduceArcana(day + month)), role: 'derived', x: 32.5, y: 29.5, detail: `10 + 3 → ${reduceArcana(day + month)}.` },
+  { id: 'month-year', value: reduceArcana(month + year), title: arcanaTitle(reduceArcana(month + year)), role: 'derived', x: 67.5, y: 29.5, detail: `3 + 6 → ${reduceArcana(month + year)}.` },
+  { id: 'year-base', value: reduceArcana(year + base), title: arcanaTitle(reduceArcana(year + base)), role: 'derived', x: 67.5, y: 70.5, detail: `6 + 19 → ${reduceArcana(year + base)}.` },
+  { id: 'base-day', value: reduceArcana(base + day), title: arcanaTitle(reduceArcana(base + day)), role: 'derived', x: 32.5, y: 70.5, detail: `19 + 10 → ${reduceArcana(base + day)}.` },
+  { id: 'center', value: center, title: arcanaTitle(center), role: 'center', x: 50, y: 50, detail: copy.centerNote },
+  { id: 'day-inner', value: reduceArcana(day + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(day + reduceArcana(day + month))), role: 'supporting', x: 23.75, y: 15, detail: `10 + 13 → ${reduceArcana(day + reduceArcana(day + month))}.` },
+  { id: 'month-inner', value: reduceArcana(month + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(month + reduceArcana(day + month))), role: 'supporting', x: 41.25, y: 15, detail: `3 + 13 → ${reduceArcana(month + reduceArcana(day + month))}.` },
+  { id: 'month-inner-right', value: reduceArcana(month + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(month + reduceArcana(month + year))), role: 'supporting', x: 58.75, y: 15, detail: `3 + 9 → ${reduceArcana(month + reduceArcana(month + year))}.` },
+  { id: 'year-inner', value: reduceArcana(year + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(year + reduceArcana(month + year))), role: 'supporting', x: 76.25, y: 15, detail: `6 + 9 → ${reduceArcana(year + reduceArcana(month + year))}.` },
+  { id: 'year-inner-bottom', value: reduceArcana(year + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(year + reduceArcana(year + base))), role: 'supporting', x: 76.25, y: 85, detail: `6 + 3 → ${reduceArcana(year + reduceArcana(year + base))}.` },
+  { id: 'base-inner-right', value: reduceArcana(base + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(base + reduceArcana(year + base))), role: 'supporting', x: 58.75, y: 85, detail: `19 + 7 → ${reduceArcana(base + reduceArcana(year + base))}.` },
+  { id: 'base-inner-left', value: reduceArcana(base + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(base + reduceArcana(base + day))), role: 'supporting', x: 41.25, y: 85, detail: `19 + 11 → ${reduceArcana(base + reduceArcana(base + day))}.` },
+  { id: 'day-inner-bottom', value: reduceArcana(day + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(day + reduceArcana(base + day))), role: 'supporting', x: 23.75, y: 85, detail: `10 + 11 → ${reduceArcana(day + reduceArcana(base + day))}.` },
+];
+const roleLabels: Record<PointRole, string> = {
+  primary: copy.primary,
+  derived: copy.derived,
+  supporting: copy.supporting,
+  center: copy.center,
+};
+---
+
+<section class:list={['personal-details', bloodFirst && 'personal-details--blood-first']} aria-labelledby="personal-details-heading">
+  <h2 id="personal-details-heading">{copy.heading}</h2>
+  <p class="personal-intro">{copy.intro}</p>
+
+  <div class="personal-grid">
+    <details class="personal-card birth-card">
+      <summary>
+        <span class="card-kicker">{copy.birthday}</span>
+        <time class="birth-date" datetime="2004-03-28">{formattedBirthday}</time>
+        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+      </summary>
+      <div class="card-detail"><p>{copy.birthday}: <time datetime="2004-03-28">{formattedBirthday}</time>. {copy.natalDetail}</p></div>
+    </details>
+
+    <details class="personal-card blood-card">
+      <summary>
+        <span class="card-kicker">{copy.blood}</span>
+        <span class="blood-visual" aria-hidden="true"><span>A</span><i>II</i><b>Rh+</b><svg viewBox="0 0 160 100"><path d="M80 8 142 42v18l-62 34L18 60V42zM18 42l62 36 62-36M80 78v16" /></svg></span>
+        <span class="card-title">{copy.bloodType}</span>
+        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+      </summary>
+      <div class="card-detail"><p>{copy.bloodDetail}</p></div>
+    </details>
+
+    <details class="personal-card personality-card">
+      <summary>
+        <span class="card-kicker">{copy.type}</span>
+        <span class="personality-visual" aria-hidden="true">
+          <span class="personality-monogram">INTJ</span>
+          <svg viewBox="0 0 240 140">
+            <path class="personality-axis" d="M24 110h192M45 91 93 57l40 16 65-50" />
+            <path class="personality-path" d="M45 91 93 57l40 16 65-50" />
+            <circle class="personality-node" cx="45" cy="91" r="6" />
+            <circle class="personality-node" cx="93" cy="57" r="6" />
+            <circle class="personality-node" cx="133" cy="73" r="6" />
+            <circle class="personality-node personality-node--last" cx="198" cy="23" r="8" />
+            <path class="personality-bracket" d="M45 100v7h153v-7" />
+          </svg>
+          <span class="personality-name">{copy.strategist}</span>
+        </span>
+        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+      </summary>
+      <div class="card-detail"><p>{copy.typeDetail}</p></div>
+    </details>
+
+    <section class="personal-card matrix-card" aria-labelledby="matrix-title">
+      <div class="card-kicker">{copy.matrixKicker}</div>
+      <h3 id="matrix-title">{copy.matrix}</h3>
+      <p class="card-subtitle">{copy.matrixHint}</p>
+      <div class="matrix-canvas" role="group" aria-label={copy.matrix}>
+        <svg class="matrix-lines" viewBox="0 0 100 100" aria-hidden="true">
+          <path class="matrix-diamond" d="M50 9 85 50 50 91 15 50 50 9" />
+          <path class="matrix-cross" d="M50 9v82M15 50h70M32.5 29.5 67.5 70.5M67.5 29.5 32.5 70.5" />
+          <path class="matrix-inner" d="M23.75 15 76.25 15 85 50 76.25 85 23.75 85 15 50Z" />
+          <circle cx="50" cy="50" r="23" />
+        </svg>
+        {points.map((point, index) => (
+          <button
+            class:list={['matrix-point', `matrix-point--${point.role}`, index === 0 && 'is-selected']}
+            type="button"
+            style={`--point-x:${point.x}%;--point-y:${point.y}%`}
+            data-arcana-id={point.id}
+            data-arcana-title={point.title}
+            data-arcana-note={point.detail}
+            data-arcana-value={point.value}
+            aria-label={`${roleLabels[point.role]} ${point.value}: ${point.title}`}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+            title={`${point.value} · ${point.title}`}
+          >
+            <span>{point.value}</span>
+          </button>
+        ))}
+      </div>
+      <div class="matrix-legend" aria-label={copy.matrix}>
+        <span class="legend-primary">{copy.primary}</span>
+        <span class="legend-derived">{copy.derived}</span>
+        <span class="legend-supporting">{copy.supporting}</span>
+      </div>
+      <div class="matrix-reading" aria-live="polite" aria-atomic="true">
+        <span class="reading-label">{copy.selected}</span>
+        <strong class="reading-title">{arcanaTitle(day)}</strong>
+        <p class="reading-note">{copy.birthday}: {formattedBirthday}.</p>
+      </div>
+      <p class="matrix-footnote">{copy.formula}</p>
+    </section>
+
+    <details class="personal-card natal-card">
+      <summary>
+        <span class="card-kicker">{copy.astrology}</span>
+        <span class="natal-visual" aria-hidden="true">
+          <svg viewBox="0 0 220 170">
+            <circle class="natal-orbit" cx="110" cy="84" r="56" />
+            <circle class="natal-orbit natal-orbit--inner" cx="110" cy="84" r="35" />
+            <path class="natal-cross" d="M110 22v124M48 84h124M66 40l88 88M154 40l-88 88" />
+            <circle class="natal-star" cx="110" cy="28" r="4" />
+            <circle class="natal-star" cx="160" cy="105" r="3" />
+            <circle class="natal-star" cx="72" cy="116" r="3" />
+          </svg>
+          <span>✳</span>
+        </span>
+        <span class="card-title">{copy.natal}</span>
+        <span class="card-status">{copy.inProgress}</span>
+        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+      </summary>
+      <div class="card-detail"><p>{copy.natalDetail}</p></div>
+    </details>
+  </div>
+
+  <p class="personal-disclaimer">{copy.disclaimer}</p>
+</section>
+
+<script>
+  const matrixButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.matrix-point'));
+  const matrixReading = document.querySelector<HTMLElement>('.matrix-reading');
+  const readingTitle = matrixReading?.querySelector<HTMLElement>('.reading-title');
+  const readingNote = matrixReading?.querySelector<HTMLElement>('.reading-note');
+
+  for (const button of matrixButtons) {
+    const showReading = () => {
+      const title = button.dataset.arcanaTitle;
+      const note = button.dataset.arcanaNote;
+      if (!title || !note || !readingTitle || !readingNote) return;
+
+      readingTitle.textContent = `${button.dataset.arcanaValue} · ${title}`;
+      readingNote.textContent = note;
+      matrixButtons.forEach((point) => {
+        const selected = point === button;
+        point.classList.toggle('is-selected', selected);
+        point.setAttribute('aria-pressed', String(selected));
+      });
+    };
+
+    button.addEventListener('pointerenter', showReading);
+    button.addEventListener('focus', showReading);
+    button.addEventListener('click', showReading);
+  }
+</script>
+
+<style>
+  .personal-details {
+    --personal-border: var(--color-border);
+    --personal-surface: var(--color-surface);
+    --personal-raised: var(--color-surface-elevated);
+    --personal-accent: var(--color-accent);
+    --personal-accent-light: var(--color-accent-hover);
+  }
+
+  .personal-details > h2 { margin-top: clamp(52px, 8vw, 88px); }
+  .personal-intro { max-width: 44em; margin-bottom: 24px; }
+
+  .personal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .personal-details--blood-first .blood-card { order: 0; }
+  .personal-details--blood-first .personality-card { order: 1; }
+  .personal-details--blood-first .matrix-card { order: 2; }
+  .personal-details--blood-first .birth-card { order: 3; }
+  .personal-details--blood-first .natal-card { order: 4; }
+  .personal-details:not(.personal-details--blood-first) .birth-card { order: 0; }
+  .personal-details:not(.personal-details--blood-first) .personality-card { order: 1; }
+  .personal-details:not(.personal-details--blood-first) .matrix-card { order: 2; }
+  .personal-details:not(.personal-details--blood-first) .blood-card { order: 3; }
+  .personal-details:not(.personal-details--blood-first) .natal-card { order: 4; }
+
+  .personal-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--personal-border);
+    border-radius: 12px;
+    background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--personal-accent) 9%, transparent), transparent 65%), var(--personal-surface);
+    transition: border-color 220ms var(--ease), background-color 220ms var(--ease), transform 220ms var(--ease);
+  }
+
+  .personal-card:hover,
+  .personal-card:focus-within {
+    border-color: color-mix(in srgb, var(--personal-accent) 65%, var(--personal-border));
+    background-color: var(--personal-raised);
+    transform: translateY(-2px);
+  }
+
+  .personal-card > summary {
+    position: relative;
+    display: flex;
+    min-height: 180px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(18px, 3vw, 28px);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .personal-card > summary::-webkit-details-marker { display: none; }
+  .personal-card > summary:focus-visible { outline: 2px solid var(--personal-accent-light); outline-offset: -4px; border-radius: 12px; }
+  .card-kicker, .reading-label { color: var(--color-text-secondary); font-size: 0.67rem; font-weight: 600; letter-spacing: 0.13em; }
+  .card-title { margin-top: auto; color: var(--color-text-primary); font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+  .card-action { display: flex; width: 100%; justify-content: space-between; margin-top: 14px; color: var(--personal-accent-light); font-size: 0.84rem; }
+  .card-action span { transition: transform 220ms var(--ease); }
+  .personal-card:hover .card-action span, .personal-card:focus-within .card-action span { transform: translate(3px, -3px); }
+
+  .birth-card > summary { min-height: 150px; }
+  .birth-date { margin-top: auto; color: var(--color-text-primary); font-size: clamp(1.05rem, 1vw + 0.82rem, 1.35rem); font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .blood-visual { position: relative; display: flex; min-height: 78px; align-items: baseline; gap: 8px; margin-block: 10px; color: var(--personal-accent-light); }
+  .blood-visual > span { font-size: 3rem; font-weight: 600; line-height: 1; letter-spacing: -0.08em; }
+  .blood-visual > i { color: var(--color-text-secondary); font-size: 0.82rem; font-style: normal; }
+  .blood-visual > b { margin-left: auto; font-size: 0.8rem; font-weight: 600; }
+  .blood-visual svg { position: absolute; right: 0; bottom: 0; width: 110px; fill: none; stroke: var(--personal-accent); stroke-width: 0.8; opacity: 0.24; }
+
+  .personality-visual {
+    display: grid;
+    width: 100%;
+    min-height: 95px;
+    flex: 1;
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center;
+    margin-block: 8px;
+    overflow: hidden;
+    border-block: 1px solid color-mix(in srgb, var(--personal-accent) 20%, transparent);
+    background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.025), transparent);
+    color: var(--personal-accent-light);
+  }
+  .personality-monogram { z-index: 1; font-size: clamp(2.1rem, 4vw, 3rem); font-weight: 700; letter-spacing: 0.16em; line-height: 1; }
+  .personality-visual svg { width: min(100%, 280px); height: 55px; overflow: visible; }
+  .personality-axis, .personality-bracket { fill: none; stroke: var(--personal-border); stroke-width: 1; }
+  .personality-path { fill: none; stroke: var(--personal-accent-light); stroke-dasharray: 1; stroke-dashoffset: 1; stroke-width: 1.5; }
+  .personality-node { fill: var(--personal-surface); stroke: var(--personal-accent); stroke-width: 1.5; }
+  .personality-node--last { fill: var(--personal-accent-light); }
+  .personality-name { color: var(--color-text-secondary); font-size: 0.78rem; }
+  .personality-card:hover .personality-path, .personality-card:focus-within .personality-path { stroke-dashoffset: 0; transition: stroke-dashoffset 900ms var(--ease); }
+
+  .matrix-card { grid-row: span 3; padding: clamp(18px, 3vw, 28px); }
+  .matrix-card h3 { margin: 6px 0; font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); line-height: 1.15; }
+  .card-subtitle { color: var(--color-text-secondary); font-size: 0.8rem; line-height: 1.5; }
+  .matrix-canvas { position: relative; width: min(100%, 470px); aspect-ratio: 1; margin: 18px auto 10px; }
+  .matrix-lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: color-mix(in srgb, var(--personal-accent) 48%, var(--personal-border)); stroke-width: 0.36; vector-effect: non-scaling-stroke; }
+  .matrix-lines .matrix-cross { stroke: color-mix(in srgb, var(--personal-accent) 26%, var(--personal-border)); stroke-dasharray: 1 1; }
+  .matrix-lines .matrix-inner { stroke: color-mix(in srgb, var(--personal-accent) 52%, var(--personal-border)); stroke-dasharray: 1.5 1; }
+  .matrix-lines circle { stroke-dasharray: 1 2; opacity: 0.4; }
+
+  .matrix-point {
+    position: absolute;
+    z-index: 1;
+    top: var(--point-y);
+    left: var(--point-x);
+    display: grid;
+    width: clamp(32px, 8.5vw, 46px);
+    aspect-ratio: 1;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--point-color);
+    border-radius: 50%;
+    background: var(--personal-surface);
+    color: var(--point-color);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    transform: translate(-50%, -50%);
+    transition: background-color 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease), color 180ms var(--ease), scale 180ms var(--ease);
+  }
+  .matrix-point--primary { --point-color: #a5c4ff; width: clamp(42px, 10vw, 58px); background: color-mix(in srgb, #31589a 24%, var(--personal-surface)); font-size: 0.9rem; font-weight: 700; }
+  .matrix-point--derived { --point-color: #83cfc4; width: clamp(36px, 8vw, 48px); background: color-mix(in srgb, #16766d 15%, var(--personal-surface)); }
+  .matrix-point--supporting { --point-color: #c3a6ef; width: clamp(30px, 6.8vw, 39px); background: color-mix(in srgb, #694598 15%, var(--personal-surface)); font-size: 0.68rem; }
+  .matrix-point--center { --point-color: #f2c879; width: clamp(48px, 11vw, 64px); background: color-mix(in srgb, #8b5d13 22%, var(--personal-surface)); font-size: 1rem; font-weight: 700; }
+  .matrix-point:hover, .matrix-point:focus-visible, .matrix-point.is-selected { z-index: 2; background: var(--point-color); color: #08090b; box-shadow: 0 0 22px color-mix(in srgb, var(--point-color) 45%, transparent); scale: 1.1; }
+  .matrix-point:focus-visible { outline: 2px solid var(--personal-accent-light); outline-offset: 3px; }
+  .matrix-legend { display: flex; flex-wrap: wrap; gap: 7px 14px; margin: 0 0 14px; color: var(--color-text-secondary); font-size: 0.66rem; }
+  .matrix-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .matrix-legend span::before { width: 7px; height: 7px; border-radius: 50%; background: var(--legend-color); content: ''; }
+  .legend-primary { --legend-color: #a5c4ff; }
+  .legend-derived { --legend-color: #83cfc4; }
+  .legend-supporting { --legend-color: #c3a6ef; }
+  .matrix-reading { min-height: 90px; padding: 12px 14px; border-left: 2px solid var(--personal-accent); background: color-mix(in srgb, var(--personal-accent) 6%, transparent); }
+  .reading-label { display: block; font-size: 0.57rem; }
+  .reading-title { display: block; margin-top: 4px; color: var(--color-text-primary); font-size: 0.95rem; }
+  .reading-note { margin-top: 4px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; }
+  .matrix-footnote, .personal-disclaimer { margin-top: 14px; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.55; }
+
+  .natal-visual { position: relative; display: grid; width: 100%; flex: 1; min-height: 80px; place-items: center; margin-block: 8px; overflow: hidden; border-block: 1px solid color-mix(in srgb, var(--personal-accent) 18%, transparent); color: var(--personal-accent-light); }
+  .natal-visual svg { position: absolute; width: min(55%, 120px); height: auto; }
+  .natal-visual > span { z-index: 1; font-size: 1.2rem; }
+  .natal-orbit { fill: none; stroke: color-mix(in srgb, var(--personal-accent) 70%, var(--personal-border)); stroke-dasharray: 2 4; stroke-width: 0.8; }
+  .natal-orbit--inner { stroke: var(--color-text-secondary); stroke-dasharray: 1 5; }
+  .natal-cross { fill: none; stroke: var(--personal-border); stroke-width: 0.7; }
+  .natal-star { fill: var(--personal-accent-light); }
+  .card-status { margin-top: auto; color: var(--personal-accent-light); font-size: 0.75rem; }
+  .card-detail { padding: 0 clamp(18px, 3vw, 28px) 22px; border-top: 1px solid var(--personal-border); }
+  .card-detail p { padding-top: 16px; font-size: 0.82rem; line-height: 1.6; }
+  .personal-disclaimer { max-width: 72em; }
+
+  @media (max-width: 700px) {
+    .personal-grid { grid-template-columns: 1fr; }
+    .matrix-card { grid-row: auto; }
+    .matrix-canvas { width: min(100%, 400px); }
+    .matrix-point { width: clamp(34px, 10vw, 46px); }
+    .matrix-point--primary { width: clamp(44px, 12vw, 58px); }
+    .matrix-point--derived { width: clamp(38px, 10vw, 48px); }
+    .matrix-point--supporting { width: clamp(31px, 8vw, 39px); }
+    .matrix-point--center { width: clamp(50px, 13vw, 64px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .personal-card:hover, .personal-card:focus-within { transform: none; }
+    .personality-card:hover .personality-path, .personality-card:focus-within .personality-path { stroke-dashoffset: 0; }
+  }
+</style>

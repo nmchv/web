@@ -6,7 +6,7 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'teacher-diary': {
     title: 'Agenda del profesor',
     description:
-      'Un espacio digital en desarrollo para organizar calificaciones, asistencia, planes de clase, tareas y estadísticas del grupo.',
+      'Un espacio digital para organizar calificaciones, asistencia, planes de clase, tareas y estadísticas del grupo.',
     category: 'Educación / Education',
   },
   geotrainer: {
@@ -35,19 +35,19 @@ const projectTranslations: Record<string, Pick<Project, 'title' | 'description' 
   'world-map': {
     title: 'Mapa interactivo del mundo',
     description:
-      'Un mapa interactivo para explorar el mundo y trabajar con elementos geográficos. El proyecto está en desarrollo.',
+      'Un mapa interactivo para explorar el mundo y trabajar con elementos geográficos.',
     category: 'Geografía / Geography',
   },
   'online-forms': {
     title: 'Formularios en línea',
     description:
-      'Un servicio para crear formularios en línea y recopilar respuestas, similar en su propósito a Google Forms. Está en desarrollo.',
+      'Un servicio para crear formularios en línea y recopilar respuestas, similar en su propósito a Google Forms.',
     category: 'Productividad / Productivity',
   },
   'exam-trainer': {
     title: 'Entrenador de preparación para exámenes',
     description:
-      'Una herramienta en línea para preparar exámenes mediante ejercicios y repasos temáticos. El proyecto está en desarrollo.',
+      'Una herramienta en línea para preparar exámenes mediante ejercicios y repasos temáticos.',
     category: 'Educación / Education',
   },
 };
