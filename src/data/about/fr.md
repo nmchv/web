@@ -1,195 +1,141 @@
-# À propos de moi
+# Aleksey Nemichev
+
+<p class="about-tagline">J’explore. Je comprends. Je crée.</p>
 
-Je m’appelle Alekseï Vladimirovitch Nemichev. Je suis professeur de géographie, auteur de projets éducatifs et passionné par l’exploration du monde, la compréhension des systèmes complexes et la création d’outils répondant à des besoins concrets.
+Le monde m’intéresse dans toute sa diversité : des processus naturels et des lois sociales aux technologies, à l’éducation et à la manière dont les gens acquièrent et utilisent les connaissances. J’essaie de ne pas me limiter à un seul domaine, mais de chercher des liens entre des disciplines différentes, de repérer des régularités et de comprendre comment fonctionnent les systèmes qui nous entourent. J’étudie la géographie, l’économie et d’autres domaines du savoir, j’enseigne, j’expérimente avec les technologies et je crée mes propres outils numériques. Ces activités peuvent sembler très différentes, mais pour moi elles sont unies par un même principe : d’abord comprendre le problème, puis trouver une solution qui fonctionne réellement. Il est important pour moi de savoir non seulement comment quelque chose fonctionne, mais aussi pourquoi il fonctionne précisément ainsi. Et si les solutions existantes ne répondent pas à mes besoins, j’aime plutôt essayer d’en créer moi-même.
 
-Mes principaux centres d’intérêt se situent au croisement de la géographie, de l’éducation, des technologies et de la démarche scientifique. J’aime autant découvrir ce qui existe que chercher comment rendre les processus familiers plus clairs, plus pratiques et plus efficaces.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder">
+    <img class="photo-image" src="/images/about/portrait.jpg" alt="Portrait d’Aleksey Nemichev" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>LIEU POUR LA PHOTO</span>
+  </div>
+  <figcaption><strong>Portrait</strong><span>Ajoutez ici votre photo actuelle — un portrait calme et naturel.</span></figcaption>
+</figure>
 
-Je conçois mon parcours professionnel comme un développement continu. Je ne souhaite pas me limiter définitivement à un métier ou à un seul domaine. Au contraire, j’aimerais élargir progressivement mes compétences, établir des liens entre différents champs de connaissance et mettre en pratique ce que j’apprends dans mes projets.
+## La connaissance comme manière d’interagir avec le monde
 
-Ce site rassemble les principaux aspects de mon activité, ses résultats et les idées que je transforme peu à peu en projets concrets.
+Je suis convaincu que le monde ne peut être pleinement compris si on l’examine uniquement à travers le prisme d’une seule discipline. De nombreux processus se situent au croisement de différents domaines de savoir, et c’est souvent là que se trouvent les schémas les plus intéressants.
 
-## La géographie, une manière de comprendre le monde
+La géographie permet d’étudier l’organisation spatiale du monde et l’interaction entre les processus naturels et sociaux. L’économie aide à comprendre les lois de l’activité productive et de la répartition des ressources. La psychologie ouvre la possibilité d’étudier la pensée et le comportement humain. Les technologies de l’information donnent des outils pour analyser les données, automatiser les processus et créer de nouvelles manières de travailler avec l’information. Ce qui m’intéresse, ce n’est pas seulement approfondir des thèmes isolés, mais aussi chercher les liens entre eux. Comment les conditions naturelles influencent-elles l’économie ? Comment les particularités de la pensée humaine déterminent-elles le processus d’apprentissage ? Comment les technologies peuvent-elles transformer les moyens d’acquérir des connaissances ? Pourquoi certains systèmes se révèlent-ils efficaces et d’autres pas ? Ce type de questions exige une approche intégrée. Les réponses se trouvent rarement dans le cadre d’une seule discipline, c’est pourquoi je tiens à élargir sans cesse mes horizons et à apprendre de nouveaux outils de recherche.
 
-Pour moi, la géographie ne se résume pas à l’étude des pays, des capitales, des fleuves, des montagnes et des coordonnées. C’est une façon d’appréhender le monde comme un système complexe où les processus naturels, la société, l’économie, l’histoire et les activités humaines sont en interaction permanente.
+Je vise une grande culture générale, pas pour accumuler simplement des faits, mais pour voir l’ensemble, comprendre les relations entre les éléments et savoir utiliser les connaissances acquises pour résoudre de nouveaux problèmes. Pour moi, l’apprentissage ne s’arrête pas à l’acquisition d’une matière ou à l’obtention d’un diplôme. C’est un processus continu dans lequel chaque nouveau domaine de connaissance peut modifier la manière de voir ce qui nous semblait déjà clair.
 
-Je m’intéresse au fonctionnement de notre planète, aux différences entre les territoires, à la formation des conditions naturelles et à l’influence de la situation géographique sur le développement des États, des villes et des régions.
+<figure class="journey-visual" data-reveal>
+  <figcaption><strong>Une seule réalité, plusieurs perspectives</strong><span>Les liens entre les disciplines permettent de voir l’ensemble.</span></figcaption>
+  <div class="discipline-map" role="img" aria-label="La géographie, l’économie, la psychologie et les technologies sont liées entre elles et aident à explorer le monde">
+    <span class="map-node map-node--center">Monde<br />comme système</span>
+    <span class="map-node map-node--geo">Géographie</span>
+    <span class="map-node map-node--economy">Économie</span>
+    <span class="map-node map-node--psychology">Psychologie</span>
+    <span class="map-node map-node--tech">Technologies</span>
+    <svg viewBox="0 0 600 300" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M300 150 135 65M300 150 465 65M300 150 135 235M300 150 465 235" />
+    </svg>
+  </div>
+</figure>
 
-La pensée géographique permet de repérer des liens là où l’on ne voit d’abord que des faits isolés. Elle apprend à situer les phénomènes dans l’espace, à comparer les territoires, à analyser les régularités et à prendre en compte l’influence de nombreux facteurs.
+## Information, savoir et compréhension
 
-C’est cette complexité qui rend la géographie particulièrement intéressante à mes yeux. Elle associe les approches des sciences naturelles et des sciences sociales, s’appuie sur les cartes et les données et pose des questions auxquelles une seule discipline ne peut répondre.
+Je porte une grande attention à la manière dont fonctionne le travail avec l’information. Dans le monde contemporain, il devient de plus en plus facile d’obtenir des renseignements sur presque n’importe quel sujet. Mais l’accessibilité de l’information ne suffit pas à elle seule pour que l’on comprenne un sujet. On peut mémoriser de nombreux faits, connaître des définitions et reproduire des explications toutes faites, tout en restant incapable de se débrouiller seul face à une nouvelle situation. Pour moi, l’information, le savoir et la compréhension sont des niveaux différents de travail sur le contenu. L’information fournit le matériau de base. Le savoir permet de le systématiser, de décrire les phénomènes et d’utiliser l’expérience accumulée. La compréhension apparaît lorsque, derrière les faits isolés, se dessine un système : les liens entre les éléments, les relations de cause à effet, les principes de fonctionnement et les régularités du phénomène. C’est pourquoi il m’intéresse non seulement d’accumuler des informations, mais d’en distinguer l’essentiel, d’en construire une structure et de trouver des explications qui permettent d’aller plus loin. J’essaie de comprendre un sujet suffisamment profondément pour distinguer les idées fondamentales des détails secondaires, voir la logique du processus étudié et expliquer les choses complexes avec un langage clair. Cette approche est utile à la fois dans l’enseignement, la recherche et la création de produits numériques. Dans chaque cas, il faut résoudre la même tâche : comprendre un grand volume d’informations, déterminer ce qui est vraiment important et transformer cela en un système clair et fonctionnel. En même temps, je ne pense pas que la compréhension doive nécessairement conduire à une réponse définitive à chaque question. Si la solution n’est pas encore trouvée, c’est une raison de poursuivre la recherche, vérifier les hypothèses et chercher une autre approche.
 
-Je suis convaincu que l’enseignement de la géographie doit apporter non seulement des connaissances sur le monde, mais aussi des outils pour le comprendre. Il ne suffit pas de mémoriser l’emplacement des objets : il faut comprendre pourquoi ils se trouvent là, comment ils sont liés et quel est leur rôle pour la société et l’environnement.
+<figure class="journey-visual journey-flow-figure" data-reveal>
+  <figcaption><strong>Des faits à la compréhension</strong><span>Chaque étape ajoute de la structure et aide à agir de façon autonome.</span></figcaption>
+  <ol class="journey-flow">
+    <li><span class="flow-index">01</span><strong>Information</strong><span>Observations et faits</span></li>
+    <li><span class="flow-index">02</span><strong>Savoir</strong><span>Système et expérience</span></li>
+    <li><span class="flow-index">03</span><strong>Compréhension</strong><span>Liens et principes</span></li>
+  </ol>
+</figure>
 
-## Pédagogie et enseignement
+## La géographie comme fondement de mon parcours professionnel
 
-Aujourd’hui, mon activité professionnelle principale est l’enseignement de la géographie à l’école.
+La géographie est devenue ma principale spécialisation professionnelle. Je suis attiré par son caractère appliqué : elle étudie le monde dans lequel nous vivons et permet d’examiner des processus réels, et non seulement des modèles abstraits. La nature, la population, l’économie, les territoires, les ressources et l’interaction entre l’homme et son environnement font tous partie d’un système unique que l’on peut étudier, analyser et expliquer. La géographie m’intéresse aussi parce qu’elle se situe à la croisée des sciences naturelles et sociales. Elle exige de comprendre les lois de la nature, de tenir compte de l’activité humaine, de travailler avec des données spatiales et d’établir des relations entre les phénomènes. Cette approche correspond à ma vision de la connaissance : des faits isolés acquièrent une véritable valeur lorsqu’ils deviennent partie d’une image plus vaste. De 2022 à 2027, j’étudie à l’Université fédérale du Sud dans le cadre d’un programme de formation pédagogique à double profil — « Géographie » et « Économie ». Cette combinaison me permet de regarder le monde sous plusieurs angles. La préparation géographique donne les outils nécessaires pour étudier les territoires et les processus spatiaux, tandis que la formation économique aide à considérer l’activité économique, les ressources et les lois du développement de la société. Je ne vois pas ces deux domaines comme des sphères isolées. Au contraire, il me semble important d’utiliser les connaissances des deux disciplines pour mieux comprendre les problèmes concrets. À l’avenir, je compte poursuivre une activité d’enseignement et de recherche. Parmi mes objectifs à long terme figure l’admission à un programme de doctorat dans une université américaine et le développement ultérieur dans le milieu académique. Pour moi, c’est une possibilité d’approfondir mes connaissances, de mener des recherches et de continuer à travailler sur des questions auxquelles on ne peut pas répondre simplement en reproduisant ce qui est déjà connu.
 
-Pour moi, enseigner consiste non seulement à transmettre des connaissances, mais aussi à créer les conditions dans lesquelles les élèves apprennent à penser par eux-mêmes, à poser des questions, à analyser des informations et à se construire une représentation du monde.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder photo-placeholder--wide">
+    <img class="photo-image" src="/images/about/geography.jpg" alt="Aleksey en cours ou lors d’une pratique de géographie" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>LIEU POUR LA PHOTO</span>
+  </div>
+  <figcaption><strong>Études et géographie</strong><span>Une photo de l’université, d’une pratique de terrain ou au milieu d’une carte conviendrait.</span></figcaption>
+</figure>
 
-Je cherche à rendre l’apprentissage plus riche et plus porteur de sens. Je considère l’enseignement comme un système où comptent autant l’enchaînement des activités, le retour d’information, le travail autonome et la compréhension des progrès de chacun que l’explication du cours et l’évaluation des connaissances.
+## L’éducation comme développement de la pensée
 
-En géographie, il est particulièrement important de combiner théorie et pratique. Les cartes, les schémas, les données géographiques, les exercices de raisonnement spatial et les questions de recherche transforment l’étude en une activité intellectuelle.
+Aujourd’hui, je travaille comme enseignant de géographie au MAOU « École n° 116 » à Rostov-sur-le-Don. En plus de la géographie, j’enseigne aussi la robotique et la modélisation 3D. Le travail à l’école me permet chaque jour d’être confronté à des questions qui dépassent le cadre d’une matière précise. Comment expliquer un sujet complexe ? Comment aider un élève à comprendre lui-même le problème ? Comment organiser le matériel pour qu’il ne se transforme pas en une série de faits sans lien ? Comment apprendre à une personne à appliquer ses connaissances dans une situation qu’elle n’a jamais rencontrée auparavant ? Ce sont ces questions qui définissent mon rapport à l’éducation.
 
-Je pense également qu’il faut utiliser les outils numériques lorsqu’ils contribuent réellement aux apprentissages. La technologie ne doit ni remplacer le contenu pédagogique ni devenir une fin en soi. Elle doit élargir les possibilités de l’enseignant et des élèves, faciliter le travail avec l’information et rendre certains apprentissages plus clairs et plus pratiques.
+Je pense que la tâche de l’école ne consiste pas seulement à transmettre des informations et à préparer les contrôles. Il est tout aussi important de développer la capacité de penser par soi-même, d’analyser, d’établir des liens, d’évaluer l’information et de chercher des solutions. Une approche qui me semble proche est celle qui prévoit le passage de la simple mémorisation à des actions intellectuelles plus complexes. En pédagogie, cette idée est bien illustrée par la taxonomie de Bloom, qui décrit les différents niveaux de l’activité cognitive. La mémorisation et la reproduction sont nécessaires : sans connaissances de base, il est impossible d’aller plus loin. Mais elles ne doivent pas devenir le but final de l’apprentissage. Il est important que l’élève puisse appliquer ce qu’il a appris, analyser les informations, évaluer les solutions et produire ses propres idées à partir des connaissances acquises. C’est précisément vers de tels résultats que je tends dans mon travail. Je veux que, après avoir étudié un thème, l’élève ne se contente pas de répéter l’explication du professeur, mais comprenne aussi comment utiliser les connaissances acquises, où chercher des informations complémentaires et comment agir si la réponse toute faite n’existe pas. Il est important pour moi d’aider les élèves à assimiler des sujets complexes, construire un système de savoir et développer leur autonomie dans l’apprentissage. Pour moi, un bon résultat éducatif n’est pas seulement une tâche correctement réalisée, mais aussi l’apparition chez la personne d’une capacité à résoudre de nouveaux problèmes sans s’appuyer en permanence sur des consignes toutes faites. Je considère aussi la technologie comme un outil de développement de l’éducation. Les services numériques, les tâches interactives, les modèles et les systèmes de rétroaction peuvent rendre l’apprentissage plus visuel et plus pratique. Toutefois, la technologie ne remplace pas la pensée en elle-même. Sa valeur dépend de la manière dont elle aide à atteindre les objectifs éducatifs.
 
-La pédagogie m’intéresse à la fois comme pratique et comme domaine à approfondir. Elle soulève constamment des questions qui méritent d’être analysées : comment évaluer les acquis, organiser le travail autonome, soutenir la motivation et utiliser les données pour comprendre les résultats scolaires ?
+<figure class="journey-visual bloom-figure" data-reveal>
+  <figcaption><strong>Apprendre, c’est aller plus loin</strong><span>Des connaissances de base aux idées autonomes.</span></figcaption>
+  <ol class="bloom-steps" aria-label="Niveaux de l’activité cognitive">
+    <li><span>06</span><strong>Créer</strong><i style="--step-width:100%"></i></li>
+    <li><span>05</span><strong>Évaluer</strong><i style="--step-width:88%"></i></li>
+    <li><span>04</span><strong>Analyser</strong><i style="--step-width:76%"></i></li>
+    <li><span>03</span><strong>Appliquer</strong><i style="--step-width:64%"></i></li>
+    <li><span>02</span><strong>Comprendre</strong><i style="--step-width:52%"></i></li>
+    <li><span>01</span><strong>Mémoriser</strong><i style="--step-width:40%"></i></li>
+  </ol>
+</figure>
 
-Je vois ma propre pratique comme une source d’expérience que l’on peut analyser, mettre à l’épreuve et améliorer progressivement.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder photo-placeholder--wide">
+    <img class="photo-image" src="/images/about/teaching.jpg" alt="Aleksey enseigne la géographie, la robotique ou la modélisation 3D" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>LIEU POUR LA PHOTO</span>
+  </div>
+  <figcaption><strong>Enseignement</strong><span>Ajoutez une image de cours, de robotique ou de modélisation 3D.</span></figcaption>
+</figure>
 
-## Projets numériques et développement
+## Au-delà d’une seule discipline
 
-La création de mes propres outils numériques est l’un des domaines que je développe activement.
+Bien que la géographie occupe une place centrale dans ma formation professionnelle, mes intérêts ne se limitent pas à l’enseignement d’une seule matière. Je suis attiré par l’économie, la psychologie, les technologies de l’information et d’autres domaines qui permettent d’explorer le monde de manières différentes et de résoudre des problèmes concrets. Je considère l’approche interdisciplinaire comme l’une des composantes les plus importantes de mon activité professionnelle. La possibilité de considérer un problème sous plusieurs angles permet de remarquer ce que l’on pourrait facilement manquer dans une spécialisation étroite. Par exemple, une tâche pédagogique peut être examinée à la fois du point de vue pédagogique, psychologique et technologique. Pour créer un outil éducatif efficace, il ne suffit pas de transférer simplement le matériel dans un format numérique. Il faut comprendre ce qu’il doit enseigner, quelles actions l’utilisateur doit réaliser, où peuvent apparaître des difficultés et comment rendre l’interaction avec l’outil plus pratique. Ce type de tâches exige la combinaison de connaissances et de compétences issues de différents domaines. J’aime explorer de nouvelles directions, me familiariser avec des matières inconnues et appliquer les connaissances acquises là où elles peuvent être utiles. Je ne cherche pas à limiter artificiellement mes intérêts aux frontières d’une seule profession. Mais la largeur des intérêts ne signifie pas renoncer à la profondeur. Au contraire, je pense qu’il est important de combiner un vaste savoir avec la capacité d’étudier en détail des questions spécifiques. La possibilité de voir l’ensemble et, si nécessaire, de se plonger dans les détails est l’un des principes qui me guident dans mon travail.
 
-J’aime non seulement utiliser des programmes et des services existants, mais aussi créer des solutions adaptées à des besoins précis. Cette démarche m’aide à mieux comprendre le fonctionnement des produits numériques et les choix nécessaires à leur conception.
+## Créer mes propres outils
 
-Pour moi, un projet permet de réunir des connaissances disciplinaires, une expérience pratique et de nouvelles compétences techniques. Il faut décomposer le problème, réfléchir au fonctionnement de la solution, choisir les outils appropriés et vérifier que le résultat répond au besoin initial.
+Outre l’enseignement et l’étude de différents domaines du savoir, je mets aussi au point mes propres produits numériques. Ma motivation est assez pragmatique : j’ai besoin d’outils qui correspondent à mes tâches, à mes habitudes de travail et à ma perception du confort. Les solutions existantes peuvent être utiles, mais elles ne permettent pas toujours d’organiser le travail exactement comme je le souhaite. Dans de telles situations, j’aime ne pas me limiter à rechercher un service adapté, mais essayer de créer le mien. Cette approche m’a progressivement conduit à développer des outils éducatifs et à concevoir l’idée d’un écosystème numérique personnel. Pour moi, créer un produit logiciel, c’est la possibilité d’organiser soi-même le processus, de penser à sa structure, de définir les fonctions nécessaires et d’obtenir un outil qui répond réellement à une tâche concrète. Il est important pour moi de comprendre comment fonctionne le système créé, pourquoi il est organisé ainsi et comment il peut être amélioré. J’aime contrôler entièrement le projet et me familiariser avec son fonctionnement, même si cela demande des efforts supplémentaires. Dans ce processus, m’attirent à la fois la résolution de problèmes pratiques, le défi intellectuel et la possibilité de donner vie à mes propres idées. J’utilise activement les outils modernes de l’intelligence artificielle dans le travail sur les projets numériques. Pour moi, l’IA est un assistant polyvalent qui peut participer à la recherche d’informations, à l’analyse, à la conception et au développement. Ce qui m’intéresse particulièrement, c’est la possibilité de créer des produits fonctionnels en apprenant progressivement les technologies nécessaires et en testant les idées dans la pratique. En même temps, ce qui m’intéresse n’est pas seulement le résultat du développement. Le processus compte aussi : comprendre la tâche, choisir une approche, assembler un système à partir de composants distincts, vérifier son fonctionnement et l’amener à un état où il devient réellement utile. Je considère la programmation et l’IA avant tout comme des outils d’élargissement de mes propres capacités. Ils permettent de passer d’une idée à une solution fonctionnelle et d’expérimenter sur des tâches qui, sans cela, auraient nécessité d’autres ressources.
 
-Je m’intéresse surtout aux projets qui ont une utilité concrète. Le développement ne doit pas se limiter à l’expérimentation : il doit pouvoir servir dans le travail réel, aider des personnes ou rendre une tâche plus accessible.
+## Journal de l’enseignant
 
-Une grande partie de mes projets actuels concerne l’éducation et la géographie. C’est le prolongement naturel de mon activité : je connais les difficultés rencontrées dans l’apprentissage et je peux chercher comment les résoudre grâce aux technologies.
+L’un de mes projets est un journal numérique d’enseignant, que je développe selon mes propres besoins professionnels. Le travail d’un enseignant ne consiste pas seulement à donner des cours. Il comprend la planification, la tenue de dossiers, la fixation des résultats d’apprentissage, le travail sur les notes et la fréquentation, l’organisation des devoirs et bien d’autres tâches. Lorsque les outils destinés à ce travail ne correspondent pas aux besoins réels, il faut s’adapter à leurs limites ou chercher des solutions supplémentaires. J’ai choisi de suivre une autre voie et de créer mon propre outil. Mon objectif est de réunir les fonctions nécessaires dans un système unique pour rendre la vie quotidienne plus organisée et réduire le nombre de gestes inutiles. Pour moi, ce projet est un exemple de démarche pratique face aux technologies : le point de départ est un problème réel, et le résultat est un outil créé pour le résoudre. À l’avenir, ces développements peuvent aussi être utiles à d’autres enseignants, qui ont besoin d’outils souples pour organiser le processus d’enseignement.
 
-Pour autant, je ne considère pas la programmation comme une simple compétence complémentaire d’un enseignant. Je souhaite approfondir le développement, découvrir de nouveaux outils et élargir l’éventail des problèmes que je peux résoudre de manière autonome.
+## Entraîneur de géographie
 
-### Journal de l’enseignant
+Un autre projet sur lequel je travaille est un entraîneur de géographie pour l’étude et le contrôle des connaissances géographiques. La géographie suppose non seulement la compréhension des processus, mais aussi la maîtrise d’un grand nombre de données concrètes : objets géographiques, leur emplacement, les particularités des territoires et la position relative des différents éléments de la surface terrestre. Pour assimiler ce type de matière, il faut de la pratique. En même temps, la vérification des connaissances ne doit pas nécessairement se limiter à des exercices identiques avec un ensemble immuable de questions. Je développe un entraîneur de géographie comme un outil permettant d’organiser l’entraînement aux connaissances géographiques et d’adapter les tâches aux besoins pédagogiques précis. Il m’intéresse de créer des systèmes dans lesquels le contenu de la matière se combine avec les possibilités des technologies numériques. Cette approche permet de rendre le travail avec le matériel pédagogique plus souple et de donner à l’élève une possibilité supplémentaire pour la préparation autonome. À terme, certains outils éducatifs peuvent devenir une partie d’un système plus vaste, regroupant différents formats d’apprentissage et de pratique. Pour moi, l’entraîneur de géographie n’est pas seulement un projet technique. C’est un exemple de la manière de partir d’une tâche éducative concrète et de tenter de la résoudre grâce à un outil conçu soi-même.
 
-L’un de mes projets est un journal numérique conçu pour aider les enseignants à organiser leur travail.
+## Écosystème numérique personnel
 
-L’idée est de réunir en un seul espace différents éléments du quotidien pédagogique : les cours, les notes, les présences, les plans de cours, les devoirs et les statistiques des apprentissages.
+Le journal de l’enseignant et l’entraîneur de géographie sont des projets distincts, mais ils s’inscrivent dans une idée plus large. Je veux progressivement former mon propre environnement numérique dans lequel je pourrai organiser mon travail, stocker et structurer l’information, explorer les questions qui m’intéressent et créer de nouveaux outils. Il est important pour moi que les différents éléments de ce système servent à résoudre des tâches réelles et ne soient pas créés uniquement pour le simple fait de développer quelque chose. Tout d’abord, l’écosystème est conçu pour moi. Il doit correspondre à ma manière de travailler, soutenir mes intérêts et me permettre de passer rapidement d’une tâche à l’autre. En même temps, je n’exclus pas que certaines solutions puissent être utiles à d’autres personnes. Si un outil peut résoudre non seulement ma propre tâche, mais aussi des problèmes similaires pour d’autres utilisateurs, il peut être développé davantage, y compris comme produit numérique autonome. C’est pourquoi je considère mes propres créations à la fois comme un environnement de travail personnel et comme une base potentielle pour de futurs projets. J’aime l’idée de concevoir moi-même les outils que j’utilise chaque jour, de comprendre leur fonctionnement et d’en élargir progressivement les possibilités. En fin de compte, ce qui compte pour moi n’est pas l’échelle du système en soi, mais la mesure dans laquelle il aide à accomplir les tâches et ouvre de nouvelles possibilités de travail.
 
-Le travail d’un enseignant ne se limite pas aux échanges avec les élèves en classe. Une grande partie du temps est consacrée à la préparation, à la tenue des dossiers, à l’organisation des informations et à l’analyse des résultats.
+<figure class="journey-visual ecosystem-figure" data-reveal>
+  <figcaption><strong>L’idée se transforme en environnement de travail</strong><span>De la tâche personnelle — aux outils qui peuvent servir aux autres.</span></figcaption>
+  <div class="ecosystem-map" role="img" aria-label="L’écosystème numérique personnel unit le journal de l’enseignant, l’entraîneur de géographie, les recherches et les nouveaux outils">
+    <span class="ecosystem-node ecosystem-node--teacher">Journal<br />de l’enseignant</span>
+    <span class="ecosystem-node ecosystem-node--geo">Entraîneur<br />de géographie</span>
+    <span class="ecosystem-hub">Écosystème<br />numérique<br />personnel</span>
+    <span class="ecosystem-node ecosystem-node--research">Recherches<br />et savoir</span>
+    <span class="ecosystem-node ecosystem-node--tools">Nouveaux<br />outils</span>
+  </div>
+</figure>
 
-Je cherche à rendre ces processus plus cohérents et plus pratiques, afin qu’un outil numérique aide à conserver une vision d’ensemble du travail pédagogique.
+## Liberté et autonomie
 
-La conception d’un tel outil ne dépend pas uniquement de ses fonctions : la logique générale de l’interface compte aussi. Les informations doivent être faciles à trouver, la structure doit être claire et les actions quotidiennes aussi simples et rapides que possible.
+La liberté occupe une place centrale dans ma vision de la vie. Pour moi, elle est liée à la possibilité de choisir librement les orientations de son développement, de disposer de son temps, de déterminer ses priorités et de construire sa propre activité en fonction de ses intérêts personnels et de ses objectifs. Je ne veux pas me limiter à un seul domaine de savoir, à un seul itinéraire professionnel ou à une représentation prédéterminée de ce que doit faire une personne ayant une certaine formation. Il est important pour moi de conserver la possibilité d’apprendre quelque chose de nouveau, de changer de direction de travail, d’essayer différentes approches et de créer mes propres solutions. Dans ce sens, l’autonomie n’est pas seulement pour moi un principe, mais aussi une démarche pratique. Si j’ai besoin d’un outil précis, je peux essayer de le concevoir moi-même. Si une tâche exige des connaissances qui me manquent, je peux commencer à étudier le domaine nécessaire. Si le système existant ne correspond pas à mes exigences, je peux chercher des alternatives. Cette manière de faire demande du temps et des efforts, mais elle me permet de ne pas dépendre uniquement des solutions déjà existantes. En même temps, l’autonomie ne signifie pas que je considère toutes mes propres solutions comme idéales. Je comprends que tout système peut être amélioré, et que les premières représentations d’un problème peuvent être incomplètes. C’est pourquoi l’analyse, la vérification des résultats et la préparation à chercher une autre approche si l’ancienne ne fonctionne pas sont pour moi essentielles. Je m’efforce d’organiser ma vie de manière à pouvoir me consacrer à ce que je considère intéressant et important, et à décider moi-même où diriger mes forces.
 
-À terme, je vois ce projet comme le point de départ d’autres outils éducatifs qui pourraient être utiles à d’autres enseignants, et pas seulement à moi.
+## Explorer au-delà de son environnement habituel
 
-### Entraîneur de géographie
+En 2026, j’ai participé à un programme d’échange académique à l’Université de Suwon, en Corée du Sud. Cette expérience m’a permis de me retrouver pendant un certain temps dans un autre environnement éducatif et culturel, de vivre dans un cadre inconnu et d’interagir avec des personnes qui parlent une autre langue. Pour moi, ce n’était pas seulement une suite de mes études, mais aussi une possibilité d’acquérir une nouvelle expérience, d’élargir ma vision du monde et d’observer comment sont organisés les processus éducatifs dans un autre pays. Ce qui a été particulièrement précieux, c’est le mélange d’expérience personnelle et d’observations professionnelles. En se trouvant dans un environnement différent, on regarde les choses habituelles sous un autre angle, on remarque des caractéristiques qui restaient invisibles auparavant et l’on compare différentes approches de l’organisation de la vie et de l’apprentissage. La même année, j’ai participé au forum international **2026 YSI-KOICA SDGs and Sustainable Futures Forum**, consacré aux questions du développement durable et du futur. La participation à de telles initiatives internationales éducatives élargit le cercle des questions examinées et permet de découvrir des thèmes qui se situent à l’intersection de la science, de l’éducation et du développement social. J’appréhende cette expérience comme une partie de l’apprentissage continu — la possibilité de sortir de son environnement habituel et d’acquérir des points de vue supplémentaires sur les processus qui m’intéressent.
 
-Un autre projet est un entraînement en ligne consacré à la nomenclature et aux localisations géographiques.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder photo-placeholder--wide">
+    <img class="photo-image" src="/images/about/korea.jpg" alt="Aleksey à l’Université de Suwon ou au forum international en Corée du Sud" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>LIEU POUR LA PHOTO</span>
+  </div>
+  <figcaption><strong>Échange académique en Corée du Sud</strong><span>Les photos de l’Université de Suwon ou du forum international conviendront le mieux.</span></figcaption>
+</figure>
 
-Connaître les objets géographiques et leur emplacement demeure important dans l’enseignement de la géographie. Pourtant, leur apprentissage peut être bien plus intéressant qu’une simple mémorisation de listes.
+## Suite du parcours
 
-L’Entraîneur de géographie vise à offrir un espace pratique pour réviser et vérifier ses connaissances. L’utilisateur peut se concentrer sur certains groupes d’objets, revenir régulièrement sur les notions étudiées et les consolider à l’aide d’exercices.
-
-Je souhaite développer des outils qui favorisent l’autonomie des élèves. Ils doivent pouvoir s’entraîner, voir les résultats de leurs efforts et comprendre quels sujets demandent davantage d’attention.
-
-Ce projet réunit mon intérêt pour la géographie et pour la création de services éducatifs. Il montre comment la connaissance d’une discipline peut servir de base à un produit numérique original.
-
-### Fiches de géographie
-
-Un autre volet de mon travail consiste à organiser des supports pédagogiques de géographie scolaire.
-
-Je rassemble et structure des fiches sur les thèmes étudiés afin de présenter l’information dans un ordre logique et facile à réviser.
-
-Ce travail aide à organiser les connaissances, à faire ressortir les notions essentielles, à relier les thèmes et à construire une vision cohérente de la matière.
-
-Ce projet a pour moi une valeur pratique et intellectuelle. Préparer un support ne consiste pas à recopier des informations sur une page : il faut déterminer ce qui est essentiel à la compréhension, établir les liens entre les faits et choisir l’ordre de présentation.
-
-À l’avenir, cette collection pourrait servir de base à un environnement éducatif plus vaste associant contenus théoriques, exercices pratiques et outils numériques.
-
-## Une démarche de recherche
-
-J’aime comprendre le fonctionnement des phénomènes et des systèmes. Lorsqu’un sujet m’intéresse vraiment, je préfère ne pas m’en tenir à une découverte superficielle.
-
-La recherche commence par une question. Il faut ensuite recueillir des informations, comprendre les explications existantes, comparer les faits, repérer les contradictions et construire un point de vue personnel et argumenté.
-
-Cette démarche ne s’applique pas seulement à la géographie. Elle est utile pour étudier les technologies, analyser les processus éducatifs, concevoir des produits numériques et comprendre les phénomènes sociaux.
-
-L’autonomie intellectuelle est importante pour moi, mais elle ne signifie pas que l’on a toujours raison. Une idée peut être incomplète et une première explication erronée. Il faut donc réexaminer ses conclusions lorsque de nouvelles données ou des arguments plus convaincants apparaissent.
-
-Je ne cherche pas à donner l’impression de connaître déjà les réponses à toutes les questions qui m’intéressent. Il est plus important de rester capable d’apprendre, de reconnaître les limites de ses connaissances et d’élargir progressivement son regard.
-
-C’est pourquoi je considère la recherche non seulement comme un métier à part entière, mais aussi comme une manière de découvrir le monde.
-
-## Technologies et intelligence artificielle
-
-Les technologies actuelles permettent de créer des outils qui, jusqu’à récemment, auraient exigé beaucoup plus de ressources et de connaissances spécialisées.
-
-Je m’intéresse à leur utilisation concrète : développer des applications, automatiser certains processus, travailler avec des données et expérimenter l’intelligence artificielle.
-
-Le croisement des technologies et de l’éducation me paraît particulièrement intéressant. Il permet de chercher comment réduire les tâches répétitives, organiser les ressources pédagogiques, analyser les résultats et proposer de nouvelles façons d’interagir avec les contenus.
-
-Je considère avant tout les technologies comme des outils. La présence d’intelligence artificielle ou d’un logiciel complexe ne rend pas un produit utile à elle seule. Il faut définir le problème, comprendre les limites de la technologie et vérifier que la solution choisie améliore réellement le résultat.
-
-Je souhaite continuer à développer mes compétences techniques et à comprendre le fonctionnement des outils que j’utilise. Cela me permet non seulement d’appliquer des solutions existantes, mais aussi de concevoir les miennes en connaissance de cause.
-
-À l’avenir, j’aimerais approfondir ce domaine en explorant la programmation, l’automatisation et les systèmes intelligents.
-
-## Formation et développement professionnel
-
-Ma formation est liée à la pédagogie et à la géographie. Elle détermine une grande partie de mes intérêts professionnels actuels, mais je ne considère pas que l’apprentissage s’arrête à l’obtention d’un diplôme.
-
-Pour moi, se former signifie élargir progressivement ses possibilités. Cela comprend les études universitaires, l’expérience professionnelle, l’apprentissage autonome, la réalisation de projets et l’analyse de ses propres résultats.
-
-La possibilité d’appliquer ses connaissances à des problèmes réels est particulièrement précieuse. La compréhension théorique s’approfondit lorsqu’il faut concevoir soi-même une solution, vérifier son fonctionnement et tenir compte de limites difficiles à prévoir à l’avance.
-
-C’est pourquoi j’essaie d’associer la découverte de nouveaux domaines à une activité pratique. Mes projets me permettent de tester des idées, d’apprendre à utiliser des outils et de construire une expérience qui ne se réduit ni à un cours ni à une qualification officielle.
-
-Je conçois le développement professionnel comme un parcours de longue durée, dont les étapes peuvent être très différentes. Ma spécialisation actuelle donne une direction, sans déterminer nécessairement toutes les possibilités futures.
-
-Il est important pour moi de garder une place pour de nouveaux intérêts et de continuer à évoluer, même lorsque j’ai déjà un rôle professionnel défini.
-
-## Centres d’intérêt et observations
-
-En dehors de l’enseignement et du développement, j’aime observer le fonctionnement du monde, les relations entre les personnes et les changements de la société, de la culture et des technologies.
-
-J’aime explorer les questions qui n’ont pas toujours de réponse évidente. Il peut s’agir de sujets scientifiques, d’aspects de la vie quotidienne ou d’idées apparues au fil d’une lecture, d’un voyage ou de la découverte d’un nouveau domaine.
-
-J’apprécie une démarche où l’observation devient le point de départ d’une réflexion. Une impression ne constitue pas encore une explication, mais elle peut mener à une question intéressante qu’il vaut la peine d’examiner.
-
-Je ne cherche pas à ramener tous mes intérêts à une seule spécialité. On peut exercer un métier dans un domaine et trouver en même temps un intérêt intellectuel dans des domaines très différents.
-
-Je pense que la diversité des centres d’intérêt aide à établir des liens inattendus entre les connaissances. Une idée issue d’un domaine peut suggérer une solution dans un autre, et la découverte d’un nouveau sujet peut transformer ce qui semblait évident.
-
-Je veux non seulement accumuler des informations, mais aussi les réfléchir, distinguer les faits des suppositions et construire mon propre point de vue.
-
-## Mes principes de travail
-
-Dans mon activité, j’essaie de suivre quelques principes.
-
-**Utilité pratique.** Je veux comprendre quel problème un projet résout et à qui il peut être utile. Même une idée intéressante doit être mise à l’épreuve dans la pratique.
-
-**Vision systémique.** Je préfère replacer les tâches particulières dans un système plus large. Cela aide à repérer les liens, à identifier les contraintes et à prendre des décisions mieux fondées.
-
-**Autonomie.** J’aime approfondir des questions, apprendre à utiliser de nouveaux outils et mener mes idées jusqu’à un résultat fonctionnel.
-
-**Ouverture au changement d’avis.** Mes conclusions ne doivent pas empêcher de continuer à apprendre. De nouvelles informations peuvent obliger à revoir une position initiale.
-
-**Progression par étapes.** Les projets complexes apparaissent rarement sous une forme achevée. Ils demandent généralement plusieurs étapes, la vérification d’hypothèses et des améliorations continues.
-
-**Lien entre savoir et pratique.** La théorie prend toute sa valeur lorsqu’elle aide à comprendre les processus réels et à créer des solutions que l’on peut tester.
-
-Ces principes ne signifient pas que tous les projets progressent de façon linéaire ni que chaque problème est résolu du premier coup. Au contraire, mes projets me rappellent constamment l’importance d’ajuster les plans, de prêter attention aux détails et d’apprendre de ses erreurs.
-
-## Perspectives et pistes de développement
-
-Aujourd’hui, mon activité porte surtout sur la géographie, la pédagogie et la création d’outils éducatifs. Dans ces domaines, je peux déjà m’appuyer sur mon expérience et ma connaissance de problèmes concrets.
-
-J’aimerais élargir progressivement cette base.
-
-Parmi les pistes possibles : approfondir la programmation, créer de nouveaux produits numériques, appliquer l’intelligence artificielle, travailler avec des données et poursuivre l’étude des processus éducatifs.
-
-Les projets interdisciplinaires, qui associent les connaissances de plusieurs domaines, m’intéressent également. C’est souvent au croisement des disciplines que surgissent des problèmes auxquels une approche standard unique ne suffit pas.
-
-Je ne considère pas ces pistes comme une liste définitive d’objectifs. Un parcours professionnel peut évoluer avec l’expérience, les intérêts et les possibilités qui se présentent.
-
-Pour moi, il s’agit moins de choisir à l’avance une destination unique que de construire peu à peu les bases d’un développement futur : acquérir des connaissances, mettre les idées à l’épreuve, faire grandir mes projets et rechercher des problèmes qui méritent véritablement notre attention.
-
-## Ce site
-
-J’ai créé ce site pour réunir la présentation de mon activité dans un même espace.
-
-On y trouve mes principaux projets, des informations sur ma formation et mes intérêts professionnels, ainsi que des ressources qui permettent de mieux comprendre mon travail.
-
-Je souhaitais rassembler les différentes facettes de mon activité afin que les visiteurs puissent non seulement faire ma connaissance, mais aussi accéder directement à des réalisations concrètes : outils éducatifs, supports de cours et autres projets.
-
-Le site évoluera avec mes intérêts et mes projets. De nouveaux domaines pourront apparaître, les projets existants changer et le contenu s’enrichir.
-
-Je ne souhaite pas présenter ici une biographie professionnelle définitive. Ce site reflète plutôt l’étape actuelle de mon parcours et rassemble peu à peu les résultats de mon travail.
-
-Si la géographie, l’éducation, les technologies ou la création de projets vous intéressent, vous y trouverez peut-être des ressources utiles.
-
-**Alekseï Vladimirovitch Nemichev**
-
-*Géographe · Professeur de géographie · Auteur de projets éducatifs*
+Aujourd’hui, je combine études universitaires, enseignement et développement de mes propres projets numériques. Ces directions exigent des connaissances et des compétences différentes, mais ensemble elles me permettent de me développer dans plusieurs domaines qui m’intéressent. Au cours des prochaines années, je compte poursuivre l’activité pédagogique et le travail de recherche, développer mes projets et élargir mes compétences professionnelles. À plus long terme, j’envisage une carrière académique et l’étude dans le cadre d’un programme de doctorat aux États-Unis. En même temps, je ne cherche pas à définir à l’avance chaque étape du futur. Ce qui compte davantage pour moi, c’est de garder la possibilité de choisir de nouvelles directions en fonction de l’expérience acquise, des intérêts qui apparaissent et des opportunités qui se présentent. Je continue à explorer le monde, à apprendre de nouveaux outils et à chercher des solutions aux tâches que je trouve intéressantes. Peut-être que c’est précisément ce qui unit au mieux tout ce que je fais : le désir de comprendre le fonctionnement des choses, de voir les liens entre les éléments isolés et de créer quelque chose qui permettra d’utiliser cette compréhension dans la pratique. Pour moi, il est important non seulement d’observer comment le monde est organisé, mais aussi de trouver des moyens d’interagir avec lui de manière sensée — à travers les connaissances, la recherche, l’enseignement et la création de mes propres outils. Je ne pense pas que ce processus puisse être achevé une fois pour toutes. De nouvelles questions donnent naissance à de nouvelles recherches, de nouvelles tâches exigent de nouvelles solutions, et les domaines de connaissances déjà acquis ouvrent des opportunités pour l’étude des suivants. C’est pourquoi je continue à apprendre, à explorer et à créer. C’est précisément à partir de ces processus que se construit mon parcours professionnel.

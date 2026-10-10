@@ -1,195 +1,141 @@
-# Über mich
+# Aleksei Nemitschew
+
+<p class="about-tagline">Erkunden. Verstehen. Gestalten.</p>
 
-Ich heiße Aleksei Wladimirowitsch Nemichev. Ich bin Geografielehrer, Autor von Bildungsprojekten und interessiere mich dafür, die Welt um mich herum zu erforschen, komplexe Systeme zu verstehen und eigene Werkzeuge für praktische Aufgaben zu entwickeln.
+Mich interessiert die Welt in all ihrer Vielfalt: von natürlichen Prozessen und gesellschaftlichen Mustern bis hin zu Technologie, Bildung und der Art, wie Menschen Wissen erwerben und nutzen. Ich versuche mich nicht auf ein einziges Gebiet zu begrenzen, sondern Verbindungen zwischen verschiedenen Disziplinen zu erkennen, Muster zu finden und zu verstehen, wie die Systeme um uns herum funktionieren. Ich studiere Geografie, Wirtschaft und andere Wissensgebiete, unterrichte, experimentiere mit Technologien und entwickle eigene digitale Werkzeuge. Diese Tätigkeiten mögen sehr unterschiedlich aussehen, aber für mich sind sie durch ein gemeinsames Prinzip verbunden: Erst das Problem verstehen, dann eine Lösung finden, die wirklich funktioniert. Für mich ist es wichtig, nicht nur zu wissen, wie etwas funktioniert, sondern auch, warum es genau so funktioniert. Und wenn bestehende Lösungen meinen Bedürfnissen nicht entsprechen, ziehe ich es vor, sie selbst zu entwickeln.
 
-Meine wichtigsten Interessen liegen an der Schnittstelle von Geografie, Bildung, Technologie und wissenschaftlicher Erkenntnis. Mich interessiert nicht nur, Bestehendes kennenzulernen, sondern auch, vertraute Abläufe verständlicher, bequemer und wirkungsvoller zu gestalten.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder">
+    <img class="photo-image" src="/images/about/portrait.jpg" alt="Portrait von Aleksei Nemitschew" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>FOTO-PLATZHALTER</span>
+  </div>
+  <figcaption><strong>Porträt</strong><span>Fügen Sie hier Ihr aktuelles Foto ein — ein ruhiges Porträt in natürlicher Umgebung.</span></figcaption>
+</figure>
 
-Ich betrachte mein Berufsleben als einen fortlaufenden Entwicklungsprozess. Ich möchte mich nicht dauerhaft auf einen Beruf oder ein einzelnes Arbeitsgebiet beschränken. Vielmehr möchte ich meine Kompetenzen erweitern, Verbindungen zwischen verschiedenen Wissensgebieten finden und das Gelernte in eigenen Projekten anwenden.
+## Erkenntnis als Weg, mit der Welt zu interagieren
 
-Diese Website bündelt die wichtigsten Bereiche meiner Arbeit, ihre Ergebnisse und Ideen, die ich nach und nach in konkrete Projekte umsetze.
+Ich bin davon überzeugt, dass die Welt um uns herum nicht vollständig verstanden werden kann, wenn man sie nur durch eine einzige Disziplin betrachtet. Viele Prozesse liegen an den Schnittstellen verschiedener Wissensbereiche, und gerade dort werden oft die interessantesten Muster sichtbar.
 
-## Geografie als Möglichkeit, die Welt zu verstehen
+Geografie hilft dabei, die räumliche Organisation der Welt und das Zusammenwirken natürlicher und gesellschaftlicher Prozesse zu erforschen. Wirtschaft hilft zu verstehen, wie wirtschaftliche Aktivitäten und Ressourcen verteilt werden. Psychologie eröffnet die Möglichkeit, menschliches Denken und Verhalten zu untersuchen. Informationstechnologien liefern Werkzeuge für Datenanalyse, Prozessautomatisierung und neue Formen der Arbeit mit Informationen. Mich interessiert nicht nur das Vertiefen einzelner Themen, sondern auch das Suchen nach Verbindungen zwischen ihnen. Wie beeinflussen natürliche Bedingungen die Wirtschaft? Wie bestimmen Merkmale des menschlichen Denkens den Lernprozess? Wie können Technologien die Art verändern, wie wir Wissen erwerben? Warum erweisen sich manche Systeme als wirksam, während andere ihre Aufgaben nicht bewältigen? Solche Fragen erfordern einen ganzheitlichen Ansatz. Antworten findet man selten innerhalb einer einzigen Disziplin, deshalb ist es für mich wichtig, meinen Horizont ständig zu erweitern und neue Forschungsmethoden zu erlernen.
 
-Geografie ist für mich weit mehr als die Beschäftigung mit Ländern, Hauptstädten, Flüssen, Gebirgen und Koordinaten. Sie ist eine Art, die Welt als komplexes System zu betrachten, in dem natürliche Prozesse, Gesellschaft, Wirtschaft, Geschichte und menschliches Handeln ständig miteinander wechselwirken.
+Ich strebe nach breiter Bildung nicht aus dem Wunsch heraus, möglichst viele Fakten zu kennen. Viel wichtiger ist es, das Gesamtbild zu sehen, Zusammenhänge zu verstehen und das Gelernte für neue Aufgaben nutzen zu können. Für mich endet Lernen nicht mit dem Erlernen eines bestimmten Faches oder dem Erwerb eines Diploms. Es ist ein fortlaufender Prozess, in dem jedes neue Wissensgebiet das Verständnis dessen verändern kann, was einst als klar erschien.
 
-Mich interessiert, wie unser Planet funktioniert, warum sich Orte voneinander unterscheiden, wie natürliche Bedingungen entstehen und welchen Einfluss die geografische Lage auf die Entwicklung von Staaten, Städten und Regionen hat.
+<figure class="journey-visual" data-reveal>
+  <figcaption><strong>Eine Realität — mehrere Perspektiven</strong><span>Verbindungen zwischen den Disziplinen helfen, das Ganze zu erkennen.</span></figcaption>
+  <div class="discipline-map" role="img" aria-label="Geografie, Wirtschaft, Psychologie und Technologien sind miteinander verbunden und helfen, die Welt zu erforschen">
+    <span class="map-node map-node--center">Die Welt<br />als System</span>
+    <span class="map-node map-node--geo">Geografie</span>
+    <span class="map-node map-node--economy">Wirtschaft</span>
+    <span class="map-node map-node--psychology">Psychologie</span>
+    <span class="map-node map-node--tech">Technologien</span>
+    <svg viewBox="0 0 600 300" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M300 150 135 65M300 150 465 65M300 150 135 235M300 150 465 235" />
+    </svg>
+  </div>
+</figure>
 
-Geografisches Denken hilft, Zusammenhänge zu erkennen, wo zunächst nur einzelne Fakten zu sehen sind. Es lehrt uns, Phänomene räumlich zu betrachten, Orte zu vergleichen, Muster zu analysieren und zahlreiche Einflussfaktoren zu berücksichtigen.
+## Information, Wissen und Verständnis
 
-Gerade diese Vielschichtigkeit macht Geografie für mich besonders interessant. Sie verbindet natur- und gesellschaftswissenschaftliche Perspektiven, nutzt Karten und Daten zur Analyse und stellt Fragen, die sich nicht aus dem Blickwinkel nur einer Disziplin beantworten lassen.
+Ich schenke der Funktionsweise von Information viel Aufmerksamkeit. In der heutigen Welt ist der Zugang zu Informationen zu nahezu jedem Thema einfacher geworden. Doch die Verfügbarkeit von Informationen bedeutet noch nicht, dass eine Person das Thema versteht. Man kann viele Fakten lernen, Definitionen kennen und fertige Erklärungen reproduzieren und trotzdem nicht in der Lage sein, eine neue Situation selbstständig zu durchdenken. Für mich sind Information, Wissen und Verständnis unterschiedliche Ebenen der Arbeit mit Inhalt. Information liefert das Ausgangsmaterial. Wissen ermöglicht es, es zu systematisieren, Phänomene zu beschreiben und Erfahrungen zu nutzen. Verständnis entsteht dann, wenn hinter einzelnen Fakten ein System sichtbar wird: Verbindungen zwischen Elementen, Ursache-Wirkungs-Beziehungen, grundlegende Prinzipien und Gesetzmäßigkeiten des Geschehens. Genau deshalb interessiert mich nicht nur das Sammeln von Informationen, sondern auch das Herausfiltern des Wesentlichen, das Aufbauen einer Struktur und das Finden von Erklärungen, die weiterhelfen. Ich versuche, ein Thema so zu verstehen, dass ich grundlegende Ideen von Nebensächlichkeiten trennen, die Logik des untersuchten Prozesses erkennen und schwierige Dinge in verständlicher Sprache erklären kann. Dieser Ansatz ist in der Lehre, Forschung und bei der Entwicklung digitaler Produkte nützlich. In jedem Fall muss ich dieselbe Aufgabe lösen: eine große Informationsmenge verstehen, entscheiden, was wirklich wichtig ist, und daraus ein verständliches, funktionierendes System machen. Gleichzeitig glaube ich nicht, dass Verständnis automatisch eine abschließende Antwort auf jede Frage bedeutet. Wenn eine Lösung noch nicht gefunden wurde, ist das ein Grund, die Untersuchung fortzusetzen, Vermutungen zu prüfen und einen anderen Weg zu suchen.
 
-Ich bin überzeugt, dass Geografieunterricht nicht nur Wissen über die Welt vermitteln, sondern auch Werkzeuge zu ihrem Verständnis bieten sollte. Es ist wichtig, nicht bloß zu lernen, wo etwas liegt, sondern auch zu verstehen, warum es dort liegt, wie es mit anderem zusammenhängt und welche Bedeutung es für Gesellschaft und Umwelt hat.
+<figure class="journey-visual journey-flow-figure" data-reveal>
+  <figcaption><strong>Von Informationen zum Verständnis</strong><span>Jeder Schritt schafft mehr Struktur und hilft, selbstständig zu handeln.</span></figcaption>
+  <ol class="journey-flow">
+    <li><span class="flow-index">01</span><strong>Information</strong><span>Beobachtungen und Fakten</span></li>
+    <li><span class="flow-index">02</span><strong>Wissen</strong><span>System und Erfahrung</span></li>
+    <li><span class="flow-index">03</span><strong>Verständnis</strong><span>Beziehungen und Prinzipien</span></li>
+  </ol>
+</figure>
 
-## Unterricht und Bildung
+## Geografie als Grundlage meines beruflichen Weges
 
-Meine wichtigste berufliche Tätigkeit ist derzeit der Geografieunterricht an einer Schule.
+Geografie ist zu meinem wichtigsten beruflichen Bereich geworden. Sie fasziniert mich durch ihren praxisnahen Charakter: Sie untersucht die Welt, in der wir leben, und erlaubt es uns, reale Prozesse und nicht nur abstrakte Modelle zu betrachten. Natur, Bevölkerung, Wirtschaft, Territorien, Ressourcen und die Wechselwirkung zwischen Mensch und Umwelt sind Teile eines einzigen Systems, das untersucht, analysiert und erklärt werden kann. Geografie interessiert mich zudem dadurch, dass sie an der Schnittstelle von Natur- und Gesellschaftswissenschaften liegt. Sie erfordert ein Verständnis natürlicher Gesetzmäßigkeiten, die Berücksichtigung menschlicher Tätigkeit, die Arbeit mit räumlichen Daten und das Herstellen von Verbindungen zwischen Phänomenen. Dieser Ansatz entspricht meiner Vorstellung vom Verständnis der Welt: Einzelne Fakten gewinnen echten Wert, wenn sie Teil eines größeren Bildes werden. Von 2022 bis 2027 studiere ich an der Südrussischen Föderalen Universität im Lehramtsstudium mit zwei Ausbildungsprofilen: „Geografie“ und „Wirtschaft“. Diese Kombination erlaubt es mir, die Welt aus verschiedenen Blickwinkeln zu betrachten. Die geographische Ausbildung gibt mir Werkzeuge für die Erforschung von Territorien und räumlichen Prozessen, während die wirtschaftliche Perspektive hilft, wirtschaftliche Tätigkeiten, Ressourcen und die Entwicklungsgesetzmäßigkeiten der Gesellschaft zu betrachten. Ich sehe diese beiden Richtungen nicht als isolierte Bereiche an. Im Gegenteil, ich halte es für wichtig, Wissen aus beiden Disziplinen zu nutzen, um reale Probleme umfassender zu verstehen. In Zukunft plane ich, Unterrichtstätigkeit und Forschung fortzusetzen. Eines meiner langfristigen Ziele ist die Aufnahme eines PhD-Studiums an einer Universität in den USA und die weitere Entwicklung im akademischen Bereich. Für mich ist das eine Möglichkeit, mein Wissen zu vertiefen, Forschung zu betreiben und an Fragen zu arbeiten, die man nicht durch bloße Reproduktion bereits Bekannten beantworten kann.
 
-Unterrichten bedeutet für mich nicht nur, Wissen weiterzugeben. Es geht auch darum, Bedingungen zu schaffen, unter denen Schülerinnen und Schüler selbstständig denken, Fragen stellen, Informationen analysieren und ein eigenes Verständnis ihrer Umwelt entwickeln können.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder photo-placeholder--wide">
+    <img class="photo-image" src="/images/about/geography.jpg" alt="Aleksei Nemitschew an der Universität, bei der Feldforschung oder vor einer Karte" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>FOTO-PLATZHALTER</span>
+  </div>
+  <figcaption><strong>Studium und Geografie</strong><span>Ein Foto von der Universität, aus der Feldpraxis oder vor einer Karte passt gut.</span></figcaption>
+</figure>
 
-Mich interessiert, wie Lernen gehaltvoller und sinnvoller werden kann. Ich verstehe Bildung als ein System, in dem neben Erklärungen und Wissensüberprüfungen auch die Abfolge der Lernaktivitäten, Rückmeldungen, selbstständige Arbeit und das Verständnis individueller Lernfortschritte wichtig sind.
+## Bildung als Entwicklung des Denkens
 
-Im Geografieunterricht ist es besonders wichtig, Theorie und Praxis zu verbinden. Karten, Diagramme, geografische Daten, Aufgaben zum räumlichen Denken und Forschungsfragen können das Lernen zu einer aktiven geistigen Tätigkeit machen.
+Derzeit arbeite ich als Geographielehrer an der MAOU „Schule Nr. 116“ in Rostow am Don. Neben Geografie unterrichte ich auch Robotik und 3D-Modellierung. Die Arbeit an der Schule lässt mich täglich mit Fragen konfrontieren, die über ein einzelnes Fach hinausgehen. Wie erklärt man ein schwieriges Thema? Wie hilft man einem Schüler, ein Problem selbstständig zu durchdenken? Wie organisiert man Lernmaterial so, dass es nicht zu einer Ansammlung unverbundener Fakten wird? Wie bringt man Menschen bei, ihr Wissen in Situationen anzuwenden, mit denen sie noch nicht vertraut sind? Genau diese Fragen bestimmen meine Haltung zur Bildung.
 
-Digitale Werkzeuge sollten meiner Ansicht nach dort eingesetzt werden, wo sie das Lernen tatsächlich unterstützen. Technologie darf weder Bildungsinhalte ersetzen noch zum Selbstzweck werden. Sie soll die Möglichkeiten von Lehrkräften und Lernenden erweitern, den Umgang mit Informationen erleichtern und Lernprozesse anschaulicher und bequemer machen.
+Ich glaube, dass die Aufgabe der Schule nicht nur darin besteht, Informationen zu vermitteln und Lernende auf Klassenarbeiten vorzubereiten. Ebenfalls wichtig ist die Fähigkeit, selbstständig zu denken, zu analysieren, Zusammenhänge zu erkennen, Informationen zu bewerten und Lösungen zu suchen. Mir liegt ein Ansatz nahe, der von einfachem Auswendiglernen zu komplexeren geistigen Handlungen führt. In der Pädagogik wird diese Idee durch die Bloomsche Taxonomie gut dargestellt, die verschiedene Ebenen kognitiver Tätigkeit beschreibt. Auswendiglernen und Wiedergeben sind notwendig: Ohne grundlegende Kenntnisse ist kein Weiterkommen möglich. Sie dürfen aber nicht das Ziel des Lernens werden. Wichtig ist, dass ein Lernender das Gelernte anwenden, Informationen analysieren, Lösungen bewerten und auf der Grundlage des Erlernten eigene Ideen entwickeln kann. Genau darauf zielt meine Arbeit ab. Ich möchte, dass Schüler nach dem Lernen eines Themas nicht nur eine Erklärung des Lehrers wiedergeben, sondern auch verstehen, wie sie das Gelernte nutzen, wo sie zusätzliche Informationen finden und wie sie handeln, wenn es keine fertige Antwort gibt. Es ist mir wichtig, Lernenden komplexe Themen verständlich zu machen, ein System von Wissen aufzubauen und Selbstständigkeit im Lernen zu fördern. Ein gutes Bildungsergebnis ist für mich nicht nur eine richtig gelöste Aufgabe, sondern auch die Entstehung der Fähigkeit, neue Probleme ohne ständige Rückversicherung auf fertige Anweisungen zu lösen. Ich sehe Technologien ebenfalls als Mittel für die Entwicklung der Bildung an. Digitale Dienste, interaktive Aufgaben, Modelle und Rückmeldesysteme können Lernen anschaulicher und bequemer machen. Doch Technologien ersetzen allein das Denken nicht. Ihr Wert bestimmt sich daran, wie gut sie Bildungsziele unterstützen.
 
-Pädagogik interessiert mich sowohl als praktische Tätigkeit als auch als Forschungs- und Lernfeld. Sie wirft immer wieder Fragen auf, die Analyse verdienen: Wie lassen sich Lernergebnisse bewerten, selbstständige Arbeit organisieren, Motivation fördern und Daten zum Verständnis des Lernerfolgs nutzen?
+<figure class="journey-visual bloom-figure" data-reveal>
+  <figcaption><strong>Lernen heißt voranzuschreiten</strong><span>Von Grundwissen zu selbstständigen Ideen.</span></figcaption>
+  <ol class="bloom-steps" aria-label="Niveaus kognitiver Tätigkeit">
+    <li><span>06</span><strong>Schaffen</strong><i style="--step-width:100%"></i></li>
+    <li><span>05</span><strong>Bewerten</strong><i style="--step-width:88%"></i></li>
+    <li><span>04</span><strong>Analysieren</strong><i style="--step-width:76%"></i></li>
+    <li><span>03</span><strong>Anwenden</strong><i style="--step-width:64%"></i></li>
+    <li><span>02</span><strong>Verstehen</strong><i style="--step-width:52%"></i></li>
+    <li><span>01</span><strong>Merken</strong><i style="--step-width:40%"></i></li>
+  </ol>
+</figure>
 
-Meine eigene Unterrichtspraxis sehe ich als Erfahrung, die sich analysieren, überprüfen und Schritt für Schritt verbessern lässt.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder photo-placeholder--wide">
+    <img class="photo-image" src="/images/about/teaching.jpg" alt="Geografieunterricht, Robotik oder 3D-Modellierung im Unterricht" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>FOTO-PLATZHALTER</span>
+  </div>
+  <figcaption><strong>Unterricht</strong><span>Fügen Sie ein Bild aus dem Unterricht, dem Robotikkurs oder der 3D-Modellierung hinzu.</span></figcaption>
+</figure>
 
-## Digitale Projekte und Entwicklung
+## Jenseits einer einzelnen Disziplin
 
-Ein Bereich, den ich aktiv weiterentwickle, ist die Gestaltung eigener digitaler Werkzeuge.
+Obwohl Geografie im Mittelpunkt meiner fachlichen Ausbildung steht, sind meine Interessen nicht auf das Unterrichten eines einzigen Faches begrenzt. Mich ziehen Wirtschaft, Psychologie, Informationstechnologien und andere Bereiche an, die es mir ermöglichen, die Welt auf unterschiedliche Weise zu erforschen und praktische Probleme zu lösen. Ich betrachte den interdisziplinären Ansatz als einen der wichtigsten Bestandteile meiner beruflichen Tätigkeit. Die Fähigkeit, ein Problem aus verschiedenen Blickwinkeln zu betrachten, hilft, Dinge zu erkennen, die bei einer engen Spezialisierung leicht übersehen werden. So kann beispielsweise eine Bildungsaufgabe zugleich aus pädagogischer, psychologischer und technologischer Perspektive betrachtet werden. Um ein effektives Lernwerkzeug zu schaffen, reicht es nicht aus, Material einfach in ein digitales Format zu übertragen. Man muss verstehen, was es vermitteln soll, welche Handlungen der Nutzer ausführt, wo Schwierigkeiten entstehen können und wie die Interaktion mit dem Werkzeug angenehmer gestaltet werden kann. Solche Aufgaben erfordern die Kombination von Wissen und Fähigkeiten aus verschiedenen Bereichen. Ich freue mich darüber, neue Richtungen zu erlernen, unbekannte Fächer zu verstehen und das Gelernte dort anzuwenden, wo es nützlich sein kann. Ich versuche meine Interessen nicht künstlich auf ein einziges Berufsfeld zu begrenzen. Gleichzeitig bedeutet Breite der Interessen nicht, auf Tiefe zu verzichten. Im Gegenteil, ich halte es für wichtig, einen großen Horizont mit der Fähigkeit zu verbinden, bestimmte Fragen detailliert zu untersuchen. Die Fähigkeit, das Gesamtbild zu erkennen und bei Bedarf in Details einzutauchen, ist einer der Grundsätze, an denen ich in meiner Arbeit orientiere.
 
-Mich interessiert nicht nur die Nutzung fertiger Programme und Dienste, sondern auch die Entwicklung von Lösungen für konkrete Anforderungen. Dadurch verstehe ich besser, wie digitale Produkte funktionieren und welche Entscheidungen bei ihrer Gestaltung eine Rolle spielen.
+## Eigene Werkzeuge entwickeln
 
-Ein Projekt ist für mich eine Möglichkeit, Fachwissen, praktische Erfahrung und neue technische Fähigkeiten miteinander zu verbinden. Bei der Entwicklung muss eine Aufgabe in Teilschritte zerlegt, die Funktionsweise geplant, ein geeignetes Werkzeug ausgewählt und geprüft werden, ob das Ergebnis das ursprüngliche Problem löst.
+Neben dem Unterrichten und dem Studium verschiedener Wissensgebiete entwickle ich eigene digitale Produkte. Meine Motivation ist sehr praktisch: Ich brauche Werkzeuge, die meinen Aufgaben, Arbeitsgewohnheiten und Vorstellungen von Bequemlichkeit entsprechen. Bestehende Lösungen können nützlich sein, erlauben aber nicht immer, die Arbeit genau so zu organisieren, wie ich es brauche. In solchen Situationen ziehe ich es vor, mich nicht nur mit der Suche nach einem passenden Dienst zu begnügen, sondern selbst zu versuchen, etwas zu entwickeln. Dieser Ansatz führte mich allmählich zur Entwicklung von Bildungswerkzeugen und zur Idee einer persönlichen digitalen Ökosystem. Für mich ist die Erstellung einer Software eine Möglichkeit, einen Prozess selbst zu organisieren, die Struktur zu durchdenken, die notwendigen Funktionen zu definieren und ein Werkzeug zu erhalten, das ein konkretes Problem tatsächlich löst. Es ist mir wichtig, zu verstehen, wie das geschaffene System funktioniert, warum es genau so aufgebaut ist und wie es verbessert werden kann. Ich ziehe es vor, das gesamte Projekt selbst zu kontrollieren und seine Funktionsweise zu verstehen, auch wenn das zusätzliche Anstrengung erfordert. In diesem Prozess ziehen mich gleichzeitig die Lösung praktischer Probleme, die intellektuelle Herausforderung und die Möglichkeit, eigene Ideen umzusetzen, an. Ich nutze moderne KI-Tools aktiv für meine Arbeit an digitalen Projekten. Für mich ist KI ein universeller Assistent, der bei Recherche, Analyse, Gestaltung und Entwicklung mitwirken kann. Besonders interessant ist die Möglichkeit, funktionierende Produkte zu entwickeln, während ich die notwendigen Technologien schrittweise erlerne und Ideen praktisch prüfe. Dabei interessiert mich nicht nur das Ergebnis der Entwicklung. Der Prozess selbst ist ebenfalls wichtig: Aufgabe verstehen, einen Ansatz wählen, ein System aus einzelnen Komponenten zusammensetzen, prüfen, wie es funktioniert, und es in einen Zustand bringen, in dem es wirklich nützlich ist. Ich sehe Programmierung und KI vor allem als Werkzeuge zur Erweiterung meiner eigenen Möglichkeiten. Sie ermöglichen den Übergang von der Idee zu einer funktionierenden Lösung und Experimente mit Aufgaben, für die früher andere Ressourcen nötig gewesen wären.
 
-Besonders interessieren mich Projekte mit einem praktischen Nutzen. Entwicklung soll nicht nur ein Experiment um seiner selbst willen sein: Das Ergebnis sollte sich in der Praxis einsetzen lassen, Menschen helfen oder eine Aufgabe zugänglicher machen.
+## Lehrer-Tagebuch
 
-Viele meiner aktuellen Projekte beziehen sich auf Bildung und Geografie. Das ist eine natürliche Fortsetzung meiner beruflichen Arbeit: Ich kenne Herausforderungen des Lernens und kann nach technischen Lösungen dafür suchen.
+Eines meiner Projekte ist ein digitales Lehrer-Tagebuch, das ich entsprechend meinen eigenen beruflichen Bedürfnissen entwickle. Die Arbeit eines Lehrers besteht nicht nur aus dem Unterrichten. Sie umfasst auch Planung, Führung von Aufzeichnungen, Dokumentation von Lernergebnissen, Arbeit mit Noten und Anwesenheit, Organisation von Hausaufgaben und viele andere Aufgaben. Wenn die dafür vorhandenen Werkzeuge nicht den realen Bedürfnissen entsprechen, muss man sich an ihre Grenzen anpassen oder zusätzliche Lösungen suchen. Ich habe einen anderen Weg gewählt und beschlossen, ein eigenes Werkzeug zu entwickeln. Mein Ziel ist es, die notwendigen Arbeitsfunktionen in einem einzigen System zu vereinen, damit die tägliche Arbeit besser organisiert und überflüssige Schritte reduziert werden. Für mich ist dieses Projekt ein Beispiel für einen praktischen Zugang zur Technologie: Ausgangspunkt ist ein echtes Problem, Ergebnis ist ein Werkzeug, das für seine Lösung geschaffen wurde. In Zukunft könnten solche Entwicklungen auch für andere Lehrkräfte nützlich sein, die flexible Werkzeuge für die Organisation des Lernprozesses brauchen.
 
-Programmieren betrachte ich jedoch nicht nur als zusätzliche Fähigkeit für Lehrkräfte. Ich möchte meine Entwicklungskompetenzen vertiefen, neue Werkzeuge kennenlernen und ein breiteres Spektrum an Problemen selbst lösen können.
+## Geografie-Trainer
 
-### Lehrerkalender
+Ein weiteres Projekt, an dem ich arbeite, ist ein Geografie-Trainer zum Lernen und Testen geografischen Wissens. Geografie erfordert nicht nur das Verständnis von Prozessen, sondern auch die Beherrschung vieler konkreter Informationen: geographischer Objekte, ihrer Lage, Besonderheiten von Gebieten und der räumlichen Lage verschiedener Elemente der Erdoberfläche. Für das Erlernen dieses Materials ist Praxis notwendig. Gleichzeitig muss die Wissensprüfung nicht notwendigerweise auf einförmige Aufgaben mit unverändertem Fragenkatalog reduziert werden. Ich entwickle den Geografie-Trainer als Werkzeug, das das Training geografischen Wissens organisiert und Aufgaben auf bestimmte Lernziele abstimmen kann. Es interessiert mich, Systeme zu schaffen, in denen Fachinhalte mit den Möglichkeiten digitaler Technologien verbunden werden. Dieser Ansatz macht die Arbeit mit Lernmaterial flexibler und bietet Schülern zusätzliche Möglichkeiten zur Selbstvorbereitung. In Zukunft könnten einzelne Bildungswerkzeuge Teil eines größeren Systems werden, das verschiedene Lernformate und Praktiken verbindet. Für mich ist der Geografie-Trainer kein bloßes Technikprojekt. Er ist ein Beispiel dafür, wie eine konkrete Bildungsaufgabe durch ein selbst entwickeltes Werkzeug gelöst werden kann.
 
-Eines meiner Projekte ist ein digitaler Kalender, der Lehrkräfte bei der Organisation ihrer Arbeit unterstützen soll.
+## Persönliche digitale Ökosystem
 
-Die Idee ist, verschiedene Bereiche des Schulalltags an einem Ort zusammenzuführen: Unterrichtsinformationen, Noten, Anwesenheit, Stundenplanung, Hausaufgaben und Lernstatistiken.
+Das Lehrer-Tagebuch und der Geografie-Trainer sind separate Projekte, aber hinter ihnen steckt eine breitere Idee. Ich möchte nach und nach meine eigene digitale Umgebung bilden, in der ich meine Arbeit organisieren, Informationen speichern und strukturieren, mich mit den Fragen beschäftigen und neue Werkzeuge entwickeln kann, die mich interessieren. Es ist mir wichtig, dass die verschiedenen Elemente dieses Systems reale Aufgaben lösen und nicht nur aus dem Grund bestehen, entwickelt zu werden. In erster Linie entsteht die Ökosystem für mich. Sie muss meinem Arbeitsstil entsprechen, meine Interessen unterstützen und es ermöglichen, schnell von einer Aufgabe zur nächsten zu wechseln. Gleichzeitig schließe ich nicht aus, dass einige Lösungen auch für andere Menschen nützlich sein könnten. Wenn ein Werkzeug nicht nur meine Aufgabe, sondern auch ähnliche Probleme anderer Nutzer wirksam löst, kann es weiterentwickelt werden — auch als eigenständiges digitales Produkt. Deshalb betrachte ich meine eigenen Entwicklungen zugleich als persönliche Arbeitsumgebung und als mögliche Grundlage für zukünftige Projekte. Mir gefällt die Idee, die Werkzeuge, die ich täglich nutze, selbst aufzubauen, ihre Funktionsweise zu verstehen und ihre Möglichkeiten schrittweise zu erweitern. Letztendlich zählt für mich nicht die Größe des Systems an sich, sondern wie gut es dabei hilft, Aufgaben zu erledigen und neue Möglichkeiten für die Arbeit zu eröffnen.
 
-Die Arbeit von Lehrkräften beschränkt sich nicht auf den Unterricht mit Schülerinnen und Schülern. Viel Zeit fließt auch in Vorbereitung, Dokumentation, Organisation von Informationen und Auswertung von Ergebnissen.
+<figure class="journey-visual ecosystem-figure" data-reveal>
+  <figcaption><strong>Die Idee wird zur Arbeitsumgebung</strong><span>Von einer persönlichen Aufgabe — zu Werkzeugen, die auch anderen nützlich sein können.</span></figcaption>
+  <div class="ecosystem-map" role="img" aria-label="Die persönliche digitale Ökosystem verbindet Lehrer-Tagebuch, Geografie-Trainer, Forschung und neue Werkzeuge">
+    <span class="ecosystem-node ecosystem-node--teacher">Lehrer-<br />tagebuch</span>
+    <span class="ecosystem-node ecosystem-node--geo">Geografie-<br />trainer</span>
+    <span class="ecosystem-hub">Persönliche<br />digitale<br />Ökosystem</span>
+    <span class="ecosystem-node ecosystem-node--research">Forschung<br />und Wissen</span>
+    <span class="ecosystem-node ecosystem-node--tools">Neue<br />Werkzeuge</span>
+  </div>
+</figure>
 
-Mich interessiert, wie sich diese Abläufe einheitlicher und bequemer organisieren lassen, damit ein digitales Werkzeug einen vollständigen Überblick über Lehren und Lernen ermöglicht.
+## Freiheit und Selbstständigkeit
 
-Bei einem solchen Werkzeug zählen nicht nur einzelne Funktionen, sondern auch die Gesamtlogik der Benutzeroberfläche. Informationen sollten leicht zu finden und die Struktur verständlich sein; alltägliche Aufgaben sollten möglichst einfach und schnell erledigt werden können.
+Freiheit nimmt in meinem Verständnis des Lebens einen zentralen Platz ein. Für mich bedeutet sie die Möglichkeit, selbst Entwicklungslinien zu wählen, meine Zeit zu gestalten, Prioritäten zu setzen und meine Tätigkeit entsprechend meinen eigenen Interessen und Zielen zu strukturieren. Ich möchte mich nicht auf ein einziges Wissensgebiet, einen einzigen beruflichen Weg oder eine vorgegebene Vorstellung davon begrenzen, was ein Mensch mit einer bestimmten Ausbildung tun sollte. Es ist mir wichtig, die Möglichkeit zu bewahren, Neues zu lernen, Richtung zu wechseln, verschiedene Ansätze auszuprobieren und eigene Lösungen zu entwickeln. In diesem Sinn ist Selbstständigkeit für mich nicht nur ein Prinzip, sondern auch ein praktischer Ansatz. Wenn ich ein bestimmtes Werkzeug benötige, kann ich versuchen, es selbst zu entwickeln. Wenn ich für eine Aufgabe Wissen benötige, das ich noch nicht habe, kann ich mit dem Lernen des entsprechenden Bereichs beginnen. Wenn ein vorhandenes System meinen Anforderungen nicht entspricht, kann ich Alternativen untersuchen. Ein solcher Ansatz erfordert Zeit und Mühe, aber er ermöglicht es mir, nicht ausschließlich von bereits existierenden Lösungen abhängig zu sein. Gleichzeitig bedeutet Selbstständigkeit nicht, dass ich alle meine eigenen Lösungen für ideal halte. Ich verstehe, dass jedes System verbessert werden kann und dass erste Vorstellungen von einer Aufgabe unvollständig sein können. Deshalb sind Analyse, Prüfung der Ergebnisse und die Bereitschaft, einen anderen Ansatz zu suchen, wenn der bisherige nicht funktioniert, für mich so wichtig. Ich bemühe mich, mein Leben so zu organisieren, dass ich die Möglichkeit habe, das zu tun, was ich für interessant und bedeutungsvoll halte, und selbst zu entscheiden, wo ich meine Kräfte einsetzen möchte.
 
-Langfristig sehe ich dieses Projekt als Grundlage für weitere Bildungswerkzeuge, die nicht nur mir, sondern auch anderen Lehrkräften nützlich sein könnten.
+## Forschung jenseits der vertrauten Umgebung
 
-### Geografie-Trainer
+Im Jahr 2026 nahm ich am akademischen Austauschprogramm an der Universität Suwon in Südkorea teil. Diese Erfahrung ermöglichte es mir, eine Zeit lang in einer anderen Bildungs- und Kulturlandschaft zu leben, mich in einer fremden Umgebung aufzuhalten und mit Menschen in einer anderen Sprache zu interagieren. Für mich war das nicht nur eine Fortsetzung des Studiums, sondern auch eine Gelegenheit, neue Erfahrungen zu sammeln, mein Verständnis der Welt zu erweitern und zu beobachten, wie Bildungsprozesse in einem anderen Land organisiert sind. Besonders wertvoll war die Verbindung aus persönlicher Erfahrung und beruflicher Beobachtung. In einer fremden Umgebung kann man vertraute Dinge neu betrachten, Besonderheiten wahrnehmen, die vorher unbemerkt blieben, und verschiedene Ansätze zur Organisation des Lebens und Lernens vergleichen. Im selben Jahr nahm ich am internationalen Forum **2026 YSI-KOICA SDGs and Sustainable Futures Forum** teil, das sich mit nachhaltiger Entwicklung und der Zukunft befasste. Die Teilnahme an solchen internationalen Bildungsinitiativen erweitert den Kreis der betrachteten Fragen und erlaubt es, Themen kennenzulernen, die an der Schnittstelle von Wissenschaft, Bildung und gesellschaftlicher Entwicklung liegen. Ich sehe solche Erfahrungen als Teil des kontinuierlichen Lernens an — als Gelegenheit, die vertraute Umgebung zu verlassen und zusätzliche Perspektiven auf die Prozesse zu gewinnen, die mich interessieren.
 
-Ein weiteres Projekt ist ein Online-Trainer zum Üben geografischer Namen und Orte.
+<figure class="journey-photo" data-reveal>
+  <div class="photo-placeholder photo-placeholder--wide">
+    <img class="photo-image" src="/images/about/korea.jpg" alt="Aleksei Nemitschew während des akademischen Austauschs in Südkorea" loading="lazy" decoding="async" />
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+    <span>FOTO-PLATZHALTER</span>
+  </div>
+  <figcaption><strong>Akademischer Austausch in Südkorea</strong><span>Fotos von der Universität Suwon oder vom internationalen Forum passen am besten.</span></figcaption>
+</figure>
 
-Geografische Objekte und ihre Lage zu kennen, bleibt ein wichtiger Teil des Geografieunterrichts. Das Lernen kann jedoch wesentlich interessanter sein als das bloße Auswendiglernen von Listen.
+## Fortsetzung des Weges
 
-Der Geografie-Trainer soll eine praktische Umgebung bieten, um Wissen zu wiederholen und zu überprüfen. Nutzerinnen und Nutzer können sich auf bestimmte Objektgruppen konzentrieren, regelmäßig zum Lernstoff zurückkehren und ihr Wissen mit praktischen Übungen festigen.
-
-Ich möchte Werkzeuge entwickeln, die selbstständiges Lernen unterstützen. Lernende sollen üben, ihre Ergebnisse sehen und erkennen können, welche Themen mehr Aufmerksamkeit benötigen.
-
-Der Geografie-Trainer verbindet mein Interesse an Geografie mit meinem Interesse an digitalen Bildungsangeboten. Er zeigt, wie Fachwissen zur Grundlage eines eigenen digitalen Produkts werden kann.
-
-### Geografie-Notizen
-
-Ein weiterer Bereich meiner Arbeit ist die Organisation von Lernmaterialien für die Schulgeografie.
-
-Ich sammle und strukturiere Notizen zu den behandelten Themen und versuche, die Informationen in einer klaren Reihenfolge darzustellen, die sich gut zum Wiederholen eignet.
-
-Die Arbeit an solchen Notizen hilft dabei, Wissen zu ordnen, Schlüsselbegriffe zu erkennen, Themen miteinander zu verbinden und ein zusammenhängendes Bild des Fachs zu entwickeln.
-
-Dieses Projekt hat für mich sowohl praktischen als auch geistigen Wert. Material aufzubereiten bedeutet nicht einfach, Informationen auf eine Seite zu schreiben. Man muss entscheiden, was für das Verständnis eines Themas wesentlich ist, wie Fakten zusammenhängen und in welcher Reihenfolge sie präsentiert werden sollten.
-
-Mit der Zeit könnte diese Sammlung zur Grundlage einer umfassenderen Lernumgebung werden, die Theorie, praktische Übungen und digitale Lernwerkzeuge verbindet.
-
-## Eine forschende Herangehensweise
-
-Ich beschäftige mich gern damit, wie verschiedene Phänomene und Systeme funktionieren. Wenn mich ein Thema wirklich interessiert, möchte ich mich nicht mit einem oberflächlichen Überblick zufriedengeben.
-
-Forschung beginnt mit einer Frage. Danach folgen die Suche nach Informationen, die Auseinandersetzung mit vorhandenen Erklärungen, der Vergleich von Fakten, das Erkennen von Widersprüchen und die Entwicklung einer gut begründeten eigenen Sichtweise.
-
-Diese Herangehensweise ist nicht auf Geografie beschränkt. Sie hilft auch beim Lernen über Technologie, bei der Analyse von Bildung, bei der Entwicklung digitaler Produkte und beim Verständnis gesellschaftlicher Phänomene.
-
-Eigenständiges Denken ist mir wichtig, darf aber nicht mit der Überzeugung verwechselt werden, immer recht zu haben. Jede Idee kann unvollständig sein, und eine erste Erklärung kann sich als falsch erweisen. Deshalb sollten Schlussfolgerungen überprüft werden, wenn neue Daten oder überzeugendere Argumente auftauchen.
-
-Ich möchte nicht den Eindruck vermitteln, auf jede mich interessierende Frage bereits eine Antwort zu kennen. Wichtiger ist mir, lernfähig zu bleiben, die Grenzen meines Wissens anzuerkennen und meinen Blick stetig zu erweitern.
-
-Darum verstehe ich Forschung nicht nur als eigenständigen Beruf, sondern auch als eine Herangehensweise an die Welt.
-
-## Technologie und künstliche Intelligenz
-
-Moderne Technologien ermöglichen Werkzeuge, für die bis vor Kurzem deutlich mehr Ressourcen und Spezialwissen nötig gewesen wären.
-
-Mich interessiert, diese Möglichkeiten praktisch einzusetzen: Anwendungen zu entwickeln, Abläufe zu automatisieren, mit Daten zu arbeiten und künstliche Intelligenz auszuprobieren.
-
-Besonders spannend finde ich die Verbindung von Technologie und Bildung. Sie eröffnet Möglichkeiten, Routineaufgaben zu erleichtern, Lernmaterialien zu organisieren, Ergebnisse zu analysieren und neue Zugänge zu Inhalten zu schaffen.
-
-Technologie ist für mich in erster Linie ein Werkzeug. Allein der Einsatz künstlicher Intelligenz oder einer komplexen Software macht ein Produkt noch nicht nützlich. Entscheidend ist, das Problem zu bestimmen, die Grenzen der Technologie zu verstehen und zu prüfen, ob der gewählte Ansatz das Ergebnis tatsächlich verbessert.
-
-Ich möchte meine technischen Fähigkeiten weiter ausbauen und verstehen, wie die Werkzeuge funktionieren, die ich nutze. So kann ich nicht nur fertige Lösungen anwenden, sondern eigene entwickeln und ihre Möglichkeiten und Grenzen besser einschätzen.
-
-In Zukunft möchte ich diesen Bereich weiter vertiefen und mich mit Programmierung, Automatisierung und intelligenten Systemen beschäftigen.
-
-## Bildung und berufliche Entwicklung
-
-Meine Ausbildung verbindet Pädagogik und Geografie. Sie prägt viele meiner heutigen beruflichen Interessen, doch Lernen endet für mich nicht mit einem Abschluss.
-
-Bildung bedeutet für mich, die eigenen Fähigkeiten kontinuierlich auszubauen. Dazu gehören ein Studium, berufliche Praxis, selbstständiges Lernen, Projektarbeit und die Analyse der eigenen Ergebnisse.
-
-Besonders wertvoll ist die Möglichkeit, Wissen auf reale Probleme anzuwenden. Theoretisches Verständnis wird vertieft, wenn man selbst eine Lösung entwickeln, ihre Funktion prüfen und mit Einschränkungen umgehen muss, die sich nicht vollständig vorhersehen lassen.
-
-Deshalb versuche ich, das Lernen in neuen Bereichen mit praktischer Arbeit zu verbinden. Eigene Projekte ermöglichen es mir, Ideen zu erproben, Werkzeuge kennenzulernen und schrittweise Erfahrungen zu sammeln, die sich nicht auf einen einzelnen Kurs oder formalen Abschluss reduzieren lassen.
-
-Berufliche Entwicklung ist für mich ein langer Weg mit sehr unterschiedlichen Etappen. Meine derzeitige Spezialisierung gibt eine Richtung vor, legt aber nicht alle zukünftigen Möglichkeiten fest.
-
-Mir ist wichtig, Raum für neue Interessen zu lassen und mich nicht nur deshalb nicht weiterzuentwickeln, weil ich eine bestimmte berufliche Rolle übernommen habe.
-
-## Persönliche Interessen und Beobachtungen
-
-Neben Unterricht und Entwicklung interessiert mich, wie die Welt um uns herum funktioniert, wie Menschen miteinander umgehen und wie sich Gesellschaft, Kultur und Technologie verändern.
-
-Ich beschäftige mich gern mit Fragen, auf die es nicht immer offensichtliche Antworten gibt. Manchmal geht es um wissenschaftliche Themen, manchmal um Aspekte des Alltags und manchmal um Ideen, die beim Lesen, Reisen oder Kennenlernen eines neuen Fachgebiets entstehen.
-
-Ich schätze es, Beobachtungen als Ausgangspunkt für weitere Überlegungen zu nehmen. Ein Eindruck ist noch keine Erklärung, kann aber zu einer interessanten Frage führen, die es sich zu untersuchen lohnt.
-
-Ich versuche nicht, alle meine Interessen auf ein einziges Fachgebiet zu reduzieren. Man kann beruflich in einem Bereich arbeiten und zugleich in ganz anderen Gebieten geistigen Wert finden.
-
-Vielfältige Interessen helfen, unerwartete Verbindungen zwischen Ideen herzustellen. Ein Gedanke aus einem Fach kann eine Lösung in einem anderen nahelegen; ein neues Thema kann verändern, was zuvor selbstverständlich schien.
-
-Gleichzeitig möchte ich Informationen nicht nur sammeln, sondern sie durchdenken, Fakten von Annahmen unterscheiden und eine eigene Position entwickeln.
-
-## Arbeitsprinzipien
-
-Bei meiner Arbeit versuche ich, einige Prinzipien zu beachten.
-
-**Praktischer Nutzen.** Ich möchte verstehen, welches Problem ein Projekt löst und wem es helfen kann. Auch eine interessante Idee muss sich in der Praxis bewähren.
-
-**Systemisches Denken.** Einzelne Aufgaben betrachte ich lieber im Zusammenhang eines größeren Systems. So werden Verbindungen und Einschränkungen sichtbar und Entscheidungen können fundierter getroffen werden.
-
-**Eigenständigkeit.** Ich beschäftige mich gern selbstständig mit Fragen, lerne neue Werkzeuge kennen und führe eigene Ideen bis zu einem funktionierenden Ergebnis.
-
-**Offenheit für neue Erkenntnisse.** Schlussfolgerungen sollten weiteres Lernen nicht verhindern. Neue Informationen können eine Überarbeitung der ursprünglichen Sichtweise erforderlich machen.
-
-**Kontinuierliche Entwicklung.** Komplexe Projekte entstehen selten sofort in ihrer endgültigen Form. Meist braucht es mehrere Schritte, das Überprüfen von Annahmen und laufende Verbesserungen.
-
-**Wissen und Praxis verbinden.** Theorie ist besonders wertvoll, wenn sie hilft, reale Prozesse zu verstehen und überprüfbare Lösungen zu entwickeln.
-
-Diese Prinzipien bedeuten nicht, dass jedes Projekt geradlinig verläuft oder jedes Problem beim ersten Versuch gelöst wird. Im Gegenteil: Die Arbeit an eigenen Projekten zeigt mir immer wieder, wie wichtig es ist, Pläne anzupassen, auf Details zu achten und aus Fehlern zu lernen.
-
-## Zukunft und Entwicklungsmöglichkeiten
-
-Derzeit konzentriert sich meine Arbeit vor allem auf Geografie, Unterricht und die Entwicklung von Bildungswerkzeugen. In diesen Bereichen kann ich bereits auf eigene Erfahrungen und ein Verständnis praktischer Herausforderungen zurückgreifen.
-
-Auf dieser Grundlage möchte ich in Zukunft weiter aufbauen.
-
-Mögliche Entwicklungsfelder sind eine vertiefte Beschäftigung mit Programmierung, die Entwicklung neuer digitaler Produkte, der Einsatz künstlicher Intelligenz, die Arbeit mit Daten und die weitere Erforschung von Lernprozessen.
-
-Außerdem interessieren mich interdisziplinäre Projekte, die Wissen aus verschiedenen Bereichen verbinden. Gerade an den Schnittstellen von Disziplinen entstehen oft Probleme, für die kein einzelner Standardansatz ausreicht.
-
-Ich betrachte diese Bereiche nicht als endgültige Zielliste. Ein beruflicher Weg kann sich verändern, wenn neue Erfahrungen, Interessen und Möglichkeiten hinzukommen.
-
-Wichtiger als ein einziges endgültiges Ziel ist mir, eine Grundlage für weiteres Wachstum zu schaffen: zu lernen, Ideen in der Praxis zu erproben, eigene Projekte zu entwickeln und nach Problemen zu suchen, die wirklich Aufmerksamkeit verdienen.
-
-## Diese Website
-
-Ich habe diese Website als zentralen Ort geschaffen, an dem ich meine Arbeit vorstellen kann.
-
-Sie vereint meine wichtigsten Projekte, Informationen zu meiner Ausbildung und meinen beruflichen Interessen sowie Materialien, die erklären, womit ich mich beschäftige.
-
-Mir war wichtig, verschiedene Teile meiner Arbeit zusammenzuführen. Besucherinnen und Besucher sollen nicht nur etwas über mich erfahren, sondern auch direkt konkrete Ergebnisse entdecken können: Bildungswerkzeuge, Lernmaterialien und weitere Projekte.
-
-Die Website wird gemeinsam mit meinen Interessen und Projekten weiterwachsen. Neue Themen können hinzukommen, bestehende Projekte sich verändern und neue Materialien ergänzt werden.
-
-Ich verstehe sie nicht als endgültige Fassung meines beruflichen Lebenslaufs. Sie zeigt vielmehr, womit ich mich derzeit beschäftige, und sammelt nach und nach die Ergebnisse meiner Arbeit.
-
-Wenn Sie sich für Geografie, Bildung, Technologie oder eigene Projekte interessieren, finden Sie hier vielleicht etwas Nützliches.
-
-**Aleksei Wladimirowitsch Nemichev**
-
-*Geograf · Geografielehrer · Autor von Bildungsprojekten*
+Derzeit kombiniere ich Studium, Unterricht und die Entwicklung eigener digitaler Projekte. Diese Bereiche erfordern verschiedene Kenntnisse und Fähigkeiten, aber zusammen ermöglichen sie es mir, gleichzeitig in mehreren Bereichen zu wachsen, die mich interessieren. In den kommenden Jahren plane ich, meine Lehrtätigkeit und Forschungsarbeit fortzusetzen, meine Projekte zu entwickeln und meine fachlichen Kompetenzen zu erweitern. Langfristig ziehe ich eine akademische Laufbahn und ein PhD-Studium in den USA in Betracht. Gleichzeitig versuche ich, nicht jeden Abschnitt der Zukunft im Voraus festzulegen. Wichtiger ist es für mich, die Möglichkeit zu bewahren, neue Richtungen zu wählen, basierend auf gesammelter Erfahrung, entstehenden Interessen und sich bietenden Chancen. Ich setze meine Welterkundung fort, lerne neue Werkzeuge und suche Lösungen für Aufgaben, die ich als interessant empfinde. Vielleicht ist genau das das, was alles verbindet, womit ich mich beschäftige: der Wunsch, zu verstehen, wie Dinge funktionieren, Verbindungen zwischen einzelnen Elementen zu erkennen und etwas zu schaffen, das dieses Verständnis in die Praxis umsetzt. Für mich ist es wichtig, nicht nur zu beobachten, wie die Welt funktioniert, sondern auch Wege zu finden, sinnvoll mit ihr zu interagieren — durch Wissen, Forschung, Lehre und die Entwicklung eigener Werkzeuge. Ich glaube nicht, dass dieser Prozess jemals vollständig abgeschlossen sein kann. Neue Fragen erzeugen neue Studien, neue Aufgaben erfordern neue Lösungen, und die bereits erlernten Wissensgebiete eröffnen Möglichkeiten für die Erforschung der nächsten. Deshalb lerne ich weiter, erforsche und gestalte. Genau aus diesen Prozessen entsteht mein beruflicher Weg.
