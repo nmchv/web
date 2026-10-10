@@ -50,10 +50,14 @@ const pagePath = Astro.url.pathname
       const reveal = Array.from(document.querySelectorAll<HTMLElement>(
         '[data-reveal], .about-document h2, .about-document > p:not(.about-tagline)',
       ));
+      let previousScrollY = window.scrollY;
+      let scrollDirection: 'up' | 'down' = 'down';
       if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
           for (const e of entries) {
-            if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            const element = e.target as HTMLElement;
+            element.dataset.scrollDirection = scrollDirection;
+            element.classList.toggle('is-visible', e.isIntersecting);
           }
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
         reveal.forEach((el) => io.observe(el));
@@ -70,7 +74,14 @@ const pagePath = Astro.url.pathname
 
       // тонкая граница у шапки после прокрутки
       const header = document.getElementById('site-header');
-      const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+      const onScroll = () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY !== previousScrollY) {
+          scrollDirection = currentScrollY > previousScrollY ? 'down' : 'up';
+          previousScrollY = currentScrollY;
+        }
+        header?.classList.toggle('is-scrolled', currentScrollY > 8);
+      };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
 
