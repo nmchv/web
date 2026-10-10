@@ -114,8 +114,9 @@ export const content: SiteContent = {
     },
     contacts: {
       title: 'Kontakt',
-      lead: 'Auf der Buchungsseite können Sie einen Unterrichtstermin wählen oder mir über das Formular eine Frage senden.',
-      bookingCta: 'Unterricht buchen oder Frage stellen',
+      lead: 'Über das Formular auf der Website können Sie mir eine Frage senden.',
+      bookingCta: 'Eine Frage stellen',
+      lessonLanguages: 'Ich unterrichte ausschließlich auf Russisch und Englisch.',
     },
     footer: { toTop: 'Nach oben', rights: 'Aleksei Nemichev' },
   },

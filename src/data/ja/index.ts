@@ -92,8 +92,9 @@ export const content: SiteContent = {
     directions: { title: '活動分野', lead: '複数の分野が交わる領域で活動しています。' },
     contacts: {
       title: 'お問い合わせ',
-      lead: '予約サイトでレッスン時間を選択するか、専用フォームから質問を送ることができます。',
-      bookingCta: 'レッスン予約・質問する',
+      lead: '専用フォームから質問を送ることができます。',
+      bookingCta: '質問する',
+      lessonLanguages: 'レッスンはロシア語または英語のみで行っています。',
     },
     footer: { toTop: 'ページの先頭へ', rights: 'Aleksei Nemichev' },
   },

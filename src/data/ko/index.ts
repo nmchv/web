@@ -92,8 +92,9 @@ export const content: SiteContent = {
     directions: { title: '활동 분야', lead: '제가 여러 분야의 접점에서 활동하는 영역입니다.' },
     contacts: {
       title: '연락처',
-      lead: '예약 사이트에서 수업 시간을 선택하거나 문의 양식으로 질문을 보낼 수 있습니다.',
-      bookingCta: '수업 예약 또는 질문하기',
+      lead: '사이트의 문의 양식으로 질문을 보낼 수 있습니다.',
+      bookingCta: '질문하기',
+      lessonLanguages: '수업은 러시아어와 영어로만 진행합니다.',
     },
     footer: { toTop: '맨 위로', rights: '네미체프 알렉스' },
   },

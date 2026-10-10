@@ -10,6 +10,7 @@ const { ui, contacts } = Astro.props.content;
         <span class="section-index">04</span>
         <h2 id="contacts-title">{ui.contacts.title}</h2>
         <p>{ui.contacts.lead}</p>
+        {ui.contacts.lessonLanguages && <p class="contact-languages">{ui.contacts.lessonLanguages}</p>}
       </div>
       <a class="btn contact-booking" href="https://appointment.nmchv.ru" target="_blank" rel="noopener noreferrer" data-reveal>
         {ui.contacts.bookingCta}

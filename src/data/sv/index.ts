@@ -114,8 +114,9 @@ export const content: SiteContent = {
     },
     contacts: {
       title: 'Kontakt',
-      lead: 'På bokningssidan kan du välja en lektionstid eller skicka en fråga via formuläret.',
-      bookingCta: 'Boka en lektion eller ställ en fråga',
+      lead: 'Du kan skicka en fråga till mig via formuläret på webbplatsen.',
+      bookingCta: 'Ställ en fråga',
+      lessonLanguages: 'Jag undervisar endast på ryska och engelska.',
     },
     footer: { toTop: 'Till toppen', rights: 'Aleksei Nemichev' },
   },

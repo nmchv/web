@@ -114,8 +114,9 @@ export const content: SiteContent = {
     },
     contacts: {
       title: 'Contact',
-      lead: 'Sur le site de réservation, vous pouvez choisir un créneau de cours ou m’écrire une question via le formulaire.',
-      bookingCta: 'Réserver un cours ou poser une question',
+      lead: 'Vous pouvez m’envoyer une question via le formulaire du site.',
+      bookingCta: 'Poser une question',
+      lessonLanguages: 'Je donne des cours uniquement en russe et en anglais.',
     },
     footer: { toTop: 'Retour en haut', rights: 'Alexei Nemichev' },
   },

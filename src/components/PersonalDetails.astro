@@ -121,6 +121,206 @@ const houseAngles = Array.from({ length: 12 }, (_, index) => {
   };
 });
 
+const birthdayPrompts: Record<string, string> = {
+  ru: 'А знаете, кто ещё родился в этот день?',
+  en: 'Do you know who else was born on this day?',
+  fr: 'Savez-vous qui est aussi né ce jour-là ?',
+  es: '¿Sabes quién más nació este día?',
+  de: 'Wissen Sie, wer noch an diesem Tag geboren wurde?',
+  ja: 'この日に生まれた有名人を知っていますか？',
+  ko: '이날 태어난 유명인을 아시나요?',
+  zh: '你知道还有哪些名人出生在这一天吗？',
+  sv: 'Vet du vilka fler som föddes den här dagen?',
+};
+const birthdayCelebrities = 'Lady Gaga (1986) · Reba McEntire (1955) · Vince Vaughn (1970)';
+const bloodInsights: Record<string, string> = {
+  ru: 'Для меня это напоминание сохранять спокойствие, быть внимательным к людям и не терять собранности.',
+  en: 'For me, it is a reminder to stay calm, pay attention to people, and keep a clear head.',
+  fr: 'Pour moi, c’est un rappel de rester calme, attentif aux autres et concentré.',
+  es: 'Para mí, es un recordatorio de mantener la calma, cuidar a los demás y actuar con claridad.',
+  de: 'Für mich ist es eine Erinnerung, ruhig, aufmerksam und zielstrebig zu bleiben.',
+  ja: '自分にとって、落ち着きと周囲への気配りを大切にするための目印です。',
+  ko: '저에게는 침착함과 주변 사람들에 대한 배려를 기억하게 해주는 표시입니다.',
+  zh: '对我来说，这是保持沉着、关注他人的提醒。',
+  sv: 'För mig är det en påminnelse om att vara lugn, omtänksam och fokuserad.',
+};
+const personalityInsights: Record<string, string> = {
+  ru: 'Люблю разбираться в сложных системах, продумывать план и самостоятельно доводить идеи до результата.',
+  en: 'I enjoy understanding complex systems, planning ahead, and independently turning ideas into results.',
+  fr: 'J’aime comprendre les systèmes complexes, anticiper et mener mes idées à bien de façon autonome.',
+  es: 'Me gusta comprender sistemas complejos, planificar y convertir ideas en resultados por iniciativa propia.',
+  de: 'Ich beschäftige mich gern mit komplexen Systemen, plane voraus und setze Ideen eigenständig um.',
+  ja: '複雑な仕組みを理解し、計画を立て、自分の力でアイデアを形にするのが好きです。',
+  ko: '복잡한 시스템을 이해하고 계획을 세워 아이디어를 스스로 결과로 만드는 것을 좋아합니다.',
+  zh: '我喜欢理解复杂系统、提前规划，并独立把想法付诸实践。',
+  sv: 'Jag tycker om att förstå komplexa system, planera framåt och själv förverkliga idéer.',
+};
+const chartInsights: Record<string, string> = {
+  ru: 'В этой карте я вижу сочетание инициативности, любознательности и стремления самому прокладывать путь.',
+  en: 'This chart reflects a mix of initiative, curiosity, and a drive to find my own way.',
+  fr: 'Ce thème reflète un mélange d’initiative, de curiosité et de volonté de tracer ma propre voie.',
+  es: 'Esta carta refleja una combinación de iniciativa, curiosidad y deseo de abrir mi propio camino.',
+  de: 'Dieses Horoskop steht für eine Mischung aus Initiative, Neugier und dem Wunsch, eigene Wege zu gehen.',
+  ja: 'このチャートには、主体性、好奇心、自分の道を切り開く意欲が表れています。',
+  ko: '이 차트에는 주도성, 호기심, 스스로 길을 개척하려는 성향이 담겨 있습니다.',
+  zh: '这张星盘体现了主动性、好奇心以及开辟自己道路的愿望。',
+  sv: 'Den här kartan speglar initiativförmåga, nyfikenhet och en vilja att hitta min egen väg.',
+};
+const planetNotes: Record<string, Record<string, string>> = {
+  ru: {
+    '☉': 'Солнце — про инициативу, самовыражение и желание создавать.',
+    '☽': 'Луна — про чуткость, интуицию и потребность в эмоциональной опоре.',
+    '☿': 'Меркурий — про любознательность, анализ и ясное объяснение идей.',
+    '♀': 'Венера — про гармонию, близость и умение ценить красоту.',
+    '♂': 'Марс — про решительность, энергию и готовность действовать.',
+    '♃': 'Юпитер — про широкий кругозор, обучение и стремление расти.',
+    '♄': 'Сатурн — про ответственность, терпение и устойчивость.',
+    '♅': 'Уран — про независимость, оригинальность и открытость новому.',
+    '♆': 'Нептун — про воображение, эмпатию и тонкое восприятие.',
+    '♇': 'Плутон — про глубину, внутреннюю силу и способность меняться.',
+  },
+  en: {
+    '☉': 'The Sun reflects initiative, self-expression, and a wish to create.',
+    '☽': 'The Moon reflects sensitivity, intuition, and a need for emotional grounding.',
+    '☿': 'Mercury reflects curiosity, analysis, and a talent for explaining ideas clearly.',
+    '♀': 'Venus reflects harmony, closeness, and an appreciation of beauty.',
+    '♂': 'Mars reflects determination, energy, and readiness to act.',
+    '♃': 'Jupiter reflects broad interests, learning, and a desire to grow.',
+    '♄': 'Saturn reflects responsibility, patience, and steadiness.',
+    '♅': 'Uranus reflects independence, originality, and openness to new ideas.',
+    '♆': 'Neptune reflects imagination, empathy, and a sensitive perception.',
+    '♇': 'Pluto reflects depth, inner strength, and the ability to change.',
+  },
+  fr: {
+    '☉': 'Le Soleil évoque l’initiative, l’expression de soi et la créativité.',
+    '☽': 'La Lune évoque la sensibilité, l’intuition et le besoin de stabilité émotionnelle.',
+    '☿': 'Mercure évoque la curiosité, l’analyse et l’art d’expliquer clairement.',
+    '♀': 'Vénus évoque l’harmonie, la proximité et le goût de la beauté.',
+    '♂': 'Mars évoque la détermination, l’énergie et le passage à l’action.',
+    '♃': 'Jupiter évoque l’ouverture d’esprit, l’apprentissage et l’envie de progresser.',
+    '♄': 'Saturne évoque la responsabilité, la patience et la constance.',
+    '♅': 'Uranus évoque l’indépendance, l’originalité et l’ouverture aux nouveautés.',
+    '♆': 'Neptune évoque l’imagination, l’empathie et une perception fine.',
+    '♇': 'Pluton évoque la profondeur, la force intérieure et la capacité à évoluer.',
+  },
+  es: {
+    '☉': 'El Sol refleja iniciativa, expresión personal y ganas de crear.',
+    '☽': 'La Luna refleja sensibilidad, intuición y necesidad de estabilidad emocional.',
+    '☿': 'Mercurio refleja curiosidad, análisis y facilidad para explicar ideas.',
+    '♀': 'Venus refleja armonía, cercanía y aprecio por la belleza.',
+    '♂': 'Marte refleja determinación, energía y disposición para actuar.',
+    '♃': 'Júpiter refleja amplitud de intereses, aprendizaje y ganas de crecer.',
+    '♄': 'Saturno refleja responsabilidad, paciencia y constancia.',
+    '♅': 'Urano refleja independencia, originalidad y apertura a lo nuevo.',
+    '♆': 'Neptuno refleja imaginación, empatía y percepción sensible.',
+    '♇': 'Plutón refleja profundidad, fuerza interior y capacidad de cambiar.',
+  },
+  de: {
+    '☉': 'Die Sonne steht für Initiative, Selbstausdruck und Gestaltungsfreude.',
+    '☽': 'Der Mond steht für Einfühlungsvermögen, Intuition und emotionalen Halt.',
+    '☿': 'Merkur steht für Neugier, Analyse und die Fähigkeit, Ideen klar zu erklären.',
+    '♀': 'Venus steht für Harmonie, Nähe und Sinn für Schönheit.',
+    '♂': 'Mars steht für Entschlossenheit, Energie und Tatkraft.',
+    '♃': 'Jupiter steht für Weitblick, Lernen und den Wunsch, sich weiterzuentwickeln.',
+    '♄': 'Saturn steht für Verantwortung, Geduld und Beständigkeit.',
+    '♅': 'Uranus steht für Unabhängigkeit, Originalität und Offenheit für Neues.',
+    '♆': 'Neptun steht für Fantasie, Empathie und feine Wahrnehmung.',
+    '♇': 'Pluto steht für Tiefe, innere Stärke und Wandlungsfähigkeit.',
+  },
+  ja: {
+    '☉': '太陽は主体性、自己表現、ものを生み出す意欲を表します。',
+    '☽': '月は繊細さ、直感、心の安定を求める気持ちを表します。',
+    '☿': '水星は好奇心、分析力、考えをわかりやすく伝える力を表します。',
+    '♀': '金星は調和、人との親しさ、美しさを大切にする心を表します。',
+    '♂': '火星は決断力、活力、行動する意欲を表します。',
+    '♃': '木星は幅広い関心、学び、成長への意欲を表します。',
+    '♄': '土星は責任感、忍耐力、粘り強さを表します。',
+    '♅': '天王星は自立心、独創性、新しいものへの開放性を表します。',
+    '♆': '海王星は想像力、共感力、繊細な感受性を表します。',
+    '♇': '冥王星は物事の深さ、内面の強さ、変化する力を表します。',
+  },
+  ko: {
+    '☉': '태양은 주도성, 자기표현, 무언가를 만들고 싶은 마음을 나타냅니다.',
+    '☽': '달은 섬세함, 직관, 정서적 안정에 대한 욕구를 나타냅니다.',
+    '☿': '수성은 호기심, 분석력, 생각을 명확히 설명하는 능력을 나타냅니다.',
+    '♀': '금성은 조화, 친밀함, 아름다움을 알아보는 감각을 나타냅니다.',
+    '♂': '화성은 결단력, 에너지, 행동하려는 의지를 나타냅니다.',
+    '♃': '목성은 넓은 관심사, 배움, 성장하려는 마음을 나타냅니다.',
+    '♄': '토성은 책임감, 인내심, 꾸준함을 나타냅니다.',
+    '♅': '천왕성은 독립성, 독창성, 새로운 것에 대한 개방성을 나타냅니다.',
+    '♆': '해왕성은 상상력, 공감, 섬세한 감수성을 나타냅니다.',
+    '♇': '명왕성은 깊이, 내면의 힘, 변화하는 능력을 나타냅니다.',
+  },
+  zh: {
+    '☉': '太阳象征主动、自我表达和创造的愿望。',
+    '☽': '月亮象征敏感、直觉以及对情感稳定的需要。',
+    '☿': '水星象征好奇心、分析力和清晰表达想法的能力。',
+    '♀': '金星象征和谐、亲近感以及对美的欣赏。',
+    '♂': '火星象征决断力、活力和行动意愿。',
+    '♃': '木星象征广泛兴趣、学习和成长的愿望。',
+    '♄': '土星象征责任感、耐心和稳定。',
+    '♅': '天王星象征独立、原创性和对新事物的开放态度。',
+    '♆': '海王星象征想象力、共情力和细腻的感受力。',
+    '♇': '冥王星象征深度、内在力量和改变的能力。',
+  },
+  sv: {
+    '☉': 'Solen speglar initiativ, självuttryck och skaparlust.',
+    '☽': 'Månen speglar känslighet, intuition och behov av känslomässig trygghet.',
+    '☿': 'Merkurius speglar nyfikenhet, analys och förmåga att förklara idéer tydligt.',
+    '♀': 'Venus speglar harmoni, närhet och uppskattning av skönhet.',
+    '♂': 'Mars speglar beslutsamhet, energi och handlingskraft.',
+    '♃': 'Jupiter speglar breda intressen, lärande och en vilja att utvecklas.',
+    '♄': 'Saturnus speglar ansvar, tålamod och uthållighet.',
+    '♅': 'Uranus speglar självständighet, originalitet och öppenhet för nytt.',
+    '♆': 'Neptunus speglar fantasi, empati och finstämd uppfattningsförmåga.',
+    '♇': 'Pluto speglar djup, inre styrka och förmåga till förändring.',
+  },
+};
+const arcanaDescriptions: Record<string, Record<number, string>> = {
+  ru: {
+    1: 'Инициативность и умение превращать замыслы в конкретные дела.',
+    3: 'Забота, созидательность и стремление создавать вокруг себя благоприятную среду.',
+    5: 'Любознательность, верность принципам и готовность делиться знаниями.',
+    6: 'Внимание к отношениям и способность осознанно выбирать свой путь.',
+    7: 'Целеустремлённость, самостоятельность и энергия движения вперёд.',
+    8: 'Чувство справедливости, ответственность и стремление к равновесию.',
+    9: 'Самостоятельность, вдумчивость и интерес к глубокому изучению тем.',
+    10: 'Гибкость и умение находить возможности в переменах.',
+    11: 'Внутренняя стойкость, самообладание и спокойная настойчивость.',
+    12: 'Умение взглянуть на ситуацию под новым углом и проявить терпение.',
+    13: 'Готовность отпускать старое и смело меняться.',
+    15: 'Сильная вовлечённость и способность направлять желания в дело.',
+    16: 'Смелость пересматривать привычные взгляды и строить заново.',
+    19: 'Открытость, оптимизм и желание делиться энергией с другими.',
+    21: 'Широкий кругозор, целостный взгляд и интерес к новым горизонтам.',
+    22: 'Любознательность, лёгкость на подъём и открытость новым впечатлениям.',
+  },
+  en: {
+    1: 'Initiative and an ability to turn ideas into practical steps.',
+    3: 'Care, creativity, and a wish to create a supportive environment.',
+    5: 'Curiosity, strong principles, and a readiness to share knowledge.',
+    6: 'Thoughtfulness in relationships and care in choosing a direction.',
+    7: 'Determination, independence, and energy to keep moving forward.',
+    8: 'A sense of fairness, responsibility, and a search for balance.',
+    9: 'Independence, reflection, and a drive to understand things deeply.',
+    10: 'Flexibility and an ability to spot possibilities in change.',
+    11: 'Inner resilience, self-control, and quiet persistence.',
+    12: 'Patience and an ability to see a situation from a new angle.',
+    13: 'A readiness to let go of the old and embrace change.',
+    15: 'Strong commitment and an ability to channel ambition into action.',
+    16: 'Courage to question assumptions and build something anew.',
+    19: 'Openness, optimism, and a wish to share energy with others.',
+    21: 'Broad perspective, a sense of the whole, and interest in new horizons.',
+    22: 'Curiosity, spontaneity, and openness to new experiences.',
+  },
+};
+const fallbackArcanaDescriptions = arcanaDescriptions.en;
+const describeArcana = (value: number) =>
+  arcanaDescriptions[lang]?.[value]
+  ?? fallbackArcanaDescriptions[value]
+  ?? personalityInsights[lang]
+  ?? personalityInsights.en;
+
 const copy = {
   ru: {
     heading: 'Личные данные и интересные факты',
@@ -128,10 +328,10 @@ const copy = {
     birthday: 'Дата рождения',
     blood: 'Группа крови',
     bloodType: 'A (II) · Rh+',
-    bloodDetail: 'Обозначение A (II) Rh+ объединяет буквенную систему ABO и привычную в России нумерацию групп.',
+    bloodDetail: bloodInsights.ru,
     type: 'Тип личности',
     strategist: 'Стратег',
-    typeDetail: 'В типологии 16Personalities INTJ связывают с независимостью, системным мышлением и долгосрочным планированием. Это ориентир для размышления, а не психологический диагноз.',
+    typeDetail: personalityInsights.ru,
     matrix: 'Матрица судьбы',
     matrixKicker: '22 АРКАНА · РАСЧЁТ ПО ДАТЕ РОЖДЕНИЯ',
     matrixHint: 'Наведите или выберите точку: размер и цвет показывают её роль в матрице.',
@@ -158,10 +358,10 @@ const copy = {
     birthday: 'Date of birth',
     blood: 'Blood type',
     bloodType: 'A (II) · Rh positive',
-    bloodDetail: 'A (II) Rh positive combines the ABO letter system with the group numbering used in some countries.',
+    bloodDetail: bloodInsights.en,
     type: 'Personality type',
     strategist: 'The Architect',
-    typeDetail: 'In the 16Personalities model, INTJ is associated with independence, systems thinking, and long-range planning. It is a reflection prompt, not a psychological diagnosis.',
+    typeDetail: personalityInsights.en,
     matrix: 'Matrix of Destiny',
     matrixKicker: '22 ARCANA · BIRTH-DATE CALCULATION',
     matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
@@ -188,10 +388,10 @@ const copy = {
     birthday: 'Date de naissance',
     blood: 'Groupe sanguin',
     bloodType: 'A (II) · Rh positif',
-    bloodDetail: 'A (II) Rh positif associe la notation ABO par lettres et la numérotation utilisée dans certains pays.',
+    bloodDetail: bloodInsights.fr,
     type: 'Type de personnalité',
     strategist: 'Architecte',
-    typeDetail: 'Dans le modèle 16Personalities, INTJ est associé à l’indépendance, à la pensée systémique et à la planification à long terme. C’est une piste de réflexion, pas un diagnostic psychologique.',
+    typeDetail: personalityInsights.fr,
     matrix: 'Matrice du destin',
     matrixKicker: '22 ARCANES · CALCUL À PARTIR DE LA DATE DE NAISSANCE',
     matrixHint: 'Survolez ou sélectionnez un point. Sa taille et sa couleur indiquent son rôle.',
@@ -218,10 +418,10 @@ const copy = {
     birthday: 'Fecha de nacimiento',
     blood: 'Grupo sanguíneo',
     bloodType: 'A (II) · Rh positivo',
-    bloodDetail: 'A (II) Rh positivo combina la notación ABO por letras con la numeración usada en algunos países.',
+    bloodDetail: bloodInsights.es,
     type: 'Tipo de personalidad',
     strategist: 'Arquitecto',
-    typeDetail: 'En el modelo 16Personalities, INTJ se asocia con la independencia, el pensamiento sistémico y la planificación a largo plazo. Es una invitación a reflexionar, no un diagnóstico psicológico.',
+    typeDetail: personalityInsights.es,
     matrix: 'Matriz del destino',
     matrixKicker: '22 ARCANOS · CÁLCULO SEGÚN LA FECHA DE NACIMIENTO',
     matrixHint: 'Pasa el cursor o selecciona un punto. Su tamaño y color indican su función.',
@@ -248,10 +448,10 @@ const copy = {
     birthday: '생년월일',
     blood: '혈액형',
     bloodType: 'A형 · Rh+',
-    bloodDetail: '국가별 표기 관습에 맞춰 ABO 문자 표기로 나타냈습니다.',
+    bloodDetail: bloodInsights.ko,
     type: '성격 유형',
     strategist: '전략가',
-    typeDetail: '16Personalities에서 INTJ는 독립성, 체계적 사고, 장기 계획과 연관됩니다. 성찰을 위한 참고 자료이며 심리 진단은 아닙니다.',
+    typeDetail: personalityInsights.ko,
     matrix: '운명의 매트릭스',
     matrixKicker: '22 아르카나 · 생년월일 계산',
     matrixHint: '점을 가리키거나 선택하세요. 크기와 색상으로 매트릭스에서의 역할을 표시합니다.',
@@ -278,10 +478,10 @@ const copy = {
     birthday: '出生日期',
     blood: '血型',
     bloodType: 'A型 · Rh阳性',
-    bloodDetail: '按照当地常用习惯使用 ABO 字母血型标记。',
+    bloodDetail: bloodInsights.zh,
     type: '人格类型',
     strategist: '建筑师',
-    typeDetail: '在 16Personalities 模型中，INTJ 通常与独立性、系统思维和长期规划相关。这是自我反思的参考，不是心理诊断。',
+    typeDetail: personalityInsights.zh,
     matrix: '命运矩阵',
     matrixKicker: '22 张大阿尔卡那 · 按出生日期计算',
     matrixHint: '悬停或选择一个节点。大小和颜色表示它在矩阵中的作用。',
@@ -308,10 +508,10 @@ const copy = {
     birthday: '生年月日',
     blood: '血液型',
     bloodType: 'A型 · Rh+',
-    bloodDetail: '地域で一般的な ABO の文字表記を使用しています。',
+    bloodDetail: bloodInsights.ja,
     type: '性格タイプ',
     strategist: '建築家',
-    typeDetail: '16Personalities では、INTJ は自立性、体系的な思考、長期的な計画と関連づけられます。自己理解の参考であり、心理診断ではありません。',
+    typeDetail: personalityInsights.ja,
     matrix: '運命のマトリックス',
     matrixKicker: '22アルカナ · 生年月日から算出',
     matrixHint: 'ポイントにカーソルを合わせるか選択してください。大きさと色で役割を示します。',
@@ -338,10 +538,10 @@ const copy = {
     birthday: 'Geburtsdatum',
     blood: 'Blutgruppe',
     bloodType: 'A (II) · Rh-positiv',
-    bloodDetail: 'A (II) Rh-positiv verbindet die ABO-Buchstabennotation mit der in manchen Ländern verwendeten Nummerierung.',
+    bloodDetail: bloodInsights.de,
     type: 'Persönlichkeitstyp',
     strategist: 'Architekt',
-    typeDetail: 'Im 16Personalities-Modell wird INTJ oft mit Unabhängigkeit, systemischem Denken und langfristiger Planung verbunden. Das ist ein Denkanstoß, keine psychologische Diagnose.',
+    typeDetail: personalityInsights.de,
     matrix: 'Schicksalsmatrix',
     matrixKicker: '22 ARKANA · BERECHNUNG AUS DEM GEBURTSDATUM',
     matrixHint: 'Bewege den Mauszeiger über einen Punkt oder wähle ihn aus. Größe und Farbe zeigen seine Rolle.',
@@ -368,10 +568,10 @@ const copy = {
     birthday: 'Födelsedatum',
     blood: 'Blodgrupp',
     bloodType: 'A (II) · Rh-positiv',
-    bloodDetail: 'A (II) Rh-positiv kombinerar ABO-systemets bokstavsbeteckning med numreringen som används i vissa länder.',
+    bloodDetail: bloodInsights.sv,
     type: 'Personlighetstyp',
     strategist: 'Arkitekten',
-    typeDetail: 'I 16Personalities-modellen förknippas INTJ med självständighet, systemtänkande och långsiktig planering. Det är ett underlag för reflektion, inte en psykologisk diagnos.',
+    typeDetail: personalityInsights.sv,
     matrix: 'Ödesmatris',
     matrixKicker: '22 ARKANER · BERÄKNING UTIFRÅN FÖDELSEDATUM',
     matrixHint: 'Hovra över eller välj en punkt. Storlek och färg visar dess roll i matrisen.',
@@ -398,10 +598,10 @@ const copy = {
   birthday: 'Date of birth',
   blood: 'Blood type',
   bloodType: 'A (II) · Rh positive',
-  bloodDetail: 'A (II) Rh positive combines the ABO letter system with the group numbering used in some countries.',
+  bloodDetail: bloodInsights.en,
   type: 'Personality type',
   strategist: 'The Architect',
-  typeDetail: 'In the 16Personalities model, INTJ is associated with independence, systems thinking, and long-range planning. It is a reflection prompt, not a psychological diagnosis.',
+  typeDetail: personalityInsights.en,
   matrix: 'Matrix of Destiny',
   matrixKicker: '22 ARCANA · BIRTH-DATE CALCULATION',
   matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
@@ -458,23 +658,23 @@ const names = arcanaNames[lang] ?? arcanaNames.en;
 const arcanaTitle = (value: number) => names[value] ?? `${value} · ${lang === 'ru' ? 'аркан' : 'Arcana'}`;
 type PointRole = 'primary' | 'derived' | 'supporting' | 'center';
 const points: Array<{ id: string; value: number; title: string; role: PointRole; x: number; y: number; detail: string }> = [
-  { id: 'day', value: day, title: arcanaTitle(day), role: 'primary', x: 15, y: 50, detail: `${copy.birthday}: ${formattedBirthday}.` },
-  { id: 'month', value: month, title: arcanaTitle(month), role: 'primary', x: 50, y: 9, detail: `${copy.birthday}: ${formattedBirthday}.` },
-  { id: 'year', value: year, title: arcanaTitle(year), role: 'primary', x: 85, y: 50, detail: `${copy.birthday}: ${formattedBirthday}.` },
-  { id: 'base', value: base, title: arcanaTitle(base), role: 'primary', x: 50, y: 91, detail: `10 + 3 + 6 → ${base}.` },
-  { id: 'day-month', value: reduceArcana(day + month), title: arcanaTitle(reduceArcana(day + month)), role: 'derived', x: 32.5, y: 29.5, detail: `10 + 3 → ${reduceArcana(day + month)}.` },
-  { id: 'month-year', value: reduceArcana(month + year), title: arcanaTitle(reduceArcana(month + year)), role: 'derived', x: 67.5, y: 29.5, detail: `3 + 6 → ${reduceArcana(month + year)}.` },
-  { id: 'year-base', value: reduceArcana(year + base), title: arcanaTitle(reduceArcana(year + base)), role: 'derived', x: 67.5, y: 70.5, detail: `6 + 19 → ${reduceArcana(year + base)}.` },
-  { id: 'base-day', value: reduceArcana(base + day), title: arcanaTitle(reduceArcana(base + day)), role: 'derived', x: 32.5, y: 70.5, detail: `19 + 10 → ${reduceArcana(base + day)}.` },
-  { id: 'center', value: center, title: arcanaTitle(center), role: 'center', x: 50, y: 50, detail: copy.centerNote },
-  { id: 'day-inner', value: reduceArcana(day + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(day + reduceArcana(day + month))), role: 'supporting', x: 23.75, y: 15, detail: `10 + 13 → ${reduceArcana(day + reduceArcana(day + month))}.` },
-  { id: 'month-inner', value: reduceArcana(month + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(month + reduceArcana(day + month))), role: 'supporting', x: 41.25, y: 15, detail: `3 + 13 → ${reduceArcana(month + reduceArcana(day + month))}.` },
-  { id: 'month-inner-right', value: reduceArcana(month + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(month + reduceArcana(month + year))), role: 'supporting', x: 58.75, y: 15, detail: `3 + 9 → ${reduceArcana(month + reduceArcana(month + year))}.` },
-  { id: 'year-inner', value: reduceArcana(year + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(year + reduceArcana(month + year))), role: 'supporting', x: 76.25, y: 15, detail: `6 + 9 → ${reduceArcana(year + reduceArcana(month + year))}.` },
-  { id: 'year-inner-bottom', value: reduceArcana(year + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(year + reduceArcana(year + base))), role: 'supporting', x: 76.25, y: 85, detail: `6 + 3 → ${reduceArcana(year + reduceArcana(year + base))}.` },
-  { id: 'base-inner-right', value: reduceArcana(base + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(base + reduceArcana(year + base))), role: 'supporting', x: 58.75, y: 85, detail: `19 + 7 → ${reduceArcana(base + reduceArcana(year + base))}.` },
-  { id: 'base-inner-left', value: reduceArcana(base + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(base + reduceArcana(base + day))), role: 'supporting', x: 41.25, y: 85, detail: `19 + 11 → ${reduceArcana(base + reduceArcana(base + day))}.` },
-  { id: 'day-inner-bottom', value: reduceArcana(day + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(day + reduceArcana(base + day))), role: 'supporting', x: 23.75, y: 85, detail: `10 + 11 → ${reduceArcana(day + reduceArcana(base + day))}.` },
+  { id: 'day', value: day, title: arcanaTitle(day), role: 'primary', x: 15, y: 50, detail: describeArcana(day) },
+  { id: 'month', value: month, title: arcanaTitle(month), role: 'primary', x: 50, y: 9, detail: describeArcana(month) },
+  { id: 'year', value: year, title: arcanaTitle(year), role: 'primary', x: 85, y: 50, detail: describeArcana(year) },
+  { id: 'base', value: base, title: arcanaTitle(base), role: 'primary', x: 50, y: 91, detail: describeArcana(base) },
+  { id: 'day-month', value: reduceArcana(day + month), title: arcanaTitle(reduceArcana(day + month)), role: 'derived', x: 32.5, y: 29.5, detail: describeArcana(reduceArcana(day + month)) },
+  { id: 'month-year', value: reduceArcana(month + year), title: arcanaTitle(reduceArcana(month + year)), role: 'derived', x: 67.5, y: 29.5, detail: describeArcana(reduceArcana(month + year)) },
+  { id: 'year-base', value: reduceArcana(year + base), title: arcanaTitle(reduceArcana(year + base)), role: 'derived', x: 67.5, y: 70.5, detail: describeArcana(reduceArcana(year + base)) },
+  { id: 'base-day', value: reduceArcana(base + day), title: arcanaTitle(reduceArcana(base + day)), role: 'derived', x: 32.5, y: 70.5, detail: describeArcana(reduceArcana(base + day)) },
+  { id: 'center', value: center, title: arcanaTitle(center), role: 'center', x: 50, y: 50, detail: describeArcana(center) },
+  { id: 'day-inner', value: reduceArcana(day + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(day + reduceArcana(day + month))), role: 'supporting', x: 23.75, y: 15, detail: describeArcana(reduceArcana(day + reduceArcana(day + month))) },
+  { id: 'month-inner', value: reduceArcana(month + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(month + reduceArcana(day + month))), role: 'supporting', x: 41.25, y: 15, detail: describeArcana(reduceArcana(month + reduceArcana(day + month))) },
+  { id: 'month-inner-right', value: reduceArcana(month + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(month + reduceArcana(month + year))), role: 'supporting', x: 58.75, y: 15, detail: describeArcana(reduceArcana(month + reduceArcana(month + year))) },
+  { id: 'year-inner', value: reduceArcana(year + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(year + reduceArcana(month + year))), role: 'supporting', x: 76.25, y: 15, detail: describeArcana(reduceArcana(year + reduceArcana(month + year))) },
+  { id: 'year-inner-bottom', value: reduceArcana(year + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(year + reduceArcana(year + base))), role: 'supporting', x: 76.25, y: 85, detail: describeArcana(reduceArcana(year + reduceArcana(year + base))) },
+  { id: 'base-inner-right', value: reduceArcana(base + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(base + reduceArcana(year + base))), role: 'supporting', x: 58.75, y: 85, detail: describeArcana(reduceArcana(base + reduceArcana(year + base))) },
+  { id: 'base-inner-left', value: reduceArcana(base + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(base + reduceArcana(base + day))), role: 'supporting', x: 41.25, y: 85, detail: describeArcana(reduceArcana(base + reduceArcana(base + day))) },
+  { id: 'day-inner-bottom', value: reduceArcana(day + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(day + reduceArcana(base + day))), role: 'supporting', x: 23.75, y: 85, detail: describeArcana(reduceArcana(day + reduceArcana(base + day))) },
 ];
 const roleLabels: Record<PointRole, string> = {
   primary: copy.primary,
@@ -493,9 +693,13 @@ const roleLabels: Record<PointRole, string> = {
       <summary>
         <span class="card-kicker">{copy.birthday}</span>
         <time class="birth-date" datetime="2004-03-28">{formattedBirthday}</time>
-        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+        <span class="birthday-prompt">{birthdayPrompts[lang] ?? birthdayPrompts.en}</span>
+        <span class="card-action">{copy.open}</span>
       </summary>
-      <div class="card-detail"><p>{copy.birthday}: <time datetime="2004-03-28">{formattedBirthday}</time>. {copy.natalDetail}</p></div>
+      <div class="card-detail">
+        <p>{birthdayPrompts[lang] ?? birthdayPrompts.en}</p>
+        <p>{birthdayCelebrities}</p>
+      </div>
     </details>
 
     <details class="personal-card blood-card">
@@ -503,7 +707,7 @@ const roleLabels: Record<PointRole, string> = {
         <span class="card-kicker">{copy.blood}</span>
         <span class="blood-visual" aria-hidden="true"><span>A</span><i>II</i><b>Rh+</b><svg viewBox="0 0 160 100"><path d="M80 8 142 42v18l-62 34L18 60V42zM18 42l62 36 62-36M80 78v16" /></svg></span>
         <span class="card-title">{copy.bloodType}</span>
-        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+        <span class="card-action">{copy.open}</span>
       </summary>
       <div class="card-detail"><p>{copy.bloodDetail}</p></div>
     </details>
@@ -524,9 +728,12 @@ const roleLabels: Record<PointRole, string> = {
           </svg>
           <span class="personality-name">{copy.strategist}</span>
         </span>
-        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
+        <span class="card-action">{copy.open}</span>
       </summary>
-      <div class="card-detail"><p>{copy.typeDetail}</p></div>
+      <div class="card-detail">
+        <p>{copy.typeDetail}</p>
+        <a class="personality-link" href="https://www.16personalities.com/intj-personality" target="_blank" rel="noopener noreferrer">16Personalities · INTJ</a>
+      </div>
     </details>
 
     <section class="personal-card matrix-card" aria-labelledby="matrix-title">
@@ -565,9 +772,8 @@ const roleLabels: Record<PointRole, string> = {
       <div class="matrix-reading" aria-live="polite" aria-atomic="true">
         <span class="reading-label">{copy.selected}</span>
         <strong class="reading-title">{arcanaTitle(day)}</strong>
-        <p class="reading-note">{copy.birthday}: {formattedBirthday}.</p>
+        <p class="reading-note">{points[0].detail}</p>
       </div>
-      <p class="matrix-footnote">{copy.formula}</p>
     </section>
 
     <section class="personal-card natal-card" aria-labelledby="natal-title">
@@ -575,11 +781,10 @@ const roleLabels: Record<PointRole, string> = {
         <div>
           <span class="card-kicker">{copy.astrology}</span>
           <h3 id="natal-title">{copy.natal}</h3>
-          <p class="card-subtitle">{copy.natalDetail}</p>
         </div>
         <span class="natal-location">{copy.chartLocation}</span>
       </div>
-      <div class="natal-chart" role="img" aria-label={`${copy.natal}. ${copy.natalDetail}`}>
+      <div class="natal-chart">
         <svg viewBox="0 0 600 600" aria-hidden="true">
           <circle class="natal-zodiac-ring" cx="300" cy="300" r="276" />
           <circle class="natal-zodiac-inner" cx="300" cy="300" r="228" />
@@ -600,26 +805,23 @@ const roleLabels: Record<PointRole, string> = {
           <span class="natal-house-number" style={`--x:${50 + Math.cos(radians(index * 30 + 285)) * 25}%;--y:${50 + Math.sin(radians(index * 30 + 285)) * 25}%`}>{index + 1}</span>
         ))}
         {natalPoints.map((point) => (
-          <span
+          <button
             class="natal-planet"
+            type="button"
             style={`--x:${point.x}%;--y:${point.y}%`}
             aria-label={`${point.name} ${point.degree}° ${zodiacSymbols[point.sign]}`}
+            data-natal-note={planetNotes[lang]?.[point.name] ?? planetNotes.en[point.name]}
           >
             <span>{point.name}</span><small>{point.degree}°</small>
-          </span>
+          </button>
         ))}
         <span class="natal-angle natal-angle--asc" style={`--x:${50 + Math.cos(radians(180)) * 46}%;--y:${50 + Math.sin(radians(180)) * 46}%`}>ASC</span>
         <span class="natal-angle natal-angle--mc" style={`--x:${50 + Math.cos(radians(midheaven - ascendant + 180)) * 46}%;--y:${50 + Math.sin(radians(midheaven - ascendant + 180)) * 46}%`}>MC</span>
       </div>
-      <div class="natal-key">
-        <span>{copy.ascendant}: {zodiacSymbols[Math.floor(ascendant / 30)]} {Math.floor(ascendant % 30)}°</span>
-        <span>{copy.midheaven}: {zodiacSymbols[Math.floor(midheaven / 30)]} {Math.floor(midheaven % 30)}°</span>
-      </div>
-      <p class="natal-disclaimer">{copy.chartDisclaimer}</p>
+      <p class="natal-reading" aria-live="polite" aria-atomic="true">{chartInsights[lang] ?? chartInsights.en}</p>
     </section>
   </div>
 
-  <p class="personal-disclaimer">{copy.disclaimer}</p>
 </section>
 
 <script>
@@ -627,6 +829,30 @@ const roleLabels: Record<PointRole, string> = {
   const matrixReading = document.querySelector<HTMLElement>('.matrix-reading');
   const readingTitle = matrixReading?.querySelector<HTMLElement>('.reading-title');
   const readingNote = matrixReading?.querySelector<HTMLElement>('.reading-note');
+  const natalReading = document.querySelector<HTMLElement>('.natal-reading');
+  const natalPlanets = Array.from(document.querySelectorAll<HTMLButtonElement>('.natal-planet'));
+
+  for (const planet of natalPlanets) {
+    const showPlanet = () => {
+      const note = planet.dataset.natalNote;
+      if (note && natalReading) natalReading.textContent = note;
+    };
+    planet.addEventListener('pointerenter', showPlanet);
+    planet.addEventListener('focus', showPlanet);
+    planet.addEventListener('click', showPlanet);
+  }
+
+  const summaries = Array.from(document.querySelectorAll<HTMLDetailsElement>('.personal-details details.personal-card'));
+  for (const card of summaries) {
+    card.addEventListener('pointerenter', () => { card.open = true; });
+    card.addEventListener('pointerleave', () => {
+      if (!card.contains(document.activeElement)) card.open = false;
+    });
+    card.addEventListener('focusout', (event) => {
+      const nextTarget = event.relatedTarget;
+      if (!(nextTarget instanceof Node) || !card.contains(nextTarget)) card.open = false;
+    });
+  }
 
   for (const button of matrixButtons) {
     const showReading = () => {
@@ -701,11 +927,13 @@ const roleLabels: Record<PointRole, string> = {
 
   .personal-card > summary::-webkit-details-marker { display: none; }
   .personal-card > summary:focus-visible { outline: 2px solid var(--personal-accent-light); outline-offset: -4px; border-radius: 12px; }
+  .card-detail { padding: 0 clamp(18px, 3vw, 28px) clamp(18px, 3vw, 28px); color: var(--color-text-secondary); font-size: 0.88rem; line-height: 1.55; }
+  .card-detail p + p { margin-top: 8px; }
+  .personality-link { display: inline-block; margin-top: 8px; color: var(--personal-accent-light); text-underline-offset: 3px; }
+  .birthday-prompt { margin-top: 10px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.4; }
   .card-kicker, .reading-label { color: var(--color-text-secondary); font-size: 0.67rem; font-weight: 600; letter-spacing: 0.13em; }
   .card-title { margin-top: auto; color: var(--color-text-primary); font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
-  .card-action { display: flex; width: 100%; justify-content: space-between; margin-top: 14px; color: var(--personal-accent-light); font-size: 0.84rem; }
-  .card-action span { transition: transform 220ms var(--ease); }
-  .personal-card:hover .card-action span, .personal-card:focus-within .card-action span { transform: translate(3px, -3px); }
+  .card-action { display: block; width: 100%; margin-top: auto; padding-top: 14px; color: var(--personal-accent-light); font-size: 0.84rem; }
 
   .birth-card > summary { min-height: 150px; }
   .birth-date { margin-top: auto; color: var(--color-text-primary); font-size: clamp(1.05rem, 1vw + 0.82rem, 1.35rem); font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.3; }
@@ -784,14 +1012,14 @@ const roleLabels: Record<PointRole, string> = {
   .reading-label { display: block; font-size: 0.57rem; }
   .reading-title { display: block; margin-top: 4px; color: var(--color-text-primary); font-size: 0.95rem; }
   .reading-note { margin-top: 4px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; }
-  .matrix-footnote, .personal-disclaimer { margin-top: 14px; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.55; }
 
   .natal-card { padding: clamp(18px, 3vw, 32px); }
   .natal-card-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
   .natal-card-heading h3 { margin: 6px 0; font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); line-height: 1.15; }
   .natal-location { color: var(--color-text-secondary); font-size: 0.78rem; }
   .natal-chart { position: relative; width: min(100%, 760px); aspect-ratio: 1; margin: 24px auto; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--personal-accent) 7%, transparent), transparent 70%); }
-  .natal-chart > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .natal-chart > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transform-origin: center; animation: natal-orbit 120s linear infinite; }
+  @keyframes natal-orbit { to { transform: rotate(360deg); } }
   .natal-zodiac-ring, .natal-zodiac-inner, .natal-house-ring, .natal-inner-ring { fill: none; vector-effect: non-scaling-stroke; }
   .natal-zodiac-ring { stroke: color-mix(in srgb, var(--personal-accent) 60%, var(--personal-border)); stroke-width: 1.2; }
   .natal-zodiac-inner, .natal-house-ring { stroke: var(--personal-border); stroke-width: 1; }
@@ -803,13 +1031,12 @@ const roleLabels: Record<PointRole, string> = {
   .natal-zodiac-symbol, .natal-house-number, .natal-planet, .natal-angle { position: absolute; top: var(--y); left: var(--x); transform: translate(-50%, -50%); }
   .natal-zodiac-symbol { color: var(--personal-accent-light); font-family: "Apple Symbols", "Segoe UI Symbol", serif; font-size: clamp(0.9rem, 2vw, 1.4rem); font-variant-emoji: text; }
   .natal-house-number { color: var(--color-text-secondary); font-size: clamp(0.55rem, 1vw, 0.72rem); }
-  .natal-planet { display: flex; min-width: 34px; align-items: center; justify-content: center; gap: 2px; padding: 3px 5px; border: 1px solid color-mix(in srgb, var(--personal-accent) 45%, var(--personal-border)); border-radius: 999px; background: color-mix(in srgb, var(--personal-surface) 90%, transparent); color: var(--color-text-primary); font-size: clamp(0.68rem, 1.4vw, 0.9rem); line-height: 1; white-space: nowrap; box-shadow: 0 2px 10px rgb(0 0 0 / 0.18); }
+  .natal-planet { display: flex; min-width: 34px; align-items: center; justify-content: center; gap: 2px; padding: 3px 5px; border: 1px solid color-mix(in srgb, var(--personal-accent) 45%, var(--personal-border)); border-radius: 999px; background: color-mix(in srgb, var(--personal-surface) 90%, transparent); color: var(--color-text-primary); cursor: pointer; font: inherit; font-size: clamp(0.68rem, 1.4vw, 0.9rem); line-height: 1; white-space: nowrap; box-shadow: 0 2px 10px rgb(0 0 0 / 0.18); }
+  .natal-planet:hover, .natal-planet:focus-visible { z-index: 2; border-color: var(--personal-accent-light); background: var(--personal-raised); outline: 2px solid color-mix(in srgb, var(--personal-accent-light) 65%, transparent); outline-offset: 2px; }
   .natal-planet small { color: var(--personal-accent-light); font-size: 0.65em; }
   .natal-angle { color: var(--personal-accent-light); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; }
   .natal-angle--mc { color: #c3a6ef; }
-  .natal-key { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: center; color: var(--color-text-secondary); font-size: 0.8rem; }
-  .natal-key span:first-child { color: var(--personal-accent-light); }
-  .natal-disclaimer { max-width: 72em; margin: 18px auto 0; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.55; text-align: center; }
+  .natal-reading { min-height: 3.2em; max-width: 50em; margin: 18px auto 0; color: var(--color-text-secondary); font-size: 0.88rem; line-height: 1.55; text-align: center; }
   .personal-disclaimer { max-width: 72em; }
 
   @media (max-width: 700px) {
@@ -828,5 +1055,6 @@ const roleLabels: Record<PointRole, string> = {
   @media (prefers-reduced-motion: reduce) {
     .personal-card:hover, .personal-card:focus-within { transform: none; }
     .personality-card:hover .personality-path, .personality-card:focus-within .personality-path { stroke-dashoffset: 0; }
+    .natal-chart > svg { animation: none; }
   }
 </style>

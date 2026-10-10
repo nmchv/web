@@ -92,8 +92,9 @@ export const content: SiteContent = {
     directions: { title: '工作领域', lead: '我在这些领域的交汇处开展工作。' },
     contacts: {
       title: '联系方式',
-      lead: '您可以在预约网站选择课程时间，也可以通过专门的表单向我提问。',
-      bookingCta: '预约课程或提出问题',
+      lead: '您可以通过网站上的专用表格向我提问。',
+      bookingCta: '提出问题',
+      lessonLanguages: '课程仅使用俄语或英语授课。',
     },
     footer: { toTop: '返回顶部', rights: 'Aleksei Nemichev' },
   },

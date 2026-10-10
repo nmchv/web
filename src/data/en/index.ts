@@ -116,6 +116,7 @@ export const content: SiteContent = {
       title: 'Contact',
       lead: 'Use the booking website to choose a lesson time or send me a question through its contact form.',
       bookingCta: 'Book a lesson or ask a question',
+      lessonLanguages: 'I teach lessons in Russian and English.',
     },
     footer: { toTop: 'Back to top', rights: 'Aleksei Nemichev' },
   },

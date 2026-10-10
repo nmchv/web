@@ -94,6 +94,6 @@ export interface Ui {
   about: { title: string; photoAlt: string };
   education: { title: string };
   directions: { title: string; lead: string };
-  contacts: { title: string; lead: string; bookingCta: string };
+  contacts: { title: string; lead: string; bookingCta: string; lessonLanguages: string };
   footer: { toTop: string; rights: string };
 }

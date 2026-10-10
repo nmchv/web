@@ -103,8 +103,9 @@ export const content: SiteContent = {
     },
     contacts: {
       title: 'Contacto',
-      lead: 'En el sitio de reservas puedes elegir una hora para una clase o enviarme una pregunta mediante el formulario.',
-      bookingCta: 'Reservar una clase o hacer una pregunta',
+      lead: 'Puedes enviarme una pregunta mediante el formulario del sitio.',
+      bookingCta: 'Hacer una pregunta',
+      lessonLanguages: 'Imparto clases únicamente en ruso e inglés.',
     },
     footer: { toTop: 'Volver arriba', rights: 'Alexey Nemichev' },
   },
