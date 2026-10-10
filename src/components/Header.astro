@@ -8,7 +8,7 @@ const homePath = `${localePath}/`;
 const items = [
   ...(isAboutPage || isProjectsPage ? [{ id: 'home', label: ui.nav.home, href: homePath }] : []),
   { id: 'projects', label: ui.nav.projects, href: isProjectsPage ? '#project-list' : `${localePath}/projects` },
-  { id: 'about', label: ui.nav.about, href: isAboutPage || isProjectsPage ? `${homePath}#about` : '#about' },
+  { id: 'about', label: ui.nav.about, href: `${localePath}/about` },
   ...(contacts.length ? [{
     id: 'contacts',
     label: ui.nav.contacts,

@@ -464,6 +464,7 @@ a { color: inherit; text-decoration: none; }
   padding-left: var(--journey-gutter);
   counter-reset: about-step;
 }
+.personal-details-container { margin-top: clamp(52px, 8vw, 88px); }
 .about-document::before {
   position: absolute;
   top: 0;
@@ -808,12 +809,12 @@ a { color: inherit; text-decoration: none; }
 .about-intro { max-width: 42em; }
 .about-text { max-width: 38em; display: grid; gap: 12px; margin-top: 28px; color: var(--color-text-secondary); text-wrap: pretty; }
 .about-text p:first-child { color: var(--color-text-primary); font-size: clamp(1.2rem, 1.05rem + 0.8vw, 1.6rem); line-height: 1.45; letter-spacing: -0.01em; }
-.about-photo { justify-self: end; border-radius: var(--radius); border: 1px solid var(--color-border); width: 100%; max-width: 380px; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 38%; box-shadow: 0 24px 72px rgb(0 0 0 / 0.28); }
+.about-photo { justify-self: end; align-self: center; display: block; width: min(100%, 290px); height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 38%; border-radius: var(--radius); border: 1px solid var(--color-border); box-shadow: 0 24px 72px rgb(0 0 0 / 0.28); }
 .alias { margin-top: 20px; font-size: var(--fs-small); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-secondary); }
 .alias b { color: var(--color-accent-hover); font-weight: 600; }
 @media (max-width: 760px) {
   .about-grid { grid-template-columns: minmax(0, 1fr) minmax(160px, 0.65fr); gap: 28px; }
-  .about-photo { max-width: 300px; }
+  .about-photo { width: min(100%, 250px); }
 }
 @media (max-width: 560px) {
   .about-grid { grid-template-columns: 1fr; }
@@ -854,11 +855,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Contacts ---------- */
-.contact-list { border-top: 1px solid var(--color-border); max-width: 640px; }
+.contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--color-border); width: 100%; }
 .contact-list li { border-bottom: 1px solid var(--color-border); }
 .contact-list a { display: flex; justify-content: space-between; gap: 16px; padding-block: 20px; min-height: 56px; transition: color 0.25s var(--ease); }
 .contact-list .label { color: var(--color-text-secondary); }
 .contact-list a:hover { color: var(--color-accent-hover); }
+@media (max-width: 640px) { .contact-list { grid-template-columns: 1fr; } }
 .contact-booking { margin-top: 0; margin-bottom: clamp(32px, 5vw, 56px); }
 .contact-booking svg { width: 16px; height: 16px; }
 .contact-booking:hover svg { transform: translate(2px, -2px); }

@@ -1,5 +1,6 @@
 import type { SiteContent } from '../index';
 import { content as russianContent } from '../index';
+import { contactsForLanguage } from '../contact-localization';
 import type { Project } from '../../i18n/types';
 
 const projectTranslations: Record<string, Pick<Project, 'title' | 'description' | 'category'>> = {
@@ -133,6 +134,7 @@ export const content: SiteContent = {
     ...project,
     ...projectTranslations[project.id],
   })),
+  contacts: contactsForLanguage(russianContent.contacts, 'fr'),
   directions: [
     { id: 'geo', title: 'Géographie et recherche', description: 'Explorer les lieux, les cartes et ce que la géographie révèle du monde.' },
     { id: 'edu', title: 'Éducation', description: 'Enseigner et rendre l’apprentissage plus clair, stimulant et accessible.' },

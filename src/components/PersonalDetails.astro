@@ -4,8 +4,122 @@ interface Props {
 }
 
 const { lang } = Astro.props;
-const eastAsianLocales = ['ja', 'ko', 'zh'];
-const bloodFirst = eastAsianLocales.includes(lang);
+const birthDate = new Date(Date.UTC(2004, 2, 28, 2, 30));
+const julianDate = birthDate.getTime() / 86400000 + 2440587.5;
+const centuries = (julianDate - 2451545) / 36525;
+const radians = (degrees: number) => degrees * Math.PI / 180;
+const degrees = (value: number) => ((value % 360) + 360) % 360;
+const solveKepler = (meanAnomaly: number, eccentricity: number) => {
+  let eccentricAnomaly = meanAnomaly;
+  for (let iteration = 0; iteration < 8; iteration += 1) {
+    eccentricAnomaly -= (eccentricAnomaly - eccentricity * Math.sin(eccentricAnomaly) - meanAnomaly)
+      / (1 - eccentricity * Math.cos(eccentricAnomaly));
+  }
+  return eccentricAnomaly;
+};
+const orbitalElements = [
+  { name: '☉', a: 1, da: 0.00000000562, e: 0.016708634, de: -0.000042037, i: -0.00001531, di: -0.01294668, l: 100.46457166, dl: 35999.37244981, p: 102.93768193, dp: 0.32327364, n: 0, dn: 0 },
+  { name: '☿', a: 0.38709927, da: 0.00000037, e: 0.20563593, de: 0.00001906, i: 7.00497902, di: -0.00594749, l: 252.25032350, dl: 149472.67411175, p: 77.45779628, dp: 0.16047689, n: 48.33076593, dn: -0.12534081 },
+  { name: '♀', a: 0.72333566, da: 0.00000390, e: 0.00677672, de: -0.00004107, i: 3.39467605, di: -0.00078890, l: 181.97909950, dl: 58517.81538729, p: 131.60246718, dp: 0.00268329, n: 76.67984255, dn: -0.27769418 },
+  { name: '♂', a: 1.52371034, da: 0.00001847, e: 0.09339410, de: 0.00007882, i: 1.84969142, di: -0.00813131, l: -4.55343205, dl: 19140.30268499, p: -23.94362959, dp: 0.44441088, n: 49.55953891, dn: -0.29257343 },
+  { name: '♃', a: 5.20288700, da: -0.00011607, e: 0.04838624, de: -0.00013253, i: 1.30439695, di: -0.00183714, l: 34.39644051, dl: 3034.74612775, p: 14.72847983, dp: 0.21252668, n: 100.47390909, dn: 0.20469106 },
+  { name: '♄', a: 9.53667594, da: -0.00125060, e: 0.05386179, de: -0.00050991, i: 2.48599187, di: 0.00193609, l: 49.95424423, dl: 1222.49362201, p: 92.59887831, dp: -0.41897216, n: 113.66242448, dn: -0.28867794 },
+  { name: '♅', a: 19.18916464, da: -0.00196176, e: 0.04725744, de: -0.00004397, i: 0.77263783, di: -0.00242939, l: 313.23810451, dl: 428.48202785, p: 170.95427630, dp: 0.40805281, n: 74.01692503, dn: 0.04240589 },
+  { name: '♆', a: 30.06992276, da: 0.00026291, e: 0.00859048, de: 0.00005105, i: 1.77004347, di: 0.00035372, l: -55.12002969, dl: 218.45945325, p: 44.96476227, dp: -0.32241464, n: 131.78422574, dn: -0.00508664 },
+  { name: '♇', a: 39.48211675, da: -0.00031596, e: 0.24882730, de: 0.00005170, i: 17.14001206, di: 0.00004818, l: 238.92903833, dl: 145.20780515, p: 224.06891629, dp: -0.04062942, n: 110.30393684, dn: -0.01183482 },
+];
+const heliocentricPosition = (element: typeof orbitalElements[number], t: number) => {
+  const a = element.a + element.da * t;
+  const eccentricity = element.e + element.de * t;
+  const inclination = radians(element.i + element.di * t);
+  const node = radians(element.n + element.dn * t);
+  const perihelion = radians(element.p + element.dp * t);
+  const meanAnomaly = radians(degrees(element.l + element.dl * t - element.p - element.dp * t));
+  const eccentricAnomaly = solveKepler(meanAnomaly, eccentricity);
+  const x = a * (Math.cos(eccentricAnomaly) - eccentricity);
+  const y = a * Math.sqrt(1 - eccentricity ** 2) * Math.sin(eccentricAnomaly);
+  const trueAnomaly = Math.atan2(y, x);
+  const radius = Math.hypot(x, y);
+  const argument = trueAnomaly + perihelion - node;
+  return [
+    radius * (Math.cos(node) * Math.cos(argument) - Math.sin(node) * Math.sin(argument) * Math.cos(inclination)),
+    radius * (Math.sin(node) * Math.cos(argument) + Math.cos(node) * Math.sin(argument) * Math.cos(inclination)),
+    radius * Math.sin(argument) * Math.sin(inclination),
+  ];
+};
+const earth = heliocentricPosition(orbitalElements[0], centuries);
+const meanLongitudeMoon = 218.3164477 + 481267.88123421 * centuries;
+const elongation = radians(297.8501921 + 445267.1114034 * centuries);
+const sunAnomaly = radians(357.5291092 + 35999.0502909 * centuries);
+const moonAnomaly = radians(134.9633964 + 477198.8675055 * centuries);
+const moonLatitude = radians(93.2720950 + 483202.0175233 * centuries);
+const moonLongitude = degrees(meanLongitudeMoon
+  + 6.289 * Math.sin(moonAnomaly)
+  + 1.274 * Math.sin(2 * elongation - moonAnomaly)
+  + 0.658 * Math.sin(2 * elongation)
+  + 0.214 * Math.sin(2 * moonAnomaly)
+  - 0.186 * Math.sin(sunAnomaly)
+  - 0.114 * Math.sin(2 * moonLatitude)
+  + 0.059 * Math.sin(2 * elongation - 2 * moonAnomaly)
+  + 0.057 * Math.sin(2 * elongation - sunAnomaly - moonAnomaly)
+  + 0.053 * Math.sin(2 * elongation + moonAnomaly)
+  + 0.046 * Math.sin(2 * elongation - sunAnomaly)
+  + 0.041 * Math.sin(moonAnomaly - sunAnomaly)
+  - 0.035 * Math.sin(elongation)
+  - 0.031 * Math.sin(moonAnomaly + sunAnomaly)
+  - 0.015 * Math.sin(2 * moonLatitude - 2 * elongation)
+  + 0.011 * Math.sin(moonAnomaly - 4 * elongation));
+const planets = orbitalElements.slice(1).map((element) => {
+  const position = heliocentricPosition(element, centuries);
+  const longitude = degrees(Math.atan2(position[1] - earth[1], position[0] - earth[0]) * 180 / Math.PI);
+  return { name: element.name, longitude };
+});
+const moon = { name: '☽', longitude: moonLongitude };
+const sun = { name: '☉', longitude: degrees(Math.atan2(-earth[1], -earth[0]) * 180 / Math.PI) };
+const siderealDegrees = degrees(280.46061837
+  + 360.98564736629 * (julianDate - 2451545)
+  + 0.000387933 * centuries ** 2
+  - centuries ** 3 / 38710000
+  + 40.8);
+const latitude = radians(48.18);
+const obliquity = radians(23.4393 - 0.013 * centuries);
+const ascendant = degrees(Math.atan2(
+  Math.cos(radians(siderealDegrees)),
+  -(Math.sin(obliquity) * Math.tan(latitude) + Math.cos(obliquity) * Math.sin(radians(siderealDegrees))),
+) * 180 / Math.PI);
+const midheaven = degrees(Math.atan2(
+  Math.sin(radians(siderealDegrees)),
+  Math.cos(radians(siderealDegrees)) * Math.cos(obliquity),
+) * 180 / Math.PI);
+const natalPoints = [
+  { ...moon, name: '☽' },
+  sun,
+  ...planets,
+].map((planet, index) => {
+  const angle = radians(planet.longitude - ascendant + 180);
+  const radius = 35 - index % 3 * 5;
+  return {
+    ...planet,
+    sign: Math.floor(planet.longitude / 30),
+    degree: Math.floor(planet.longitude % 30),
+    x: 50 + Math.cos(angle) * radius,
+    y: 50 + Math.sin(angle) * radius,
+  };
+});
+const zodiacSymbols = ['♈︎', '♉︎', '♊︎', '♋︎', '♌︎', '♍︎', '♎︎', '♏︎', '♐︎', '♑︎', '♒︎', '♓︎'];
+const zodiacLabels = zodiacSymbols.map((symbol, index) => {
+  const angle = radians(index * 30 + 15 - ascendant + 180);
+  return { symbol, x: 50 + Math.cos(angle) * 43, y: 50 + Math.sin(angle) * 43 };
+});
+const houseAngles = Array.from({ length: 12 }, (_, index) => {
+  const angle = radians(index * 30 + 180);
+  return {
+    x: 50 + Math.cos(angle) * 39,
+    y: 50 + Math.sin(angle) * 39,
+    innerX: 50 + Math.cos(angle) * 10,
+    innerY: 50 + Math.sin(angle) * 10,
+  };
+});
 
 const copy = {
   ru: {
@@ -23,9 +137,12 @@ const copy = {
     matrixHint: 'Наведите или выберите точку: размер и цвет показывают её роль в матрице.',
     natal: 'Натальная карта',
     astrology: 'Астрология',
-    inProgress: 'В разработке',
-    natalDetail: 'Здесь появится интерактивная карта с пояснениями. Для её построения понадобятся точное время и место рождения.',
+    natalDetail: 'Расчётная карта на 28 марта 2004 года, 06:30 (UTC+4), координаты 48.18° с. ш. и 40.80° в. д.',
+    chartDisclaimer: 'Положения планет и домов рассчитаны по приближённым астрономическим формулам и показаны для интереса, астрология не является научным методом.',
     open: 'Подробнее',
+    chartLocation: 'Ростовская область · местное летнее время',
+    ascendant: 'Асцендент',
+    midheaven: 'Середина неба',
     selected: 'ВЫБРАННАЯ ТОЧКА',
     center: 'Центр матрицы',
     centerNote: 'Сводное значение четырёх основных энергий — 11. В этой символической системе это Сила: устойчивость и управление энергией.',
@@ -50,9 +167,12 @@ const copy = {
     matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
     natal: 'Natal chart',
     astrology: 'Astrology',
-    inProgress: 'In progress',
-    natalDetail: 'An interactive chart and guide will go here. An exact birth time and place are needed to create it.',
+    natalDetail: 'Calculated for 28 March 2004, 06:30 (UTC+4), at 48.18° N, 40.80° E.',
+    chartDisclaimer: 'Planet and house positions use approximate astronomical formulas and are shown for interest; astrology is not a scientific method.',
     open: 'Learn more',
+    chartLocation: 'Rostov Oblast · local daylight time',
+    ascendant: 'Ascendant',
+    midheaven: 'Midheaven',
     selected: 'SELECTED POINT',
     center: 'Matrix center',
     centerNote: 'The combined value of the four main energies is 11. In this symbolic system it is Strength: steadiness and self-command.',
@@ -77,8 +197,11 @@ const copy = {
     matrixHint: 'Survolez ou sélectionnez un point. Sa taille et sa couleur indiquent son rôle.',
     natal: 'Thème natal',
     astrology: 'Astrologie',
-    inProgress: 'En préparation',
-    natalDetail: 'Un thème interactif et ses explications seront ajoutés ici. L’heure et le lieu exacts de naissance sont nécessaires.',
+    natalDetail: 'Calculé pour le 28 mars 2004 à 06 h 30 (UTC+4), aux coordonnées 48,18° N et 40,80° E.',
+    chartDisclaimer: 'Les positions des planètes et des maisons sont approximatives et présentées par curiosité ; l’astrologie n’est pas une méthode scientifique.',
+    chartLocation: 'Oblast de Rostov · heure d’été locale',
+    ascendant: 'Ascendant',
+    midheaven: 'Milieu du Ciel',
     open: 'En savoir plus',
     selected: 'POINT SÉLECTIONNÉ',
     center: 'Centre de la matrice',
@@ -104,8 +227,11 @@ const copy = {
     matrixHint: 'Pasa el cursor o selecciona un punto. Su tamaño y color indican su función.',
     natal: 'Carta natal',
     astrology: 'Astrología',
-    inProgress: 'En desarrollo',
-    natalDetail: 'Aquí se añadirá una carta interactiva con explicaciones. Se necesitan la hora y el lugar exactos de nacimiento.',
+    natalDetail: 'Calculada para el 28 de marzo de 2004 a las 06:30 (UTC+4), en 48,18° N y 40,80° E.',
+    chartDisclaimer: 'Las posiciones planetarias y las casas son aproximadas y se muestran por curiosidad; la astrología no es un método científico.',
+    chartLocation: 'Óblast de Rostov · horario de verano local',
+    ascendant: 'Ascendente',
+    midheaven: 'Medio Cielo',
     open: 'Más información',
     selected: 'PUNTO SELECCIONADO',
     center: 'Centro de la matriz',
@@ -131,8 +257,11 @@ const copy = {
     matrixHint: '점을 가리키거나 선택하세요. 크기와 색상으로 매트릭스에서의 역할을 표시합니다.',
     natal: '출생 차트',
     astrology: '점성술',
-    inProgress: '준비 중',
-    natalDetail: '이곳에 설명이 포함된 인터랙티브 차트를 추가할 예정입니다. 정확한 출생 시간과 장소가 필요합니다.',
+    natalDetail: '2004년 3월 28일 06:30(UTC+4), 북위 48.18°, 동경 40.80° 기준 계산.',
+    chartDisclaimer: '행성과 하우스 위치는 근사 천문 공식으로 계산한 참고용이며, 점성술은 과학적 방법이 아닙니다.',
+    chartLocation: '로스토프주 · 현지 서머타임',
+    ascendant: '상승궁',
+    midheaven: '중천점',
     open: '자세히 보기',
     selected: '선택한 지점',
     center: '매트릭스 중심',
@@ -158,8 +287,11 @@ const copy = {
     matrixHint: '悬停或选择一个节点。大小和颜色表示它在矩阵中的作用。',
     natal: '本命星盘',
     astrology: '占星学',
-    inProgress: '开发中',
-    natalDetail: '这里将添加带说明的互动星盘。绘制准确星盘需要出生时间和地点。',
+    natalDetail: '按2004年3月28日06:30（UTC+4）、北纬48.18°、东经40.80°计算。',
+    chartDisclaimer: '行星和宫位为近似天文计算，仅供兴趣参考；占星术不是科学方法。',
+    chartLocation: '罗斯托夫州 · 当地夏令时',
+    ascendant: '上升点',
+    midheaven: '中天',
     open: '了解更多',
     selected: '当前节点',
     center: '矩阵中心',
@@ -185,8 +317,11 @@ const copy = {
     matrixHint: 'ポイントにカーソルを合わせるか選択してください。大きさと色で役割を示します。',
     natal: '出生図',
     astrology: '占星術',
-    inProgress: '準備中',
-    natalDetail: '説明付きのインタラクティブなチャートをここに追加予定です。正確な出生時刻と場所が必要です。',
+    natalDetail: '2004年3月28日06:30（UTC+4）、北緯48.18°・東経40.80°で計算。',
+    chartDisclaimer: '惑星とハウスの位置は近似的な天文計算による参考情報です。占星術は科学的な方法ではありません。',
+    chartLocation: 'ロストフ州 · 現地夏時間',
+    ascendant: 'アセンダント',
+    midheaven: 'ミッドヘブン',
     open: '詳しく見る',
     selected: '選択したポイント',
     center: 'マトリックスの中心',
@@ -212,8 +347,11 @@ const copy = {
     matrixHint: 'Bewege den Mauszeiger über einen Punkt oder wähle ihn aus. Größe und Farbe zeigen seine Rolle.',
     natal: 'Geburtshoroskop',
     astrology: 'Astrologie',
-    inProgress: 'In Arbeit',
-    natalDetail: 'Hier wird ein interaktives Horoskop mit Erläuterungen ergänzt. Dafür werden die genaue Geburtszeit und der Geburtsort benötigt.',
+    natalDetail: 'Berechnet für den 28. März 2004 um 06:30 Uhr (UTC+4), bei 48,18° N und 40,80° E.',
+    chartDisclaimer: 'Planeten- und Häuserpositionen sind Näherungswerte und dienen dem Interesse; Astrologie ist keine wissenschaftliche Methode.',
+    chartLocation: 'Oblast Rostow · lokale Sommerzeit',
+    ascendant: 'Aszendent',
+    midheaven: 'Medium Coeli',
     open: 'Mehr erfahren',
     selected: 'AUSGEWÄHLTER PUNKT',
     center: 'Zentrum der Matrix',
@@ -239,8 +377,11 @@ const copy = {
     matrixHint: 'Hovra över eller välj en punkt. Storlek och färg visar dess roll i matrisen.',
     natal: 'Födelsehoroskop',
     astrology: 'Astrologi',
-    inProgress: 'Under utveckling',
-    natalDetail: 'Ett interaktivt horoskop med förklaringar läggs till här. Exakt födelsetid och födelseort behövs.',
+    natalDetail: 'Beräknad för 28 mars 2004 kl. 06:30 (UTC+4), vid 48,18° N och 40,80° Ö.',
+    chartDisclaimer: 'Planeternas och husens positioner är ungefärliga och visas av intresse; astrologi är ingen vetenskaplig metod.',
+    chartLocation: 'Rostov oblast · lokal sommartid',
+    ascendant: 'Ascendent',
+    midheaven: 'Medium Coeli',
     open: 'Läs mer',
     selected: 'VALD PUNKT',
     center: 'Matrisens centrum',
@@ -266,8 +407,11 @@ const copy = {
   matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
   natal: 'Natal chart',
   astrology: 'Astrology',
-  inProgress: 'In progress',
-  natalDetail: 'An interactive chart and guide will go here. An exact birth time and place are needed to create it.',
+  natalDetail: 'Calculated for 28 March 2004, 06:30 (UTC+4), at 48.18° N, 40.80° E.',
+  chartDisclaimer: 'Planet and house positions use approximate astronomical formulas and are shown for interest; astrology is not a scientific method.',
+  chartLocation: 'Rostov Oblast · local daylight time',
+  ascendant: 'Ascendant',
+  midheaven: 'Midheaven',
   open: 'Learn more',
   selected: 'SELECTED POINT',
   center: 'Matrix center',
@@ -279,7 +423,6 @@ const copy = {
   disclaimer: 'The Matrix of Destiny, astrology, and personality types are presented as cultural and entertainment frameworks, not scientific conclusions.',
 };
 
-const birthDate = new Date(Date.UTC(2004, 2, 28));
 const formattedBirthday = new Intl.DateTimeFormat(lang, {
   day: 'numeric',
   month: 'long',
@@ -341,7 +484,7 @@ const roleLabels: Record<PointRole, string> = {
 };
 ---
 
-<section class:list={['personal-details', bloodFirst && 'personal-details--blood-first']} aria-labelledby="personal-details-heading">
+<section class="personal-details" aria-labelledby="personal-details-heading">
   <h2 id="personal-details-heading">{copy.heading}</h2>
   <p class="personal-intro">{copy.intro}</p>
 
@@ -427,26 +570,53 @@ const roleLabels: Record<PointRole, string> = {
       <p class="matrix-footnote">{copy.formula}</p>
     </section>
 
-    <details class="personal-card natal-card">
-      <summary>
-        <span class="card-kicker">{copy.astrology}</span>
-        <span class="natal-visual" aria-hidden="true">
-          <svg viewBox="0 0 220 170">
-            <circle class="natal-orbit" cx="110" cy="84" r="56" />
-            <circle class="natal-orbit natal-orbit--inner" cx="110" cy="84" r="35" />
-            <path class="natal-cross" d="M110 22v124M48 84h124M66 40l88 88M154 40l-88 88" />
-            <circle class="natal-star" cx="110" cy="28" r="4" />
-            <circle class="natal-star" cx="160" cy="105" r="3" />
-            <circle class="natal-star" cx="72" cy="116" r="3" />
-          </svg>
-          <span>✳</span>
-        </span>
-        <span class="card-title">{copy.natal}</span>
-        <span class="card-status">{copy.inProgress}</span>
-        <span class="card-action">{copy.open}<span aria-hidden="true">↗</span></span>
-      </summary>
-      <div class="card-detail"><p>{copy.natalDetail}</p></div>
-    </details>
+    <section class="personal-card natal-card" aria-labelledby="natal-title">
+      <div class="natal-card-heading">
+        <div>
+          <span class="card-kicker">{copy.astrology}</span>
+          <h3 id="natal-title">{copy.natal}</h3>
+          <p class="card-subtitle">{copy.natalDetail}</p>
+        </div>
+        <span class="natal-location">{copy.chartLocation}</span>
+      </div>
+      <div class="natal-chart" role="img" aria-label={`${copy.natal}. ${copy.natalDetail}`}>
+        <svg viewBox="0 0 600 600" aria-hidden="true">
+          <circle class="natal-zodiac-ring" cx="300" cy="300" r="276" />
+          <circle class="natal-zodiac-inner" cx="300" cy="300" r="228" />
+          <circle class="natal-house-ring" cx="300" cy="300" r="218" />
+          <circle class="natal-inner-ring" cx="300" cy="300" r="142" />
+          {Array.from({ length: 12 }, (_, index) => {
+            const angle = radians(index * 30 + 270);
+            const inner = index % 3 === 0 ? 228 : 239;
+            return <line class="natal-zodiac-divider" x1={300 + Math.cos(angle) * inner} y1={300 + Math.sin(angle) * inner} x2={300 + Math.cos(angle) * 276} y2={300 + Math.sin(angle) * 276} />;
+          })}
+          {houseAngles.map((house) => <line class="natal-house-line" x1={300 + (house.innerX - 50) * 6} y1={300 + (house.innerY - 50) * 6} x2={300 + (house.x - 50) * 6} y2={300 + (house.y - 50) * 6} />)}
+          <line class="natal-angle-line" x1="300" y1="300" x2={300 + Math.cos(radians(180)) * 218} y2={300 + Math.sin(radians(180)) * 218} />
+          <line class="natal-midheaven-line" x1="300" y1="300" x2={300 + Math.cos(radians(midheaven - ascendant + 180)) * 218} y2={300 + Math.sin(radians(midheaven - ascendant + 180)) * 218} />
+          <circle class="natal-center" cx="300" cy="300" r="4" />
+        </svg>
+        {zodiacLabels.map((label) => <span class="natal-zodiac-symbol" style={`--x:${label.x}%;--y:${label.y}%`}>{label.symbol}</span>)}
+        {houseAngles.map((_, index) => (
+          <span class="natal-house-number" style={`--x:${50 + Math.cos(radians(index * 30 + 285)) * 25}%;--y:${50 + Math.sin(radians(index * 30 + 285)) * 25}%`}>{index + 1}</span>
+        ))}
+        {natalPoints.map((point) => (
+          <span
+            class="natal-planet"
+            style={`--x:${point.x}%;--y:${point.y}%`}
+            aria-label={`${point.name} ${point.degree}° ${zodiacSymbols[point.sign]}`}
+          >
+            <span>{point.name}</span><small>{point.degree}°</small>
+          </span>
+        ))}
+        <span class="natal-angle natal-angle--asc" style={`--x:${50 + Math.cos(radians(180)) * 46}%;--y:${50 + Math.sin(radians(180)) * 46}%`}>ASC</span>
+        <span class="natal-angle natal-angle--mc" style={`--x:${50 + Math.cos(radians(midheaven - ascendant + 180)) * 46}%;--y:${50 + Math.sin(radians(midheaven - ascendant + 180)) * 46}%`}>MC</span>
+      </div>
+      <div class="natal-key">
+        <span>{copy.ascendant}: {zodiacSymbols[Math.floor(ascendant / 30)]} {Math.floor(ascendant % 30)}°</span>
+        <span>{copy.midheaven}: {zodiacSymbols[Math.floor(midheaven / 30)]} {Math.floor(midheaven % 30)}°</span>
+      </div>
+      <p class="natal-disclaimer">{copy.chartDisclaimer}</p>
+    </section>
   </div>
 
   <p class="personal-disclaimer">{copy.disclaimer}</p>
@@ -493,21 +663,14 @@ const roleLabels: Record<PointRole, string> = {
 
   .personal-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     align-items: stretch;
     gap: 16px;
   }
 
-  .personal-details--blood-first .blood-card { order: 0; }
-  .personal-details--blood-first .personality-card { order: 1; }
-  .personal-details--blood-first .matrix-card { order: 2; }
-  .personal-details--blood-first .birth-card { order: 3; }
-  .personal-details--blood-first .natal-card { order: 4; }
-  .personal-details:not(.personal-details--blood-first) .birth-card { order: 0; }
-  .personal-details:not(.personal-details--blood-first) .personality-card { order: 1; }
-  .personal-details:not(.personal-details--blood-first) .matrix-card { order: 2; }
-  .personal-details:not(.personal-details--blood-first) .blood-card { order: 3; }
-  .personal-details:not(.personal-details--blood-first) .natal-card { order: 4; }
+  .birth-card, .blood-card, .personality-card { grid-column: span 4; }
+  .matrix-card { grid-column: 1 / -1; order: 1; }
+  .natal-card { grid-column: 1 / -1; order: 2; }
 
   .personal-card {
     min-width: 0;
@@ -575,10 +738,10 @@ const roleLabels: Record<PointRole, string> = {
   .personality-name { color: var(--color-text-secondary); font-size: 0.78rem; }
   .personality-card:hover .personality-path, .personality-card:focus-within .personality-path { stroke-dashoffset: 0; transition: stroke-dashoffset 900ms var(--ease); }
 
-  .matrix-card { grid-row: span 3; padding: clamp(18px, 3vw, 28px); }
+  .matrix-card { padding: clamp(18px, 3vw, 28px); }
   .matrix-card h3 { margin: 6px 0; font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); line-height: 1.15; }
   .card-subtitle { color: var(--color-text-secondary); font-size: 0.8rem; line-height: 1.5; }
-  .matrix-canvas { position: relative; width: min(100%, 470px); aspect-ratio: 1; margin: 18px auto 10px; }
+  .matrix-canvas { position: relative; width: min(100%, 690px); aspect-ratio: 1; margin: 18px auto 10px; }
   .matrix-lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: color-mix(in srgb, var(--personal-accent) 48%, var(--personal-border)); stroke-width: 0.36; vector-effect: non-scaling-stroke; }
   .matrix-lines .matrix-cross { stroke: color-mix(in srgb, var(--personal-accent) 26%, var(--personal-border)); stroke-dasharray: 1 1; }
   .matrix-lines .matrix-inner { stroke: color-mix(in srgb, var(--personal-accent) 52%, var(--personal-border)); stroke-dasharray: 1.5 1; }
@@ -623,22 +786,38 @@ const roleLabels: Record<PointRole, string> = {
   .reading-note { margin-top: 4px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; }
   .matrix-footnote, .personal-disclaimer { margin-top: 14px; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.55; }
 
-  .natal-visual { position: relative; display: grid; width: 100%; flex: 1; min-height: 80px; place-items: center; margin-block: 8px; overflow: hidden; border-block: 1px solid color-mix(in srgb, var(--personal-accent) 18%, transparent); color: var(--personal-accent-light); }
-  .natal-visual svg { position: absolute; width: min(55%, 120px); height: auto; }
-  .natal-visual > span { z-index: 1; font-size: 1.2rem; }
-  .natal-orbit { fill: none; stroke: color-mix(in srgb, var(--personal-accent) 70%, var(--personal-border)); stroke-dasharray: 2 4; stroke-width: 0.8; }
-  .natal-orbit--inner { stroke: var(--color-text-secondary); stroke-dasharray: 1 5; }
-  .natal-cross { fill: none; stroke: var(--personal-border); stroke-width: 0.7; }
-  .natal-star { fill: var(--personal-accent-light); }
-  .card-status { margin-top: auto; color: var(--personal-accent-light); font-size: 0.75rem; }
-  .card-detail { padding: 0 clamp(18px, 3vw, 28px) 22px; border-top: 1px solid var(--personal-border); }
-  .card-detail p { padding-top: 16px; font-size: 0.82rem; line-height: 1.6; }
+  .natal-card { padding: clamp(18px, 3vw, 32px); }
+  .natal-card-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+  .natal-card-heading h3 { margin: 6px 0; font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); line-height: 1.15; }
+  .natal-location { color: var(--color-text-secondary); font-size: 0.78rem; }
+  .natal-chart { position: relative; width: min(100%, 760px); aspect-ratio: 1; margin: 24px auto; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--personal-accent) 7%, transparent), transparent 70%); }
+  .natal-chart > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .natal-zodiac-ring, .natal-zodiac-inner, .natal-house-ring, .natal-inner-ring { fill: none; vector-effect: non-scaling-stroke; }
+  .natal-zodiac-ring { stroke: color-mix(in srgb, var(--personal-accent) 60%, var(--personal-border)); stroke-width: 1.2; }
+  .natal-zodiac-inner, .natal-house-ring { stroke: var(--personal-border); stroke-width: 1; }
+  .natal-inner-ring { stroke: color-mix(in srgb, var(--personal-accent) 40%, var(--personal-border)); stroke-dasharray: 2 6; }
+  .natal-zodiac-divider, .natal-house-line { stroke: color-mix(in srgb, var(--personal-accent) 42%, var(--personal-border)); stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+  .natal-angle-line { stroke: var(--color-accent-hover); stroke-width: 1.3; vector-effect: non-scaling-stroke; }
+  .natal-midheaven-line { stroke: color-mix(in srgb, #c3a6ef 72%, var(--personal-border)); stroke-dasharray: 4 4; stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .natal-center { fill: var(--personal-accent-light); }
+  .natal-zodiac-symbol, .natal-house-number, .natal-planet, .natal-angle { position: absolute; top: var(--y); left: var(--x); transform: translate(-50%, -50%); }
+  .natal-zodiac-symbol { color: var(--personal-accent-light); font-family: "Apple Symbols", "Segoe UI Symbol", serif; font-size: clamp(0.9rem, 2vw, 1.4rem); font-variant-emoji: text; }
+  .natal-house-number { color: var(--color-text-secondary); font-size: clamp(0.55rem, 1vw, 0.72rem); }
+  .natal-planet { display: flex; min-width: 34px; align-items: center; justify-content: center; gap: 2px; padding: 3px 5px; border: 1px solid color-mix(in srgb, var(--personal-accent) 45%, var(--personal-border)); border-radius: 999px; background: color-mix(in srgb, var(--personal-surface) 90%, transparent); color: var(--color-text-primary); font-size: clamp(0.68rem, 1.4vw, 0.9rem); line-height: 1; white-space: nowrap; box-shadow: 0 2px 10px rgb(0 0 0 / 0.18); }
+  .natal-planet small { color: var(--personal-accent-light); font-size: 0.65em; }
+  .natal-angle { color: var(--personal-accent-light); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; }
+  .natal-angle--mc { color: #c3a6ef; }
+  .natal-key { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: center; color: var(--color-text-secondary); font-size: 0.8rem; }
+  .natal-key span:first-child { color: var(--personal-accent-light); }
+  .natal-disclaimer { max-width: 72em; margin: 18px auto 0; color: var(--color-text-secondary); font-size: 0.7rem; line-height: 1.55; text-align: center; }
   .personal-disclaimer { max-width: 72em; }
 
   @media (max-width: 700px) {
     .personal-grid { grid-template-columns: 1fr; }
-    .matrix-card { grid-row: auto; }
+    .birth-card, .blood-card, .personality-card { grid-column: 1 / -1; }
+    .matrix-card, .natal-card { grid-column: 1 / -1; }
     .matrix-canvas { width: min(100%, 400px); }
+    .natal-chart { width: min(100%, 560px); }
     .matrix-point { width: clamp(34px, 10vw, 46px); }
     .matrix-point--primary { width: clamp(44px, 12vw, 58px); }
     .matrix-point--derived { width: clamp(38px, 10vw, 48px); }
