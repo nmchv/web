@@ -124,10 +124,17 @@
 2026년 저는 대한민국의 수원 대학교에서 학술 교류 프로그램에 참여했고, **2026 YSI-KOICA SDGs and Sustainable Futures Forum**에도 참석했습니다. 이 경험들은 교육, 연구, 사회 발전이 어떻게 연결되는지 새로운 시각으로 보여 주었습니다.
 
 <figure class="journey-photo" data-reveal>
-  <div class="photo-placeholder photo-placeholder--wide">
-    <img class="photo-image" src="/images/about/korea.jpg" alt="수원 대학교 또는 한국의 국제 포럼에서의 알렉세이" loading="lazy" decoding="async" />
-    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
-    <span>사진 자리</span>
+  <div class="journey-photo-gallery">
+    <div class="photo-placeholder photo-placeholder--wide">
+      <img class="photo-image" src="/images/about/korea.jpg" alt="한국 교류 프로그램 중 알렉세이" loading="lazy" decoding="async" />
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+      <span>사진 자리</span>
+    </div>
+    <div class="photo-placeholder photo-placeholder--wide">
+      <img class="photo-image" src="/images/about/korea2.jpg" alt="2026 YSI-KOICA SDGs and Sustainable Futures Forum에서 발표하는 알렉세이" loading="lazy" decoding="async" />
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
+      <span>사진 자리</span>
+    </div>
   </div>
 </figure>
 
