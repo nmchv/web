@@ -17,15 +17,15 @@ return [
   {
     id: 'instagram',
     label: 'Instagram',
-    value: 'instagram.com/aaaaa',
-    href: 'https://www.instagram.com/aaaaa',
+    value: 'instagram.com/alxnmchv',
+    href: 'https://www.instagram.com/alxnmchv',
     external: true,
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    value: 'linkedin.com/in/aaaaa',
-    href: 'https://www.linkedin.com/in/aaaaa',
+    value: 'linkedin.com/in/nmchv',
+    href: 'https://www.linkedin.com/in/nmchv',
     external: true,
   },
 ];
