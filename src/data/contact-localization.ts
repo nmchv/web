@@ -17,14 +17,14 @@ return [
   {
     id: 'instagram',
     label: 'Instagram',
-    value: 'instagram.com/alxnmchv',
+    value: '@alxnmchv',
     href: 'https://www.instagram.com/alxnmchv',
     external: true,
   },
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    value: 'linkedin.com/in/nmchv',
+    value: '@nmchv',
     href: 'https://www.linkedin.com/in/nmchv',
     external: true,
   },
