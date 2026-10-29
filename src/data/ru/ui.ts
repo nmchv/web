@@ -12,7 +12,7 @@ export const ui: Ui = {
   footerNavLabel: 'Навигация в подвале',
   signatureLabel: 'Профессиональное представление',
   aliasLabel: 'Псевдоним ·',
-  schoolLabel: 'Школа №116',
+  schoolLabel: 'ЮФУ',
   schoolCaption: 'пространство решений',
   language: {
     label: 'Выбрать язык',
