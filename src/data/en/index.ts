@@ -68,7 +68,7 @@ export const content: SiteContent = {
     footerNavLabel: 'Footer navigation',
     signatureLabel: 'Professional introduction',
     aliasLabel: 'Alias ·',
-    schoolLabel: 'School No. 116',
+    schoolLabel: 'SFedU',
     schoolCaption: 'a space for solutions',
     language: {
       label: 'Choose language',
