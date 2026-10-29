@@ -1,17 +1,34 @@
-import type { Contact } from '../i18n/types';
+import type { Contact } from ‘../i18n/types’;
 
-export function contactsForLanguage(contacts: Contact[], lang: string): Contact[] {
-  if (lang === 'ru') return contacts;
+export function contactsForLanguage(
+contacts: Contact[],
+lang: string,
+): Contact[] {
+if (lang === ‘ru’) {
+return contacts;
+}
 
-  return contacts.map((contact) =>
-    contact.id === 'max'
-      ? {
-          id: 'instagram',
-          label: 'Instagram',
-          value: 'instagram.com/alxnmchv',
-          href: 'https://www.instagram.com/alxnmchv/',
-          external: true,
-        }
-      : contact,
-  );
+return contacts.flatMap((contact) => {
+if (contact.id !== ‘max’) {
+return [contact];
+}
+
+return [
+  {
+    id: 'instagram',
+    label: 'Instagram',
+    value: 'instagram.com/aaaaa',
+    href: 'https://www.instagram.com/aaaaa',
+    external: true,
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/aaaaa',
+    href: 'https://www.linkedin.com/in/aaaaa',
+    external: true,
+  },
+];
+
+});
 }
