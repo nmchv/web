@@ -1,15 +1,15 @@
-import type { Contact } from ‘../i18n/types’;
+import type { Contact } from '../i18n/types';
 
 export function contactsForLanguage(
 contacts: Contact[],
 lang: string,
 ): Contact[] {
-if (lang === ‘ru’) {
+if (lang === 'ru') {
 return contacts;
 }
 
 return contacts.flatMap((contact) => {
-if (contact.id !== ‘max’) {
+if (contact.id !== 'max') {
 return [contact];
 }
 
