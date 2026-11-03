@@ -28,15 +28,15 @@ export const projects: Project[] = [
   },
   {
     id: 'geography-notes',
-    title: 'Конспекты по географии',
+    title: 'Материалы по географии',
     description:
-      'База систематизированных конспектов по школьной географии. Материалы помогают разобраться в темах и повторить изученное.',
+      'База конспектов по урокам, презентации для уроков, практические работы. Онлайн-словарь терминов.',
     category: 'География / Geography',
     url: 'https://wiki.nmchv.ru',
     status: 'live',
     art: 'notes',
     featured: true,
-    order: 5,
+    order: 3,
   },
   {
     id: 'student-tests',
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     status: 'live',
     art: 'test',
     featured: true,
-    order: 4,
+    order: 5,
   },
 
 {
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     art: 'world-map',
     featured: false,
-    order: 6,
+    order: 7,
   },
   {
     id: 'online-forms',
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     status: 'in-progress',
     art: 'forms',
     featured: false,
-    order: 7,
+    order: 8,
   },
   {
     id: 'exam-trainer',
@@ -105,6 +105,6 @@ export const projects: Project[] = [
     status: 'in-progress',
     art: 'exam',
     featured: false,
-    order: 3,
+    order: 9,
   },
 ];
