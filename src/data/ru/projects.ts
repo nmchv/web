@@ -58,7 +58,6 @@ export const projects: Project[] = [
     category: 'География / Geography',
     url: 'https://app.nmchv.ru',
     status: 'live',
-    art: 'game',
     featured: true,
     order: 4,
   },
