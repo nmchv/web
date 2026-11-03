@@ -49,6 +49,20 @@ export const projects: Project[] = [
     featured: true,
     order: 4,
   },
+
+{
+    id: 'terra_incognita',
+    title: 'Браузерная игра для 11 классов',
+    description:
+      'Изучение тем 11 класса через игровой формат. Терра-Инкогнита - браузерная игра с локальным сохранением про изучением нового мира.',
+    category: 'География / Geography',
+    url: 'https://app.nmchv.ru',
+    status: 'live',
+    art: 'game',
+    featured: true,
+    order: 4,
+  },
+  
   {
     id: 'knowledge-graph',
     title: 'Граф всех знаний',
