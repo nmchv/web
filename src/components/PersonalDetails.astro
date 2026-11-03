@@ -1,0 +1,1107 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const birthDate = new Date(Date.UTC(2004, 2, 28, 2, 30));
+const julianDate = birthDate.getTime() / 86400000 + 2440587.5;
+const centuries = (julianDate - 2451545) / 36525;
+const radians = (degrees: number) => degrees * Math.PI / 180;
+const degrees = (value: number) => ((value % 360) + 360) % 360;
+const solveKepler = (meanAnomaly: number, eccentricity: number) => {
+  let eccentricAnomaly = meanAnomaly;
+  for (let iteration = 0; iteration < 8; iteration += 1) {
+    eccentricAnomaly -= (eccentricAnomaly - eccentricity * Math.sin(eccentricAnomaly) - meanAnomaly)
+      / (1 - eccentricity * Math.cos(eccentricAnomaly));
+  }
+  return eccentricAnomaly;
+};
+const orbitalElements = [
+  { name: '☉', a: 1, da: 0.00000000562, e: 0.016708634, de: -0.000042037, i: -0.00001531, di: -0.01294668, l: 100.46457166, dl: 35999.37244981, p: 102.93768193, dp: 0.32327364, n: 0, dn: 0 },
+  { name: '☿', a: 0.38709927, da: 0.00000037, e: 0.20563593, de: 0.00001906, i: 7.00497902, di: -0.00594749, l: 252.25032350, dl: 149472.67411175, p: 77.45779628, dp: 0.16047689, n: 48.33076593, dn: -0.12534081 },
+  { name: '♀', a: 0.72333566, da: 0.00000390, e: 0.00677672, de: -0.00004107, i: 3.39467605, di: -0.00078890, l: 181.97909950, dl: 58517.81538729, p: 131.60246718, dp: 0.00268329, n: 76.67984255, dn: -0.27769418 },
+  { name: '♂', a: 1.52371034, da: 0.00001847, e: 0.09339410, de: 0.00007882, i: 1.84969142, di: -0.00813131, l: -4.55343205, dl: 19140.30268499, p: -23.94362959, dp: 0.44441088, n: 49.55953891, dn: -0.29257343 },
+  { name: '♃', a: 5.20288700, da: -0.00011607, e: 0.04838624, de: -0.00013253, i: 1.30439695, di: -0.00183714, l: 34.39644051, dl: 3034.74612775, p: 14.72847983, dp: 0.21252668, n: 100.47390909, dn: 0.20469106 },
+  { name: '♄', a: 9.53667594, da: -0.00125060, e: 0.05386179, de: -0.00050991, i: 2.48599187, di: 0.00193609, l: 49.95424423, dl: 1222.49362201, p: 92.59887831, dp: -0.41897216, n: 113.66242448, dn: -0.28867794 },
+  { name: '♅', a: 19.18916464, da: -0.00196176, e: 0.04725744, de: -0.00004397, i: 0.77263783, di: -0.00242939, l: 313.23810451, dl: 428.48202785, p: 170.95427630, dp: 0.40805281, n: 74.01692503, dn: 0.04240589 },
+  { name: '♆', a: 30.06992276, da: 0.00026291, e: 0.00859048, de: 0.00005105, i: 1.77004347, di: 0.00035372, l: -55.12002969, dl: 218.45945325, p: 44.96476227, dp: -0.32241464, n: 131.78422574, dn: -0.00508664 },
+  { name: '♇', a: 39.48211675, da: -0.00031596, e: 0.24882730, de: 0.00005170, i: 17.14001206, di: 0.00004818, l: 238.92903833, dl: 145.20780515, p: 224.06891629, dp: -0.04062942, n: 110.30393684, dn: -0.01183482 },
+];
+const heliocentricPosition = (element: typeof orbitalElements[number], t: number) => {
+  const a = element.a + element.da * t;
+  const eccentricity = element.e + element.de * t;
+  const inclination = radians(element.i + element.di * t);
+  const node = radians(element.n + element.dn * t);
+  const perihelion = radians(element.p + element.dp * t);
+  const meanAnomaly = radians(degrees(element.l + element.dl * t - element.p - element.dp * t));
+  const eccentricAnomaly = solveKepler(meanAnomaly, eccentricity);
+  const x = a * (Math.cos(eccentricAnomaly) - eccentricity);
+  const y = a * Math.sqrt(1 - eccentricity ** 2) * Math.sin(eccentricAnomaly);
+  const trueAnomaly = Math.atan2(y, x);
+  const radius = Math.hypot(x, y);
+  const argument = trueAnomaly + perihelion - node;
+  return [
+    radius * (Math.cos(node) * Math.cos(argument) - Math.sin(node) * Math.sin(argument) * Math.cos(inclination)),
+    radius * (Math.sin(node) * Math.cos(argument) + Math.cos(node) * Math.sin(argument) * Math.cos(inclination)),
+    radius * Math.sin(argument) * Math.sin(inclination),
+  ];
+};
+const earth = heliocentricPosition(orbitalElements[0], centuries);
+const meanLongitudeMoon = 218.3164477 + 481267.88123421 * centuries;
+const elongation = radians(297.8501921 + 445267.1114034 * centuries);
+const sunAnomaly = radians(357.5291092 + 35999.0502909 * centuries);
+const moonAnomaly = radians(134.9633964 + 477198.8675055 * centuries);
+const moonLatitude = radians(93.2720950 + 483202.0175233 * centuries);
+const moonLongitude = degrees(meanLongitudeMoon
+  + 6.289 * Math.sin(moonAnomaly)
+  + 1.274 * Math.sin(2 * elongation - moonAnomaly)
+  + 0.658 * Math.sin(2 * elongation)
+  + 0.214 * Math.sin(2 * moonAnomaly)
+  - 0.186 * Math.sin(sunAnomaly)
+  - 0.114 * Math.sin(2 * moonLatitude)
+  + 0.059 * Math.sin(2 * elongation - 2 * moonAnomaly)
+  + 0.057 * Math.sin(2 * elongation - sunAnomaly - moonAnomaly)
+  + 0.053 * Math.sin(2 * elongation + moonAnomaly)
+  + 0.046 * Math.sin(2 * elongation - sunAnomaly)
+  + 0.041 * Math.sin(moonAnomaly - sunAnomaly)
+  - 0.035 * Math.sin(elongation)
+  - 0.031 * Math.sin(moonAnomaly + sunAnomaly)
+  - 0.015 * Math.sin(2 * moonLatitude - 2 * elongation)
+  + 0.011 * Math.sin(moonAnomaly - 4 * elongation));
+const planets = orbitalElements.slice(1).map((element) => {
+  const position = heliocentricPosition(element, centuries);
+  const longitude = degrees(Math.atan2(position[1] - earth[1], position[0] - earth[0]) * 180 / Math.PI);
+  return { name: element.name, longitude };
+});
+const moon = { name: '☽', longitude: moonLongitude };
+const sun = { name: '☉', longitude: degrees(Math.atan2(-earth[1], -earth[0]) * 180 / Math.PI) };
+const siderealDegrees = degrees(280.46061837
+  + 360.98564736629 * (julianDate - 2451545)
+  + 0.000387933 * centuries ** 2
+  - centuries ** 3 / 38710000
+  + 40.8);
+const latitude = radians(48.18);
+const obliquity = radians(23.4393 - 0.013 * centuries);
+const ascendant = degrees(Math.atan2(
+  Math.cos(radians(siderealDegrees)),
+  -(Math.sin(obliquity) * Math.tan(latitude) + Math.cos(obliquity) * Math.sin(radians(siderealDegrees))),
+) * 180 / Math.PI);
+const midheaven = degrees(Math.atan2(
+  Math.sin(radians(siderealDegrees)),
+  Math.cos(radians(siderealDegrees)) * Math.cos(obliquity),
+) * 180 / Math.PI);
+const natalPoints = [
+  { ...moon, name: '☽' },
+  sun,
+  ...planets,
+].map((planet, index) => {
+  const angle = radians(planet.longitude - ascendant + 180);
+  const radius = 35 - index % 3 * 5;
+  return {
+    ...planet,
+    sign: Math.floor(planet.longitude / 30),
+    degree: Math.floor(planet.longitude % 30),
+    x: 50 + Math.cos(angle) * radius,
+    y: 50 + Math.sin(angle) * radius,
+  };
+});
+const zodiacSymbols = ['♈︎', '♉︎', '♊︎', '♋︎', '♌︎', '♍︎', '♎︎', '♏︎', '♐︎', '♑︎', '♒︎', '♓︎'];
+const zodiacLabels = zodiacSymbols.map((symbol, index) => {
+  const angle = radians(index * 30 + 15 - ascendant + 180);
+  return { symbol, x: 50 + Math.cos(angle) * 43, y: 50 + Math.sin(angle) * 43 };
+});
+const houseAngles = Array.from({ length: 12 }, (_, index) => {
+  const angle = radians(index * 30 + 180);
+  return {
+    x: 50 + Math.cos(angle) * 39,
+    y: 50 + Math.sin(angle) * 39,
+    innerX: 50 + Math.cos(angle) * 10,
+    innerY: 50 + Math.sin(angle) * 10,
+  };
+});
+
+const birthdayPrompts: Record<string, string> = {
+  ru: 'А знаете, кто ещё родился в этот день?',
+  en: 'Do you know who else was born on this day?',
+  fr: 'Savez-vous qui est aussi né ce jour-là ?',
+  es: '¿Sabes quién más nació este día?',
+  de: 'Wissen Sie, wer noch an diesem Tag geboren wurde?',
+  ja: 'この日に生まれた有名人を知っていますか？',
+  ko: '이날 태어난 유명인을 아시나요?',
+  zh: '你知道还有哪些名人出生在这一天吗？',
+  sv: 'Vet du vilka fler som föddes den här dagen?',
+};
+const birthdayCelebrities = 'Lady Gaga (1986) · Reba McEntire (1955) · Vince Vaughn (1970)';
+const bloodInsights: Record<string, string> = {
+  ru: 'Для меня это напоминание сохранять спокойствие, быть внимательным к людям и не терять собранности.',
+  en: 'For me, it is a reminder to stay calm, pay attention to people, and keep a clear head.',
+  fr: 'Pour moi, c’est un rappel de rester calme, attentif aux autres et concentré.',
+  es: 'Para mí, es un recordatorio de mantener la calma, cuidar a los demás y actuar con claridad.',
+  de: 'Für mich ist es eine Erinnerung, ruhig, aufmerksam und zielstrebig zu bleiben.',
+  ja: '自分にとって、落ち着きと周囲への気配りを大切にするための目印です。',
+  ko: '저에게는 침착함과 주변 사람들에 대한 배려를 기억하게 해주는 표시입니다.',
+  zh: '对我来说，这是保持沉着、关注他人的提醒。',
+  sv: 'För mig är det en påminnelse om att vara lugn, omtänksam och fokuserad.',
+};
+const personalityInsights: Record<string, string> = {
+  ru: 'Люблю разбираться в сложных системах, продумывать план и самостоятельно доводить идеи до результата.',
+  en: 'I enjoy understanding complex systems, planning ahead, and independently turning ideas into results.',
+  fr: 'J’aime comprendre les systèmes complexes, anticiper et mener mes idées à bien de façon autonome.',
+  es: 'Me gusta comprender sistemas complejos, planificar y convertir ideas en resultados por iniciativa propia.',
+  de: 'Ich beschäftige mich gern mit komplexen Systemen, plane voraus und setze Ideen eigenständig um.',
+  ja: '複雑な仕組みを理解し、計画を立て、自分の力でアイデアを形にするのが好きです。',
+  ko: '복잡한 시스템을 이해하고 계획을 세워 아이디어를 스스로 결과로 만드는 것을 좋아합니다.',
+  zh: '我喜欢理解复杂系统、提前规划，并独立把想法付诸实践。',
+  sv: 'Jag tycker om att förstå komplexa system, planera framåt och själv förverkliga idéer.',
+};
+const chartInsights: Record<string, string> = {
+  ru: 'В моей карте Солнце и Меркурий в Овне — в символической трактовке это про инициативу и прямоту мысли. Луна и Марс в Близнецах добавляют любознательность, тягу разбираться в разных темах и объяснять идеи, а Венера в Тельце — стремление превращать их в устойчивый, практичный результат. Мне близко соединять исследовательский интерес к географии с преподаванием и созданием образовательных цифровых инструментов. Это личное прочтение карты, а не научный вывод.',
+  en: 'This chart reflects a mix of initiative, curiosity, and a drive to find my own way.',
+  fr: 'Ce thème reflète un mélange d’initiative, de curiosité et de volonté de tracer ma propre voie.',
+  es: 'Esta carta refleja una combinación de iniciativa, curiosidad y deseo de abrir mi propio camino.',
+  de: 'Dieses Horoskop steht für eine Mischung aus Initiative, Neugier und dem Wunsch, eigene Wege zu gehen.',
+  ja: 'このチャートには、主体性、好奇心、自分の道を切り開く意欲が表れています。',
+  ko: '이 차트에는 주도성, 호기심, 스스로 길을 개척하려는 성향이 담겨 있습니다.',
+  zh: '这张星盘体现了主动性、好奇心以及开辟自己道路的愿望。',
+  sv: 'Den här kartan speglar initiativförmåga, nyfikenhet och en vilja att hitta min egen väg.',
+};
+const planetNotes: Record<string, Record<string, string>> = {
+  ru: {
+    '☉': 'Солнце — про инициативу, самовыражение и желание создавать.',
+    '☽': 'Луна — про чуткость, интуицию и потребность в эмоциональной опоре.',
+    '☿': 'Меркурий — про любознательность, анализ и ясное объяснение идей.',
+    '♀': 'Венера — про гармонию, близость и умение ценить красоту.',
+    '♂': 'Марс — про решительность, энергию и готовность действовать.',
+    '♃': 'Юпитер — про широкий кругозор, обучение и стремление расти.',
+    '♄': 'Сатурн — про ответственность, терпение и устойчивость.',
+    '♅': 'Уран — про независимость, оригинальность и открытость новому.',
+    '♆': 'Нептун — про воображение, эмпатию и тонкое восприятие.',
+    '♇': 'Плутон — про глубину, внутреннюю силу и способность меняться.',
+  },
+  en: {
+    '☉': 'The Sun reflects initiative, self-expression, and a wish to create.',
+    '☽': 'The Moon reflects sensitivity, intuition, and a need for emotional grounding.',
+    '☿': 'Mercury reflects curiosity, analysis, and a talent for explaining ideas clearly.',
+    '♀': 'Venus reflects harmony, closeness, and an appreciation of beauty.',
+    '♂': 'Mars reflects determination, energy, and readiness to act.',
+    '♃': 'Jupiter reflects broad interests, learning, and a desire to grow.',
+    '♄': 'Saturn reflects responsibility, patience, and steadiness.',
+    '♅': 'Uranus reflects independence, originality, and openness to new ideas.',
+    '♆': 'Neptune reflects imagination, empathy, and a sensitive perception.',
+    '♇': 'Pluto reflects depth, inner strength, and the ability to change.',
+  },
+  fr: {
+    '☉': 'Le Soleil évoque l’initiative, l’expression de soi et la créativité.',
+    '☽': 'La Lune évoque la sensibilité, l’intuition et le besoin de stabilité émotionnelle.',
+    '☿': 'Mercure évoque la curiosité, l’analyse et l’art d’expliquer clairement.',
+    '♀': 'Vénus évoque l’harmonie, la proximité et le goût de la beauté.',
+    '♂': 'Mars évoque la détermination, l’énergie et le passage à l’action.',
+    '♃': 'Jupiter évoque l’ouverture d’esprit, l’apprentissage et l’envie de progresser.',
+    '♄': 'Saturne évoque la responsabilité, la patience et la constance.',
+    '♅': 'Uranus évoque l’indépendance, l’originalité et l’ouverture aux nouveautés.',
+    '♆': 'Neptune évoque l’imagination, l’empathie et une perception fine.',
+    '♇': 'Pluton évoque la profondeur, la force intérieure et la capacité à évoluer.',
+  },
+  es: {
+    '☉': 'El Sol refleja iniciativa, expresión personal y ganas de crear.',
+    '☽': 'La Luna refleja sensibilidad, intuición y necesidad de estabilidad emocional.',
+    '☿': 'Mercurio refleja curiosidad, análisis y facilidad para explicar ideas.',
+    '♀': 'Venus refleja armonía, cercanía y aprecio por la belleza.',
+    '♂': 'Marte refleja determinación, energía y disposición para actuar.',
+    '♃': 'Júpiter refleja amplitud de intereses, aprendizaje y ganas de crecer.',
+    '♄': 'Saturno refleja responsabilidad, paciencia y constancia.',
+    '♅': 'Urano refleja independencia, originalidad y apertura a lo nuevo.',
+    '♆': 'Neptuno refleja imaginación, empatía y percepción sensible.',
+    '♇': 'Plutón refleja profundidad, fuerza interior y capacidad de cambiar.',
+  },
+  de: {
+    '☉': 'Die Sonne steht für Initiative, Selbstausdruck und Gestaltungsfreude.',
+    '☽': 'Der Mond steht für Einfühlungsvermögen, Intuition und emotionalen Halt.',
+    '☿': 'Merkur steht für Neugier, Analyse und die Fähigkeit, Ideen klar zu erklären.',
+    '♀': 'Venus steht für Harmonie, Nähe und Sinn für Schönheit.',
+    '♂': 'Mars steht für Entschlossenheit, Energie und Tatkraft.',
+    '♃': 'Jupiter steht für Weitblick, Lernen und den Wunsch, sich weiterzuentwickeln.',
+    '♄': 'Saturn steht für Verantwortung, Geduld und Beständigkeit.',
+    '♅': 'Uranus steht für Unabhängigkeit, Originalität und Offenheit für Neues.',
+    '♆': 'Neptun steht für Fantasie, Empathie und feine Wahrnehmung.',
+    '♇': 'Pluto steht für Tiefe, innere Stärke und Wandlungsfähigkeit.',
+  },
+  ja: {
+    '☉': '太陽は主体性、自己表現、ものを生み出す意欲を表します。',
+    '☽': '月は繊細さ、直感、心の安定を求める気持ちを表します。',
+    '☿': '水星は好奇心、分析力、考えをわかりやすく伝える力を表します。',
+    '♀': '金星は調和、人との親しさ、美しさを大切にする心を表します。',
+    '♂': '火星は決断力、活力、行動する意欲を表します。',
+    '♃': '木星は幅広い関心、学び、成長への意欲を表します。',
+    '♄': '土星は責任感、忍耐力、粘り強さを表します。',
+    '♅': '天王星は自立心、独創性、新しいものへの開放性を表します。',
+    '♆': '海王星は想像力、共感力、繊細な感受性を表します。',
+    '♇': '冥王星は物事の深さ、内面の強さ、変化する力を表します。',
+  },
+  ko: {
+    '☉': '태양은 주도성, 자기표현, 무언가를 만들고 싶은 마음을 나타냅니다.',
+    '☽': '달은 섬세함, 직관, 정서적 안정에 대한 욕구를 나타냅니다.',
+    '☿': '수성은 호기심, 분석력, 생각을 명확히 설명하는 능력을 나타냅니다.',
+    '♀': '금성은 조화, 친밀함, 아름다움을 알아보는 감각을 나타냅니다.',
+    '♂': '화성은 결단력, 에너지, 행동하려는 의지를 나타냅니다.',
+    '♃': '목성은 넓은 관심사, 배움, 성장하려는 마음을 나타냅니다.',
+    '♄': '토성은 책임감, 인내심, 꾸준함을 나타냅니다.',
+    '♅': '천왕성은 독립성, 독창성, 새로운 것에 대한 개방성을 나타냅니다.',
+    '♆': '해왕성은 상상력, 공감, 섬세한 감수성을 나타냅니다.',
+    '♇': '명왕성은 깊이, 내면의 힘, 변화하는 능력을 나타냅니다.',
+  },
+  zh: {
+    '☉': '太阳象征主动、自我表达和创造的愿望。',
+    '☽': '月亮象征敏感、直觉以及对情感稳定的需要。',
+    '☿': '水星象征好奇心、分析力和清晰表达想法的能力。',
+    '♀': '金星象征和谐、亲近感以及对美的欣赏。',
+    '♂': '火星象征决断力、活力和行动意愿。',
+    '♃': '木星象征广泛兴趣、学习和成长的愿望。',
+    '♄': '土星象征责任感、耐心和稳定。',
+    '♅': '天王星象征独立、原创性和对新事物的开放态度。',
+    '♆': '海王星象征想象力、共情力和细腻的感受力。',
+    '♇': '冥王星象征深度、内在力量和改变的能力。',
+  },
+  sv: {
+    '☉': 'Solen speglar initiativ, självuttryck och skaparlust.',
+    '☽': 'Månen speglar känslighet, intuition och behov av känslomässig trygghet.',
+    '☿': 'Merkurius speglar nyfikenhet, analys och förmåga att förklara idéer tydligt.',
+    '♀': 'Venus speglar harmoni, närhet och uppskattning av skönhet.',
+    '♂': 'Mars speglar beslutsamhet, energi och handlingskraft.',
+    '♃': 'Jupiter speglar breda intressen, lärande och en vilja att utvecklas.',
+    '♄': 'Saturnus speglar ansvar, tålamod och uthållighet.',
+    '♅': 'Uranus speglar självständighet, originalitet och öppenhet för nytt.',
+    '♆': 'Neptunus speglar fantasi, empati och finstämd uppfattningsförmåga.',
+    '♇': 'Pluto speglar djup, inre styrka och förmåga till förändring.',
+  },
+};
+const arcanaDescriptions: Record<string, Record<number, string>> = {
+  ru: {
+    1: 'Инициативность и умение превращать замыслы в конкретные дела.',
+    3: 'Забота, созидательность и стремление создавать вокруг себя благоприятную среду.',
+    5: 'Любознательность, верность принципам и готовность делиться знаниями.',
+    6: 'Внимание к отношениям и способность осознанно выбирать свой путь.',
+    7: 'Целеустремлённость, самостоятельность и энергия движения вперёд.',
+    8: 'Чувство справедливости, ответственность и стремление к равновесию.',
+    9: 'Самостоятельность, вдумчивость и интерес к глубокому изучению тем.',
+    10: 'Гибкость и умение находить возможности в переменах.',
+    11: 'Внутренняя стойкость, самообладание и спокойная настойчивость.',
+    12: 'Умение взглянуть на ситуацию под новым углом и проявить терпение.',
+    13: 'Готовность отпускать старое и смело меняться.',
+    15: 'Сильная вовлечённость и способность направлять желания в дело.',
+    16: 'Смелость пересматривать привычные взгляды и строить заново.',
+    19: 'Открытость, оптимизм и желание делиться энергией с другими.',
+    21: 'Широкий кругозор, целостный взгляд и интерес к новым горизонтам.',
+    22: 'Любознательность, лёгкость на подъём и открытость новым впечатлениям.',
+  },
+  en: {
+    1: 'Initiative and an ability to turn ideas into practical steps.',
+    3: 'Care, creativity, and a wish to create a supportive environment.',
+    5: 'Curiosity, strong principles, and a readiness to share knowledge.',
+    6: 'Thoughtfulness in relationships and care in choosing a direction.',
+    7: 'Determination, independence, and energy to keep moving forward.',
+    8: 'A sense of fairness, responsibility, and a search for balance.',
+    9: 'Independence, reflection, and a drive to understand things deeply.',
+    10: 'Flexibility and an ability to spot possibilities in change.',
+    11: 'Inner resilience, self-control, and quiet persistence.',
+    12: 'Patience and an ability to see a situation from a new angle.',
+    13: 'A readiness to let go of the old and embrace change.',
+    15: 'Strong commitment and an ability to channel ambition into action.',
+    16: 'Courage to question assumptions and build something anew.',
+    19: 'Openness, optimism, and a wish to share energy with others.',
+    21: 'Broad perspective, a sense of the whole, and interest in new horizons.',
+    22: 'Curiosity, spontaneity, and openness to new experiences.',
+  },
+};
+const fallbackArcanaDescriptions = arcanaDescriptions.en;
+const describeArcana = (value: number) =>
+  arcanaDescriptions[lang]?.[value]
+  ?? fallbackArcanaDescriptions[value]
+  ?? personalityInsights[lang]
+  ?? personalityInsights.en;
+
+const copy = {
+  ru: {
+    heading: 'Личные данные и интересные факты',
+    intro: 'Короткие факты обо мне и интерактивные схемы для любопытства и саморефлексии.',
+    birthday: 'Дата рождения',
+    blood: 'Группа крови',
+    bloodType: 'A (II) · Rh+',
+    bloodDetail: bloodInsights.ru,
+    type: 'Тип личности',
+    strategist: 'Стратег',
+    typeDetail: personalityInsights.ru,
+    matrix: 'Матрица судьбы',
+    matrixKicker: '22 АРКАНА · РАСЧЁТ ПО ДАТЕ РОЖДЕНИЯ',
+    matrixHint: 'Наведите или выберите точку: размер и цвет показывают её роль в матрице.',
+    matrixReading: 'В моём расчёте опорные точки — 10 «Колесо Фортуны» (день рождения 28), 3 «Императрица» (месяц), 6 «Влюблённые» (сумма цифр года рождения) и 19 «Солнце» (итоговая точка); в центре — 11 «Сила». Я читаю это сочетание как гибкость в переменах, интерес к созданию нового и важность осознанного выбора. Это перекликается с тем, чем я занимаюсь: соединяю географию, преподавание и разработку образовательных инструментов, чтобы превращать идеи в работающие проекты. Для меня это повод поразмышлять о своих сильных сторонах, а не предсказание.',
+    natal: 'Натальная карта',
+    astrology: 'Астрология',
+    natalDetail: 'Расчётная карта на 28 марта 2004 года, 06:30 (UTC+4), координаты 48.18° с. ш. и 40.80° в. д.',
+    chartDisclaimer: 'Положения планет и домов рассчитаны по приближённым астрономическим формулам и показаны для интереса, астрология не является научным методом.',
+    chartLocation: 'Ростовская область · местное летнее время',
+    ascendant: 'Асцендент',
+    midheaven: 'Середина неба',
+    selected: 'ВЫБРАННАЯ ТОЧКА',
+    center: 'Центр матрицы',
+    centerNote: 'Сводное значение четырёх основных энергий — 11. В этой символической системе это Сила: устойчивость и управление энергией.',
+    formula: 'Расчёт этой версии: день 28 → 10, месяц 3, сумма цифр года 2004 → 6; нижняя точка 10 + 3 + 6 → 19. Значения выше 22 сводятся суммой цифр; центр — сумма четырёх основных точек → 11. Размеры и цвета обозначают основные, производные и дополнительные точки. Символическая система, не научная диагностика.',
+    primary: 'Основная точка',
+    derived: 'Производная точка',
+    supporting: 'Дополнительная точка',
+    disclaimer: 'Матрица судьбы, астрология и типологии личности здесь представлены как культурные и развлекательные инструменты, а не как научные заключения.',
+  },
+  en: {
+    heading: 'Personal facts and curiosities',
+    intro: 'A few facts about me, alongside interactive diagrams for curiosity and reflection.',
+    birthday: 'Date of birth',
+    blood: 'Blood type',
+    bloodType: 'A (II) · Rh positive',
+    bloodDetail: bloodInsights.en,
+    type: 'Personality type',
+    strategist: 'The Architect',
+    typeDetail: personalityInsights.en,
+    matrix: 'Matrix of Destiny',
+    matrixKicker: '22 ARCANA · BIRTH-DATE CALCULATION',
+    matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
+    matrixReading: 'In my calculation, the main points are 10 (day 28), 3 (birth month), 6 (digits of my birth year), and 19 (their combined result), with 11 at the center. I read this combination as adaptability, a wish to create, and thoughtful choices. It feels connected to my work bringing geography, teaching, and educational tools together. For me, this is a prompt for reflection, not a prediction.',
+    natal: 'Natal chart',
+    astrology: 'Astrology',
+    natalDetail: 'Calculated for 28 March 2004, 06:30 (UTC+4), at 48.18° N, 40.80° E.',
+    chartDisclaimer: 'Planet and house positions use approximate astronomical formulas and are shown for interest; astrology is not a scientific method.',
+    chartLocation: 'Rostov Oblast · local daylight time',
+    ascendant: 'Ascendant',
+    midheaven: 'Midheaven',
+    selected: 'SELECTED POINT',
+    center: 'Matrix center',
+    centerNote: 'The combined value of the four main energies is 11. In this symbolic system it is Strength: steadiness and self-command.',
+    formula: 'Calculation used here: day 28 → 10, month 3, digit sum of year 2004 → 6; bottom point 10 + 3 + 6 → 19. Values above 22 are reduced by adding their digits; the center is the sum of the four main points → 11. Size and color distinguish primary, derived, and supporting points. This is symbolic, not a scientific assessment.',
+    primary: 'Primary point',
+    derived: 'Derived point',
+    supporting: 'Supporting point',
+    disclaimer: 'The Matrix of Destiny, astrology, and personality types are presented as cultural and entertainment frameworks, not scientific conclusions.',
+  },
+  fr: {
+    heading: 'Quelques faits personnels',
+    intro: 'Quelques faits à mon sujet et des schémas interactifs pour la curiosité et la réflexion.',
+    birthday: 'Date de naissance',
+    blood: 'Groupe sanguin',
+    bloodType: 'A (II) · Rh positif',
+    bloodDetail: bloodInsights.fr,
+    type: 'Type de personnalité',
+    strategist: 'Architecte',
+    typeDetail: personalityInsights.fr,
+    matrix: 'Matrice du destin',
+    matrixKicker: '22 ARCANES · CALCUL À PARTIR DE LA DATE DE NAISSANCE',
+    matrixHint: 'Survolez ou sélectionnez un point. Sa taille et sa couleur indiquent son rôle.',
+    matrixReading: 'Dans mon calcul, les points principaux sont 10 (jour 28), 3 (mois de naissance), 6 (somme des chiffres de mon année de naissance) et 19 (leur résultat combiné), avec 11 au centre. J’y vois une invitation à réfléchir à ma façon de m’adapter, de créer et de choisir ma voie. Cela rejoint mon travail à la croisée de la géographie, de l’enseignement et des outils éducatifs. Pour moi, c’est une piste de réflexion, pas une prédiction.',
+    natal: 'Thème natal',
+    astrology: 'Astrologie',
+    natalDetail: 'Calculé pour le 28 mars 2004 à 06 h 30 (UTC+4), aux coordonnées 48,18° N et 40,80° E.',
+    chartDisclaimer: 'Les positions des planètes et des maisons sont approximatives et présentées par curiosité ; l’astrologie n’est pas une méthode scientifique.',
+    chartLocation: 'Oblast de Rostov · heure d’été locale',
+    ascendant: 'Ascendant',
+    midheaven: 'Milieu du Ciel',
+    selected: 'POINT SÉLECTIONNÉ',
+    center: 'Centre de la matrice',
+    centerNote: 'La valeur combinée des quatre énergies principales est 11. Dans ce système symbolique, c’est la Force : stabilité et maîtrise de soi.',
+    formula: 'Calcul utilisé ici : jour 28 → 10, mois 3, somme des chiffres de 2004 → 6 ; point inférieur 10 + 3 + 6 → 19. Les valeurs supérieures à 22 sont réduites par addition des chiffres ; le centre est la somme des quatre points principaux → 11. Taille et couleur distinguent les points principaux, dérivés et complémentaires. Système symbolique, non scientifique.',
+    primary: 'Point principal',
+    derived: 'Point dérivé',
+    supporting: 'Point complémentaire',
+    disclaimer: 'La Matrice du destin, l’astrologie et les types de personnalité sont présentés comme des outils culturels et ludiques, et non comme des conclusions scientifiques.',
+  },
+  es: {
+    heading: 'Datos personales y curiosidades',
+    intro: 'Algunos datos sobre mí y esquemas interactivos para explorar por curiosidad y reflexión.',
+    birthday: 'Fecha de nacimiento',
+    blood: 'Grupo sanguíneo',
+    bloodType: 'A (II) · Rh positivo',
+    bloodDetail: bloodInsights.es,
+    type: 'Tipo de personalidad',
+    strategist: 'Arquitecto',
+    typeDetail: personalityInsights.es,
+    matrix: 'Matriz del destino',
+    matrixKicker: '22 ARCANOS · CÁLCULO SEGÚN LA FECHA DE NACIMIENTO',
+    matrixHint: 'Pasa el cursor o selecciona un punto. Su tamaño y color indican su función.',
+    matrixReading: 'En mi cálculo, los puntos principales son 10 (día 28), 3 (mes de nacimiento), 6 (suma de las cifras de mi año de nacimiento) y 19 (su resultado combinado), con 11 en el centro. Interpreto esta combinación como una invitación a reflexionar sobre cómo me adapto, creo y elijo mi camino. Conecta con mi trabajo entre la geografía, la enseñanza y las herramientas educativas. Para mí es una reflexión, no una predicción.',
+    natal: 'Carta natal',
+    astrology: 'Astrología',
+    natalDetail: 'Calculada para el 28 de marzo de 2004 a las 06:30 (UTC+4), en 48,18° N y 40,80° E.',
+    chartDisclaimer: 'Las posiciones planetarias y las casas son aproximadas y se muestran por curiosidad; la astrología no es un método científico.',
+    chartLocation: 'Óblast de Rostov · horario de verano local',
+    ascendant: 'Ascendente',
+    midheaven: 'Medio Cielo',
+    selected: 'PUNTO SELECCIONADO',
+    center: 'Centro de la matriz',
+    centerNote: 'El valor combinado de las cuatro energías principales es 11. En este sistema simbólico representa la Fuerza: constancia y autocontrol.',
+    formula: 'Cálculo usado aquí: día 28 → 10, mes 3, suma de los dígitos de 2004 → 6; punto inferior 10 + 3 + 6 → 19. Los valores superiores a 22 se reducen sumando sus dígitos; el centro es la suma de los cuatro puntos principales → 11. El tamaño y el color distinguen puntos principales, derivados y complementarios. Es un sistema simbólico, no científico.',
+    primary: 'Punto principal',
+    derived: 'Punto derivado',
+    supporting: 'Punto complementario',
+    disclaimer: 'La Matriz del destino, la astrología y los tipos de personalidad se presentan como recursos culturales y recreativos, no como conclusiones científicas.',
+  },
+  ko: {
+    heading: '개인 정보와 흥미로운 사실',
+    intro: '나에 관한 간단한 정보와 호기심 및 자기 성찰을 위한 인터랙티브 도표입니다.',
+    birthday: '생년월일',
+    blood: '혈액형',
+    bloodType: 'A형 · Rh+',
+    bloodDetail: bloodInsights.ko,
+    type: '성격 유형',
+    strategist: '전략가',
+    typeDetail: personalityInsights.ko,
+    matrix: '운명의 매트릭스',
+    matrixKicker: '22 아르카나 · 생년월일 계산',
+    matrixHint: '점을 가리키거나 선택하세요. 크기와 색상으로 매트릭스에서의 역할을 표시합니다.',
+    matrixReading: '제 계산의 주요 지점은 10(생일 28일), 3(출생 월), 6(출생 연도 숫자의 합), 19(이 값들의 합산 결과)이며 중심은 11입니다. 이 조합을 변화에 적응하고, 만들고, 신중하게 선택하는 태도에 대한 성찰로 읽습니다. 지리, 교육, 교육용 도구 개발을 잇는 제 일과도 맞닿아 있습니다. 예언이 아니라 자기 성찰을 위한 상징적 해석입니다.',
+    natal: '출생 차트',
+    astrology: '점성술',
+    natalDetail: '2004년 3월 28일 06:30(UTC+4), 북위 48.18°, 동경 40.80° 기준 계산.',
+    chartDisclaimer: '행성과 하우스 위치는 근사 천문 공식으로 계산한 참고용이며, 점성술은 과학적 방법이 아닙니다.',
+    chartLocation: '로스토프주 · 현지 서머타임',
+    ascendant: '상승궁',
+    midheaven: '중천점',
+    selected: '선택한 지점',
+    center: '매트릭스 중심',
+    centerNote: '네 가지 주요 에너지의 합은 11입니다. 이 상징 체계에서 힘은 안정감과 자기 조절을 뜻합니다.',
+    formula: '계산 방식: 일 28 → 10, 월 3, 2004년 숫자의 합 → 6, 아래 지점 10 + 3 + 6 → 19. 22를 넘는 값은 각 자릿수를 더해 줄이며, 중심은 네 주요 지점의 합 → 11입니다. 크기와 색상으로 주요·파생·보조 지점을 구분합니다. 과학적 진단이 아닌 상징 체계입니다.',
+    primary: '주요 지점',
+    derived: '파생 지점',
+    supporting: '보조 지점',
+    disclaimer: '운명의 매트릭스, 점성술, 성격 유형은 문화적·오락적 도구로 소개하며 과학적 결론을 뜻하지 않습니다.',
+  },
+  zh: {
+    heading: '个人资料与趣味信息',
+    intro: '一些个人信息，以及用于探索和自我反思的互动图示。',
+    birthday: '出生日期',
+    blood: '血型',
+    bloodType: 'A型 · Rh阳性',
+    bloodDetail: bloodInsights.zh,
+    type: '人格类型',
+    strategist: '建筑师',
+    typeDetail: personalityInsights.zh,
+    matrix: '命运矩阵',
+    matrixKicker: '22 张大阿尔卡那 · 按出生日期计算',
+    matrixHint: '悬停或选择一个节点。大小和颜色表示它在矩阵中的作用。',
+    matrixReading: '在我的计算中，主要节点是 10（生日 28 日）、3（出生月份）、6（出生年份各位数字之和）和 19（合并结果），中心为 11。我把这组数字看作关于适应变化、创造和审慎选择的象征性思考，也与我把地理、教学和教育工具开发结合起来的工作相呼应。对我而言，这是自我反思的线索，而不是预言。',
+    natal: '本命星盘',
+    astrology: '占星学',
+    natalDetail: '按2004年3月28日06:30（UTC+4）、北纬48.18°、东经40.80°计算。',
+    chartDisclaimer: '行星和宫位为近似天文计算，仅供兴趣参考；占星术不是科学方法。',
+    chartLocation: '罗斯托夫州 · 当地夏令时',
+    ascendant: '上升点',
+    midheaven: '中天',
+    selected: '当前节点',
+    center: '矩阵中心',
+    centerNote: '四个主要能量的合计值为 11。在这一象征体系中代表力量：稳定与自我掌控。',
+    formula: '计算方式：日 28 → 10，月 3，2004 年各位数字之和 → 6；底部节点 10 + 3 + 6 → 19。大于 22 的数值通过各位数字相加归约；中心为四个主要节点之和 → 11。大小和颜色区分主要、派生和辅助节点。这是象征体系，并非科学评估。',
+    primary: '主要节点',
+    derived: '派生节点',
+    supporting: '辅助节点',
+    disclaimer: '命运矩阵、占星学和人格类型在此作为文化与娱乐工具介绍，并非科学结论。',
+  },
+  ja: {
+    heading: 'プロフィールとちょっとした情報',
+    intro: '自分についての簡単な情報と、好奇心や自己理解のためのインタラクティブな図です。',
+    birthday: '生年月日',
+    blood: '血液型',
+    bloodType: 'A型 · Rh+',
+    bloodDetail: bloodInsights.ja,
+    type: '性格タイプ',
+    strategist: '建築家',
+    typeDetail: personalityInsights.ja,
+    matrix: '運命のマトリックス',
+    matrixKicker: '22アルカナ · 生年月日から算出',
+    matrixHint: 'ポイントにカーソルを合わせるか選択してください。大きさと色で役割を示します。',
+    matrixReading: '私の計算では、主なポイントは10（誕生日28日）、3（誕生月）、6（生まれた年の数字の合計）、19（それらを合わせた結果）で、中心は11です。変化への適応、創造、意識的な選択について考える組み合わせとして読んでいます。地理、教育、教育ツールの開発を結びつける私の仕事にも重なります。これは予言ではなく、自分を振り返るための象徴的な解釈です。',
+    natal: '出生図',
+    astrology: '占星術',
+    natalDetail: '2004年3月28日06:30（UTC+4）、北緯48.18°・東経40.80°で計算。',
+    chartDisclaimer: '惑星とハウスの位置は近似的な天文計算による参考情報です。占星術は科学的な方法ではありません。',
+    chartLocation: 'ロストフ州 · 現地夏時間',
+    ascendant: 'アセンダント',
+    midheaven: 'ミッドヘブン',
+    selected: '選択したポイント',
+    center: 'マトリックスの中心',
+    centerNote: '4つの主要エネルギーの合計は11です。この象徴体系では「力」を表し、安定と自己制御を意味します。',
+    formula: '計算方法：日 28 → 10、月 3、2004年の各桁の合計 → 6、下部 10 + 3 + 6 → 19。22を超える値は各桁を足して還元し、中心は4つの主要点の合計 → 11です。大きさと色で主要・派生・補助ポイントを区別します。科学的診断ではなく象徴体系です。',
+    primary: '主要ポイント',
+    derived: '派生ポイント',
+    supporting: '補助ポイント',
+    disclaimer: '運命のマトリックス、占星術、性格タイプは文化・娯楽的なツールとして紹介しており、科学的な結論ではありません。',
+  },
+  de: {
+    heading: 'Persönliche Daten und kleine Einblicke',
+    intro: 'Ein paar Fakten über mich und interaktive Schaubilder zum Entdecken und Nachdenken.',
+    birthday: 'Geburtsdatum',
+    blood: 'Blutgruppe',
+    bloodType: 'A (II) · Rh-positiv',
+    bloodDetail: bloodInsights.de,
+    type: 'Persönlichkeitstyp',
+    strategist: 'Architekt',
+    typeDetail: personalityInsights.de,
+    matrix: 'Schicksalsmatrix',
+    matrixKicker: '22 ARKANA · BERECHNUNG AUS DEM GEBURTSDATUM',
+    matrixHint: 'Bewege den Mauszeiger über einen Punkt oder wähle ihn aus. Größe und Farbe zeigen seine Rolle.',
+    matrixReading: 'In meiner Berechnung sind die Hauptpunkte 10 (Tag 28), 3 (Geburtsmonat), 6 (Quersumme meines Geburtsjahres) und 19 (ihr gemeinsames Ergebnis); im Zentrum steht 11. Ich lese diese Kombination als Anstoß, über Anpassungsfähigkeit, Kreativität und bewusste Entscheidungen nachzudenken. Das passt zu meiner Arbeit an der Schnittstelle von Geografie, Unterricht und digitalen Lernwerkzeugen. Für mich ist es ein Denkanstoß, keine Vorhersage.',
+    natal: 'Geburtshoroskop',
+    astrology: 'Astrologie',
+    natalDetail: 'Berechnet für den 28. März 2004 um 06:30 Uhr (UTC+4), bei 48,18° N und 40,80° E.',
+    chartDisclaimer: 'Planeten- und Häuserpositionen sind Näherungswerte und dienen dem Interesse; Astrologie ist keine wissenschaftliche Methode.',
+    chartLocation: 'Oblast Rostow · lokale Sommerzeit',
+    ascendant: 'Aszendent',
+    midheaven: 'Medium Coeli',
+    selected: 'AUSGEWÄHLTER PUNKT',
+    center: 'Zentrum der Matrix',
+    centerNote: 'Der gemeinsame Wert der vier Haupenergien ist 11. In diesem symbolischen System steht er für Stärke, Beständigkeit und Selbstführung.',
+    formula: 'Verwendete Berechnung: Tag 28 → 10, Monat 3, Quersumme des Jahres 2004 → 6; unterer Punkt 10 + 3 + 6 → 19. Werte über 22 werden durch Quersummen reduziert; das Zentrum ist die Summe der vier Hauptpunkte → 11. Größe und Farbe unterscheiden Haupt-, abgeleitete und ergänzende Punkte. Symbolisches System, keine wissenschaftliche Diagnose.',
+    primary: 'Hauptpunkt',
+    derived: 'Abgeleiteter Punkt',
+    supporting: 'Ergänzender Punkt',
+    disclaimer: 'Schicksalsmatrix, Astrologie und Persönlichkeitstypen werden hier als kulturelle und unterhaltsame Ansätze, nicht als wissenschaftliche Aussagen dargestellt.',
+  },
+  sv: {
+    heading: 'Personliga fakta och små upptäckter',
+    intro: 'Några fakta om mig och interaktiva diagram för nyfikenhet och reflektion.',
+    birthday: 'Födelsedatum',
+    blood: 'Blodgrupp',
+    bloodType: 'A (II) · Rh-positiv',
+    bloodDetail: bloodInsights.sv,
+    type: 'Personlighetstyp',
+    strategist: 'Arkitekten',
+    typeDetail: personalityInsights.sv,
+    matrix: 'Ödesmatris',
+    matrixKicker: '22 ARKANER · BERÄKNING UTIFRÅN FÖDELSEDATUM',
+    matrixHint: 'Hovra över eller välj en punkt. Storlek och färg visar dess roll i matrisen.',
+    matrixReading: 'I min beräkning är huvudpunkterna 10 (dag 28), 3 (födelsemånad), 6 (siffersumman av mitt födelseår) och 19 (deras samlade resultat), med 11 i centrum. Jag ser kombinationen som en tanke om anpassningsförmåga, skapande och medvetna val. Den anknyter till mitt arbete där geografi, undervisning och digitala läromedel möts. För mig är det en reflektion, inte en förutsägelse.',
+    natal: 'Födelsehoroskop',
+    astrology: 'Astrologi',
+    natalDetail: 'Beräknad för 28 mars 2004 kl. 06:30 (UTC+4), vid 48,18° N och 40,80° Ö.',
+    chartDisclaimer: 'Planeternas och husens positioner är ungefärliga och visas av intresse; astrologi är ingen vetenskaplig metod.',
+    chartLocation: 'Rostov oblast · lokal sommartid',
+    ascendant: 'Ascendent',
+    midheaven: 'Medium Coeli',
+    selected: 'VALD PUNKT',
+    center: 'Matrisens centrum',
+    centerNote: 'Det sammanlagda värdet för de fyra huvudenergierna är 11. I detta symboliska system står det för styrka, stabilitet och självbehärskning.',
+    formula: 'Beräkning här: dag 28 → 10, månad 3, siffersumman av år 2004 → 6; nedre punkt 10 + 3 + 6 → 19. Värden över 22 reduceras genom att siffrorna adderas; centrum är summan av de fyra huvudpunkterna → 11. Storlek och färg skiljer huvud-, härledda och stödjande punkter åt. Symboliskt system, ingen vetenskaplig bedömning.',
+    primary: 'Huvudpunkt',
+    derived: 'Härledd punkt',
+    supporting: 'Stödjande punkt',
+    disclaimer: 'Ödesmatrisen, astrologi och personlighetstyper presenteras som kulturella och underhållande verktyg, inte som vetenskapliga slutsatser.',
+  },
+}[lang as 'ru' | 'en' | 'fr' | 'es' | 'ko' | 'zh' | 'ja' | 'de' | 'sv'] ?? {
+  heading: 'Personal facts and curiosities',
+  intro: 'A few facts about me, alongside interactive diagrams for curiosity and reflection.',
+  birthday: 'Date of birth',
+  blood: 'Blood type',
+  bloodType: 'A (II) · Rh positive',
+  bloodDetail: bloodInsights.en,
+  type: 'Personality type',
+  strategist: 'The Architect',
+  typeDetail: personalityInsights.en,
+  matrix: 'Matrix of Destiny',
+  matrixKicker: '22 ARCANA · BIRTH-DATE CALCULATION',
+  matrixHint: 'Hover over or select a point. Its size and color show its role in the matrix.',
+  matrixReading: 'In my calculation, the main points are 10 (day 28), 3 (birth month), 6 (digits of my birth year), and 19 (their combined result), with 11 at the center. I read this combination as adaptability, a wish to create, and thoughtful choices. It feels connected to my work bringing geography, teaching, and educational tools together. For me, this is a prompt for reflection, not a prediction.',
+  natal: 'Natal chart',
+  astrology: 'Astrology',
+  natalDetail: 'Calculated for 28 March 2004, 06:30 (UTC+4), at 48.18° N, 40.80° E.',
+  chartDisclaimer: 'Planet and house positions use approximate astronomical formulas and are shown for interest; astrology is not a scientific method.',
+  chartLocation: 'Rostov Oblast · local daylight time',
+  ascendant: 'Ascendant',
+  midheaven: 'Midheaven',
+  selected: 'SELECTED POINT',
+  center: 'Matrix center',
+  centerNote: 'The combined value of the four main energies is 11. In this symbolic system it is Strength: steadiness and self-command.',
+  formula: 'Calculation used here: day 28 → 10, month 3, digit sum of year 2004 → 6; bottom point 10 + 3 + 6 → 19. Values above 22 are reduced by adding their digits; the center is the sum of the four main points → 11. Size and color distinguish primary, derived, and supporting points. This is symbolic, not a scientific assessment.',
+  primary: 'Primary point',
+  derived: 'Derived point',
+  supporting: 'Supporting point',
+  disclaimer: 'The Matrix of Destiny, astrology, and personality types are presented as cultural and entertainment frameworks, not scientific conclusions.',
+};
+
+const formattedBirthday = new Intl.DateTimeFormat(lang, {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(birthDate);
+
+const reduceArcana = (value: number): number => {
+  let reduced = value;
+  while (reduced > 22) {
+    reduced = String(reduced).split('').reduce((sum, digit) => sum + Number(digit), 0);
+  }
+  return reduced;
+};
+
+const day = reduceArcana(28);
+const month = 3;
+const year = reduceArcana(2 + 0 + 0 + 4);
+const base = reduceArcana(day + month + year);
+const center = reduceArcana(day + month + year + base);
+const arcanaNames: Record<string, Record<number, string>> = {
+  ru: { 1: 'Маг', 3: 'Императрица', 5: 'Иерофант', 6: 'Влюблённые', 7: 'Колесница', 8: 'Справедливость', 9: 'Отшельник', 10: 'Колесо Фортуны', 11: 'Сила', 12: 'Повешенный', 13: 'Трансформация', 15: 'Дьявол', 16: 'Башня', 19: 'Солнце', 21: 'Мир', 22: 'Шут' },
+  en: { 1: 'The Magician', 3: 'The Empress', 5: 'The Hierophant', 6: 'The Lovers', 7: 'The Chariot', 8: 'Justice', 9: 'The Hermit', 10: 'Wheel of Fortune', 11: 'Strength', 12: 'The Hanged One', 13: 'Transformation', 15: 'The Devil', 16: 'The Tower', 19: 'The Sun', 21: 'The World', 22: 'The Fool' },
+  fr: { 1: 'Le Magicien', 3: 'L’Impératrice', 5: 'Le Pape', 6: 'Les Amoureux', 7: 'Le Chariot', 8: 'La Justice', 9: 'L’Ermite', 10: 'La Roue de Fortune', 11: 'La Force', 12: 'Le Pendu', 13: 'Transformation', 15: 'Le Diable', 16: 'La Maison Dieu', 19: 'Le Soleil', 21: 'Le Monde', 22: 'Le Mat' },
+  es: { 1: 'El Mago', 3: 'La Emperatriz', 5: 'El Hierofante', 6: 'Los Enamorados', 7: 'El Carro', 8: 'La Justicia', 9: 'El Ermitaño', 10: 'La Rueda de la Fortuna', 11: 'La Fuerza', 12: 'El Colgado', 13: 'Transformación', 15: 'El Diablo', 16: 'La Torre', 19: 'El Sol', 21: 'El Mundo', 22: 'El Loco' },
+  ko: { 1: '마법사', 3: '여황제', 5: '교황', 6: '연인', 7: '전차', 8: '정의', 9: '은둔자', 10: '운명의 수레바퀴', 11: '힘', 12: '매달린 사람', 13: '변화', 15: '악마', 16: '탑', 19: '태양', 21: '세계', 22: '광대' },
+  zh: { 1: '魔术师', 3: '皇后', 5: '教皇', 6: '恋人', 7: '战车', 8: '正义', 9: '隐者', 10: '命运之轮', 11: '力量', 12: '倒吊人', 13: '转变', 15: '恶魔', 16: '高塔', 19: '太阳', 21: '世界', 22: '愚者' },
+  ja: { 1: '魔術師', 3: '女帝', 5: '教皇', 6: '恋人', 7: '戦車', 8: '正義', 9: '隠者', 10: '運命の輪', 11: '力', 12: '吊るされた男', 13: '変容', 15: '悪魔', 16: '塔', 19: '太陽', 21: '世界', 22: '愚者' },
+  de: { 1: 'Der Magier', 3: 'Die Herrscherin', 5: 'Der Hierophant', 6: 'Die Liebenden', 7: 'Der Wagen', 8: 'Die Gerechtigkeit', 9: 'Der Eremit', 10: 'Das Rad des Schicksals', 11: 'Die Kraft', 12: 'Der Gehängte', 13: 'Wandlung', 15: 'Der Teufel', 16: 'Der Turm', 19: 'Die Sonne', 21: 'Die Welt', 22: 'Der Narr' },
+  sv: { 1: 'Magikern', 3: 'Kejsarinnan', 5: 'Hierofanten', 6: 'De älskande', 7: 'Vagnen', 8: 'Rättvisan', 9: 'Eremiten', 10: 'Lyckohjulet', 11: 'Styrkan', 12: 'Den hängde', 13: 'Förvandling', 15: 'Djävulen', 16: 'Tornet', 19: 'Solen', 21: 'Världen', 22: 'Narren' },
+};
+const names = arcanaNames[lang] ?? arcanaNames.en;
+const arcanaTitle = (value: number) => names[value] ?? `${value} · ${lang === 'ru' ? 'аркан' : 'Arcana'}`;
+type PointRole = 'primary' | 'derived' | 'supporting' | 'center';
+const points: Array<{ id: string; value: number; title: string; role: PointRole; x: number; y: number; detail: string }> = [
+  { id: 'day', value: day, title: arcanaTitle(day), role: 'primary', x: 15, y: 50, detail: describeArcana(day) },
+  { id: 'month', value: month, title: arcanaTitle(month), role: 'primary', x: 50, y: 9, detail: describeArcana(month) },
+  { id: 'year', value: year, title: arcanaTitle(year), role: 'primary', x: 85, y: 50, detail: describeArcana(year) },
+  { id: 'base', value: base, title: arcanaTitle(base), role: 'primary', x: 50, y: 91, detail: describeArcana(base) },
+  { id: 'day-month', value: reduceArcana(day + month), title: arcanaTitle(reduceArcana(day + month)), role: 'derived', x: 32.5, y: 29.5, detail: describeArcana(reduceArcana(day + month)) },
+  { id: 'month-year', value: reduceArcana(month + year), title: arcanaTitle(reduceArcana(month + year)), role: 'derived', x: 67.5, y: 29.5, detail: describeArcana(reduceArcana(month + year)) },
+  { id: 'year-base', value: reduceArcana(year + base), title: arcanaTitle(reduceArcana(year + base)), role: 'derived', x: 67.5, y: 70.5, detail: describeArcana(reduceArcana(year + base)) },
+  { id: 'base-day', value: reduceArcana(base + day), title: arcanaTitle(reduceArcana(base + day)), role: 'derived', x: 32.5, y: 70.5, detail: describeArcana(reduceArcana(base + day)) },
+  { id: 'center', value: center, title: arcanaTitle(center), role: 'center', x: 50, y: 50, detail: describeArcana(center) },
+  { id: 'day-inner', value: reduceArcana(day + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(day + reduceArcana(day + month))), role: 'supporting', x: 23.75, y: 15, detail: describeArcana(reduceArcana(day + reduceArcana(day + month))) },
+  { id: 'month-inner', value: reduceArcana(month + reduceArcana(day + month)), title: arcanaTitle(reduceArcana(month + reduceArcana(day + month))), role: 'supporting', x: 41.25, y: 15, detail: describeArcana(reduceArcana(month + reduceArcana(day + month))) },
+  { id: 'month-inner-right', value: reduceArcana(month + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(month + reduceArcana(month + year))), role: 'supporting', x: 58.75, y: 15, detail: describeArcana(reduceArcana(month + reduceArcana(month + year))) },
+  { id: 'year-inner', value: reduceArcana(year + reduceArcana(month + year)), title: arcanaTitle(reduceArcana(year + reduceArcana(month + year))), role: 'supporting', x: 76.25, y: 15, detail: describeArcana(reduceArcana(year + reduceArcana(month + year))) },
+  { id: 'year-inner-bottom', value: reduceArcana(year + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(year + reduceArcana(year + base))), role: 'supporting', x: 76.25, y: 85, detail: describeArcana(reduceArcana(year + reduceArcana(year + base))) },
+  { id: 'base-inner-right', value: reduceArcana(base + reduceArcana(year + base)), title: arcanaTitle(reduceArcana(base + reduceArcana(year + base))), role: 'supporting', x: 58.75, y: 85, detail: describeArcana(reduceArcana(base + reduceArcana(year + base))) },
+  { id: 'base-inner-left', value: reduceArcana(base + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(base + reduceArcana(base + day))), role: 'supporting', x: 41.25, y: 85, detail: describeArcana(reduceArcana(base + reduceArcana(base + day))) },
+  { id: 'day-inner-bottom', value: reduceArcana(day + reduceArcana(base + day)), title: arcanaTitle(reduceArcana(day + reduceArcana(base + day))), role: 'supporting', x: 23.75, y: 85, detail: describeArcana(reduceArcana(day + reduceArcana(base + day))) },
+];
+const roleLabels: Record<PointRole, string> = {
+  primary: copy.primary,
+  derived: copy.derived,
+  supporting: copy.supporting,
+  center: copy.center,
+};
+---
+
+<section class="personal-details" aria-labelledby="personal-details-heading">
+  <h2 id="personal-details-heading">{copy.heading}</h2>
+  <p class="personal-intro">{copy.intro}</p>
+
+  <div class="personal-grid">
+    <details class="personal-card birth-card">
+      <summary>
+        <span class="card-kicker">{copy.birthday}</span>
+        <time class="birth-date" datetime="2004-03-28">{formattedBirthday}</time>
+        <span class="birthday-prompt">{birthdayPrompts[lang] ?? birthdayPrompts.en}</span>
+      </summary>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <p>{birthdayPrompts[lang] ?? birthdayPrompts.en}</p>
+          <p>{birthdayCelebrities}</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="personal-card blood-card">
+      <summary>
+        <span class="card-kicker">{copy.blood}</span>
+        <span class="blood-visual" aria-hidden="true"><span>A</span><i>II</i><b>Rh+</b><svg viewBox="0 0 160 100"><path d="M80 8 142 42v18l-62 34L18 60V42zM18 42l62 36 62-36M80 78v16" /></svg></span>
+        <span class="card-title">{copy.bloodType}</span>
+      </summary>
+      <div class="card-detail"><div class="card-detail-inner"><p>{copy.bloodDetail}</p></div></div>
+    </details>
+
+    <details class="personal-card personality-card">
+      <summary>
+        <span class="card-kicker">{copy.type}</span>
+        <span class="personality-visual" aria-hidden="true">
+          <span class="personality-monogram">INTJ</span>
+          <svg viewBox="0 0 240 140">
+            <path class="personality-axis" d="M24 110h192M45 91 93 57l40 16 65-50" />
+            <path class="personality-path" d="M45 91 93 57l40 16 65-50" />
+            <circle class="personality-node" cx="45" cy="91" r="6" />
+            <circle class="personality-node" cx="93" cy="57" r="6" />
+            <circle class="personality-node" cx="133" cy="73" r="6" />
+            <circle class="personality-node personality-node--last" cx="198" cy="23" r="8" />
+            <path class="personality-bracket" d="M45 100v7h153v-7" />
+          </svg>
+          <span class="personality-name">{copy.strategist}</span>
+        </span>
+      </summary>
+      <div class="card-detail">
+        <div class="card-detail-inner">
+          <p>{copy.typeDetail}</p>
+          <a class="personality-link" href="https://www.16personalities.com/intj-personality" target="_blank" rel="noopener noreferrer">16Personalities · INTJ</a>
+        </div>
+      </div>
+    </details>
+
+    <section class="personal-card matrix-card" aria-labelledby="matrix-title">
+      <div class="card-kicker">{copy.matrixKicker}</div>
+      <h3 id="matrix-title">{copy.matrix}</h3>
+      <p class="matrix-personal-reading">{copy.matrixReading}</p>
+      <p class="card-subtitle">{copy.matrixHint}</p>
+      <div class="matrix-canvas" role="group" aria-label={copy.matrix}>
+        <svg class="matrix-lines" viewBox="0 0 100 100" aria-hidden="true">
+          <path class="matrix-diamond" d="M50 9 85 50 50 91 15 50 50 9" />
+          <path class="matrix-cross" d="M50 9v82M15 50h70M32.5 29.5 67.5 70.5M67.5 29.5 32.5 70.5" />
+          <path class="matrix-inner" d="M23.75 15 76.25 15 85 50 76.25 85 23.75 85 15 50Z" />
+          <circle cx="50" cy="50" r="23" />
+        </svg>
+        {points.map((point, index) => (
+          <button
+            class:list={['matrix-point', `matrix-point--${point.role}`, index === 0 && 'is-selected']}
+            type="button"
+            style={`--point-x:${point.x}%;--point-y:${point.y}%`}
+            data-arcana-id={point.id}
+            data-arcana-title={point.title}
+            data-arcana-note={point.detail}
+            data-arcana-value={point.value}
+            aria-label={`${roleLabels[point.role]} ${point.value}: ${point.title}`}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+            title={`${point.value} · ${point.title}`}
+          >
+            <span>{point.value}</span>
+          </button>
+        ))}
+      </div>
+      <div class="matrix-legend" aria-label={copy.matrix}>
+        <span class="legend-primary">{copy.primary}</span>
+        <span class="legend-derived">{copy.derived}</span>
+        <span class="legend-supporting">{copy.supporting}</span>
+      </div>
+      <div class="matrix-reading" aria-live="polite" aria-atomic="true">
+        <span class="reading-label">{copy.selected}</span>
+        <strong class="reading-title">{arcanaTitle(day)}</strong>
+        <p class="reading-note">{points[0].detail}</p>
+      </div>
+    </section>
+
+    <section class="personal-card natal-card" aria-labelledby="natal-title">
+      <div class="natal-card-heading">
+        <div>
+          <span class="card-kicker">{copy.astrology}</span>
+          <h3 id="natal-title">{copy.natal}</h3>
+        </div>
+        <span class="natal-location">{copy.chartLocation}</span>
+      </div>
+      <div class="natal-chart">
+        <svg viewBox="0 0 600 600" aria-hidden="true">
+          <circle class="natal-zodiac-ring" cx="300" cy="300" r="276" />
+          <circle class="natal-zodiac-inner" cx="300" cy="300" r="228" />
+          <circle class="natal-house-ring" cx="300" cy="300" r="218" />
+          <circle class="natal-inner-ring" cx="300" cy="300" r="142" />
+          {Array.from({ length: 12 }, (_, index) => {
+            const angle = radians(index * 30 + 270);
+            const inner = index % 3 === 0 ? 228 : 239;
+            return <line class="natal-zodiac-divider" x1={300 + Math.cos(angle) * inner} y1={300 + Math.sin(angle) * inner} x2={300 + Math.cos(angle) * 276} y2={300 + Math.sin(angle) * 276} />;
+          })}
+          {houseAngles.map((house) => <line class="natal-house-line" x1={300 + (house.innerX - 50) * 6} y1={300 + (house.innerY - 50) * 6} x2={300 + (house.x - 50) * 6} y2={300 + (house.y - 50) * 6} />)}
+          <line class="natal-angle-line" x1="300" y1="300" x2={300 + Math.cos(radians(180)) * 218} y2={300 + Math.sin(radians(180)) * 218} />
+          <line class="natal-midheaven-line" x1="300" y1="300" x2={300 + Math.cos(radians(midheaven - ascendant + 180)) * 218} y2={300 + Math.sin(radians(midheaven - ascendant + 180)) * 218} />
+          <circle class="natal-center" cx="300" cy="300" r="4" />
+        </svg>
+        {zodiacLabels.map((label) => <span class="natal-zodiac-symbol" style={`--x:${label.x}%;--y:${label.y}%`}>{label.symbol}</span>)}
+        {houseAngles.map((_, index) => (
+          <span class="natal-house-number" style={`--x:${50 + Math.cos(radians(index * 30 + 285)) * 25}%;--y:${50 + Math.sin(radians(index * 30 + 285)) * 25}%`}>{index + 1}</span>
+        ))}
+        {natalPoints.map((point) => (
+          <button
+            class="natal-planet"
+            type="button"
+            style={`--x:${point.x}%;--y:${point.y}%`}
+            aria-label={`${point.name} ${point.degree}° ${zodiacSymbols[point.sign]}`}
+            data-natal-note={planetNotes[lang]?.[point.name] ?? planetNotes.en[point.name]}
+          >
+            <span>{point.name}</span><small>{point.degree}°</small>
+          </button>
+        ))}
+        <span class="natal-angle natal-angle--asc" style={`--x:${50 + Math.cos(radians(180)) * 46}%;--y:${50 + Math.sin(radians(180)) * 46}%`}>ASC</span>
+        <span class="natal-angle natal-angle--mc" style={`--x:${50 + Math.cos(radians(midheaven - ascendant + 180)) * 46}%;--y:${50 + Math.sin(radians(midheaven - ascendant + 180)) * 46}%`}>MC</span>
+      </div>
+      <p class="natal-reading" aria-live="polite" aria-atomic="true">{chartInsights[lang] ?? chartInsights.en}</p>
+      <p class="personal-disclaimer">{copy.chartDisclaimer}</p>
+    </section>
+  </div>
+
+</section>
+
+<script>
+  const matrixButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.matrix-point'));
+  const matrixReading = document.querySelector<HTMLElement>('.matrix-reading');
+  const readingTitle = matrixReading?.querySelector<HTMLElement>('.reading-title');
+  const readingNote = matrixReading?.querySelector<HTMLElement>('.reading-note');
+  const natalReading = document.querySelector<HTMLElement>('.natal-reading');
+  const natalPlanets = Array.from(document.querySelectorAll<HTMLButtonElement>('.natal-planet'));
+  const detailCards = Array.from(document.querySelectorAll<HTMLDetailsElement>('.personal-grid > details.personal-card'));
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  for (const card of detailCards) {
+    card.addEventListener('pointerenter', () => {
+      if (finePointer.matches) card.open = true;
+    });
+    card.addEventListener('pointerleave', () => {
+      if (!card.matches(':focus-within')) card.open = false;
+    });
+    card.addEventListener('focusout', (event) => {
+      if (event.relatedTarget instanceof Node && card.contains(event.relatedTarget)) return;
+      if (!card.matches(':hover')) card.open = false;
+    });
+  }
+
+  for (const planet of natalPlanets) {
+    const showPlanet = () => {
+      const note = planet.dataset.natalNote;
+      if (note && natalReading) natalReading.textContent = note;
+    };
+    planet.addEventListener('pointerenter', showPlanet);
+    planet.addEventListener('focus', showPlanet);
+    planet.addEventListener('click', showPlanet);
+  }
+
+  const summaries = Array.from(document.querySelectorAll<HTMLDetailsElement>('.personal-details details.personal-card'));
+  for (const card of summaries) {
+    card.addEventListener('pointerenter', () => { card.open = true; });
+    card.addEventListener('pointerleave', () => {
+      if (!card.contains(document.activeElement)) card.open = false;
+    });
+    card.addEventListener('focusout', (event) => {
+      const nextTarget = event.relatedTarget;
+      if (!(nextTarget instanceof Node) || !card.contains(nextTarget)) card.open = false;
+    });
+  }
+
+  for (const button of matrixButtons) {
+    const showReading = () => {
+      const title = button.dataset.arcanaTitle;
+      const note = button.dataset.arcanaNote;
+      if (!title || !note || !readingTitle || !readingNote) return;
+
+      readingTitle.textContent = `${button.dataset.arcanaValue} · ${title}`;
+      readingNote.textContent = note;
+      matrixButtons.forEach((point) => {
+        const selected = point === button;
+        point.classList.toggle('is-selected', selected);
+        point.setAttribute('aria-pressed', String(selected));
+      });
+    };
+
+    button.addEventListener('pointerenter', showReading);
+    button.addEventListener('focus', showReading);
+    button.addEventListener('click', showReading);
+  }
+</script>
+
+<style>
+  .personal-details {
+    --personal-border: var(--color-border);
+    --personal-surface: var(--color-surface);
+    --personal-raised: var(--color-surface-elevated);
+    --personal-accent: var(--color-accent);
+    --personal-accent-light: var(--color-accent-hover);
+    --pt-primary: #a5c4ff;
+    --pt-derived: #83cfc4;
+    --pt-supporting: #c3a6ef;
+    --pt-center: #f2c879;
+  }
+  /* в светлой теме пастельные цвета заменены на более глубокие, чтобы читались на белом */
+  :global(:root[data-theme='light']) .personal-details {
+    --pt-primary: #2c5fd0;
+    --pt-derived: #0f7a6e;
+    --pt-supporting: #7a4fc0;
+    --pt-center: #9a5f08;
+  }
+
+  .personal-details > h2 { margin-top: clamp(52px, 8vw, 88px); }
+  .personal-intro { max-width: 44em; margin-bottom: 24px; }
+
+  .personal-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .birth-card, .blood-card, .personality-card { grid-column: span 4; }
+  .matrix-card { grid-column: 1 / -1; order: 1; }
+  .natal-card { grid-column: 1 / -1; order: 2; }
+
+  .personal-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--personal-border);
+    border-radius: 12px;
+    background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--personal-accent) 9%, transparent), transparent 65%), var(--personal-surface);
+    transition: border-color 220ms var(--ease), background-color 220ms var(--ease), transform 220ms var(--ease);
+  }
+
+  .personal-card:hover,
+  .personal-card:focus-within {
+    border-color: color-mix(in srgb, var(--personal-accent) 65%, var(--personal-border));
+    background-color: var(--personal-raised);
+    transform: translateY(-2px);
+  }
+
+  .personal-card > summary {
+    position: relative;
+    display: flex;
+    min-height: 180px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(18px, 3vw, 28px);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .personal-card > summary::-webkit-details-marker { display: none; }
+  .personal-card > summary:focus-visible { outline: 2px solid var(--personal-accent-light); outline-offset: -4px; border-radius: 12px; }
+  .card-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    transition: grid-template-rows 560ms var(--ease), opacity 360ms var(--ease);
+  }
+  .personal-card[open] .card-detail { grid-template-rows: 1fr; opacity: 1; }
+  .card-detail-inner {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 clamp(18px, 3vw, 28px);
+    transform: translateY(-8px);
+    transition: padding 560ms var(--ease), transform 560ms var(--ease);
+  }
+  .personal-card[open] .card-detail-inner { padding-bottom: clamp(18px, 3vw, 28px); transform: none; }
+  .card-detail p + p { margin-top: 8px; }
+  .personality-link { display: inline-block; margin-top: 8px; color: var(--personal-accent-light); text-underline-offset: 3px; }
+  .birthday-prompt { margin-top: 10px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.4; }
+  .card-kicker, .reading-label { color: var(--color-text-secondary); font-size: 0.67rem; font-weight: 600; letter-spacing: 0.13em; }
+  .card-title { margin-top: auto; color: var(--color-text-primary); font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.15; }
+
+  .birth-card > summary { min-height: 150px; }
+  .birth-date { margin-top: auto; color: var(--color-text-primary); font-size: clamp(1.05rem, 1vw + 0.82rem, 1.35rem); font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .blood-visual { position: relative; display: flex; min-height: 78px; align-items: baseline; gap: 8px; margin-block: 10px; color: var(--personal-accent-light); }
+  .blood-visual > span { font-size: 3rem; font-weight: 600; line-height: 1; letter-spacing: -0.08em; }
+  .blood-visual > i { color: var(--color-text-secondary); font-size: 0.82rem; font-style: normal; }
+  .blood-visual > b { margin-left: auto; font-size: 0.8rem; font-weight: 600; }
+  .blood-visual svg { position: absolute; right: 0; bottom: 0; width: 110px; fill: none; stroke: var(--personal-accent); stroke-width: 0.8; opacity: 0.24; }
+
+  .personality-visual {
+    display: grid;
+    width: 100%;
+    min-height: 95px;
+    flex: 1;
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center;
+    margin-block: 8px;
+    overflow: hidden;
+    border-block: 1px solid color-mix(in srgb, var(--personal-accent) 20%, transparent);
+    background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.025), transparent);
+    color: var(--personal-accent-light);
+  }
+  .personality-monogram { z-index: 1; font-size: clamp(2.1rem, 4vw, 3rem); font-weight: 700; letter-spacing: 0.16em; line-height: 1; }
+  .personality-visual svg { width: min(100%, 280px); height: 55px; overflow: visible; }
+  .personality-axis, .personality-bracket { fill: none; stroke: var(--personal-border); stroke-width: 1; }
+  .personality-path { fill: none; stroke: var(--personal-accent-light); stroke-dasharray: 1; stroke-dashoffset: 1; stroke-width: 1.5; }
+  .personality-node { fill: var(--personal-surface); stroke: var(--personal-accent); stroke-width: 1.5; }
+  .personality-node--last { fill: var(--personal-accent-light); }
+  .personality-name { color: var(--color-text-secondary); font-size: 0.78rem; }
+  .personality-card:hover .personality-path, .personality-card:focus-within .personality-path { stroke-dashoffset: 0; transition: stroke-dashoffset 900ms var(--ease); }
+
+  .matrix-card { padding: clamp(18px, 3vw, 28px); }
+  .matrix-card h3 { margin: 6px 0; font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); line-height: 1.15; }
+  .matrix-personal-reading { max-width: 72em; margin: 12px 0; color: var(--color-text-secondary); font-size: 0.88rem; line-height: 1.65; }
+  .card-subtitle { color: var(--color-text-secondary); font-size: 0.8rem; line-height: 1.5; }
+  .matrix-canvas { position: relative; width: min(100%, 690px); aspect-ratio: 1; margin: 18px auto 10px; }
+  .matrix-lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: color-mix(in srgb, var(--personal-accent) 48%, var(--personal-border)); stroke-width: 0.36; vector-effect: non-scaling-stroke; }
+  .matrix-lines .matrix-cross { stroke: color-mix(in srgb, var(--personal-accent) 26%, var(--personal-border)); stroke-dasharray: 1 1; }
+  .matrix-lines .matrix-inner { stroke: color-mix(in srgb, var(--personal-accent) 52%, var(--personal-border)); stroke-dasharray: 1.5 1; }
+  .matrix-lines circle { stroke-dasharray: 1 2; opacity: 0.4; }
+
+  .matrix-point {
+    position: absolute;
+    z-index: 1;
+    top: var(--point-y);
+    left: var(--point-x);
+    display: grid;
+    width: clamp(32px, 8.5vw, 46px);
+    aspect-ratio: 1;
+    place-items: center;
+    padding: 0;
+    border: 1px solid var(--point-color);
+    border-radius: 50%;
+    background: var(--personal-surface);
+    color: var(--point-color);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    transform: translate(-50%, -50%);
+    transition: background-color 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease), color 180ms var(--ease), scale 180ms var(--ease);
+  }
+  .matrix-point--primary { --point-color: var(--pt-primary); width: clamp(42px, 10vw, 58px); background: color-mix(in srgb, #31589a 24%, var(--personal-surface)); font-size: 0.9rem; font-weight: 700; }
+  .matrix-point--derived { --point-color: var(--pt-derived); width: clamp(36px, 8vw, 48px); background: color-mix(in srgb, #16766d 15%, var(--personal-surface)); }
+  .matrix-point--supporting { --point-color: var(--pt-supporting); width: clamp(30px, 6.8vw, 39px); background: color-mix(in srgb, #694598 15%, var(--personal-surface)); font-size: 0.68rem; }
+  .matrix-point--center { --point-color: var(--pt-center); width: clamp(48px, 11vw, 64px); background: color-mix(in srgb, #8b5d13 22%, var(--personal-surface)); font-size: 1rem; font-weight: 700; }
+  .matrix-point:hover, .matrix-point:focus-visible, .matrix-point.is-selected { z-index: 2; background: var(--point-color); color: var(--on-point); box-shadow: 0 0 22px color-mix(in srgb, var(--point-color) 45%, transparent); scale: 1.1; }
+  .matrix-point:focus-visible { outline: 2px solid var(--personal-accent-light); outline-offset: 3px; }
+  .matrix-legend { display: flex; flex-wrap: wrap; gap: 7px 14px; margin: 0 0 14px; color: var(--color-text-secondary); font-size: 0.66rem; }
+  .matrix-legend span { display: inline-flex; align-items: center; gap: 5px; }
+  .matrix-legend span::before { width: 7px; height: 7px; border-radius: 50%; background: var(--legend-color); content: ''; }
+  .legend-primary { --legend-color: var(--pt-primary); }
+  .legend-derived { --legend-color: var(--pt-derived); }
+  .legend-supporting { --legend-color: var(--pt-supporting); }
+  .matrix-reading { min-height: 90px; padding: 12px 14px; border-left: 2px solid var(--personal-accent); background: color-mix(in srgb, var(--personal-accent) 6%, transparent); }
+  .reading-label { display: block; font-size: 0.57rem; }
+  .reading-title { display: block; margin-top: 4px; color: var(--color-text-primary); font-size: 0.95rem; }
+  .reading-note { margin-top: 4px; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.45; }
+
+  .natal-card { padding: clamp(18px, 3vw, 32px); }
+  .natal-card-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+  .natal-card-heading h3 { margin: 6px 0; font-size: clamp(1.3rem, 1.08rem + 0.8vw, 1.8rem); line-height: 1.15; }
+  .natal-location { color: var(--color-text-secondary); font-size: 0.78rem; }
+  .natal-chart { position: relative; width: min(100%, 760px); aspect-ratio: 1; margin: 24px auto; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--personal-accent) 7%, transparent), transparent 70%); }
+  .natal-chart > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transform-origin: center; animation: natal-orbit 120s linear infinite; }
+  @keyframes natal-orbit { to { transform: rotate(360deg); } }
+  .natal-zodiac-ring, .natal-zodiac-inner, .natal-house-ring, .natal-inner-ring { fill: none; vector-effect: non-scaling-stroke; }
+  .natal-zodiac-ring { stroke: color-mix(in srgb, var(--personal-accent) 60%, var(--personal-border)); stroke-width: 1.2; }
+  .natal-zodiac-inner, .natal-house-ring { stroke: var(--personal-border); stroke-width: 1; }
+  .natal-inner-ring { stroke: color-mix(in srgb, var(--personal-accent) 40%, var(--personal-border)); stroke-dasharray: 2 6; }
+  .natal-zodiac-divider, .natal-house-line { stroke: color-mix(in srgb, var(--personal-accent) 42%, var(--personal-border)); stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+  .natal-angle-line { stroke: var(--color-accent-hover); stroke-width: 1.3; vector-effect: non-scaling-stroke; }
+  .natal-midheaven-line { stroke: color-mix(in srgb, var(--pt-supporting) 72%, var(--personal-border)); stroke-dasharray: 4 4; stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .natal-center { fill: var(--personal-accent-light); }
+  .natal-zodiac-symbol, .natal-house-number, .natal-planet, .natal-angle { position: absolute; top: var(--y); left: var(--x); transform: translate(-50%, -50%); }
+  .natal-zodiac-symbol { color: var(--personal-accent-light); font-family: "Apple Symbols", "Segoe UI Symbol", serif; font-size: clamp(0.9rem, 2vw, 1.4rem); font-variant-emoji: text; }
+  .natal-house-number { color: var(--color-text-secondary); font-size: clamp(0.55rem, 1vw, 0.72rem); }
+  .natal-planet { display: flex; min-width: 34px; align-items: center; justify-content: center; gap: 2px; padding: 3px 5px; border: 1px solid color-mix(in srgb, var(--personal-accent) 45%, var(--personal-border)); border-radius: 999px; background: color-mix(in srgb, var(--personal-surface) 90%, transparent); color: var(--color-text-primary); cursor: pointer; font: inherit; font-size: clamp(0.68rem, 1.4vw, 0.9rem); line-height: 1; white-space: nowrap; box-shadow: 0 2px 10px rgb(0 0 0 / 0.18); }
+  .natal-planet:hover, .natal-planet:focus-visible { z-index: 2; border-color: var(--personal-accent-light); background: var(--personal-raised); outline: 2px solid color-mix(in srgb, var(--personal-accent-light) 65%, transparent); outline-offset: 2px; }
+  .natal-planet small { color: var(--personal-accent-light); font-size: 0.65em; }
+  .natal-angle { color: var(--personal-accent-light); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; }
+  .natal-angle--mc { color: var(--pt-supporting); }
+  .natal-reading { min-height: 3.2em; max-width: 50em; margin: 18px auto 0; color: var(--color-text-secondary); font-size: 0.88rem; line-height: 1.55; text-align: center; }
+  .personal-disclaimer { max-width: 72em; margin: 14px auto 0; color: var(--color-text-secondary); font-size: 0.72rem; line-height: 1.5; text-align: center; }
+
+  @media (max-width: 700px) {
+    .personal-grid { grid-template-columns: 1fr; }
+    .birth-card, .blood-card, .personality-card { grid-column: 1 / -1; }
+    .matrix-card, .natal-card { grid-column: 1 / -1; }
+    .matrix-canvas { width: min(100%, 400px); }
+    .natal-chart { width: min(100%, 560px); }
+    .matrix-point { width: clamp(34px, 10vw, 46px); }
+    .matrix-point--primary { width: clamp(44px, 12vw, 58px); }
+    .matrix-point--derived { width: clamp(38px, 10vw, 48px); }
+    .matrix-point--supporting { width: clamp(31px, 8vw, 39px); }
+    .matrix-point--center { width: clamp(50px, 13vw, 64px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .personal-card:hover, .personal-card:focus-within { transform: none; }
+    .card-detail, .card-detail-inner { transition: none; }
+    .personality-card:hover .personality-path, .personality-card:focus-within .personality-path { stroke-dashoffset: 0; }
+    .natal-chart > svg { animation: none; }
+  }
+</style>

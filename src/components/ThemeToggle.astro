@@ -1,0 +1,35 @@
+---
+// Кнопка смены темы. Сама логика — в /theme.js (подключён в <head> через Base.astro).
+interface Props { lang: string }
+const { lang } = Astro.props;
+
+const labels: Record<string, { toLight: string; toDark: string }> = {
+  ru: { toLight: 'Включить светлую тему', toDark: 'Включить тёмную тему' },
+  en: { toLight: 'Switch to light theme', toDark: 'Switch to dark theme' },
+  fr: { toLight: 'Passer au thème clair', toDark: 'Passer au thème sombre' },
+  es: { toLight: 'Cambiar al tema claro', toDark: 'Cambiar al tema oscuro' },
+  ko: { toLight: '라이트 테마로 전환', toDark: '다크 테마로 전환' },
+  zh: { toLight: '切换到浅色主题', toDark: '切换到深色主题' },
+  ja: { toLight: 'ライトテーマに切り替え', toDark: 'ダークテーマに切り替え' },
+  de: { toLight: 'Zum hellen Design wechseln', toDark: 'Zum dunklen Design wechseln' },
+  sv: { toLight: 'Byt till ljust tema', toDark: 'Byt till mörkt tema' },
+};
+const l = labels[lang] ?? labels.en;
+---
+<button
+  type="button"
+  class="theme-toggle"
+  data-theme-toggle
+  data-label-light={l.toLight}
+  data-label-dark={l.toDark}
+  aria-label={l.toLight}
+  title={l.toLight}
+>
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" />
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z" />
+  </svg>
+</button>
