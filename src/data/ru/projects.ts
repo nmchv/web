@@ -49,8 +49,7 @@ export const projects: Project[] = [
     featured: true,
     order: 5,
   },
-
-{
+  {
     id: 'terra_incognita',
     title: 'Браузерная игра для 11 классов',
     description:
@@ -61,7 +60,6 @@ export const projects: Project[] = [
     featured: true,
     order: 4,
   },
-  
   {
     id: 'knowledge-graph',
     title: 'Граф всех знаний',
