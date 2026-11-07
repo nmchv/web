@@ -51,11 +51,11 @@ export const projects: Project[] = [
   },
   {
     id: 'terra_incognita',
-    title: 'Браузерная игра для 11 классов',
+    title: 'Браузерная игра TERRA-Incognita',
     description:
-      'Изучение тем 11 класса через игровой формат. Терра-Инкогнита - браузерная игра с локальным сохранением про изучением нового мира.',
+      'Изучение школьных тем через игровой формат. Терра-Инкогнита - браузерная игра с локальным сохранением про изучением нового мира.',
     category: 'География / Geography',
-    url: 'https://app.nmchv.ru',
+    url: 'https://game.nmchv.ru',
     status: 'live',
     art: 'geo',
     featured: true,
