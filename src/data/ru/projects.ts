@@ -20,7 +20,7 @@ export const projects: Project[] = [
     description:
       'Интерактивная практика по географической номенклатуре: тренируйтесь находить и запоминать объекты на карте.',
     category: 'География / Geography',
-    url: 'https://geotrainer.nmchv.ru',
+    url: 'https://www.geotrainer.nmchv.ru',
     status: 'live',
     art: 'geo',
     featured: true,
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     description:
       'Изучение школьных тем через игровой формат. Терра-Инкогнита - браузерная игра с локальным сохранением про изучением нового мира.',
     category: 'География / Geography',
-    url: 'https://game.nmchv.ru',
+    url: 'https://www.game.nmchv.ru',
     status: 'live',
     art: 'geo',
     featured: true,
