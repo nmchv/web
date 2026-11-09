@@ -100,7 +100,8 @@ export const projects: Project[] = [
     description:
       'Инструмент для подготовки к экзаменам: тренировка заданий и повторение тем в удобном онлайн-формате.',
     category: 'Образование / Education',
-    status: 'in-progress',
+    url: 'https://exam.nmchv.ru',
+    status: 'live',
     art: 'exam',
     featured: false,
     order: 9,
