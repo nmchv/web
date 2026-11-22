@@ -69,7 +69,7 @@ export const content: SiteContent = {
     signatureLabel: 'Professional introduction',
     aliasLabel: 'Alias ·',
     schoolLabel: 'SFedU',
-    schoolCaption: 'a space for solutions',
+    schoolCaption: 'Southern Federal University',
     language: {
       label: 'Choose language',
       russian: 'Русский',
@@ -119,6 +119,7 @@ export const content: SiteContent = {
       lessonLanguages: 'I teach lessons in Russian and English.',
     },
     footer: { toTop: 'Back to top', rights: 'Aleksei Nemichev' },
+    login: 'Account',
   },
   profile: {
     name: 'Aleksei Nemichev',

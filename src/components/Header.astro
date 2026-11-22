@@ -41,6 +41,7 @@ const currentLanguage = languages.find((language) => language.code === ui.lang);
       <nav class="nav" aria-label={ui.navLabel}>
         {items.map((i) => <a href={i.href} data-nav={i.id}>{i.label}</a>)}
       </nav>
+      <a class="btn btn-login" href="https://login.nmchv.ru" target="_blank" rel="noopener noreferrer">{ui.login}</a>
       <details class="language-switcher">
         <summary aria-label={ui.language.label}>
           {currentLanguage && <span aria-hidden="true">{currentLanguage.flag}</span>}

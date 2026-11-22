@@ -58,7 +58,7 @@ Geography is my main professional field because it studies real processes: natur
 
 ## Education as the development of thinking
 
-I teach geography, robotics, and 3D modelling at School No. 116 in Rostov-on-Don. Inspired by Bloom’s taxonomy, I value moving beyond memorization to analysis, application, and creation.
+I teach geography, robotics, and 3D modelling at Southern Federal University in Rostov-on-Don. Inspired by Bloom’s taxonomy, I value moving beyond memorization to analysis, application, and creation.
 
 <figure class="journey-visual bloom-figure" data-reveal>
   <figcaption><strong>Learning means moving forward</strong><span>From basic knowledge to independent ideas.</span></figcaption>

@@ -60,8 +60,8 @@ export const content: SiteContent = {
     footerNavLabel: '푸터 탐색',
     signatureLabel: '전문 분야 소개',
     aliasLabel: '별칭 ·',
-    schoolLabel: '제116학교',
-    schoolCaption: '아이디어를 실현하는 공간',
+    schoolLabel: 'SFedU',
+    schoolCaption: '남연방대학교',
     language: { label: '언어 선택', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: '홈', projects: '프로젝트', about: '소개', contacts: '연락처' },
     heroEyebrow: '개인 웹사이트',
@@ -97,6 +97,7 @@ export const content: SiteContent = {
       lessonLanguages: '수업은 러시아어와 영어로만 진행합니다.',
     },
     footer: { toTop: '맨 위로', rights: '네미체프 알렉스' },
+    login: '내 계정',
   },
   profile: {
     name: '네미체프 알렉스',

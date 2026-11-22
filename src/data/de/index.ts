@@ -68,8 +68,8 @@ export const content: SiteContent = {
     footerNavLabel: 'Fußnavigation',
     signatureLabel: 'Berufliches Profil',
     aliasLabel: 'Pseudonym ·',
-    schoolLabel: 'Schule Nr. 116',
-    schoolCaption: 'ein Raum für Ideen und Lösungen',
+    schoolLabel: 'SFedU',
+    schoolCaption: 'Südliche Föderale Universität',
     language: {
       label: 'Sprache auswählen',
       russian: 'Русский',
@@ -119,6 +119,7 @@ export const content: SiteContent = {
       lessonLanguages: 'Ich unterrichte ausschließlich auf Russisch und Englisch.',
     },
     footer: { toTop: 'Nach oben', rights: 'Aleksei Nemichev' },
+    login: 'Mein Konto',
   },
   profile: {
     name: 'Aleksei Nemichev',

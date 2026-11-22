@@ -60,8 +60,8 @@ export const content: SiteContent = {
     footerNavLabel: 'フッターナビゲーション',
     signatureLabel: 'プロフィール',
     aliasLabel: '通称 ·',
-    schoolLabel: '第116学校',
-    schoolCaption: 'アイデアを形にする場所',
+    schoolLabel: 'SFedU',
+    schoolCaption: '南連邦大学',
     language: { label: '言語を選択', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: 'ホーム', projects: 'プロジェクト', about: 'プロフィール', contacts: 'お問い合わせ' },
     heroEyebrow: '個人サイト',
@@ -97,6 +97,7 @@ export const content: SiteContent = {
       lessonLanguages: 'レッスンはロシア語または英語のみで行っています。',
     },
     footer: { toTop: 'ページの先頭へ', rights: 'Aleksei Nemichev' },
+    login: 'アカウント',
   },
   profile: {
     name: 'Aleksei Nemichev',

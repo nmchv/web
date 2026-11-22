@@ -60,8 +60,8 @@ export const content: SiteContent = {
     footerNavLabel: '页脚导航',
     signatureLabel: '职业介绍',
     aliasLabel: '别名 ·',
-    schoolLabel: '第116学校',
-    schoolCaption: '创意与解决方案的空间',
+    schoolLabel: 'SFedU',
+    schoolCaption: '南方联邦大学',
     language: { label: '选择语言', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: '首页', projects: '项目', about: '关于我', contacts: '联系方式' },
     heroEyebrow: '个人网站',
@@ -97,6 +97,7 @@ export const content: SiteContent = {
       lessonLanguages: '课程仅使用俄语或英语授课。',
     },
     footer: { toTop: '返回顶部', rights: 'Aleksei Nemichev' },
+    login: '我的账户',
   },
   profile: {
     name: 'Aleksei Nemichev',

@@ -96,4 +96,5 @@ export interface Ui {
   directions: { title: string; lead: string };
   contacts: { title: string; lead: string; bookingCta: string; lessonLanguages: string };
   footer: { toTop: string; rights: string };
+  login: string;
 }

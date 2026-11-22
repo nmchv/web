@@ -68,8 +68,8 @@ export const content: SiteContent = {
     footerNavLabel: 'Navegación del pie de página',
     signatureLabel: 'Presentación profesional',
     aliasLabel: 'Seudónimo ·',
-    schoolLabel: 'Escuela n.º 116',
-    schoolCaption: 'un espacio de soluciones',
+    schoolLabel: 'SFedU',
+    schoolCaption: 'Universidad Federal del Sur',
     language: { label: 'Elegir idioma', russian: 'Русский', english: 'English', french: 'Français', spanish: 'Español', korean: '한국어', chinese: '中文', japanese: '日本語', german: 'Deutsch', swedish: 'Svenska' },
     nav: { home: 'Inicio', projects: 'Proyectos', about: 'Sobre mí', contacts: 'Contacto' },
     heroEyebrow: 'Sitio personal',
@@ -108,6 +108,7 @@ export const content: SiteContent = {
       lessonLanguages: 'Imparto clases únicamente en ruso e inglés.',
     },
     footer: { toTop: 'Volver arriba', rights: 'Alexey Nemichev' },
+    login: 'Mi cuenta',
   },
   profile: {
     name: 'Alexey Nemichev',

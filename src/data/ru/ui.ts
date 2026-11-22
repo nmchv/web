@@ -12,8 +12,8 @@ export const ui: Ui = {
   footerNavLabel: 'Навигация в подвале',
   signatureLabel: 'Профессиональное представление',
   aliasLabel: 'Псевдоним ·',
-  schoolLabel: 'Школа №116',
-  schoolCaption: 'пространство решений',
+  schoolLabel: 'ЮФУ',
+  schoolCaption: 'Южный федеральный университет',
   language: {
     label: 'Выбрать язык',
     russian: 'Русский',
@@ -63,4 +63,5 @@ export const ui: Ui = {
     lessonLanguages: '',
   },
   footer: { toTop: 'Наверх', rights: 'Алексей Немичев' },
+  login: 'Личный кабинет',
 };
