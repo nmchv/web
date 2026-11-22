@@ -8,6 +8,7 @@ import { content as chineseContent } from '../../data/zh';
 import { content as japaneseContent } from '../../data/ja';
 import { content as germanContent } from '../../data/de';
 import { content as swedishContent } from '../../data/sv';
+import { content as dutchContent } from '../../data/nl';
 import ProjectsPage from '../../components/ProjectsPage.astro';
 
 interface Props { content: SiteContent }
@@ -22,6 +23,7 @@ export function getStaticPaths() {
     { params: { lang: 'ja' }, props: { content: japaneseContent } },
     { params: { lang: 'de' }, props: { content: germanContent } },
     { params: { lang: 'sv' }, props: { content: swedishContent } },
+    { params: { lang: 'nl' }, props: { content: dutchContent } },
   ];
 }
 

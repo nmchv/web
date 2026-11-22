@@ -73,6 +73,7 @@ export interface Ui {
     japanese: string;
     german: string;
     swedish: string;
+    dutch?: string;
   };
   nav: { home: string; projects: string; about: string; contacts: string };
   heroEyebrow: string;

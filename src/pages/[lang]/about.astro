@@ -8,6 +8,7 @@ import { content as chineseContent } from '../../data/zh';
 import { content as japaneseContent } from '../../data/ja';
 import { content as germanContent } from '../../data/de';
 import { content as swedishContent } from '../../data/sv';
+import { content as dutchContent } from '../../data/nl';
 import { Content as EnglishAbout } from '../../data/about/en.md';
 import { Content as FrenchAbout } from '../../data/about/fr.md';
 import { Content as SpanishAbout } from '../../data/about/es.md';
@@ -16,6 +17,7 @@ import { Content as ChineseAbout } from '../../data/about/zh.md';
 import { Content as JapaneseAbout } from '../../data/about/ja.md';
 import { Content as GermanAbout } from '../../data/about/de.md';
 import { Content as SwedishAbout } from '../../data/about/sv.md';
+import { Content as DutchAbout } from '../../data/about/nl.md';
 import AboutPage from '../../components/AboutPage.astro';
 
 interface Props {
@@ -33,6 +35,7 @@ export function getStaticPaths() {
     { params: { lang: 'ja' }, props: { content: japaneseContent, document: JapaneseAbout } },
     { params: { lang: 'de' }, props: { content: germanContent, document: GermanAbout } },
     { params: { lang: 'sv' }, props: { content: swedishContent, document: SwedishAbout } },
+    { params: { lang: 'nl' }, props: { content: dutchContent, document: DutchAbout } },
   ];
 }
 
