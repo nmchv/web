@@ -37,12 +37,12 @@ const currentLanguage = languages.find((language) => language.code === ui.lang);
         <path d="M4 20 L12 3 L20 20 M7.2 14.5 H16.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" />
       </svg>
       <span class="brand-name">{profile.shortName}</span>
+      <a class="btn btn-login" href="https://login.nmchv.ru" target="_blank" rel="noopener noreferrer">{ui.login}</a>
     </a>
     <div class="header-actions">
       <nav class="nav" aria-label={ui.navLabel}>
         {items.map((i) => <a href={i.href} data-nav={i.id}>{i.label}</a>)}
       </nav>
-      <a class="btn btn-login" href="https://login.nmchv.ru" target="_blank" rel="noopener noreferrer">{ui.login}</a>
       <details class="language-switcher">
         <summary aria-label={ui.language.label}>
           {currentLanguage && <span aria-hidden="true">{currentLanguage.flag}</span>}

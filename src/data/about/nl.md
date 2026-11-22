@@ -1,29 +1,29 @@
 # Aleksei Nemichev
 
-<p class="about-tagline">Exploring. Understanding. Creating.</p>
+<p class="about-tagline">Verkennen. Begrijpen. Creëren.</p>
 
-I explore how nature, society, education, and technology connect. I teach, study geography, and build digital tools to solve practical problems.
+Ik verken hoe natuur, samenleving, onderwijs en technologie met elkaar verbonden zijn. Ik geef les, studeer aardrijkskunde en bouw digitale hulpmiddelen voor praktische problemen.
 
 <figure class="journey-photo" data-reveal>
   <div class="photo-placeholder">
-    <img class="photo-image" src="/images/about/portrait.jpg" alt="Portrait of Aleksei Nemichev" loading="lazy" decoding="async" />
+    <img class="photo-image" src="/images/about/portrait.jpg" alt="Portret van Aleksei Nemichev" loading="lazy" decoding="async" />
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
-    <span>PHOTO PLACEHOLDER</span>
+    <span>FOTOPLAATSHOUDER</span>
   </div>
 </figure>
 
-## Knowing the world as a way of interacting with it
+## De wereld kennen als manier om ermee om te gaan
 
-I believe the world cannot be understood through a single field. Geography, economics, psychology, and technology reveal patterns at their intersections, where the strongest questions usually emerge.
+Ik geloof dat de wereld niet via één vakgebied te begrijpen is. Aardrijkskunde, economie, psychologie en technologie onthullen patronen op hun snijvlakken, waar de sterkste vragen meestal ontstaan.
 
 <figure class="journey-visual" data-reveal>
-  <figcaption><strong>One reality — several perspectives</strong><span>Connections between disciplines help reveal the whole.</span></figcaption>
-  <div class="discipline-map" role="img" aria-label="Geography, economics, psychology, and technology are interconnected and help us explore the world">
-    <span class="map-node map-node--center">The world<br />as a system</span>
-    <span class="map-node map-node--geo">Geography</span>
-    <span class="map-node map-node--economy">Economics</span>
-    <span class="map-node map-node--psychology">Psychology</span>
-    <span class="map-node map-node--tech">Technology</span>
+  <figcaption><strong>Eén werkelijkheid — meerdere perspectieven</strong><span>Verbindingen tussen disciplines helpen het geheel te onthullen.</span></figcaption>
+  <div class="discipline-map" role="img" aria-label="Aardrijkskunde, economie, psychologie en technologie zijn met elkaar verbonden en helpen ons de wereld te verkennen">
+    <span class="map-node map-node--center">De wereld<br />als systeem</span>
+    <span class="map-node map-node--geo">Aardrijkskunde</span>
+    <span class="map-node map-node--economy">Economie</span>
+    <span class="map-node map-node--psychology">Psychologie</span>
+    <span class="map-node map-node--tech">Technologie</span>
     <svg viewBox="0 0 600 300" aria-hidden="true" preserveAspectRatio="none">
       <path class="route-base" d="M300 150 62 43M300 150 538 43M300 150 62 257M300 150 538 257" />
       <path class="route-flow" d="M300 150 62 43M300 150 538 43M300 150 62 257M300 150 538 257" />
@@ -31,106 +31,106 @@ I believe the world cannot be understood through a single field. Geography, econ
   </div>
 </figure>
 
-## Information, knowledge, and understanding
+## Informatie, kennis en begrip
 
-For me, information, knowledge, and understanding are different stages. Information is raw material; understanding reveals systems, causes, and principles.
+Voor mij zijn informatie, kennis en begrip verschillende stadia. Informatie is grondstof; begrip onthult systemen, oorzaken en principes.
 
 <figure class="journey-visual journey-flow-figure" data-reveal>
-  <figcaption><strong>From information to understanding</strong><span>Each step adds structure and helps you act independently.</span></figcaption>
+  <figcaption><strong>Van informatie naar begrip</strong><span>Elke stap voegt structuur toe en helpt je zelfstandig te handelen.</span></figcaption>
   <ol class="journey-flow">
-    <li><span class="flow-index">01</span><strong>Information</strong><span>Observations and facts</span></li>
-    <li><span class="flow-index">02</span><strong>Knowledge</strong><span>System and experience</span></li>
-    <li><span class="flow-index">03</span><strong>Understanding</strong><span>Connections and principles</span></li>
+    <li><span class="flow-index">01</span><strong>Informatie</strong><span>Observaties en feiten</span></li>
+    <li><span class="flow-index">02</span><strong>Kennis</strong><span>Systeem en ervaring</span></li>
+    <li><span class="flow-index">03</span><strong>Begrip</strong><span>Verbindingen en principes</span></li>
   </ol>
 </figure>
 
-## Geography as the foundation of my professional path
+## Aardrijkskunde als basis van mijn professionele pad
 
-Geography is my main professional field because it studies real processes: nature, population, economy, territories, resources, and human-environment relations. At Southern Federal University, I am studying teacher education in geography and economics (2022–2027) and aim to pursue research and a PhD in the United States.
+Aardrijkskunde is mijn belangrijkste vakgebied omdat het echte processen bestudeert: natuur, bevolking, economie, territoria, hulpbronnen en mens-milieu relaties. Aan de Zuidelijke Federale Universiteit studeer ik lerarenopleiding aardrijkskunde en economie (2022–2027) en streef ik naar onderzoek en een promotie in de Verenigde Staten.
 
 <figure class="journey-photo" data-reveal>
   <div class="photo-placeholder photo-placeholder--wide">
-    <img class="photo-image" src="/images/about/geography.jpg" alt="Aleksei studying geography or working with maps" loading="lazy" decoding="async" />
+    <img class="photo-image" src="/images/about/geography.jpg" alt="Aleksei studeert aardrijkskunde of werkt met kaarten" loading="lazy" decoding="async" />
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
-    <span>PHOTO PLACEHOLDER</span>
+    <span>FOTOPLAATSHOUDER</span>
   </div>
 </figure>
 
-## Education as the development of thinking
+## Onderwijs als ontwikkeling van denken
 
-I teach geography, robotics, and 3D modelling at Southern Federal University in Rostov-on-Don. Inspired by Bloom’s taxonomy, I value moving beyond memorization to analysis, application, and creation.
+Ik geef aardrijkskunde, robotica en 3D-modellering aan de Zuidelijke Federale Universiteit in Rostov aan de Don. Geïnspireerd door de taxonomie van Bloom waardeer ik de stap voorbij memoriseren naar analyse, toepassing en creatie.
 
 <figure class="journey-visual bloom-figure" data-reveal>
-  <figcaption><strong>Learning means moving forward</strong><span>From basic knowledge to independent ideas.</span></figcaption>
-  <ol class="bloom-steps" aria-label="Levels of cognitive activity">
-    <li><span>06</span><strong>Create</strong><i style="--step-width:100%"></i></li>
-    <li><span>05</span><strong>Evaluate</strong><i style="--step-width:88%"></i></li>
-    <li><span>04</span><strong>Analyze</strong><i style="--step-width:76%"></i></li>
-    <li><span>03</span><strong>Apply</strong><i style="--step-width:64%"></i></li>
-    <li><span>02</span><strong>Understand</strong><i style="--step-width:52%"></i></li>
-    <li><span>01</span><strong>Remember</strong><i style="--step-width:40%"></i></li>
+  <figcaption><strong>Leren betekent vooruitgaan</strong><span>Van basiskennis naar zelfstandige ideeën.</span></figcaption>
+  <ol class="bloom-steps" aria-label="Niveaus van cognitieve activiteit">
+    <li><span>06</span><strong>Creëren</strong><i style="--step-width:100%"></i></li>
+    <li><span>05</span><strong>Evalueren</strong><i style="--step-width:88%"></i></li>
+    <li><span>04</span><strong>Analyseren</strong><i style="--step-width:76%"></i></li>
+    <li><span>03</span><strong>Toepassen</strong><i style="--step-width:64%"></i></li>
+    <li><span>02</span><strong>Begrijpen</strong><i style="--step-width:52%"></i></li>
+    <li><span>01</span><strong>Onthouden</strong><i style="--step-width:40%"></i></li>
   </ol>
 </figure>
 
 <figure class="journey-photo" data-reveal>
   <div class="photo-placeholder photo-placeholder--wide">
-    <img class="photo-image" src="/images/about/teaching.jpg" alt="Teaching geography, robotics, or 3D modeling in a classroom" loading="lazy" decoding="async" />
+    <img class="photo-image" src="/images/about/teaching.jpg" alt="Lesgeven in aardrijkskunde, robotica of 3D-modellering in een klaslokaal" loading="lazy" decoding="async" />
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
-    <span>PHOTO PLACEHOLDER</span>
+    <span>FOTOPLAATSHOUDER</span>
   </div>
 </figure>
 
-## Beyond a single discipline
+## Voorbij één vakgebied
 
-Geography remains central, but my interests extend to economics, psychology, and information technology. I use interdisciplinary thinking to solve practical problems from multiple angles.
+Aardrijkskunde blijft centraal, maar mijn interesses reiken tot economie, psychologie en informatietechnologie. Ik gebruik interdisciplinair denken om praktische problemen vanuit meerdere hoeken op te lossen.
 
-## Creating my own tools
+## Mijn eigen hulpmiddelen maken
 
-I create digital tools when existing services do not fit my tasks or work style. For me, building software is a way to organize work, test ideas, and solve real problems.
+Ik maak digitale hulpmiddelen wanneer bestaande diensten niet passen bij mijn taken of werkwijze. Voor mij is software bouwen een manier om werk te organiseren, ideeën te testen en echte problemen op te lossen.
 
-## Teacher's diary
+## Lesdagboek voor leraren
 
-I am developing a digital teacher’s diary to bring lesson planning, attendance, grades, homework, and records together in one place.
+Ik ontwikkel een digitaal lesdagboek voor leraren om lesplanning, aanwezigheid, cijfers, huiswerk en administratie op één plek samen te brengen.
 
-## Geography trainer
+## Aardrijkskundetrainer
 
-I am building a geography trainer to practice places, territories, and spatial relationships. It combines subject content with digital technology for adaptive self-study.
+Ik bouw een aardrijkskundetrainer om plaatsen, territoria en ruimtelijke relaties te oefenen. Het combineert vakinhoudd met digitale technologie voor adaptieve zelfstudie.
 
-## Personal digital ecosystem
+## Persoonlijk digitaal ecosysteem
 
-My diary and trainer are part of a broader digital environment for work, research, and new tools. I want it to solve real tasks and grow with my interests.
+Mijn dagboek en trainer zijn onderdeel van een bredere digitale omgeving voor werk, onderzoek en nieuwe hulpmiddelen. Ik wil dat het echte taken oplost en meegroeit met mijn interesses.
 
 <figure class="journey-visual ecosystem-figure" data-reveal>
-  <figcaption><strong>The idea turns into a working environment</strong><span>From a personal task — to tools that may be useful to others.</span></figcaption>
-  <div class="ecosystem-map" role="img" aria-label="The personal digital ecosystem combines the teacher's diary, the geography trainer, research, and new tools">
+  <figcaption><strong>Het idee wordt een werkende omgeving</strong><span>Van een persoonlijke taak — naar hulpmiddelen die ook anderen kunnen helpen.</span></figcaption>
+  <div class="ecosystem-map" role="img" aria-label="Het persoonlijke digitale ecosysteem combineert het lesdagboek, de aardrijkskundetrainer, onderzoek en nieuwe hulpmiddelen">
     <svg class="ecosystem-routes" viewBox="0 0 220 100" aria-hidden="true" preserveAspectRatio="none">
       <path class="route-base" d="M110 50 35 15M110 50 185 15M110 50 35 85M110 50 185 85" />
       <path class="route-flow" d="M110 50 35 15M110 50 185 15M110 50 35 85M110 50 185 85" />
     </svg>
-    <span class="ecosystem-node ecosystem-node--teacher">Teacher's<br />diary</span>
-    <span class="ecosystem-node ecosystem-node--geo">Geography<br />trainer</span>
-    <span class="ecosystem-hub">Personal<br />digital<br />ecosystem</span>
-    <span class="ecosystem-node ecosystem-node--research">Research<br />and knowledge</span>
-    <span class="ecosystem-node ecosystem-node--tools">New<br />tools</span>
+    <span class="ecosystem-node ecosystem-node--teacher">Lesdagboek<br />voor leraren</span>
+    <span class="ecosystem-node ecosystem-node--geo">Aardrijkskunde-<br />trainer</span>
+    <span class="ecosystem-hub">Persoonlijk<br />digitaal<br />ecosysteem</span>
+    <span class="ecosystem-node ecosystem-node--research">Onderzoek<br />en kennis</span>
+    <span class="ecosystem-node ecosystem-node--tools">Nieuwe<br />hulpmiddelen</span>
   </div>
 </figure>
 
-## Freedom and independence
+## Vrijheid en onafhankelijkheid
 
-Freedom means choosing my own direction, managing time, and organizing work around meaningful goals. I value independence because it allows continuous learning and self-made solutions.
+Vrijheid betekent mijn eigen richting kiezen, tijd beheren en werk organiseren rond betekenisvolle doelen. Ik waardeer onafhankelijkheid omdat het continue leren en zelfgemaakte oplossingen mogelijk maakt.
 
-## Research beyond the familiar environment
+## Onderzoek buiten de vertrouwde omgeving
 
-In 2026, I joined an academic exchange at Suwon University in South Korea and the 2026 YSI-KOICA SDGs and Sustainable Futures Forum. The experience introduced me to a new educational and cultural environment.
+In 2026 nam ik deel aan een academische uitwisseling aan de Suwon University in Zuid-Korea en het YSI-KOICA SDGs and Sustainable Futures Forum 2026. De ervaring introduceerde mij in een nieuwe educatieve en culturele omgeving.
 
 <figure class="journey-photo" data-reveal>
   <div class="photo-placeholder photo-placeholder--wide">
-    <img class="photo-image" src="/images/about/korea.jpg" alt="Aleksei Nemichev during the academic exchange in South Korea" loading="lazy" decoding="async" />
+    <img class="photo-image" src="/images/about/korea.jpg" alt="Aleksei Nemichev tijdens de academische uitwisseling in Zuid-Korea" loading="lazy" decoding="async" />
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 15h7l3-4h12l3 4h7v23H8z"/><circle cx="24" cy="26" r="7"/><path d="M12 20h.01"/></svg>
-    <span>PHOTO PLACEHOLDER</span>
+    <span>FOTOPLAATSHOUDER</span>
   </div>
 </figure>
 
-## Continuing the path
+## Het pad voortzetten
 
-I combine university study, teaching, research, and digital projects. I plan to keep learning, creating, and exploring new directions.
+Ik combineer universitaire studie, lesgeven, onderzoek en digitale projecten. Ik plan te blijven leren, creëren en nieuwe richtingen te verkennen.

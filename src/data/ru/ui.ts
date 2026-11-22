@@ -12,8 +12,8 @@ export const ui: Ui = {
   footerNavLabel: 'Навигация в подвале',
   signatureLabel: 'Профессиональное представление',
   aliasLabel: 'Псевдоним ·',
-  schoolLabel: 'ЮФУ',
-  schoolCaption: 'Южный федеральный университет',
+  schoolLabel: '',
+  schoolCaption: '',
   language: {
     label: 'Выбрать язык',
     russian: 'Русский',

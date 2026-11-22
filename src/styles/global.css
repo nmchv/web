@@ -172,8 +172,8 @@ a { color: inherit; text-decoration: none; }
 .language-switcher[open] summary svg { transform: rotate(180deg); }
 
 .btn-login {
-  min-height: 40px;
-  padding: 0 16px;
+  min-height: 28px;
+  padding: 0 10px;
   font-size: var(--fs-small);
   background: var(--color-accent);
   color: #06080c;

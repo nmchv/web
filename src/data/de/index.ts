@@ -68,8 +68,8 @@ export const content: SiteContent = {
     footerNavLabel: 'Fußnavigation',
     signatureLabel: 'Berufliches Profil',
     aliasLabel: 'Pseudonym ·',
-    schoolLabel: 'SFedU',
-    schoolCaption: 'Südliche Föderale Universität',
+    schoolLabel: '',
+    schoolCaption: '',
     language: {
       label: 'Sprache auswählen',
       russian: 'Русский',

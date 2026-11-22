@@ -68,8 +68,8 @@ export const content: SiteContent = {
     footerNavLabel: 'Footer navigation',
     signatureLabel: 'Professional introduction',
     aliasLabel: 'Alias ·',
-    schoolLabel: 'SFedU',
-    schoolCaption: 'Southern Federal University',
+    schoolLabel: '',
+    schoolCaption: '',
     language: {
       label: 'Choose language',
       russian: 'Русский',
